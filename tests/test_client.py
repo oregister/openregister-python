@@ -722,11 +722,11 @@ class TestOpenregister:
     @mock.patch("openregister._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.get("/v0/search/company").mock(side_effect=httpx.TimeoutException("Test timeout error"))
+        respx_mock.get("/v0/company/company_id").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
             self.client.get(
-                "/v0/search/company", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
+                "/v0/company/company_id", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
             )
 
         assert _get_open_connections(self.client) == 0
@@ -734,11 +734,11 @@ class TestOpenregister:
     @mock.patch("openregister._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.get("/v0/search/company").mock(return_value=httpx.Response(500))
+        respx_mock.get("/v0/company/company_id").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
             self.client.get(
-                "/v0/search/company", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
+                "/v0/company/company_id", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
             )
 
         assert _get_open_connections(self.client) == 0
@@ -767,9 +767,9 @@ class TestOpenregister:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/v0/search/company").mock(side_effect=retry_handler)
+        respx_mock.get("/v0/company/company_id").mock(side_effect=retry_handler)
 
-        response = client.search.with_raw_response.find_companies()
+        response = client.company.with_raw_response.retrieve(company_id="company_id")
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -791,9 +791,11 @@ class TestOpenregister:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/v0/search/company").mock(side_effect=retry_handler)
+        respx_mock.get("/v0/company/company_id").mock(side_effect=retry_handler)
 
-        response = client.search.with_raw_response.find_companies(extra_headers={"x-stainless-retry-count": Omit()})
+        response = client.company.with_raw_response.retrieve(
+            company_id="company_id", extra_headers={"x-stainless-retry-count": Omit()}
+        )
 
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
 
@@ -814,9 +816,11 @@ class TestOpenregister:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/v0/search/company").mock(side_effect=retry_handler)
+        respx_mock.get("/v0/company/company_id").mock(side_effect=retry_handler)
 
-        response = client.search.with_raw_response.find_companies(extra_headers={"x-stainless-retry-count": "42"})
+        response = client.company.with_raw_response.retrieve(
+            company_id="company_id", extra_headers={"x-stainless-retry-count": "42"}
+        )
 
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"
 
@@ -1519,11 +1523,11 @@ class TestAsyncOpenregister:
     @mock.patch("openregister._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.get("/v0/search/company").mock(side_effect=httpx.TimeoutException("Test timeout error"))
+        respx_mock.get("/v0/company/company_id").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
             await self.client.get(
-                "/v0/search/company", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
+                "/v0/company/company_id", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
             )
 
         assert _get_open_connections(self.client) == 0
@@ -1531,11 +1535,11 @@ class TestAsyncOpenregister:
     @mock.patch("openregister._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.get("/v0/search/company").mock(return_value=httpx.Response(500))
+        respx_mock.get("/v0/company/company_id").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
             await self.client.get(
-                "/v0/search/company", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
+                "/v0/company/company_id", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
             )
 
         assert _get_open_connections(self.client) == 0
@@ -1565,9 +1569,9 @@ class TestAsyncOpenregister:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/v0/search/company").mock(side_effect=retry_handler)
+        respx_mock.get("/v0/company/company_id").mock(side_effect=retry_handler)
 
-        response = await client.search.with_raw_response.find_companies()
+        response = await client.company.with_raw_response.retrieve(company_id="company_id")
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -1590,10 +1594,10 @@ class TestAsyncOpenregister:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/v0/search/company").mock(side_effect=retry_handler)
+        respx_mock.get("/v0/company/company_id").mock(side_effect=retry_handler)
 
-        response = await client.search.with_raw_response.find_companies(
-            extra_headers={"x-stainless-retry-count": Omit()}
+        response = await client.company.with_raw_response.retrieve(
+            company_id="company_id", extra_headers={"x-stainless-retry-count": Omit()}
         )
 
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
@@ -1616,9 +1620,11 @@ class TestAsyncOpenregister:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/v0/search/company").mock(side_effect=retry_handler)
+        respx_mock.get("/v0/company/company_id").mock(side_effect=retry_handler)
 
-        response = await client.search.with_raw_response.find_companies(extra_headers={"x-stainless-retry-count": "42"})
+        response = await client.company.with_raw_response.retrieve(
+            company_id="company_id", extra_headers={"x-stainless-retry-count": "42"}
+        )
 
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"
 
