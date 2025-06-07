@@ -1,11 +1,11 @@
 [project]
-name = "openregister"
-version = "0.0.1-alpha.0"
+name = "openregister-sdk"
+version = "1.0.0"
 description = "The official Python library for the openregister API"
 dynamic = ["readme"]
 license = "Apache-2.0"
 authors = [
-{ name = "Openregister", email = "" },
+{ name = "Openregister", email = "founders@openregister.de" },
 ]
 dependencies = [
     "httpx>=0.23.0, <1",
@@ -34,8 +34,8 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/stainless-sdks/openregister-python"
-Repository = "https://github.com/stainless-sdks/openregister-python"
+Homepage = "https://github.com/oregister/openregister-python"
+Repository = "https://github.com/oregister/openregister-python"
 
 
 [tool.rye]
@@ -121,7 +121,7 @@ path = "README.md"
 [[tool.hatch.metadata.hooks.fancy-pypi-readme.substitutions]]
 # replace relative links with absolute links
 pattern = '\[(.+?)\]\(((?!https?://)\S+?)\)'
-replacement = '[\1](https://github.com/stainless-sdks/openregister-python/tree/main/\g<2>)'
+replacement = '[\1](https://github.com/oregister/openregister-python/tree/main/\g<2>)'
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
