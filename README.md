@@ -16,7 +16,7 @@ The full API of this library can be found in [api.md](api.md).
 
 ```sh
 # install from PyPI
-pip install --pre openregister-sdk
+pip install openregister-sdk
 ```
 
 ## Usage
