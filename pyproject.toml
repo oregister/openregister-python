@@ -34,8 +34,8 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/joelrose/cap-sdks"
-Repository = "https://github.com/joelrose/cap-sdks"
+Homepage = "https://github.com/oregister/openregister-python"
+Repository = "https://github.com/oregister/openregister-python"
 
 
 [tool.rye]
@@ -121,7 +121,7 @@ path = "README.md"
 [[tool.hatch.metadata.hooks.fancy-pypi-readme.substitutions]]
 # replace relative links with absolute links
 pattern = '\[(.+?)\]\(((?!https?://)\S+?)\)'
-replacement = '[\1](https://github.com/joelrose/cap-sdks/tree/main/\g<2>)'
+replacement = '[\1](https://github.com/oregister/openregister-python/tree/main/\g<2>)'
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
