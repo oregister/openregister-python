@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.1 (2025-06-07)
+
+Full Changelog: [v1.0.0...v1.0.1](https://github.com/oregister/openregister-python/compare/v1.0.0...v1.0.1)
+
+### Chores
+
+* **internal:** version bump ([722cc66](https://github.com/oregister/openregister-python/commit/722cc66631a7d16ed42771fcff10b2382c1ee6f1))
+
 ## 1.0.0 (2025-06-07)
 
 Full Changelog: [v0.0.1-alpha.0...v1.0.0](https://github.com/oregister/openregister-python/compare/v0.0.1-alpha.0...v1.0.0)
