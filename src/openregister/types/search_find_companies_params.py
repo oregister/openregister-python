@@ -17,11 +17,23 @@ class SearchFindCompaniesParams(TypedDict, total=False):
     false for inactive only.
     """
 
+    incorporation_date: str
+    """
+    Date of incorporation of the company. Format: ISO 8601 (YYYY-MM-DD) Example:
+    "2022-01-01"
+    """
+
     legal_form: CompanyLegalForm
     """
     Legal form of the company. Example: "gmbh" for "Gesellschaft mit beschränkter
     Haftung"
     """
+
+    page: int
+    """Page number for pagination."""
+
+    per_page: int
+    """Number of results per page (max 50)."""
 
     query: str
     """

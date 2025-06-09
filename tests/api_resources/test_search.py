@@ -31,7 +31,10 @@ class TestSearch:
     def test_method_find_companies_with_all_params(self, client: Openregister) -> None:
         search = client.search.find_companies(
             active=True,
+            incorporation_date="incorporation_date",
             legal_form="ag",
+            page=0,
+            per_page=0,
             query="query",
             register_court="register_court",
             register_number="register_number",
@@ -110,7 +113,10 @@ class TestAsyncSearch:
     async def test_method_find_companies_with_all_params(self, async_client: AsyncOpenregister) -> None:
         search = await async_client.search.find_companies(
             active=True,
+            incorporation_date="incorporation_date",
             legal_form="ag",
+            page=0,
+            per_page=0,
             query="query",
             register_court="register_court",
             register_number="register_number",
