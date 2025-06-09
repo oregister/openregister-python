@@ -53,7 +53,10 @@ class SearchResource(SyncAPIResource):
         self,
         *,
         active: bool | NotGiven = NOT_GIVEN,
+        incorporation_date: str | NotGiven = NOT_GIVEN,
         legal_form: CompanyLegalForm | NotGiven = NOT_GIVEN,
+        page: int | NotGiven = NOT_GIVEN,
+        per_page: int | NotGiven = NOT_GIVEN,
         query: str | NotGiven = NOT_GIVEN,
         register_court: str | NotGiven = NOT_GIVEN,
         register_number: str | NotGiven = NOT_GIVEN,
@@ -73,8 +76,16 @@ class SearchResource(SyncAPIResource):
         Set to true for active companies only,
               false for inactive only.
 
+          incorporation_date:
+              Date of incorporation of the company. Format: ISO 8601 (YYYY-MM-DD) Example:
+              "2022-01-01"
+
           legal_form: Legal form of the company. Example: "gmbh" for "Gesellschaft mit beschränkter
               Haftung"
+
+          page: Page number for pagination.
+
+          per_page: Number of results per page (max 50).
 
           query: Text search query to find companies by name. Example: "Descartes Technologies
               UG"
@@ -103,7 +114,10 @@ class SearchResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "active": active,
+                        "incorporation_date": incorporation_date,
                         "legal_form": legal_form,
+                        "page": page,
+                        "per_page": per_page,
                         "query": query,
                         "register_court": register_court,
                         "register_number": register_number,
@@ -178,7 +192,10 @@ class AsyncSearchResource(AsyncAPIResource):
         self,
         *,
         active: bool | NotGiven = NOT_GIVEN,
+        incorporation_date: str | NotGiven = NOT_GIVEN,
         legal_form: CompanyLegalForm | NotGiven = NOT_GIVEN,
+        page: int | NotGiven = NOT_GIVEN,
+        per_page: int | NotGiven = NOT_GIVEN,
         query: str | NotGiven = NOT_GIVEN,
         register_court: str | NotGiven = NOT_GIVEN,
         register_number: str | NotGiven = NOT_GIVEN,
@@ -198,8 +215,16 @@ class AsyncSearchResource(AsyncAPIResource):
         Set to true for active companies only,
               false for inactive only.
 
+          incorporation_date:
+              Date of incorporation of the company. Format: ISO 8601 (YYYY-MM-DD) Example:
+              "2022-01-01"
+
           legal_form: Legal form of the company. Example: "gmbh" for "Gesellschaft mit beschränkter
               Haftung"
+
+          page: Page number for pagination.
+
+          per_page: Number of results per page (max 50).
 
           query: Text search query to find companies by name. Example: "Descartes Technologies
               UG"
@@ -228,7 +253,10 @@ class AsyncSearchResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "active": active,
+                        "incorporation_date": incorporation_date,
                         "legal_form": legal_form,
+                        "page": page,
+                        "per_page": per_page,
                         "query": query,
                         "register_court": register_court,
                         "register_number": register_number,
