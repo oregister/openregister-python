@@ -8,13 +8,16 @@ from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
-    to_raw_response_wrapper,
-    to_streamed_response_wrapper,
-    async_to_raw_response_wrapper,
-    async_to_streamed_response_wrapper,
+    BinaryAPIResponse,
+    AsyncBinaryAPIResponse,
+    StreamedBinaryAPIResponse,
+    AsyncStreamedBinaryAPIResponse,
+    to_custom_raw_response_wrapper,
+    to_custom_streamed_response_wrapper,
+    async_to_custom_raw_response_wrapper,
+    async_to_custom_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.document_retrieve_response import DocumentRetrieveResponse
 
 __all__ = ["DocumentResource", "AsyncDocumentResource"]
 
@@ -49,7 +52,7 @@ class DocumentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DocumentRetrieveResponse:
+    ) -> BinaryAPIResponse:
         """
         Get document information
 
@@ -64,12 +67,13 @@ class DocumentResource(SyncAPIResource):
         """
         if not document_id:
             raise ValueError(f"Expected a non-empty value for `document_id` but received {document_id!r}")
+        extra_headers = {"Accept": "application/pdf", **(extra_headers or {})}
         return self._get(
             f"/v0/document/{document_id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DocumentRetrieveResponse,
+            cast_to=BinaryAPIResponse,
         )
 
 
@@ -103,7 +107,7 @@ class AsyncDocumentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DocumentRetrieveResponse:
+    ) -> AsyncBinaryAPIResponse:
         """
         Get document information
 
@@ -118,12 +122,13 @@ class AsyncDocumentResource(AsyncAPIResource):
         """
         if not document_id:
             raise ValueError(f"Expected a non-empty value for `document_id` but received {document_id!r}")
+        extra_headers = {"Accept": "application/pdf", **(extra_headers or {})}
         return await self._get(
             f"/v0/document/{document_id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DocumentRetrieveResponse,
+            cast_to=AsyncBinaryAPIResponse,
         )
 
 
@@ -131,8 +136,9 @@ class DocumentResourceWithRawResponse:
     def __init__(self, document: DocumentResource) -> None:
         self._document = document
 
-        self.retrieve = to_raw_response_wrapper(
+        self.retrieve = to_custom_raw_response_wrapper(
             document.retrieve,
+            BinaryAPIResponse,
         )
 
 
@@ -140,8 +146,9 @@ class AsyncDocumentResourceWithRawResponse:
     def __init__(self, document: AsyncDocumentResource) -> None:
         self._document = document
 
-        self.retrieve = async_to_raw_response_wrapper(
+        self.retrieve = async_to_custom_raw_response_wrapper(
             document.retrieve,
+            AsyncBinaryAPIResponse,
         )
 
 
@@ -149,8 +156,9 @@ class DocumentResourceWithStreamingResponse:
     def __init__(self, document: DocumentResource) -> None:
         self._document = document
 
-        self.retrieve = to_streamed_response_wrapper(
+        self.retrieve = to_custom_streamed_response_wrapper(
             document.retrieve,
+            StreamedBinaryAPIResponse,
         )
 
 
@@ -158,6 +166,7 @@ class AsyncDocumentResourceWithStreamingResponse:
     def __init__(self, document: AsyncDocumentResource) -> None:
         self._document = document
 
-        self.retrieve = async_to_streamed_response_wrapper(
+        self.retrieve = async_to_custom_streamed_response_wrapper(
             document.retrieve,
+            AsyncStreamedBinaryAPIResponse,
         )
