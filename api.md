@@ -51,3 +51,4 @@ from openregister.types import DocumentRetrieveResponse
 Methods:
 
 - <code title="get /v0/document/{document_id}">client.document.<a href="./src/openregister/resources/document.py">retrieve</a>(document_id) -> <a href="./src/openregister/types/document_retrieve_response.py">DocumentRetrieveResponse</a></code>
+- <code title="get /v0/document/{document_id}/download">client.document.<a href="./src/openregister/resources/document.py">download</a>(document_id) -> BinaryAPIResponse</code>
