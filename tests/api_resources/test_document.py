@@ -5,17 +5,11 @@ from __future__ import annotations
 import os
 from typing import Any, cast
 
-import httpx
 import pytest
-from respx import MockRouter
 
+from tests.utils import assert_matches_type
 from openregister import Openregister, AsyncOpenregister
-from openregister._response import (
-    BinaryAPIResponse,
-    AsyncBinaryAPIResponse,
-    StreamedBinaryAPIResponse,
-    AsyncStreamedBinaryAPIResponse,
-)
+from openregister.types import DocumentRetrieveResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -25,52 +19,40 @@ class TestDocument:
 
     @pytest.mark.skip()
     @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_method_retrieve(self, client: Openregister, respx_mock: MockRouter) -> None:
-        respx_mock.get("/v0/document/document_id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+    def test_method_retrieve(self, client: Openregister) -> None:
         document = client.document.retrieve(
             "document_id",
         )
-        assert document.is_closed
-        assert document.json() == {"foo": "bar"}
-        assert cast(Any, document.is_closed) is True
-        assert isinstance(document, BinaryAPIResponse)
+        assert_matches_type(DocumentRetrieveResponse, document, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_raw_response_retrieve(self, client: Openregister, respx_mock: MockRouter) -> None:
-        respx_mock.get("/v0/document/document_id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
-
-        document = client.document.with_raw_response.retrieve(
+    def test_raw_response_retrieve(self, client: Openregister) -> None:
+        response = client.document.with_raw_response.retrieve(
             "document_id",
         )
 
-        assert document.is_closed is True
-        assert document.http_request.headers.get("X-Stainless-Lang") == "python"
-        assert document.json() == {"foo": "bar"}
-        assert isinstance(document, BinaryAPIResponse)
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        document = response.parse()
+        assert_matches_type(DocumentRetrieveResponse, document, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_streaming_response_retrieve(self, client: Openregister, respx_mock: MockRouter) -> None:
-        respx_mock.get("/v0/document/document_id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+    def test_streaming_response_retrieve(self, client: Openregister) -> None:
         with client.document.with_streaming_response.retrieve(
             "document_id",
-        ) as document:
-            assert not document.is_closed
-            assert document.http_request.headers.get("X-Stainless-Lang") == "python"
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            assert document.json() == {"foo": "bar"}
-            assert cast(Any, document.is_closed) is True
-            assert isinstance(document, StreamedBinaryAPIResponse)
+            document = response.parse()
+            assert_matches_type(DocumentRetrieveResponse, document, path=["response"])
 
-        assert cast(Any, document.is_closed) is True
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip()
     @parametrize
-    @pytest.mark.respx(base_url=base_url)
     def test_path_params_retrieve(self, client: Openregister) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `document_id` but received ''"):
             client.document.with_raw_response.retrieve(
@@ -83,52 +65,40 @@ class TestAsyncDocument:
 
     @pytest.mark.skip()
     @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_method_retrieve(self, async_client: AsyncOpenregister, respx_mock: MockRouter) -> None:
-        respx_mock.get("/v0/document/document_id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+    async def test_method_retrieve(self, async_client: AsyncOpenregister) -> None:
         document = await async_client.document.retrieve(
             "document_id",
         )
-        assert document.is_closed
-        assert await document.json() == {"foo": "bar"}
-        assert cast(Any, document.is_closed) is True
-        assert isinstance(document, AsyncBinaryAPIResponse)
+        assert_matches_type(DocumentRetrieveResponse, document, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_raw_response_retrieve(self, async_client: AsyncOpenregister, respx_mock: MockRouter) -> None:
-        respx_mock.get("/v0/document/document_id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
-
-        document = await async_client.document.with_raw_response.retrieve(
+    async def test_raw_response_retrieve(self, async_client: AsyncOpenregister) -> None:
+        response = await async_client.document.with_raw_response.retrieve(
             "document_id",
         )
 
-        assert document.is_closed is True
-        assert document.http_request.headers.get("X-Stainless-Lang") == "python"
-        assert await document.json() == {"foo": "bar"}
-        assert isinstance(document, AsyncBinaryAPIResponse)
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        document = await response.parse()
+        assert_matches_type(DocumentRetrieveResponse, document, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_streaming_response_retrieve(self, async_client: AsyncOpenregister, respx_mock: MockRouter) -> None:
-        respx_mock.get("/v0/document/document_id").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+    async def test_streaming_response_retrieve(self, async_client: AsyncOpenregister) -> None:
         async with async_client.document.with_streaming_response.retrieve(
             "document_id",
-        ) as document:
-            assert not document.is_closed
-            assert document.http_request.headers.get("X-Stainless-Lang") == "python"
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            assert await document.json() == {"foo": "bar"}
-            assert cast(Any, document.is_closed) is True
-            assert isinstance(document, AsyncStreamedBinaryAPIResponse)
+            document = await response.parse()
+            assert_matches_type(DocumentRetrieveResponse, document, path=["response"])
 
-        assert cast(Any, document.is_closed) is True
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip()
     @parametrize
-    @pytest.mark.respx(base_url=base_url)
     async def test_path_params_retrieve(self, async_client: AsyncOpenregister) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `document_id` but received ''"):
             await async_client.document.with_raw_response.retrieve(
