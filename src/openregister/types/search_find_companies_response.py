@@ -6,7 +6,21 @@ from .._models import BaseModel
 from .company_legal_form import CompanyLegalForm
 from .company_register_type import CompanyRegisterType
 
-__all__ = ["SearchFindCompaniesResponse", "Result"]
+__all__ = ["SearchFindCompaniesResponse", "Pagination", "Result"]
+
+
+class Pagination(BaseModel):
+    page: int
+    """Current page number."""
+
+    per_page: int
+    """Number of results per page."""
+
+    total_pages: int
+    """Total number of pages."""
+
+    total_results: int
+    """Total number of results."""
 
 
 class Result(BaseModel):
@@ -42,8 +56,7 @@ class Result(BaseModel):
 
 
 class SearchFindCompaniesResponse(BaseModel):
+    pagination: Pagination
+
     results: List[Result]
-    """
-    List of companies matching the search criteria. Limited to a maximum of 10
-    results per query.
-    """
+    """List of companies matching the search criteria."""
