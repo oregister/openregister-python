@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.3.1 (2025-06-13)
+
+Full Changelog: [v1.3.0...v1.3.1](https://github.com/oregister/openregister-python/compare/v1.3.0...v1.3.1)
+
+### Bug Fixes
+
+* **client:** correctly parse binary response | stream ([3178a60](https://github.com/oregister/openregister-python/commit/3178a608d0bea505c36ee0dd53beef0b9637d3e2))
+
+
+### Chores
+
+* **tests:** run tests in parallel ([4f120e1](https://github.com/oregister/openregister-python/commit/4f120e11a6c102b6a9e976cb10e780d2d617115a))
+
 ## 1.3.0 (2025-06-09)
 
 Full Changelog: [v1.2.0...v1.3.0](https://github.com/oregister/openregister-python/compare/v1.2.0...v1.3.0)
