@@ -8,22 +8,6 @@ from .jobs import (
     JobsResourceWithStreamingResponse,
     AsyncJobsResourceWithStreamingResponse,
 )
-from .search import (
-    SearchResource,
-    AsyncSearchResource,
-    SearchResourceWithRawResponse,
-    AsyncSearchResourceWithRawResponse,
-    SearchResourceWithStreamingResponse,
-    AsyncSearchResourceWithStreamingResponse,
-)
-from .company import (
-    CompanyResource,
-    AsyncCompanyResource,
-    CompanyResourceWithRawResponse,
-    AsyncCompanyResourceWithRawResponse,
-    CompanyResourceWithStreamingResponse,
-    AsyncCompanyResourceWithStreamingResponse,
-)
 from .document import (
     DocumentResource,
     AsyncDocumentResource,
@@ -34,18 +18,6 @@ from .document import (
 )
 
 __all__ = [
-    "SearchResource",
-    "AsyncSearchResource",
-    "SearchResourceWithRawResponse",
-    "AsyncSearchResourceWithRawResponse",
-    "SearchResourceWithStreamingResponse",
-    "AsyncSearchResourceWithStreamingResponse",
-    "CompanyResource",
-    "AsyncCompanyResource",
-    "CompanyResourceWithRawResponse",
-    "AsyncCompanyResourceWithRawResponse",
-    "CompanyResourceWithStreamingResponse",
-    "AsyncCompanyResourceWithStreamingResponse",
     "DocumentResource",
     "AsyncDocumentResource",
     "DocumentResourceWithRawResponse",

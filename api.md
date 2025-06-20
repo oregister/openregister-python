@@ -52,3 +52,18 @@ Methods:
 
 - <code title="get /v0/document/{document_id}">client.document.<a href="./src/openregister/resources/document.py">retrieve</a>(document_id) -> <a href="./src/openregister/types/document_retrieve_response.py">DocumentRetrieveResponse</a></code>
 - <code title="get /v0/document/{document_id}/download">client.document.<a href="./src/openregister/resources/document.py">download</a>(document_id) -> BinaryAPIResponse</code>
+
+# Jobs
+
+## Document
+
+Types:
+
+```python
+from openregister.types.jobs import DocumentCreateResponse, DocumentRetrieveResponse
+```
+
+Methods:
+
+- <code title="post /v0/jobs/document">client.jobs.document.<a href="./src/openregister/resources/jobs/document.py">create</a>(\*\*<a href="src/openregister/types/jobs/document_create_params.py">params</a>) -> <a href="./src/openregister/types/jobs/document_create_response.py">DocumentCreateResponse</a></code>
+- <code title="get /v0/jobs/document/{id}">client.jobs.document.<a href="./src/openregister/resources/jobs/document.py">retrieve</a>(id) -> <a href="./src/openregister/types/jobs/document_retrieve_response.py">DocumentRetrieveResponse</a></code>
