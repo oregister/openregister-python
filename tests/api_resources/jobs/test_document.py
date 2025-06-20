@@ -21,8 +21,8 @@ class TestDocument:
     @parametrize
     def test_method_create(self, client: Openregister) -> None:
         document = client.jobs.document.create(
+            company_id="company_id",
             document_category="current_printout",
-            register_id="register_id",
         )
         assert_matches_type(DocumentCreateResponse, document, path=["response"])
 
@@ -30,8 +30,8 @@ class TestDocument:
     @parametrize
     def test_raw_response_create(self, client: Openregister) -> None:
         response = client.jobs.document.with_raw_response.create(
+            company_id="company_id",
             document_category="current_printout",
-            register_id="register_id",
         )
 
         assert response.is_closed is True
@@ -43,8 +43,8 @@ class TestDocument:
     @parametrize
     def test_streaming_response_create(self, client: Openregister) -> None:
         with client.jobs.document.with_streaming_response.create(
+            company_id="company_id",
             document_category="current_printout",
-            register_id="register_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -104,8 +104,8 @@ class TestAsyncDocument:
     @parametrize
     async def test_method_create(self, async_client: AsyncOpenregister) -> None:
         document = await async_client.jobs.document.create(
+            company_id="company_id",
             document_category="current_printout",
-            register_id="register_id",
         )
         assert_matches_type(DocumentCreateResponse, document, path=["response"])
 
@@ -113,8 +113,8 @@ class TestAsyncDocument:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncOpenregister) -> None:
         response = await async_client.jobs.document.with_raw_response.create(
+            company_id="company_id",
             document_category="current_printout",
-            register_id="register_id",
         )
 
         assert response.is_closed is True
@@ -126,8 +126,8 @@ class TestAsyncDocument:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncOpenregister) -> None:
         async with async_client.jobs.document.with_streaming_response.create(
+            company_id="company_id",
             document_category="current_printout",
-            register_id="register_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

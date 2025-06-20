@@ -8,6 +8,9 @@ __all__ = ["DocumentCreateParams"]
 
 
 class DocumentCreateParams(TypedDict, total=False):
+    company_id: Required[str]
+    """Unique company identifier. Example: DE-HRB-F1103-267645"""
+
     document_category: Required[
         Literal[
             "current_printout",
@@ -18,5 +21,3 @@ class DocumentCreateParams(TypedDict, total=False):
             "articles_of_association",
         ]
     ]
-
-    register_id: Required[str]
