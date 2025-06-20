@@ -47,6 +47,7 @@ class DocumentResource(SyncAPIResource):
     def create(
         self,
         *,
+        company_id: str,
         document_category: Literal[
             "current_printout",
             "chronological_printout",
@@ -55,7 +56,6 @@ class DocumentResource(SyncAPIResource):
             "shareholder_list",
             "articles_of_association",
         ],
-        register_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -63,10 +63,13 @@ class DocumentResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> DocumentCreateResponse:
-        """
-        Create a document job
+        """Create a document job
 
         Args:
+          company_id: Unique company identifier.
+
+        Example: DE-HRB-F1103-267645
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -79,8 +82,8 @@ class DocumentResource(SyncAPIResource):
             "/v0/jobs/document",
             body=maybe_transform(
                 {
+                    "company_id": company_id,
                     "document_category": document_category,
-                    "register_id": register_id,
                 },
                 document_create_params.DocumentCreateParams,
             ),
@@ -147,6 +150,7 @@ class AsyncDocumentResource(AsyncAPIResource):
     async def create(
         self,
         *,
+        company_id: str,
         document_category: Literal[
             "current_printout",
             "chronological_printout",
@@ -155,7 +159,6 @@ class AsyncDocumentResource(AsyncAPIResource):
             "shareholder_list",
             "articles_of_association",
         ],
-        register_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -163,10 +166,13 @@ class AsyncDocumentResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> DocumentCreateResponse:
-        """
-        Create a document job
+        """Create a document job
 
         Args:
+          company_id: Unique company identifier.
+
+        Example: DE-HRB-F1103-267645
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -179,8 +185,8 @@ class AsyncDocumentResource(AsyncAPIResource):
             "/v0/jobs/document",
             body=await async_maybe_transform(
                 {
+                    "company_id": company_id,
                     "document_category": document_category,
-                    "register_id": register_id,
                 },
                 document_create_params.DocumentCreateParams,
             ),
