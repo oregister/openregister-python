@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.6.0 (2025-06-21)
+
+Full Changelog: [v1.5.0...v1.6.0](https://github.com/oregister/openregister-python/compare/v1.5.0...v1.6.0)
+
+### Features
+
+* **client:** add support for aiohttp ([7edb08a](https://github.com/oregister/openregister-python/commit/7edb08a37f1d0d5df0cd3de806a5406efe857d98))
+
 ## 1.5.0 (2025-06-20)
 
 Full Changelog: [v1.4.0...v1.5.0](https://github.com/oregister/openregister-python/compare/v1.4.0...v1.5.0)

@@ -1,6 +1,6 @@
 [project]
 name = "openregister-sdk"
-version = "1.5.0"
+version = "1.6.0"
 description = "The official Python library for the openregister API"
 dynamic = ["readme"]
 license = "Apache-2.0"
@@ -37,6 +37,8 @@ classifiers = [
 Homepage = "https://github.com/oregister/openregister-python"
 Repository = "https://github.com/oregister/openregister-python"
 
+[project.optional-dependencies]
+aiohttp = ["aiohttp", "httpx_aiohttp>=0.1.6"]
 
 [tool.rye]
 managed = true
