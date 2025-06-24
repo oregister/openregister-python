@@ -59,8 +59,8 @@ class Representation(BaseModel):
     date_of_birth: Optional[str] = None
     """Date of birth of the representative.
 
-    Only set for type=natural_person. Format: ISO 8601 (YYYY-MM-DD) Example:
-    "1990-01-01"
+    Only provided for type=natural_person. May still be null for natural persons if
+    it is not available. Format: ISO 8601 (YYYY-MM-DD) Example: "1990-01-01"
     """
 
     end_date: Optional[str] = None
@@ -72,13 +72,13 @@ class Representation(BaseModel):
     first_name: Optional[str] = None
     """First name of the representative.
 
-    Only set for type=natural_person. Example: "Max"
+    Only provided for type=natural_person. Example: "Max"
     """
 
     last_name: Optional[str] = None
     """Last name of the representative.
 
-    Only set for type=natural_person. Example: "Mustermann"
+    Only provided for type=natural_person. Example: "Mustermann"
     """
 
 
