@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.6.0 (2025-06-24)
+
+Full Changelog: [v1.5.0...v1.6.0](https://github.com/oregister/openregister-python/compare/v1.5.0...v1.6.0)
+
+### Features
+
+* **api:** update via SDK Studio ([ba142a6](https://github.com/oregister/openregister-python/commit/ba142a6ecc663b673b65deeb6d89e9a8c169155e))
+* **api:** update via SDK Studio ([0bd9e3c](https://github.com/oregister/openregister-python/commit/0bd9e3c3deb69a9713ace31371d998f03e503fca))
+* **client:** add support for aiohttp ([7edb08a](https://github.com/oregister/openregister-python/commit/7edb08a37f1d0d5df0cd3de806a5406efe857d98))
+
+
+### Chores
+
+* **tests:** skip some failing tests on the latest python versions ([8d990dd](https://github.com/oregister/openregister-python/commit/8d990dd5dd4f3e8a9a3e01989f7b59a68021f709))
+
 ## 1.5.0 (2025-06-20)
 
 Full Changelog: [v1.4.0...v1.5.0](https://github.com/oregister/openregister-python/compare/v1.4.0...v1.5.0)
