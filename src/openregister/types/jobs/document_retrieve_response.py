@@ -11,4 +11,10 @@ __all__ = ["DocumentRetrieveResponse"]
 class DocumentRetrieveResponse(BaseModel):
     status: Literal["pending", "completed", "failed"]
 
+    date: Optional[str] = None
+    """
+    Date when the job was created. Format: ISO 8601 (YYYY-MM-DD) Example:
+    "2022-01-01"
+    """
+
     url: Optional[str] = None
