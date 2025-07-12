@@ -39,7 +39,7 @@ Homepage = "https://github.com/oregister/openregister-python"
 Repository = "https://github.com/oregister/openregister-python"
 
 [project.optional-dependencies]
-aiohttp = ["aiohttp", "httpx_aiohttp>=0.1.6"]
+aiohttp = ["aiohttp", "httpx_aiohttp>=0.1.8"]
 
 [tool.rye]
 managed = true
