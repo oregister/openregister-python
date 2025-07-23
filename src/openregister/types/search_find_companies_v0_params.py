@@ -7,10 +7,10 @@ from typing_extensions import TypedDict
 from .company_legal_form import CompanyLegalForm
 from .company_register_type import CompanyRegisterType
 
-__all__ = ["SearchFindCompaniesParams"]
+__all__ = ["SearchFindCompaniesV0Params"]
 
 
-class SearchFindCompaniesParams(TypedDict, total=False):
+class SearchFindCompaniesV0Params(TypedDict, total=False):
     active: bool
     """
     Filter for active or inactive companies. Set to true for active companies only,

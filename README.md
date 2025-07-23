@@ -1,6 +1,7 @@
 # Openregister Python API library
 
-[![PyPI version](<https://img.shields.io/pypi/v/openregister-sdk.svg?label=pypi%20(stable)>)](https://pypi.org/project/openregister-sdk/)
+<!-- prettier-ignore -->
+[![PyPI version](https://img.shields.io/pypi/v/openregister-sdk.svg?label=pypi%20(stable))](https://pypi.org/project/openregister-sdk/)
 
 The Openregister Python library provides convenient access to the Openregister REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
@@ -82,7 +83,6 @@ pip install openregister-sdk[aiohttp]
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
 
 ```python
-import os
 import asyncio
 from openregister import DefaultAioHttpClient
 from openregister import AsyncOpenregister
@@ -90,7 +90,7 @@ from openregister import AsyncOpenregister
 
 async def main() -> None:
     async with AsyncOpenregister(
-        api_key=os.environ.get("OPENREGISTER_API_KEY"),  # This is the default and can be omitted
+        api_key="My API Key",
         http_client=DefaultAioHttpClient(),
     ) as client:
         company = await client.company.retrieve(
@@ -110,6 +110,24 @@ Nested request parameters are [TypedDicts](https://docs.python.org/3/library/typ
 - Converting to a dictionary, `model.to_dict()`
 
 Typed requests and responses provide autocomplete and documentation within your editor. If you would like to see type errors in VS Code to help catch bugs earlier, set `python.analysis.typeCheckingMode` to `basic`.
+
+## Nested params
+
+Nested parameters are dictionaries, typed using `TypedDict`, for example:
+
+```python
+from openregister import Openregister
+
+client = Openregister()
+
+response = client.search.find_companies_v1(
+    location={
+        "latitude": 0,
+        "longitude": 0,
+    },
+)
+print(response.location)
+```
 
 ## Handling errors
 
