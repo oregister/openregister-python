@@ -6,7 +6,7 @@ from .._models import BaseModel
 from .company_legal_form import CompanyLegalForm
 from .company_register_type import CompanyRegisterType
 
-__all__ = ["SearchFindCompaniesResponse", "Pagination", "Result"]
+__all__ = ["SearchFindCompaniesV1Response", "Pagination", "Result"]
 
 
 class Pagination(BaseModel):
@@ -55,7 +55,7 @@ class Result(BaseModel):
     """
 
 
-class SearchFindCompaniesResponse(BaseModel):
+class SearchFindCompaniesV1Response(BaseModel):
     pagination: Pagination
 
     results: List[Result]
