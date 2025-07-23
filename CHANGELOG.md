@@ -1,5 +1,34 @@
 # Changelog
 
+## 1.8.0 (2025-07-23)
+
+Full Changelog: [v1.7.0...v1.8.0](https://github.com/oregister/openregister-python/compare/v1.7.0...v1.8.0)
+
+### Features
+
+* **api:** update via SDK Studio ([069557d](https://github.com/oregister/openregister-python/commit/069557d8c97aa7d86c04120827d820b6163dd00a))
+* clean up environment call outs ([23dba14](https://github.com/oregister/openregister-python/commit/23dba14b5be47e714812d0494f6f26bfde98fc6b))
+
+
+### Bug Fixes
+
+* **ci:** correct conditional ([aa5d0f7](https://github.com/oregister/openregister-python/commit/aa5d0f7e44ffaa3d8ee126c7a4fdedb3a88b85a4))
+* **ci:** release-doctor — report correct token name ([94cd33d](https://github.com/oregister/openregister-python/commit/94cd33d48fb18b37ab30934561e533b3527c4f50))
+* **client:** don't send Content-Type header on GET requests ([9a7b671](https://github.com/oregister/openregister-python/commit/9a7b6712e647c532c4bc3ed6c30d465c76e5172f))
+* **parsing:** correctly handle nested discriminated unions ([c55746e](https://github.com/oregister/openregister-python/commit/c55746e6fa20a4b2a6c300a1e4d36993cbef30fc))
+* **parsing:** ignore empty metadata ([3cb44b2](https://github.com/oregister/openregister-python/commit/3cb44b2fe7d306a7ade540449d81b420ab671535))
+* **parsing:** parse extra field types ([6a7c90d](https://github.com/oregister/openregister-python/commit/6a7c90dcad29c2355d3a7e507aec80db915e6e84))
+
+
+### Chores
+
+* **ci:** change upload type ([d59202c](https://github.com/oregister/openregister-python/commit/d59202cb676ce4f7c42d6bdf369d973623855ddb))
+* **ci:** only run for pushes and fork pull requests ([0b8d5eb](https://github.com/oregister/openregister-python/commit/0b8d5eb3e8bfc8774e322e6b0e6de710ca3f6878))
+* **internal:** bump pinned h11 dep ([2f5a623](https://github.com/oregister/openregister-python/commit/2f5a62376dcc28ed73f5c1b7051afdf6d8231ec1))
+* **internal:** codegen related update ([e8a7972](https://github.com/oregister/openregister-python/commit/e8a79726219df809f3b750ce828b052d0f7bca36))
+* **package:** mark python 3.13 as supported ([1cceac5](https://github.com/oregister/openregister-python/commit/1cceac5170f4fcca5614f1c2e8126ca46e579373))
+* **readme:** fix version rendering on pypi ([1239f10](https://github.com/oregister/openregister-python/commit/1239f10f72aae84b60488b287bd38997d8510a88))
+
 ## 1.7.0 (2025-06-24)
 
 Full Changelog: [v1.6.0...v1.7.0](https://github.com/oregister/openregister-python/compare/v1.6.0...v1.7.0)
