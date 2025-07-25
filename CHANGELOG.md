@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.8.1 (2025-07-25)
+
+Full Changelog: [v1.8.0...v1.8.1](https://github.com/oregister/openregister-python/compare/v1.8.0...v1.8.1)
+
+### Chores
+
+* **project:** add settings file for vscode ([beec64e](https://github.com/oregister/openregister-python/commit/beec64e01b9203a412f0874bc7d0224ec19e7b51))
+
 ## 1.8.0 (2025-07-23)
 
 Full Changelog: [v1.7.0...v1.8.0](https://github.com/oregister/openregister-python/compare/v1.7.0...v1.8.0)
