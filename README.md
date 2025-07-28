@@ -120,13 +120,13 @@ from openregister import Openregister
 
 client = Openregister()
 
-company_search = client.search.find_companies_v1(
+response = client.search.find_companies_v1(
     location={
         "latitude": 0,
         "longitude": 0,
     },
 )
-print(company_search.location)
+print(response.location)
 ```
 
 ## Handling errors

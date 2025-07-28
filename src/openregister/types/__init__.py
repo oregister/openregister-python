@@ -4,14 +4,12 @@ from __future__ import annotations
 
 from .entity_type import EntityType as EntityType
 from .company_name import CompanyName as CompanyName
-from .company_search import CompanySearch as CompanySearch
 from .company_address import CompanyAddress as CompanyAddress
 from .company_capital import CompanyCapital as CompanyCapital
 from .company_purpose import CompanyPurpose as CompanyPurpose
 from .company_register import CompanyRegister as CompanyRegister
 from .company_legal_form import CompanyLegalForm as CompanyLegalForm
 from .company_register_type import CompanyRegisterType as CompanyRegisterType
-from .company_relation_type import CompanyRelationType as CompanyRelationType
 from .company_retrieve_params import CompanyRetrieveParams as CompanyRetrieveParams
 from .company_retrieve_response import CompanyRetrieveResponse as CompanyRetrieveResponse
 from .document_retrieve_response import DocumentRetrieveResponse as DocumentRetrieveResponse
@@ -20,6 +18,9 @@ from .company_get_holdings_response import CompanyGetHoldingsResponse as Company
 from .search_find_companies_v0_params import SearchFindCompaniesV0Params as SearchFindCompaniesV0Params
 from .search_find_companies_v1_params import SearchFindCompaniesV1Params as SearchFindCompaniesV1Params
 from .company_retrieve_contact_response import CompanyRetrieveContactResponse as CompanyRetrieveContactResponse
+from .search_find_companies_v0_response import SearchFindCompaniesV0Response as SearchFindCompaniesV0Response
+from .search_find_companies_v1_response import SearchFindCompaniesV1Response as SearchFindCompaniesV1Response
 from .company_list_shareholders_response import CompanyListShareholdersResponse as CompanyListShareholdersResponse
 from .search_lookup_company_by_url_params import SearchLookupCompanyByURLParams as SearchLookupCompanyByURLParams
+from .search_lookup_company_by_name_params import SearchLookupCompanyByNameParams as SearchLookupCompanyByNameParams
 from .search_lookup_company_by_url_response import SearchLookupCompanyByURLResponse as SearchLookupCompanyByURLResponse
