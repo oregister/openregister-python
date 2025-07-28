@@ -2,12 +2,15 @@
 
 from __future__ import annotations
 
+from typing import Iterable
+
 import httpx
 
 from ..types import (
     CompanyLegalForm,
     CompanyRegisterType,
     search_find_companies_v0_params,
+    search_find_companies_v1_params,
     search_lookup_company_by_url_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
@@ -125,6 +128,57 @@ class SearchResource(SyncAPIResource):
                     },
                     search_find_companies_v0_params.SearchFindCompaniesV0Params,
                 ),
+            ),
+            cast_to=CompanySearch,
+        )
+
+    def find_companies_v1(
+        self,
+        *,
+        filters: Iterable[search_find_companies_v1_params.Filter] | NotGiven = NOT_GIVEN,
+        location: search_find_companies_v1_params.Location | NotGiven = NOT_GIVEN,
+        pagination: search_find_companies_v1_params.Pagination | NotGiven = NOT_GIVEN,
+        query: search_find_companies_v1_params.Query | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> CompanySearch:
+        """
+        Search for companies
+
+        Args:
+          filters: Filters to filter companies.
+
+          location: Location to filter companies.
+
+          pagination: Pagination parameters.
+
+          query: Search query to filter companies.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/v1/search/company",
+            body=maybe_transform(
+                {
+                    "filters": filters,
+                    "location": location,
+                    "pagination": pagination,
+                    "query": query,
+                },
+                search_find_companies_v1_params.SearchFindCompaniesV1Params,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=CompanySearch,
         )
@@ -268,6 +322,57 @@ class AsyncSearchResource(AsyncAPIResource):
             cast_to=CompanySearch,
         )
 
+    async def find_companies_v1(
+        self,
+        *,
+        filters: Iterable[search_find_companies_v1_params.Filter] | NotGiven = NOT_GIVEN,
+        location: search_find_companies_v1_params.Location | NotGiven = NOT_GIVEN,
+        pagination: search_find_companies_v1_params.Pagination | NotGiven = NOT_GIVEN,
+        query: search_find_companies_v1_params.Query | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> CompanySearch:
+        """
+        Search for companies
+
+        Args:
+          filters: Filters to filter companies.
+
+          location: Location to filter companies.
+
+          pagination: Pagination parameters.
+
+          query: Search query to filter companies.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/v1/search/company",
+            body=await async_maybe_transform(
+                {
+                    "filters": filters,
+                    "location": location,
+                    "pagination": pagination,
+                    "query": query,
+                },
+                search_find_companies_v1_params.SearchFindCompaniesV1Params,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CompanySearch,
+        )
+
     async def lookup_company_by_url(
         self,
         *,
@@ -316,6 +421,9 @@ class SearchResourceWithRawResponse:
         self.find_companies_v0 = to_raw_response_wrapper(
             search.find_companies_v0,
         )
+        self.find_companies_v1 = to_raw_response_wrapper(
+            search.find_companies_v1,
+        )
         self.lookup_company_by_url = to_raw_response_wrapper(
             search.lookup_company_by_url,
         )
@@ -327,6 +435,9 @@ class AsyncSearchResourceWithRawResponse:
 
         self.find_companies_v0 = async_to_raw_response_wrapper(
             search.find_companies_v0,
+        )
+        self.find_companies_v1 = async_to_raw_response_wrapper(
+            search.find_companies_v1,
         )
         self.lookup_company_by_url = async_to_raw_response_wrapper(
             search.lookup_company_by_url,
@@ -340,6 +451,9 @@ class SearchResourceWithStreamingResponse:
         self.find_companies_v0 = to_streamed_response_wrapper(
             search.find_companies_v0,
         )
+        self.find_companies_v1 = to_streamed_response_wrapper(
+            search.find_companies_v1,
+        )
         self.lookup_company_by_url = to_streamed_response_wrapper(
             search.lookup_company_by_url,
         )
@@ -351,6 +465,9 @@ class AsyncSearchResourceWithStreamingResponse:
 
         self.find_companies_v0 = async_to_streamed_response_wrapper(
             search.find_companies_v0,
+        )
+        self.find_companies_v1 = async_to_streamed_response_wrapper(
+            search.find_companies_v1,
         )
         self.lookup_company_by_url = async_to_streamed_response_wrapper(
             search.lookup_company_by_url,
