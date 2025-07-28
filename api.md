@@ -6,15 +6,17 @@ Types:
 from openregister.types import (
     CompanyLegalForm,
     CompanyRegisterType,
-    CompanySearch,
+    SearchFindCompaniesV0Response,
+    SearchFindCompaniesV1Response,
     SearchLookupCompanyByURLResponse,
 )
 ```
 
 Methods:
 
-- <code title="get /v0/search/company">client.search.<a href="./src/openregister/resources/search.py">find_companies_v0</a>(\*\*<a href="src/openregister/types/search_find_companies_v0_params.py">params</a>) -> <a href="./src/openregister/types/company_search.py">CompanySearch</a></code>
-- <code title="post /v1/search/company">client.search.<a href="./src/openregister/resources/search.py">find_companies_v1</a>(\*\*<a href="src/openregister/types/search_find_companies_v1_params.py">params</a>) -> <a href="./src/openregister/types/company_search.py">CompanySearch</a></code>
+- <code title="get /v0/search/company">client.search.<a href="./src/openregister/resources/search.py">find_companies_v0</a>(\*\*<a href="src/openregister/types/search_find_companies_v0_params.py">params</a>) -> <a href="./src/openregister/types/search_find_companies_v0_response.py">SearchFindCompaniesV0Response</a></code>
+- <code title="post /v1/search/company">client.search.<a href="./src/openregister/resources/search.py">find_companies_v1</a>(\*\*<a href="src/openregister/types/search_find_companies_v1_params.py">params</a>) -> <a href="./src/openregister/types/search_find_companies_v1_response.py">SearchFindCompaniesV1Response</a></code>
+- <code title="get /v1/autocomplete/company">client.search.<a href="./src/openregister/resources/search.py">lookup_company_by_name</a>(\*\*<a href="src/openregister/types/search_lookup_company_by_name_params.py">params</a>) -> object</code>
 - <code title="get /v0/search/lookup">client.search.<a href="./src/openregister/resources/search.py">lookup_company_by_url</a>(\*\*<a href="src/openregister/types/search_lookup_company_by_url_params.py">params</a>) -> <a href="./src/openregister/types/search_lookup_company_by_url_response.py">SearchLookupCompanyByURLResponse</a></code>
 
 # Company
@@ -28,7 +30,6 @@ from openregister.types import (
     CompanyName,
     CompanyPurpose,
     CompanyRegister,
-    CompanyRelationType,
     EntityType,
     CompanyRetrieveResponse,
     CompanyGetHoldingsResponse,

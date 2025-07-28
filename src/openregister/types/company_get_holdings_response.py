@@ -1,9 +1,9 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Optional
+from typing_extensions import Literal
 
 from .._models import BaseModel
-from .company_relation_type import CompanyRelationType
 
 __all__ = ["CompanyGetHoldingsResponse", "Holding"]
 
@@ -18,7 +18,7 @@ class Holding(BaseModel):
     nominal_share: float
     """Amount of shares or capital in the company. Example: 100"""
 
-    relation_type: CompanyRelationType
+    relation_type: Literal["shareholder", "stockholder", "limited_partner", "general_partner"]
     """Type of relationship between the entity and the company."""
 
     end: Optional[str] = None

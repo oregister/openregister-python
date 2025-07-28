@@ -12,6 +12,7 @@ from ..types import (
     search_find_companies_v0_params,
     search_find_companies_v1_params,
     search_lookup_company_by_url_params,
+    search_lookup_company_by_name_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform, async_maybe_transform
@@ -24,9 +25,10 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.company_search import CompanySearch
 from ..types.company_legal_form import CompanyLegalForm
 from ..types.company_register_type import CompanyRegisterType
+from ..types.search_find_companies_v0_response import SearchFindCompaniesV0Response
+from ..types.search_find_companies_v1_response import SearchFindCompaniesV1Response
 from ..types.search_lookup_company_by_url_response import SearchLookupCompanyByURLResponse
 
 __all__ = ["SearchResource", "AsyncSearchResource"]
@@ -70,7 +72,7 @@ class SearchResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CompanySearch:
+    ) -> SearchFindCompaniesV0Response:
         """Search for companies
 
         Args:
@@ -129,7 +131,7 @@ class SearchResource(SyncAPIResource):
                     search_find_companies_v0_params.SearchFindCompaniesV0Params,
                 ),
             ),
-            cast_to=CompanySearch,
+            cast_to=SearchFindCompaniesV0Response,
         )
 
     def find_companies_v1(
@@ -145,7 +147,7 @@ class SearchResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CompanySearch:
+    ) -> SearchFindCompaniesV1Response:
         """
         Search for companies
 
@@ -180,7 +182,47 @@ class SearchResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CompanySearch,
+            cast_to=SearchFindCompaniesV1Response,
+        )
+
+    def lookup_company_by_name(
+        self,
+        *,
+        query: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> object:
+        """
+        Autocomplete company search
+
+        Args:
+          query: Text search query to find companies by name. Example: "Descartes Technologies
+              UG"
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get(
+            "/v1/autocomplete/company",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"query": query}, search_lookup_company_by_name_params.SearchLookupCompanyByNameParams
+                ),
+            ),
+            cast_to=object,
         )
 
     def lookup_company_by_url(
@@ -260,7 +302,7 @@ class AsyncSearchResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CompanySearch:
+    ) -> SearchFindCompaniesV0Response:
         """Search for companies
 
         Args:
@@ -319,7 +361,7 @@ class AsyncSearchResource(AsyncAPIResource):
                     search_find_companies_v0_params.SearchFindCompaniesV0Params,
                 ),
             ),
-            cast_to=CompanySearch,
+            cast_to=SearchFindCompaniesV0Response,
         )
 
     async def find_companies_v1(
@@ -335,7 +377,7 @@ class AsyncSearchResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CompanySearch:
+    ) -> SearchFindCompaniesV1Response:
         """
         Search for companies
 
@@ -370,7 +412,47 @@ class AsyncSearchResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CompanySearch,
+            cast_to=SearchFindCompaniesV1Response,
+        )
+
+    async def lookup_company_by_name(
+        self,
+        *,
+        query: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> object:
+        """
+        Autocomplete company search
+
+        Args:
+          query: Text search query to find companies by name. Example: "Descartes Technologies
+              UG"
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._get(
+            "/v1/autocomplete/company",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"query": query}, search_lookup_company_by_name_params.SearchLookupCompanyByNameParams
+                ),
+            ),
+            cast_to=object,
         )
 
     async def lookup_company_by_url(
@@ -424,6 +506,9 @@ class SearchResourceWithRawResponse:
         self.find_companies_v1 = to_raw_response_wrapper(
             search.find_companies_v1,
         )
+        self.lookup_company_by_name = to_raw_response_wrapper(
+            search.lookup_company_by_name,
+        )
         self.lookup_company_by_url = to_raw_response_wrapper(
             search.lookup_company_by_url,
         )
@@ -438,6 +523,9 @@ class AsyncSearchResourceWithRawResponse:
         )
         self.find_companies_v1 = async_to_raw_response_wrapper(
             search.find_companies_v1,
+        )
+        self.lookup_company_by_name = async_to_raw_response_wrapper(
+            search.lookup_company_by_name,
         )
         self.lookup_company_by_url = async_to_raw_response_wrapper(
             search.lookup_company_by_url,
@@ -454,6 +542,9 @@ class SearchResourceWithStreamingResponse:
         self.find_companies_v1 = to_streamed_response_wrapper(
             search.find_companies_v1,
         )
+        self.lookup_company_by_name = to_streamed_response_wrapper(
+            search.lookup_company_by_name,
+        )
         self.lookup_company_by_url = to_streamed_response_wrapper(
             search.lookup_company_by_url,
         )
@@ -468,6 +559,9 @@ class AsyncSearchResourceWithStreamingResponse:
         )
         self.find_companies_v1 = async_to_streamed_response_wrapper(
             search.find_companies_v1,
+        )
+        self.lookup_company_by_name = async_to_streamed_response_wrapper(
+            search.lookup_company_by_name,
         )
         self.lookup_company_by_url = async_to_streamed_response_wrapper(
             search.lookup_company_by_url,
