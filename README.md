@@ -32,8 +32,10 @@ client = Openregister(
     api_key=os.environ.get("OPENREGISTER_API_KEY"),  # This is the default and can be omitted
 )
 
-company_search = client.search.find_companies_v0()
-print(company_search.pagination)
+company = client.company.retrieve(
+    company_id="company_id",
+)
+print(company.id)
 ```
 
 While you can provide an `api_key` keyword argument,
@@ -56,8 +58,10 @@ client = AsyncOpenregister(
 
 
 async def main() -> None:
-    company_search = await client.search.find_companies_v0()
-    print(company_search.pagination)
+    company = await client.company.retrieve(
+        company_id="company_id",
+    )
+    print(company.id)
 
 
 asyncio.run(main())
@@ -89,8 +93,10 @@ async def main() -> None:
         api_key="My API Key",
         http_client=DefaultAioHttpClient(),
     ) as client:
-        company_search = await client.search.find_companies_v0()
-        print(company_search.pagination)
+        company = await client.company.retrieve(
+            company_id="company_id",
+        )
+        print(company.id)
 
 
 asyncio.run(main())
@@ -139,7 +145,9 @@ from openregister import Openregister
 client = Openregister()
 
 try:
-    client.search.find_companies_v0()
+    client.company.retrieve(
+        company_id="company_id",
+    )
 except openregister.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
@@ -182,7 +190,9 @@ client = Openregister(
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).search.find_companies_v0()
+client.with_options(max_retries=5).company.retrieve(
+    company_id="company_id",
+)
 ```
 
 ### Timeouts
@@ -205,7 +215,9 @@ client = Openregister(
 )
 
 # Override per-request:
-client.with_options(timeout=5.0).search.find_companies_v0()
+client.with_options(timeout=5.0).company.retrieve(
+    company_id="company_id",
+)
 ```
 
 On timeout, an `APITimeoutError` is thrown.
@@ -246,11 +258,13 @@ The "raw" Response object can be accessed by prefixing `.with_raw_response.` to 
 from openregister import Openregister
 
 client = Openregister()
-response = client.search.with_raw_response.find_companies_v0()
+response = client.company.with_raw_response.retrieve(
+    company_id="company_id",
+)
 print(response.headers.get('X-My-Header'))
 
-search = response.parse()  # get the object that `search.find_companies_v0()` would have returned
-print(search.pagination)
+company = response.parse()  # get the object that `company.retrieve()` would have returned
+print(company.id)
 ```
 
 These methods return an [`APIResponse`](https://github.com/oregister/openregister-python/tree/main/src/openregister/_response.py) object.
@@ -264,7 +278,9 @@ The above interface eagerly reads the full response body when you make the reque
 To stream the response body, use `.with_streaming_response` instead, which requires a context manager and only reads the response body once you call `.read()`, `.text()`, `.json()`, `.iter_bytes()`, `.iter_text()`, `.iter_lines()` or `.parse()`. In the async client, these are async methods.
 
 ```python
-with client.search.with_streaming_response.find_companies_v0() as response:
+with client.company.with_streaming_response.retrieve(
+    company_id="company_id",
+) as response:
     print(response.headers.get("X-My-Header"))
 
     for line in response.iter_lines():
