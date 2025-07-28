@@ -1,10 +1,10 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Optional
-from typing_extensions import Literal
 
 from .._models import BaseModel
 from .entity_type import EntityType
+from .company_relation_type import CompanyRelationType
 
 __all__ = ["CompanyGetOwnersResponse", "Owner", "OwnerLegalPerson", "OwnerNaturalPerson"]
 
@@ -42,7 +42,7 @@ class Owner(BaseModel):
     nominal_share: float
     """Nominal value of shares in Euro. Example: 100"""
 
-    relation_type: Literal["shareholder", "stockholder", "limited_partner", "general_partner"]
+    relation_type: CompanyRelationType
     """Type of relationship between the entity and the company."""
 
     type: EntityType
