@@ -31,6 +31,8 @@ from openregister.types import (
     CompanyRegister,
     EntityType,
     CompanyRetrieveResponse,
+    CompanyGetHoldingsResponse,
+    CompanyGetOwnersResponse,
     CompanyListShareholdersResponse,
     CompanyRetrieveContactResponse,
 )
@@ -39,6 +41,8 @@ from openregister.types import (
 Methods:
 
 - <code title="get /v0/company/{company_id}">client.company.<a href="./src/openregister/resources/company.py">retrieve</a>(company_id, \*\*<a href="src/openregister/types/company_retrieve_params.py">params</a>) -> <a href="./src/openregister/types/company_retrieve_response.py">CompanyRetrieveResponse</a></code>
+- <code title="get /v1/company/{company_id}/holdings">client.company.<a href="./src/openregister/resources/company.py">get_holdings</a>(company_id) -> <a href="./src/openregister/types/company_get_holdings_response.py">CompanyGetHoldingsResponse</a></code>
+- <code title="get /v1/company/{company_id}/owners">client.company.<a href="./src/openregister/resources/company.py">get_owners</a>(company_id) -> <a href="./src/openregister/types/company_get_owners_response.py">CompanyGetOwnersResponse</a></code>
 - <code title="get /v0/company/{company_id}/shareholders">client.company.<a href="./src/openregister/resources/company.py">list_shareholders</a>(company_id) -> <a href="./src/openregister/types/company_list_shareholders_response.py">CompanyListShareholdersResponse</a></code>
 - <code title="get /v0/company/{company_id}/contact">client.company.<a href="./src/openregister/resources/company.py">retrieve_contact</a>(company_id) -> <a href="./src/openregister/types/company_retrieve_contact_response.py">CompanyRetrieveContactResponse</a></code>
 

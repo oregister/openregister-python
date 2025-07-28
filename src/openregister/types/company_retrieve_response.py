@@ -26,12 +26,6 @@ class Representation(BaseModel):
     city: str
     """City where the representative is located. Example: "Berlin" """
 
-    country: str
-    """
-    Country where the representative is located, in ISO 3166-1 alpha-2 format.
-    Example: "DE" for Germany
-    """
-
     name: str
     """The name of the representative. E.g. "Max Mustermann" or "Max Mustermann GmbH" """
 
@@ -54,6 +48,12 @@ class Representation(BaseModel):
     Unique identifier for the representative. For companies: Format matches
     company_id pattern For individuals: UUID Example: "DE-HRB-F1103-267645" or UUID
     May be null for certain representatives.
+    """
+
+    country: Optional[str] = None
+    """
+    Country where the representative is located, in ISO 3166-1 alpha-2 format.
+    Example: "DE" for Germany
     """
 
     date_of_birth: Optional[str] = None
