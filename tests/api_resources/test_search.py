@@ -121,40 +121,6 @@ class TestSearch:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_lookup_company_by_name(self, client: Openregister) -> None:
-        search = client.search.lookup_company_by_name(
-            query="query",
-        )
-        assert_matches_type(object, search, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_raw_response_lookup_company_by_name(self, client: Openregister) -> None:
-        response = client.search.with_raw_response.lookup_company_by_name(
-            query="query",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        search = response.parse()
-        assert_matches_type(object, search, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_streaming_response_lookup_company_by_name(self, client: Openregister) -> None:
-        with client.search.with_streaming_response.lookup_company_by_name(
-            query="query",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            search = response.parse()
-            assert_matches_type(object, search, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip()
-    @parametrize
     def test_method_lookup_company_by_url(self, client: Openregister) -> None:
         search = client.search.lookup_company_by_url(
             url="https://example.com",
@@ -289,40 +255,6 @@ class TestAsyncSearch:
 
             search = await response.parse()
             assert_matches_type(CompanySearch, search, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_method_lookup_company_by_name(self, async_client: AsyncOpenregister) -> None:
-        search = await async_client.search.lookup_company_by_name(
-            query="query",
-        )
-        assert_matches_type(object, search, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_raw_response_lookup_company_by_name(self, async_client: AsyncOpenregister) -> None:
-        response = await async_client.search.with_raw_response.lookup_company_by_name(
-            query="query",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        search = await response.parse()
-        assert_matches_type(object, search, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_streaming_response_lookup_company_by_name(self, async_client: AsyncOpenregister) -> None:
-        async with async_client.search.with_streaming_response.lookup_company_by_name(
-            query="query",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            search = await response.parse()
-            assert_matches_type(object, search, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
