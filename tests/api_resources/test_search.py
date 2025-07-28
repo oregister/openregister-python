@@ -10,8 +10,7 @@ import pytest
 from tests.utils import assert_matches_type
 from openregister import Openregister, AsyncOpenregister
 from openregister.types import (
-    SearchFindCompaniesV0Response,
-    SearchFindCompaniesV1Response,
+    CompanySearch,
     SearchLookupCompanyByURLResponse,
 )
 
@@ -25,7 +24,7 @@ class TestSearch:
     @parametrize
     def test_method_find_companies_v0(self, client: Openregister) -> None:
         search = client.search.find_companies_v0()
-        assert_matches_type(SearchFindCompaniesV0Response, search, path=["response"])
+        assert_matches_type(CompanySearch, search, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -41,7 +40,7 @@ class TestSearch:
             register_number="register_number",
             register_type="HRB",
         )
-        assert_matches_type(SearchFindCompaniesV0Response, search, path=["response"])
+        assert_matches_type(CompanySearch, search, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -51,7 +50,7 @@ class TestSearch:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         search = response.parse()
-        assert_matches_type(SearchFindCompaniesV0Response, search, path=["response"])
+        assert_matches_type(CompanySearch, search, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -61,7 +60,7 @@ class TestSearch:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             search = response.parse()
-            assert_matches_type(SearchFindCompaniesV0Response, search, path=["response"])
+            assert_matches_type(CompanySearch, search, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -69,7 +68,7 @@ class TestSearch:
     @parametrize
     def test_method_find_companies_v1(self, client: Openregister) -> None:
         search = client.search.find_companies_v1()
-        assert_matches_type(SearchFindCompaniesV1Response, search, path=["response"])
+        assert_matches_type(CompanySearch, search, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -96,7 +95,7 @@ class TestSearch:
             },
             query={"value": "value"},
         )
-        assert_matches_type(SearchFindCompaniesV1Response, search, path=["response"])
+        assert_matches_type(CompanySearch, search, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -106,7 +105,7 @@ class TestSearch:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         search = response.parse()
-        assert_matches_type(SearchFindCompaniesV1Response, search, path=["response"])
+        assert_matches_type(CompanySearch, search, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -116,7 +115,7 @@ class TestSearch:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             search = response.parse()
-            assert_matches_type(SearchFindCompaniesV1Response, search, path=["response"])
+            assert_matches_type(CompanySearch, search, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -164,7 +163,7 @@ class TestAsyncSearch:
     @parametrize
     async def test_method_find_companies_v0(self, async_client: AsyncOpenregister) -> None:
         search = await async_client.search.find_companies_v0()
-        assert_matches_type(SearchFindCompaniesV0Response, search, path=["response"])
+        assert_matches_type(CompanySearch, search, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -180,7 +179,7 @@ class TestAsyncSearch:
             register_number="register_number",
             register_type="HRB",
         )
-        assert_matches_type(SearchFindCompaniesV0Response, search, path=["response"])
+        assert_matches_type(CompanySearch, search, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -190,7 +189,7 @@ class TestAsyncSearch:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         search = await response.parse()
-        assert_matches_type(SearchFindCompaniesV0Response, search, path=["response"])
+        assert_matches_type(CompanySearch, search, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -200,7 +199,7 @@ class TestAsyncSearch:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             search = await response.parse()
-            assert_matches_type(SearchFindCompaniesV0Response, search, path=["response"])
+            assert_matches_type(CompanySearch, search, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -208,7 +207,7 @@ class TestAsyncSearch:
     @parametrize
     async def test_method_find_companies_v1(self, async_client: AsyncOpenregister) -> None:
         search = await async_client.search.find_companies_v1()
-        assert_matches_type(SearchFindCompaniesV1Response, search, path=["response"])
+        assert_matches_type(CompanySearch, search, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -235,7 +234,7 @@ class TestAsyncSearch:
             },
             query={"value": "value"},
         )
-        assert_matches_type(SearchFindCompaniesV1Response, search, path=["response"])
+        assert_matches_type(CompanySearch, search, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -245,7 +244,7 @@ class TestAsyncSearch:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         search = await response.parse()
-        assert_matches_type(SearchFindCompaniesV1Response, search, path=["response"])
+        assert_matches_type(CompanySearch, search, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
@@ -255,7 +254,7 @@ class TestAsyncSearch:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             search = await response.parse()
-            assert_matches_type(SearchFindCompaniesV1Response, search, path=["response"])
+            assert_matches_type(CompanySearch, search, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

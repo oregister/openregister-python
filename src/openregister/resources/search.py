@@ -24,10 +24,9 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
+from ..types.company_search import CompanySearch
 from ..types.company_legal_form import CompanyLegalForm
 from ..types.company_register_type import CompanyRegisterType
-from ..types.search_find_companies_v0_response import SearchFindCompaniesV0Response
-from ..types.search_find_companies_v1_response import SearchFindCompaniesV1Response
 from ..types.search_lookup_company_by_url_response import SearchLookupCompanyByURLResponse
 
 __all__ = ["SearchResource", "AsyncSearchResource"]
@@ -71,7 +70,7 @@ class SearchResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SearchFindCompaniesV0Response:
+    ) -> CompanySearch:
         """Search for companies
 
         Args:
@@ -130,7 +129,7 @@ class SearchResource(SyncAPIResource):
                     search_find_companies_v0_params.SearchFindCompaniesV0Params,
                 ),
             ),
-            cast_to=SearchFindCompaniesV0Response,
+            cast_to=CompanySearch,
         )
 
     def find_companies_v1(
@@ -146,7 +145,7 @@ class SearchResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SearchFindCompaniesV1Response:
+    ) -> CompanySearch:
         """
         Search for companies
 
@@ -181,7 +180,7 @@ class SearchResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=SearchFindCompaniesV1Response,
+            cast_to=CompanySearch,
         )
 
     def lookup_company_by_url(
@@ -261,7 +260,7 @@ class AsyncSearchResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SearchFindCompaniesV0Response:
+    ) -> CompanySearch:
         """Search for companies
 
         Args:
@@ -320,7 +319,7 @@ class AsyncSearchResource(AsyncAPIResource):
                     search_find_companies_v0_params.SearchFindCompaniesV0Params,
                 ),
             ),
-            cast_to=SearchFindCompaniesV0Response,
+            cast_to=CompanySearch,
         )
 
     async def find_companies_v1(
@@ -336,7 +335,7 @@ class AsyncSearchResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SearchFindCompaniesV1Response:
+    ) -> CompanySearch:
         """
         Search for companies
 
@@ -371,7 +370,7 @@ class AsyncSearchResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=SearchFindCompaniesV1Response,
+            cast_to=CompanySearch,
         )
 
     async def lookup_company_by_url(
