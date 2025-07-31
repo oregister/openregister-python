@@ -23,3 +23,9 @@ from .company_retrieve_contact_response import CompanyRetrieveContactResponse as
 from .company_list_shareholders_response import CompanyListShareholdersResponse as CompanyListShareholdersResponse
 from .search_lookup_company_by_url_params import SearchLookupCompanyByURLParams as SearchLookupCompanyByURLParams
 from .search_lookup_company_by_url_response import SearchLookupCompanyByURLResponse as SearchLookupCompanyByURLResponse
+from .autocomplete_autocomplete_companies_v1_params import (
+    AutocompleteAutocompleteCompaniesV1Params as AutocompleteAutocompleteCompaniesV1Params,
+)
+from .autocomplete_autocomplete_companies_v1_response import (
+    AutocompleteAutocompleteCompaniesV1Response as AutocompleteAutocompleteCompaniesV1Response,
+)

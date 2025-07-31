@@ -73,3 +73,15 @@ Methods:
 
 - <code title="post /v0/jobs/document">client.jobs.document.<a href="./src/openregister/resources/jobs/document.py">create</a>(\*\*<a href="src/openregister/types/jobs/document_create_params.py">params</a>) -> <a href="./src/openregister/types/jobs/document_create_response.py">DocumentCreateResponse</a></code>
 - <code title="get /v0/jobs/document/{id}">client.jobs.document.<a href="./src/openregister/resources/jobs/document.py">retrieve</a>(id) -> <a href="./src/openregister/types/jobs/document_retrieve_response.py">DocumentRetrieveResponse</a></code>
+
+# Autocomplete
+
+Types:
+
+```python
+from openregister.types import AutocompleteAutocompleteCompaniesV1Response
+```
+
+Methods:
+
+- <code title="get /v1/autocomplete/company">client.autocomplete.<a href="./src/openregister/resources/autocomplete.py">autocomplete_companies_v1</a>(\*\*<a href="src/openregister/types/autocomplete_autocomplete_companies_v1_params.py">params</a>) -> <a href="./src/openregister/types/autocomplete_autocomplete_companies_v1_response.py">AutocompleteAutocompleteCompaniesV1Response</a></code>
