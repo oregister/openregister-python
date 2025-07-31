@@ -6,7 +6,7 @@ from .._models import BaseModel
 from .company_legal_form import CompanyLegalForm
 from .company_register_type import CompanyRegisterType
 
-__all__ = ["AutocompleteAutocompleteCompaniesV1Response", "Result"]
+__all__ = ["SearchAutocompleteCompaniesV1Response", "Result"]
 
 
 class Result(BaseModel):
@@ -41,6 +41,6 @@ class Result(BaseModel):
     """
 
 
-class AutocompleteAutocompleteCompaniesV1Response(BaseModel):
+class SearchAutocompleteCompaniesV1Response(BaseModel):
     results: Optional[List[Result]] = None
     """List of companies matching the search criteria."""
