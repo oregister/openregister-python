@@ -11,8 +11,8 @@ from tests.utils import assert_matches_type
 from openregister import Openregister, AsyncOpenregister
 from openregister.types import (
     CompanyRetrieveResponse,
-    CompanyGetOwnersResponse,
-    CompanyGetHoldingsResponse,
+    CompanyGetOwnersV1Response,
+    CompanyGetHoldingsV1Response,
     CompanyRetrieveContactResponse,
     CompanyListShareholdersResponse,
 )
@@ -78,85 +78,85 @@ class TestCompany:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_get_holdings(self, client: Openregister) -> None:
-        company = client.company.get_holdings(
+    def test_method_get_holdings_v1(self, client: Openregister) -> None:
+        company = client.company.get_holdings_v1(
             "company_id",
         )
-        assert_matches_type(CompanyGetHoldingsResponse, company, path=["response"])
+        assert_matches_type(CompanyGetHoldingsV1Response, company, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_get_holdings(self, client: Openregister) -> None:
-        response = client.company.with_raw_response.get_holdings(
+    def test_raw_response_get_holdings_v1(self, client: Openregister) -> None:
+        response = client.company.with_raw_response.get_holdings_v1(
             "company_id",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         company = response.parse()
-        assert_matches_type(CompanyGetHoldingsResponse, company, path=["response"])
+        assert_matches_type(CompanyGetHoldingsV1Response, company, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_get_holdings(self, client: Openregister) -> None:
-        with client.company.with_streaming_response.get_holdings(
+    def test_streaming_response_get_holdings_v1(self, client: Openregister) -> None:
+        with client.company.with_streaming_response.get_holdings_v1(
             "company_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             company = response.parse()
-            assert_matches_type(CompanyGetHoldingsResponse, company, path=["response"])
+            assert_matches_type(CompanyGetHoldingsV1Response, company, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip()
     @parametrize
-    def test_path_params_get_holdings(self, client: Openregister) -> None:
+    def test_path_params_get_holdings_v1(self, client: Openregister) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `company_id` but received ''"):
-            client.company.with_raw_response.get_holdings(
+            client.company.with_raw_response.get_holdings_v1(
                 "",
             )
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_get_owners(self, client: Openregister) -> None:
-        company = client.company.get_owners(
+    def test_method_get_owners_v1(self, client: Openregister) -> None:
+        company = client.company.get_owners_v1(
             "company_id",
         )
-        assert_matches_type(CompanyGetOwnersResponse, company, path=["response"])
+        assert_matches_type(CompanyGetOwnersV1Response, company, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_get_owners(self, client: Openregister) -> None:
-        response = client.company.with_raw_response.get_owners(
+    def test_raw_response_get_owners_v1(self, client: Openregister) -> None:
+        response = client.company.with_raw_response.get_owners_v1(
             "company_id",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         company = response.parse()
-        assert_matches_type(CompanyGetOwnersResponse, company, path=["response"])
+        assert_matches_type(CompanyGetOwnersV1Response, company, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_get_owners(self, client: Openregister) -> None:
-        with client.company.with_streaming_response.get_owners(
+    def test_streaming_response_get_owners_v1(self, client: Openregister) -> None:
+        with client.company.with_streaming_response.get_owners_v1(
             "company_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             company = response.parse()
-            assert_matches_type(CompanyGetOwnersResponse, company, path=["response"])
+            assert_matches_type(CompanyGetOwnersV1Response, company, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip()
     @parametrize
-    def test_path_params_get_owners(self, client: Openregister) -> None:
+    def test_path_params_get_owners_v1(self, client: Openregister) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `company_id` but received ''"):
-            client.company.with_raw_response.get_owners(
+            client.company.with_raw_response.get_owners_v1(
                 "",
             )
 
@@ -305,85 +305,85 @@ class TestAsyncCompany:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_get_holdings(self, async_client: AsyncOpenregister) -> None:
-        company = await async_client.company.get_holdings(
+    async def test_method_get_holdings_v1(self, async_client: AsyncOpenregister) -> None:
+        company = await async_client.company.get_holdings_v1(
             "company_id",
         )
-        assert_matches_type(CompanyGetHoldingsResponse, company, path=["response"])
+        assert_matches_type(CompanyGetHoldingsV1Response, company, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_get_holdings(self, async_client: AsyncOpenregister) -> None:
-        response = await async_client.company.with_raw_response.get_holdings(
+    async def test_raw_response_get_holdings_v1(self, async_client: AsyncOpenregister) -> None:
+        response = await async_client.company.with_raw_response.get_holdings_v1(
             "company_id",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         company = await response.parse()
-        assert_matches_type(CompanyGetHoldingsResponse, company, path=["response"])
+        assert_matches_type(CompanyGetHoldingsV1Response, company, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_get_holdings(self, async_client: AsyncOpenregister) -> None:
-        async with async_client.company.with_streaming_response.get_holdings(
+    async def test_streaming_response_get_holdings_v1(self, async_client: AsyncOpenregister) -> None:
+        async with async_client.company.with_streaming_response.get_holdings_v1(
             "company_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             company = await response.parse()
-            assert_matches_type(CompanyGetHoldingsResponse, company, path=["response"])
+            assert_matches_type(CompanyGetHoldingsV1Response, company, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip()
     @parametrize
-    async def test_path_params_get_holdings(self, async_client: AsyncOpenregister) -> None:
+    async def test_path_params_get_holdings_v1(self, async_client: AsyncOpenregister) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `company_id` but received ''"):
-            await async_client.company.with_raw_response.get_holdings(
+            await async_client.company.with_raw_response.get_holdings_v1(
                 "",
             )
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_get_owners(self, async_client: AsyncOpenregister) -> None:
-        company = await async_client.company.get_owners(
+    async def test_method_get_owners_v1(self, async_client: AsyncOpenregister) -> None:
+        company = await async_client.company.get_owners_v1(
             "company_id",
         )
-        assert_matches_type(CompanyGetOwnersResponse, company, path=["response"])
+        assert_matches_type(CompanyGetOwnersV1Response, company, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_get_owners(self, async_client: AsyncOpenregister) -> None:
-        response = await async_client.company.with_raw_response.get_owners(
+    async def test_raw_response_get_owners_v1(self, async_client: AsyncOpenregister) -> None:
+        response = await async_client.company.with_raw_response.get_owners_v1(
             "company_id",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         company = await response.parse()
-        assert_matches_type(CompanyGetOwnersResponse, company, path=["response"])
+        assert_matches_type(CompanyGetOwnersV1Response, company, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_get_owners(self, async_client: AsyncOpenregister) -> None:
-        async with async_client.company.with_streaming_response.get_owners(
+    async def test_streaming_response_get_owners_v1(self, async_client: AsyncOpenregister) -> None:
+        async with async_client.company.with_streaming_response.get_owners_v1(
             "company_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             company = await response.parse()
-            assert_matches_type(CompanyGetOwnersResponse, company, path=["response"])
+            assert_matches_type(CompanyGetOwnersV1Response, company, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip()
     @parametrize
-    async def test_path_params_get_owners(self, async_client: AsyncOpenregister) -> None:
+    async def test_path_params_get_owners_v1(self, async_client: AsyncOpenregister) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `company_id` but received ''"):
-            await async_client.company.with_raw_response.get_owners(
+            await async_client.company.with_raw_response.get_owners_v1(
                 "",
             )
 

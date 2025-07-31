@@ -17,8 +17,8 @@ from .._response import (
 )
 from .._base_client import make_request_options
 from ..types.company_retrieve_response import CompanyRetrieveResponse
-from ..types.company_get_owners_response import CompanyGetOwnersResponse
-from ..types.company_get_holdings_response import CompanyGetHoldingsResponse
+from ..types.company_get_owners_v1_response import CompanyGetOwnersV1Response
+from ..types.company_get_holdings_v1_response import CompanyGetHoldingsV1Response
 from ..types.company_retrieve_contact_response import CompanyRetrieveContactResponse
 from ..types.company_list_shareholders_response import CompanyListShareholdersResponse
 
@@ -101,7 +101,7 @@ class CompanyResource(SyncAPIResource):
             cast_to=CompanyRetrieveResponse,
         )
 
-    def get_holdings(
+    def get_holdings_v1(
         self,
         company_id: str,
         *,
@@ -111,7 +111,7 @@ class CompanyResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CompanyGetHoldingsResponse:
+    ) -> CompanyGetHoldingsV1Response:
         """
         Get company holdings
 
@@ -131,10 +131,10 @@ class CompanyResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CompanyGetHoldingsResponse,
+            cast_to=CompanyGetHoldingsV1Response,
         )
 
-    def get_owners(
+    def get_owners_v1(
         self,
         company_id: str,
         *,
@@ -144,7 +144,7 @@ class CompanyResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CompanyGetOwnersResponse:
+    ) -> CompanyGetOwnersV1Response:
         """
         Get company owners
 
@@ -164,7 +164,7 @@ class CompanyResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CompanyGetOwnersResponse,
+            cast_to=CompanyGetOwnersV1Response,
         )
 
     def list_shareholders(
@@ -310,7 +310,7 @@ class AsyncCompanyResource(AsyncAPIResource):
             cast_to=CompanyRetrieveResponse,
         )
 
-    async def get_holdings(
+    async def get_holdings_v1(
         self,
         company_id: str,
         *,
@@ -320,7 +320,7 @@ class AsyncCompanyResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CompanyGetHoldingsResponse:
+    ) -> CompanyGetHoldingsV1Response:
         """
         Get company holdings
 
@@ -340,10 +340,10 @@ class AsyncCompanyResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CompanyGetHoldingsResponse,
+            cast_to=CompanyGetHoldingsV1Response,
         )
 
-    async def get_owners(
+    async def get_owners_v1(
         self,
         company_id: str,
         *,
@@ -353,7 +353,7 @@ class AsyncCompanyResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CompanyGetOwnersResponse:
+    ) -> CompanyGetOwnersV1Response:
         """
         Get company owners
 
@@ -373,7 +373,7 @@ class AsyncCompanyResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CompanyGetOwnersResponse,
+            cast_to=CompanyGetOwnersV1Response,
         )
 
     async def list_shareholders(
@@ -450,11 +450,11 @@ class CompanyResourceWithRawResponse:
         self.retrieve = to_raw_response_wrapper(
             company.retrieve,
         )
-        self.get_holdings = to_raw_response_wrapper(
-            company.get_holdings,
+        self.get_holdings_v1 = to_raw_response_wrapper(
+            company.get_holdings_v1,
         )
-        self.get_owners = to_raw_response_wrapper(
-            company.get_owners,
+        self.get_owners_v1 = to_raw_response_wrapper(
+            company.get_owners_v1,
         )
         self.list_shareholders = to_raw_response_wrapper(
             company.list_shareholders,
@@ -471,11 +471,11 @@ class AsyncCompanyResourceWithRawResponse:
         self.retrieve = async_to_raw_response_wrapper(
             company.retrieve,
         )
-        self.get_holdings = async_to_raw_response_wrapper(
-            company.get_holdings,
+        self.get_holdings_v1 = async_to_raw_response_wrapper(
+            company.get_holdings_v1,
         )
-        self.get_owners = async_to_raw_response_wrapper(
-            company.get_owners,
+        self.get_owners_v1 = async_to_raw_response_wrapper(
+            company.get_owners_v1,
         )
         self.list_shareholders = async_to_raw_response_wrapper(
             company.list_shareholders,
@@ -492,11 +492,11 @@ class CompanyResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             company.retrieve,
         )
-        self.get_holdings = to_streamed_response_wrapper(
-            company.get_holdings,
+        self.get_holdings_v1 = to_streamed_response_wrapper(
+            company.get_holdings_v1,
         )
-        self.get_owners = to_streamed_response_wrapper(
-            company.get_owners,
+        self.get_owners_v1 = to_streamed_response_wrapper(
+            company.get_owners_v1,
         )
         self.list_shareholders = to_streamed_response_wrapper(
             company.list_shareholders,
@@ -513,11 +513,11 @@ class AsyncCompanyResourceWithStreamingResponse:
         self.retrieve = async_to_streamed_response_wrapper(
             company.retrieve,
         )
-        self.get_holdings = async_to_streamed_response_wrapper(
-            company.get_holdings,
+        self.get_holdings_v1 = async_to_streamed_response_wrapper(
+            company.get_holdings_v1,
         )
-        self.get_owners = async_to_streamed_response_wrapper(
-            company.get_owners,
+        self.get_owners_v1 = async_to_streamed_response_wrapper(
+            company.get_owners_v1,
         )
         self.list_shareholders = async_to_streamed_response_wrapper(
             company.list_shareholders,
