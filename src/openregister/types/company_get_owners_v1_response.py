@@ -6,7 +6,7 @@ from .._models import BaseModel
 from .entity_type import EntityType
 from .company_relation_type import CompanyRelationType
 
-__all__ = ["CompanyGetOwnersResponse", "Owner", "OwnerLegalPerson", "OwnerNaturalPerson"]
+__all__ = ["CompanyGetOwnersV1Response", "Owner", "OwnerLegalPerson", "OwnerNaturalPerson"]
 
 
 class OwnerLegalPerson(BaseModel):
@@ -72,7 +72,7 @@ class Owner(BaseModel):
     """
 
 
-class CompanyGetOwnersResponse(BaseModel):
+class CompanyGetOwnersV1Response(BaseModel):
     company_id: str
     """Unique company identifier. Example: DE-HRB-F1103-267645"""
 
