@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from typing_extensions import Required, TypedDict
 
-__all__ = ["AutocompleteAutocompleteCompaniesV1Params"]
+__all__ = ["SearchAutocompleteCompaniesV1Params"]
 
 
-class AutocompleteAutocompleteCompaniesV1Params(TypedDict, total=False):
+class SearchAutocompleteCompaniesV1Params(TypedDict, total=False):
     query: Required[str]
     """
     Text search query to find companies by name. Example: "Descartes Technologies

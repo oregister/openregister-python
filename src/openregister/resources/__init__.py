@@ -32,14 +32,6 @@ from .document import (
     DocumentResourceWithStreamingResponse,
     AsyncDocumentResourceWithStreamingResponse,
 )
-from .autocomplete import (
-    AutocompleteResource,
-    AsyncAutocompleteResource,
-    AutocompleteResourceWithRawResponse,
-    AsyncAutocompleteResourceWithRawResponse,
-    AutocompleteResourceWithStreamingResponse,
-    AsyncAutocompleteResourceWithStreamingResponse,
-)
 
 __all__ = [
     "SearchResource",
@@ -66,10 +58,4 @@ __all__ = [
     "AsyncJobsResourceWithRawResponse",
     "JobsResourceWithStreamingResponse",
     "AsyncJobsResourceWithStreamingResponse",
-    "AutocompleteResource",
-    "AsyncAutocompleteResource",
-    "AutocompleteResourceWithRawResponse",
-    "AsyncAutocompleteResourceWithRawResponse",
-    "AutocompleteResourceWithStreamingResponse",
-    "AsyncAutocompleteResourceWithStreamingResponse",
 ]
