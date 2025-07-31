@@ -1,5 +1,31 @@
 # Changelog
 
+## 1.9.0 (2025-07-31)
+
+Full Changelog: [v1.8.0...v1.9.0](https://github.com/oregister/openregister-python/compare/v1.8.0...v1.9.0)
+
+### Features
+
+* **api:** update via SDK Studio ([5db6aee](https://github.com/oregister/openregister-python/commit/5db6aee2413a147c921de855f14ad3aada1166a8))
+* **api:** update via SDK Studio ([f198922](https://github.com/oregister/openregister-python/commit/f1989229e8ea7894798f65b0d589eee7ac33354d))
+* **api:** update via SDK Studio ([06c08d9](https://github.com/oregister/openregister-python/commit/06c08d985d4e7d1bf3d36b2091cf338123daeadb))
+* **api:** update via SDK Studio ([c5b173a](https://github.com/oregister/openregister-python/commit/c5b173ac6a367a26986af381af3e5d884b42e666))
+* **api:** update via SDK Studio ([53906ff](https://github.com/oregister/openregister-python/commit/53906ff16b8026e3d5a7fbc08bfe057db4ff7872))
+* **api:** update via SDK Studio ([c469032](https://github.com/oregister/openregister-python/commit/c469032eb5f8b79cb9f86a2952746d704d5b5505))
+* **api:** update via SDK Studio ([27022b3](https://github.com/oregister/openregister-python/commit/27022b3a0258c804371ac67010b9412cdbb3afc5))
+* **api:** update via SDK Studio ([bb35bb3](https://github.com/oregister/openregister-python/commit/bb35bb32569dac1383c39835d37276944ba9c126))
+* **api:** update via SDK Studio ([92868ee](https://github.com/oregister/openregister-python/commit/92868ee2ada5caec8d4d34d5009b1ffc7eae69d9))
+* **api:** update via SDK Studio ([66fbcba](https://github.com/oregister/openregister-python/commit/66fbcba8e46e91e33132d9192e976a74a640f4f5))
+* **api:** update via SDK Studio ([9b0b338](https://github.com/oregister/openregister-python/commit/9b0b338fde913eedcf567d9fc31a4c10acd6a12c))
+* **api:** update via SDK Studio ([694db14](https://github.com/oregister/openregister-python/commit/694db143faec9f941510eb444dec62f85a83380a))
+* **api:** update via SDK Studio ([3ccd737](https://github.com/oregister/openregister-python/commit/3ccd7372ad292a8219c44348e68f1774266d6dd6))
+* **client:** support file upload requests ([e6b74b6](https://github.com/oregister/openregister-python/commit/e6b74b6c483a40445756ae5f27d718bb89a981e0))
+
+
+### Chores
+
+* **project:** add settings file for vscode ([beec64e](https://github.com/oregister/openregister-python/commit/beec64e01b9203a412f0874bc7d0224ec19e7b51))
+
 ## 1.8.0 (2025-07-23)
 
 Full Changelog: [v1.7.0...v1.8.0](https://github.com/oregister/openregister-python/compare/v1.7.0...v1.8.0)
