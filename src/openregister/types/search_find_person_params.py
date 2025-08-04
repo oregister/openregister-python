@@ -20,50 +20,17 @@ class SearchFindPersonParams(TypedDict, total=False):
 
 
 class Filter(TypedDict, total=False):
-    field: Literal[
-        "date_of_birth",
-        "city",
-        "active",
-        "status",
-        "legal_form",
-        "register_number",
-        "register_court",
-        "register_type",
-        "incorporated_at",
-        "zip",
-        "address",
-        "balance_sheet_total",
-        "revenue",
-        "cash",
-        "employees",
-        "equity",
-        "real_estate",
-        "materials",
-        "pension_provisions",
-        "salaries",
-        "taxes",
-        "liabilities",
-        "capital_reserves",
-        "net_income",
-        "industry_codes",
-        "capital_amount",
-        "capital_currency",
-    ]
+    field: Required[Literal["date_of_birth", "city", "active"]]
 
     keywords: List[str]
-    """Keywords to filter on."""
 
     max: str
-    """Maximum value to filter on."""
 
     min: str
-    """Minimum value to filter on."""
 
     value: str
-    """Value to filter on."""
 
     values: List[str]
-    """Values to filter on."""
 
 
 class Pagination(TypedDict, total=False):
