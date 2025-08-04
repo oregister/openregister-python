@@ -111,7 +111,7 @@ class TestSearch:
         search = client.search.find_companies_v1(
             filters=[
                 {
-                    "field": "status",
+                    "field": "date_of_birth",
                     "keywords": ["string"],
                     "max": "max",
                     "min": "min",
@@ -284,7 +284,7 @@ class TestAsyncSearch:
         search = await async_client.search.find_companies_v1(
             filters=[
                 {
-                    "field": "status",
+                    "field": "date_of_birth",
                     "keywords": ["string"],
                     "max": "max",
                     "min": "min",
