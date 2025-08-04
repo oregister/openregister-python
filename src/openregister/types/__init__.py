@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+from . import report_row, company_retrieve_financials_response
+from .. import _compat
+from .report_row import ReportRow as ReportRow
 from .entity_type import EntityType as EntityType
 from .company_name import CompanyName as CompanyName
 from .company_search import CompanySearch as CompanySearch
@@ -32,3 +35,14 @@ from .search_autocomplete_companies_v1_params import (
 from .search_autocomplete_companies_v1_response import (
     SearchAutocompleteCompaniesV1Response as SearchAutocompleteCompaniesV1Response,
 )
+
+# Rebuild cyclical models only after all modules are imported.
+# This ensures that, when building the deferred (due to cyclical references) model schema,
+# Pydantic can resolve the necessary references.
+# See: https://github.com/pydantic/pydantic/issues/11250 for more context.
+if _compat.PYDANTIC_V2:
+    report_row.ReportRow.model_rebuild(_parent_namespace_depth=0)
+    company_retrieve_financials_response.CompanyRetrieveFinancialsResponse.model_rebuild(_parent_namespace_depth=0)
+else:
+    report_row.ReportRow.update_forward_refs()  # type: ignore
+    company_retrieve_financials_response.CompanyRetrieveFinancialsResponse.update_forward_refs()  # type: ignore

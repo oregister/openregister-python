@@ -34,6 +34,7 @@ from openregister.types import (
     CompanyRegister,
     CompanyRelationType,
     EntityType,
+    ReportRow,
     CompanyRetrieveResponse,
     CompanyGetHoldingsV1Response,
     CompanyGetOwnersV1Response,
