@@ -1,68 +1,25 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from __future__ import annotations
+
 from typing import List, Optional
 from datetime import datetime
 
 from .._models import BaseModel
 
-__all__ = [
-    "CompanyRetrieveFinancialsResponse",
-    "Report",
-    "ReportAktiva",
-    "ReportAktivaRow",
-    "ReportPassiva",
-    "ReportPassivaRow",
-    "ReportGuv",
-    "ReportGuvRow",
-]
-
-
-class ReportAktivaRow(BaseModel):
-    children: List[object]
-
-    formatted_name: str
-
-    name: str
-
-    current_value: Optional[int] = None
-
-    previous_value: Optional[int] = None
+__all__ = ["CompanyRetrieveFinancialsResponse", "Report", "ReportAktiva", "ReportPassiva", "ReportGuv"]
 
 
 class ReportAktiva(BaseModel):
-    rows: List[ReportAktivaRow]
-
-
-class ReportPassivaRow(BaseModel):
-    children: List[object]
-
-    formatted_name: str
-
-    name: str
-
-    current_value: Optional[int] = None
-
-    previous_value: Optional[int] = None
+    rows: List["ReportRow"]
 
 
 class ReportPassiva(BaseModel):
-    rows: List[ReportPassivaRow]
-
-
-class ReportGuvRow(BaseModel):
-    children: List[object]
-
-    formatted_name: str
-
-    name: str
-
-    current_value: Optional[int] = None
-
-    previous_value: Optional[int] = None
+    rows: List["ReportRow"]
 
 
 class ReportGuv(BaseModel):
-    rows: List[ReportGuvRow]
+    rows: List["ReportRow"]
 
 
 class Report(BaseModel):
@@ -83,3 +40,6 @@ class Report(BaseModel):
 
 class CompanyRetrieveFinancialsResponse(BaseModel):
     reports: List[Report]
+
+
+from .report_row import ReportRow
