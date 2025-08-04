@@ -24,13 +24,14 @@ class SearchFindCompaniesV1Params(TypedDict, total=False):
 
 class Filter(TypedDict, total=False):
     field: Literal[
+        "date_of_birth",
+        "city",
+        "active",
         "status",
         "legal_form",
         "register_number",
         "register_court",
         "register_type",
-        "city",
-        "active",
         "incorporated_at",
         "zip",
         "address",
@@ -51,7 +52,6 @@ class Filter(TypedDict, total=False):
         "capital_amount",
         "capital_currency",
     ]
-    """Field to filter on."""
 
     keywords: List[str]
     """Keywords to filter on."""
