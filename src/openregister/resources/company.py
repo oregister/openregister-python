@@ -21,6 +21,7 @@ from ..types.company_get_owners_v1_response import CompanyGetOwnersV1Response
 from ..types.company_get_holdings_v1_response import CompanyGetHoldingsV1Response
 from ..types.company_retrieve_contact_response import CompanyRetrieveContactResponse
 from ..types.company_list_shareholders_response import CompanyListShareholdersResponse
+from ..types.company_retrieve_financials_response import CompanyRetrieveFinancialsResponse
 
 __all__ = ["CompanyResource", "AsyncCompanyResource"]
 
@@ -233,6 +234,39 @@ class CompanyResource(SyncAPIResource):
             cast_to=CompanyRetrieveContactResponse,
         )
 
+    def retrieve_financials(
+        self,
+        company_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> CompanyRetrieveFinancialsResponse:
+        """
+        Get financial reports
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not company_id:
+            raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
+        return self._get(
+            f"/v1/company/{company_id}/financials",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CompanyRetrieveFinancialsResponse,
+        )
+
 
 class AsyncCompanyResource(AsyncAPIResource):
     @cached_property
@@ -442,6 +476,39 @@ class AsyncCompanyResource(AsyncAPIResource):
             cast_to=CompanyRetrieveContactResponse,
         )
 
+    async def retrieve_financials(
+        self,
+        company_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> CompanyRetrieveFinancialsResponse:
+        """
+        Get financial reports
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not company_id:
+            raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
+        return await self._get(
+            f"/v1/company/{company_id}/financials",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CompanyRetrieveFinancialsResponse,
+        )
+
 
 class CompanyResourceWithRawResponse:
     def __init__(self, company: CompanyResource) -> None:
@@ -461,6 +528,9 @@ class CompanyResourceWithRawResponse:
         )
         self.retrieve_contact = to_raw_response_wrapper(
             company.retrieve_contact,
+        )
+        self.retrieve_financials = to_raw_response_wrapper(
+            company.retrieve_financials,
         )
 
 
@@ -483,6 +553,9 @@ class AsyncCompanyResourceWithRawResponse:
         self.retrieve_contact = async_to_raw_response_wrapper(
             company.retrieve_contact,
         )
+        self.retrieve_financials = async_to_raw_response_wrapper(
+            company.retrieve_financials,
+        )
 
 
 class CompanyResourceWithStreamingResponse:
@@ -504,6 +577,9 @@ class CompanyResourceWithStreamingResponse:
         self.retrieve_contact = to_streamed_response_wrapper(
             company.retrieve_contact,
         )
+        self.retrieve_financials = to_streamed_response_wrapper(
+            company.retrieve_financials,
+        )
 
 
 class AsyncCompanyResourceWithStreamingResponse:
@@ -524,4 +600,7 @@ class AsyncCompanyResourceWithStreamingResponse:
         )
         self.retrieve_contact = async_to_streamed_response_wrapper(
             company.retrieve_contact,
+        )
+        self.retrieve_financials = async_to_streamed_response_wrapper(
+            company.retrieve_financials,
         )
