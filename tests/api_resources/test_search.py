@@ -11,6 +11,7 @@ from tests.utils import assert_matches_type
 from openregister import Openregister, AsyncOpenregister
 from openregister.types import (
     CompanySearch,
+    SearchFindPersonResponse,
     SearchLookupCompanyByURLResponse,
     SearchAutocompleteCompaniesV1Response,
 )
@@ -151,6 +152,56 @@ class TestSearch:
 
             search = response.parse()
             assert_matches_type(CompanySearch, search, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_method_find_person(self, client: Openregister) -> None:
+        search = client.search.find_person()
+        assert_matches_type(SearchFindPersonResponse, search, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_method_find_person_with_all_params(self, client: Openregister) -> None:
+        search = client.search.find_person(
+            filters=[
+                {
+                    "field": "date_of_birth",
+                    "keywords": ["string"],
+                    "max": "max",
+                    "min": "min",
+                    "value": "value",
+                    "values": ["string"],
+                }
+            ],
+            pagination={
+                "page": 0,
+                "per_page": 0,
+            },
+            query={"value": "value"},
+        )
+        assert_matches_type(SearchFindPersonResponse, search, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_raw_response_find_person(self, client: Openregister) -> None:
+        response = client.search.with_raw_response.find_person()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        search = response.parse()
+        assert_matches_type(SearchFindPersonResponse, search, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_streaming_response_find_person(self, client: Openregister) -> None:
+        with client.search.with_streaming_response.find_person() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            search = response.parse()
+            assert_matches_type(SearchFindPersonResponse, search, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -324,6 +375,56 @@ class TestAsyncSearch:
 
             search = await response.parse()
             assert_matches_type(CompanySearch, search, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_method_find_person(self, async_client: AsyncOpenregister) -> None:
+        search = await async_client.search.find_person()
+        assert_matches_type(SearchFindPersonResponse, search, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_method_find_person_with_all_params(self, async_client: AsyncOpenregister) -> None:
+        search = await async_client.search.find_person(
+            filters=[
+                {
+                    "field": "date_of_birth",
+                    "keywords": ["string"],
+                    "max": "max",
+                    "min": "min",
+                    "value": "value",
+                    "values": ["string"],
+                }
+            ],
+            pagination={
+                "page": 0,
+                "per_page": 0,
+            },
+            query={"value": "value"},
+        )
+        assert_matches_type(SearchFindPersonResponse, search, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_raw_response_find_person(self, async_client: AsyncOpenregister) -> None:
+        response = await async_client.search.with_raw_response.find_person()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        search = await response.parse()
+        assert_matches_type(SearchFindPersonResponse, search, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_streaming_response_find_person(self, async_client: AsyncOpenregister) -> None:
+        async with async_client.search.with_streaming_response.find_person() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            search = await response.parse()
+            assert_matches_type(SearchFindPersonResponse, search, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
