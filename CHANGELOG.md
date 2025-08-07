@@ -1,5 +1,36 @@
 # Changelog
 
+## 1.9.0 (2025-08-06)
+
+Full Changelog: [v1.8.0...v1.9.0](https://github.com/oregister/openregister-python/compare/v1.8.0...v1.9.0)
+
+### Features
+
+* **api:** update via SDK Studio ([a4bf32c](https://github.com/oregister/openregister-python/commit/a4bf32c5fc79bcb66069f1b27210af288beabd62))
+* **api:** update via SDK Studio ([1ec1aea](https://github.com/oregister/openregister-python/commit/1ec1aeaf67bc192c6d59f5da9ba610f194f5e68b))
+* **api:** update via SDK Studio ([cf8f581](https://github.com/oregister/openregister-python/commit/cf8f581da7dd8d8a1ce7189d5c5f535bffbb66e1))
+* **api:** update via SDK Studio ([84588e0](https://github.com/oregister/openregister-python/commit/84588e06407a13cd5e43ec44824816c3da4251a4))
+* **api:** update via SDK Studio ([5db6aee](https://github.com/oregister/openregister-python/commit/5db6aee2413a147c921de855f14ad3aada1166a8))
+* **api:** update via SDK Studio ([f198922](https://github.com/oregister/openregister-python/commit/f1989229e8ea7894798f65b0d589eee7ac33354d))
+* **api:** update via SDK Studio ([06c08d9](https://github.com/oregister/openregister-python/commit/06c08d985d4e7d1bf3d36b2091cf338123daeadb))
+* **api:** update via SDK Studio ([c5b173a](https://github.com/oregister/openregister-python/commit/c5b173ac6a367a26986af381af3e5d884b42e666))
+* **api:** update via SDK Studio ([53906ff](https://github.com/oregister/openregister-python/commit/53906ff16b8026e3d5a7fbc08bfe057db4ff7872))
+* **api:** update via SDK Studio ([c469032](https://github.com/oregister/openregister-python/commit/c469032eb5f8b79cb9f86a2952746d704d5b5505))
+* **api:** update via SDK Studio ([27022b3](https://github.com/oregister/openregister-python/commit/27022b3a0258c804371ac67010b9412cdbb3afc5))
+* **api:** update via SDK Studio ([bb35bb3](https://github.com/oregister/openregister-python/commit/bb35bb32569dac1383c39835d37276944ba9c126))
+* **api:** update via SDK Studio ([92868ee](https://github.com/oregister/openregister-python/commit/92868ee2ada5caec8d4d34d5009b1ffc7eae69d9))
+* **api:** update via SDK Studio ([66fbcba](https://github.com/oregister/openregister-python/commit/66fbcba8e46e91e33132d9192e976a74a640f4f5))
+* **api:** update via SDK Studio ([9b0b338](https://github.com/oregister/openregister-python/commit/9b0b338fde913eedcf567d9fc31a4c10acd6a12c))
+* **api:** update via SDK Studio ([694db14](https://github.com/oregister/openregister-python/commit/694db143faec9f941510eb444dec62f85a83380a))
+* **api:** update via SDK Studio ([3ccd737](https://github.com/oregister/openregister-python/commit/3ccd7372ad292a8219c44348e68f1774266d6dd6))
+* **client:** support file upload requests ([e6b74b6](https://github.com/oregister/openregister-python/commit/e6b74b6c483a40445756ae5f27d718bb89a981e0))
+
+
+### Chores
+
+* **internal:** fix ruff target version ([baabfb9](https://github.com/oregister/openregister-python/commit/baabfb90b8d74d273f454996fda5006c89fa6fb1))
+* **project:** add settings file for vscode ([beec64e](https://github.com/oregister/openregister-python/commit/beec64e01b9203a412f0874bc7d0224ec19e7b51))
+
 ## 1.8.0 (2025-07-23)
 
 Full Changelog: [v1.7.0...v1.8.0](https://github.com/oregister/openregister-python/compare/v1.7.0...v1.8.0)

@@ -6,21 +6,7 @@ from .._models import BaseModel
 from .company_legal_form import CompanyLegalForm
 from .company_register_type import CompanyRegisterType
 
-__all__ = ["SearchFindCompaniesV0Response", "Pagination", "Result"]
-
-
-class Pagination(BaseModel):
-    page: int
-    """Current page number."""
-
-    per_page: int
-    """Number of results per page."""
-
-    total_pages: int
-    """Total number of pages."""
-
-    total_results: int
-    """Total number of results."""
+__all__ = ["SearchAutocompleteCompaniesV1Response", "Result"]
 
 
 class Result(BaseModel):
@@ -55,8 +41,6 @@ class Result(BaseModel):
     """
 
 
-class SearchFindCompaniesV0Response(BaseModel):
-    pagination: Pagination
-
-    results: List[Result]
+class SearchAutocompleteCompaniesV1Response(BaseModel):
+    results: Optional[List[Result]] = None
     """List of companies matching the search criteria."""
