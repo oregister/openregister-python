@@ -25,7 +25,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestDocument:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_retrieve(self, client: Openregister) -> None:
         document = client.document.retrieve(
@@ -33,7 +33,7 @@ class TestDocument:
         )
         assert_matches_type(DocumentRetrieveResponse, document, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_retrieve(self, client: Openregister) -> None:
         response = client.document.with_raw_response.retrieve(
@@ -45,7 +45,7 @@ class TestDocument:
         document = response.parse()
         assert_matches_type(DocumentRetrieveResponse, document, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_retrieve(self, client: Openregister) -> None:
         with client.document.with_streaming_response.retrieve(
@@ -59,7 +59,7 @@ class TestDocument:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_retrieve(self, client: Openregister) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `document_id` but received ''"):
@@ -67,7 +67,6 @@ class TestDocument:
                 "",
             )
 
-    @pytest.mark.skip()
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_method_download(self, client: Openregister, respx_mock: MockRouter) -> None:
@@ -80,7 +79,6 @@ class TestDocument:
         assert cast(Any, document.is_closed) is True
         assert isinstance(document, BinaryAPIResponse)
 
-    @pytest.mark.skip()
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_raw_response_download(self, client: Openregister, respx_mock: MockRouter) -> None:
@@ -95,7 +93,6 @@ class TestDocument:
         assert document.json() == {"foo": "bar"}
         assert isinstance(document, BinaryAPIResponse)
 
-    @pytest.mark.skip()
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_streaming_response_download(self, client: Openregister, respx_mock: MockRouter) -> None:
@@ -112,7 +109,6 @@ class TestDocument:
 
         assert cast(Any, document.is_closed) is True
 
-    @pytest.mark.skip()
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_path_params_download(self, client: Openregister) -> None:
@@ -127,7 +123,7 @@ class TestAsyncDocument:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncOpenregister) -> None:
         document = await async_client.document.retrieve(
@@ -135,7 +131,7 @@ class TestAsyncDocument:
         )
         assert_matches_type(DocumentRetrieveResponse, document, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncOpenregister) -> None:
         response = await async_client.document.with_raw_response.retrieve(
@@ -147,7 +143,7 @@ class TestAsyncDocument:
         document = await response.parse()
         assert_matches_type(DocumentRetrieveResponse, document, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncOpenregister) -> None:
         async with async_client.document.with_streaming_response.retrieve(
@@ -161,7 +157,7 @@ class TestAsyncDocument:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_retrieve(self, async_client: AsyncOpenregister) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `document_id` but received ''"):
@@ -169,7 +165,6 @@ class TestAsyncDocument:
                 "",
             )
 
-    @pytest.mark.skip()
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_method_download(self, async_client: AsyncOpenregister, respx_mock: MockRouter) -> None:
@@ -182,7 +177,6 @@ class TestAsyncDocument:
         assert cast(Any, document.is_closed) is True
         assert isinstance(document, AsyncBinaryAPIResponse)
 
-    @pytest.mark.skip()
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_raw_response_download(self, async_client: AsyncOpenregister, respx_mock: MockRouter) -> None:
@@ -197,7 +191,6 @@ class TestAsyncDocument:
         assert await document.json() == {"foo": "bar"}
         assert isinstance(document, AsyncBinaryAPIResponse)
 
-    @pytest.mark.skip()
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_streaming_response_download(self, async_client: AsyncOpenregister, respx_mock: MockRouter) -> None:
@@ -214,7 +207,6 @@ class TestAsyncDocument:
 
         assert cast(Any, document.is_closed) is True
 
-    @pytest.mark.skip()
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_path_params_download(self, async_client: AsyncOpenregister) -> None:
