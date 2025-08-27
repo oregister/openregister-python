@@ -5,7 +5,7 @@ from datetime import datetime
 
 from .._models import BaseModel
 
-__all__ = ["PersonRetrieveResponse", "ManagementPosition"]
+__all__ = ["PersonGetDetailsV1Response", "ManagementPosition"]
 
 
 class ManagementPosition(BaseModel):
@@ -31,7 +31,7 @@ class ManagementPosition(BaseModel):
     """
 
 
-class PersonRetrieveResponse(BaseModel):
+class PersonGetDetailsV1Response(BaseModel):
     id: str
     """Unique person identifier. Example: cc78ab54-d958-49b8-bae7-2f6c0c308837"""
 

@@ -69,10 +69,10 @@ Methods:
 Types:
 
 ```python
-from openregister.types import PersonRetrieveResponse, PersonListHoldingsV1Response
+from openregister.types import PersonGetDetailsV1Response, PersonGetHoldingsV1Response
 ```
 
 Methods:
 
-- <code title="get /v1/person/{person_id}">client.person.<a href="./src/openregister/resources/person.py">retrieve</a>(person_id) -> <a href="./src/openregister/types/person_retrieve_response.py">PersonRetrieveResponse</a></code>
-- <code title="get /v1/person/{person_id}/holdings">client.person.<a href="./src/openregister/resources/person.py">list_holdings_v1</a>(person_id) -> <a href="./src/openregister/types/person_list_holdings_v1_response.py">PersonListHoldingsV1Response</a></code>
+- <code title="get /v1/person/{person_id}">client.person.<a href="./src/openregister/resources/person.py">get_details_v1</a>(person_id) -> <a href="./src/openregister/types/person_get_details_v1_response.py">PersonGetDetailsV1Response</a></code>
+- <code title="get /v1/person/{person_id}/holdings">client.person.<a href="./src/openregister/resources/person.py">get_holdings_v1</a>(person_id) -> <a href="./src/openregister/types/person_get_holdings_v1_response.py">PersonGetHoldingsV1Response</a></code>

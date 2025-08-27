@@ -14,8 +14,8 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.person_retrieve_response import PersonRetrieveResponse
-from ..types.person_list_holdings_v1_response import PersonListHoldingsV1Response
+from ..types.person_get_details_v1_response import PersonGetDetailsV1Response
+from ..types.person_get_holdings_v1_response import PersonGetHoldingsV1Response
 
 __all__ = ["PersonResource", "AsyncPersonResource"]
 
@@ -40,7 +40,7 @@ class PersonResource(SyncAPIResource):
         """
         return PersonResourceWithStreamingResponse(self)
 
-    def retrieve(
+    def get_details_v1(
         self,
         person_id: str,
         *,
@@ -50,7 +50,7 @@ class PersonResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PersonRetrieveResponse:
+    ) -> PersonGetDetailsV1Response:
         """
         Get detailed person information
 
@@ -70,10 +70,10 @@ class PersonResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PersonRetrieveResponse,
+            cast_to=PersonGetDetailsV1Response,
         )
 
-    def list_holdings_v1(
+    def get_holdings_v1(
         self,
         person_id: str,
         *,
@@ -83,7 +83,7 @@ class PersonResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PersonListHoldingsV1Response:
+    ) -> PersonGetHoldingsV1Response:
         """
         Get person holdings
 
@@ -103,7 +103,7 @@ class PersonResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PersonListHoldingsV1Response,
+            cast_to=PersonGetHoldingsV1Response,
         )
 
 
@@ -127,7 +127,7 @@ class AsyncPersonResource(AsyncAPIResource):
         """
         return AsyncPersonResourceWithStreamingResponse(self)
 
-    async def retrieve(
+    async def get_details_v1(
         self,
         person_id: str,
         *,
@@ -137,7 +137,7 @@ class AsyncPersonResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PersonRetrieveResponse:
+    ) -> PersonGetDetailsV1Response:
         """
         Get detailed person information
 
@@ -157,10 +157,10 @@ class AsyncPersonResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PersonRetrieveResponse,
+            cast_to=PersonGetDetailsV1Response,
         )
 
-    async def list_holdings_v1(
+    async def get_holdings_v1(
         self,
         person_id: str,
         *,
@@ -170,7 +170,7 @@ class AsyncPersonResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PersonListHoldingsV1Response:
+    ) -> PersonGetHoldingsV1Response:
         """
         Get person holdings
 
@@ -190,7 +190,7 @@ class AsyncPersonResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PersonListHoldingsV1Response,
+            cast_to=PersonGetHoldingsV1Response,
         )
 
 
@@ -198,11 +198,11 @@ class PersonResourceWithRawResponse:
     def __init__(self, person: PersonResource) -> None:
         self._person = person
 
-        self.retrieve = to_raw_response_wrapper(
-            person.retrieve,
+        self.get_details_v1 = to_raw_response_wrapper(
+            person.get_details_v1,
         )
-        self.list_holdings_v1 = to_raw_response_wrapper(
-            person.list_holdings_v1,
+        self.get_holdings_v1 = to_raw_response_wrapper(
+            person.get_holdings_v1,
         )
 
 
@@ -210,11 +210,11 @@ class AsyncPersonResourceWithRawResponse:
     def __init__(self, person: AsyncPersonResource) -> None:
         self._person = person
 
-        self.retrieve = async_to_raw_response_wrapper(
-            person.retrieve,
+        self.get_details_v1 = async_to_raw_response_wrapper(
+            person.get_details_v1,
         )
-        self.list_holdings_v1 = async_to_raw_response_wrapper(
-            person.list_holdings_v1,
+        self.get_holdings_v1 = async_to_raw_response_wrapper(
+            person.get_holdings_v1,
         )
 
 
@@ -222,11 +222,11 @@ class PersonResourceWithStreamingResponse:
     def __init__(self, person: PersonResource) -> None:
         self._person = person
 
-        self.retrieve = to_streamed_response_wrapper(
-            person.retrieve,
+        self.get_details_v1 = to_streamed_response_wrapper(
+            person.get_details_v1,
         )
-        self.list_holdings_v1 = to_streamed_response_wrapper(
-            person.list_holdings_v1,
+        self.get_holdings_v1 = to_streamed_response_wrapper(
+            person.get_holdings_v1,
         )
 
 
@@ -234,9 +234,9 @@ class AsyncPersonResourceWithStreamingResponse:
     def __init__(self, person: AsyncPersonResource) -> None:
         self._person = person
 
-        self.retrieve = async_to_streamed_response_wrapper(
-            person.retrieve,
+        self.get_details_v1 = async_to_streamed_response_wrapper(
+            person.get_details_v1,
         )
-        self.list_holdings_v1 = async_to_streamed_response_wrapper(
-            person.list_holdings_v1,
+        self.get_holdings_v1 = async_to_streamed_response_wrapper(
+            person.get_holdings_v1,
         )
