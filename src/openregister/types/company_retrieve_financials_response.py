@@ -26,16 +26,21 @@ class Report(BaseModel):
     aktiva: ReportAktiva
 
     consolidated: bool
+    """Whether the report is a consolidated report or not."""
 
     passiva: ReportPassiva
 
     report_end_date: datetime
 
     report_id: str
-
-    guv: Optional[ReportGuv] = None
+    """
+    Unique identifier for the financial report. Example:
+    f47ac10b-58cc-4372-a567-0e02b2c3d479
+    """
 
     report_start_date: Optional[datetime] = None
+
+    guv: Optional[ReportGuv] = None
 
 
 class CompanyRetrieveFinancialsResponse(BaseModel):

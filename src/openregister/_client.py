@@ -21,7 +21,7 @@ from ._types import (
 )
 from ._utils import is_given, get_async_library
 from ._version import __version__
-from .resources import search, company, document
+from .resources import person, search, company, document
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import APIStatusError, OpenregisterError
 from ._base_client import (
@@ -48,6 +48,7 @@ class Openregister(SyncAPIClient):
     company: company.CompanyResource
     document: document.DocumentResource
     jobs: jobs.JobsResource
+    person: person.PersonResource
     with_raw_response: OpenregisterWithRawResponse
     with_streaming_response: OpenregisterWithStreamedResponse
 
@@ -109,6 +110,7 @@ class Openregister(SyncAPIClient):
         self.company = company.CompanyResource(self)
         self.document = document.DocumentResource(self)
         self.jobs = jobs.JobsResource(self)
+        self.person = person.PersonResource(self)
         self.with_raw_response = OpenregisterWithRawResponse(self)
         self.with_streaming_response = OpenregisterWithStreamedResponse(self)
 
@@ -222,6 +224,7 @@ class AsyncOpenregister(AsyncAPIClient):
     company: company.AsyncCompanyResource
     document: document.AsyncDocumentResource
     jobs: jobs.AsyncJobsResource
+    person: person.AsyncPersonResource
     with_raw_response: AsyncOpenregisterWithRawResponse
     with_streaming_response: AsyncOpenregisterWithStreamedResponse
 
@@ -283,6 +286,7 @@ class AsyncOpenregister(AsyncAPIClient):
         self.company = company.AsyncCompanyResource(self)
         self.document = document.AsyncDocumentResource(self)
         self.jobs = jobs.AsyncJobsResource(self)
+        self.person = person.AsyncPersonResource(self)
         self.with_raw_response = AsyncOpenregisterWithRawResponse(self)
         self.with_streaming_response = AsyncOpenregisterWithStreamedResponse(self)
 
@@ -397,6 +401,7 @@ class OpenregisterWithRawResponse:
         self.company = company.CompanyResourceWithRawResponse(client.company)
         self.document = document.DocumentResourceWithRawResponse(client.document)
         self.jobs = jobs.JobsResourceWithRawResponse(client.jobs)
+        self.person = person.PersonResourceWithRawResponse(client.person)
 
 
 class AsyncOpenregisterWithRawResponse:
@@ -405,6 +410,7 @@ class AsyncOpenregisterWithRawResponse:
         self.company = company.AsyncCompanyResourceWithRawResponse(client.company)
         self.document = document.AsyncDocumentResourceWithRawResponse(client.document)
         self.jobs = jobs.AsyncJobsResourceWithRawResponse(client.jobs)
+        self.person = person.AsyncPersonResourceWithRawResponse(client.person)
 
 
 class OpenregisterWithStreamedResponse:
@@ -413,6 +419,7 @@ class OpenregisterWithStreamedResponse:
         self.company = company.CompanyResourceWithStreamingResponse(client.company)
         self.document = document.DocumentResourceWithStreamingResponse(client.document)
         self.jobs = jobs.JobsResourceWithStreamingResponse(client.jobs)
+        self.person = person.PersonResourceWithStreamingResponse(client.person)
 
 
 class AsyncOpenregisterWithStreamedResponse:
@@ -421,6 +428,7 @@ class AsyncOpenregisterWithStreamedResponse:
         self.company = company.AsyncCompanyResourceWithStreamingResponse(client.company)
         self.document = document.AsyncDocumentResourceWithStreamingResponse(client.document)
         self.jobs = jobs.AsyncJobsResourceWithStreamingResponse(client.jobs)
+        self.person = person.AsyncPersonResourceWithStreamingResponse(client.person)
 
 
 Client = Openregister
