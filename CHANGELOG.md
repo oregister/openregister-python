@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.1 (2025-08-27)
+
+Full Changelog: [v2.0.0...v2.0.1](https://github.com/oregister/openregister-python/compare/v2.0.0...v2.0.1)
+
+### Features
+
+* **api:** update via SDK Studio ([e07e919](https://github.com/oregister/openregister-python/commit/e07e919df6f9cc55e84966c41fe5e97d6d3d33d8))
+
 ## 2.0.0 (2025-08-27)
 
 Full Changelog: [v1.9.0...v2.0.0](https://github.com/oregister/openregister-python/compare/v1.9.0...v2.0.0)
