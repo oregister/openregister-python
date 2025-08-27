@@ -13,7 +13,7 @@ from .company_register import CompanyRegister
 from .company_legal_form import CompanyLegalForm
 
 __all__ = [
-    "CompanyRetrieveResponse",
+    "CompanyGetDetailsV1Response",
     "Document",
     "Indicator",
     "IndustryCode",
@@ -167,7 +167,7 @@ class Representation(BaseModel):
     natural_person: Optional[RepresentationNaturalPerson] = None
 
 
-class CompanyRetrieveResponse(BaseModel):
+class CompanyGetDetailsV1Response(BaseModel):
     id: str
     """Unique company identifier. Example: DE-HRB-F1103-267645"""
 

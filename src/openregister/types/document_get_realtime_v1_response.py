@@ -5,10 +5,10 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["DocumentFetchResponse"]
+__all__ = ["DocumentGetRealtimeV1Response"]
 
 
-class DocumentFetchResponse(BaseModel):
+class DocumentGetRealtimeV1Response(BaseModel):
     category: Literal[
         "current_printout",
         "chronological_printout",

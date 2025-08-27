@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-__all__ = ["CompanyRetrieveParams"]
+__all__ = ["CompanyGetDetailsV1Params"]
 
 
-class CompanyRetrieveParams(TypedDict, total=False):
+class CompanyGetDetailsV1Params(TypedDict, total=False):
     realtime: bool
     """
     Get the most up-to-date company information directly from the Handelsregister.
