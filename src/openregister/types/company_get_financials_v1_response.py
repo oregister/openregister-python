@@ -7,7 +7,7 @@ from datetime import datetime
 
 from .._models import BaseModel
 
-__all__ = ["CompanyRetrieveFinancialsResponse", "Report", "ReportAktiva", "ReportPassiva", "ReportGuv"]
+__all__ = ["CompanyGetFinancialsV1Response", "Report", "ReportAktiva", "ReportPassiva", "ReportGuv"]
 
 
 class ReportAktiva(BaseModel):
@@ -43,7 +43,7 @@ class Report(BaseModel):
     guv: Optional[ReportGuv] = None
 
 
-class CompanyRetrieveFinancialsResponse(BaseModel):
+class CompanyGetFinancialsV1Response(BaseModel):
     reports: List[Report]
 
 

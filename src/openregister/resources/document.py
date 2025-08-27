@@ -6,7 +6,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import document_fetch_params
+from ..types import document_get_realtime_v1_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -18,8 +18,8 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.document_fetch_response import DocumentFetchResponse
-from ..types.document_document_cached_response import DocumentDocumentCachedResponse
+from ..types.document_get_cached_v1_response import DocumentGetCachedV1Response
+from ..types.document_get_realtime_v1_response import DocumentGetRealtimeV1Response
 
 __all__ = ["DocumentResource", "AsyncDocumentResource"]
 
@@ -44,7 +44,7 @@ class DocumentResource(SyncAPIResource):
         """
         return DocumentResourceWithStreamingResponse(self)
 
-    def document_cached(
+    def get_cached_v1(
         self,
         document_id: str,
         *,
@@ -54,7 +54,7 @@ class DocumentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DocumentDocumentCachedResponse:
+    ) -> DocumentGetCachedV1Response:
         """
         Get document information
 
@@ -74,10 +74,10 @@ class DocumentResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DocumentDocumentCachedResponse,
+            cast_to=DocumentGetCachedV1Response,
         )
 
-    def fetch(
+    def get_realtime_v1(
         self,
         *,
         company_id: str,
@@ -95,7 +95,7 @@ class DocumentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DocumentFetchResponse:
+    ) -> DocumentGetRealtimeV1Response:
         """
         Fetch a document in realtime.
 
@@ -120,10 +120,10 @@ class DocumentResource(SyncAPIResource):
                         "company_id": company_id,
                         "document_category": document_category,
                     },
-                    document_fetch_params.DocumentFetchParams,
+                    document_get_realtime_v1_params.DocumentGetRealtimeV1Params,
                 ),
             ),
-            cast_to=DocumentFetchResponse,
+            cast_to=DocumentGetRealtimeV1Response,
         )
 
 
@@ -147,7 +147,7 @@ class AsyncDocumentResource(AsyncAPIResource):
         """
         return AsyncDocumentResourceWithStreamingResponse(self)
 
-    async def document_cached(
+    async def get_cached_v1(
         self,
         document_id: str,
         *,
@@ -157,7 +157,7 @@ class AsyncDocumentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DocumentDocumentCachedResponse:
+    ) -> DocumentGetCachedV1Response:
         """
         Get document information
 
@@ -177,10 +177,10 @@ class AsyncDocumentResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DocumentDocumentCachedResponse,
+            cast_to=DocumentGetCachedV1Response,
         )
 
-    async def fetch(
+    async def get_realtime_v1(
         self,
         *,
         company_id: str,
@@ -198,7 +198,7 @@ class AsyncDocumentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DocumentFetchResponse:
+    ) -> DocumentGetRealtimeV1Response:
         """
         Fetch a document in realtime.
 
@@ -223,10 +223,10 @@ class AsyncDocumentResource(AsyncAPIResource):
                         "company_id": company_id,
                         "document_category": document_category,
                     },
-                    document_fetch_params.DocumentFetchParams,
+                    document_get_realtime_v1_params.DocumentGetRealtimeV1Params,
                 ),
             ),
-            cast_to=DocumentFetchResponse,
+            cast_to=DocumentGetRealtimeV1Response,
         )
 
 
@@ -234,11 +234,11 @@ class DocumentResourceWithRawResponse:
     def __init__(self, document: DocumentResource) -> None:
         self._document = document
 
-        self.document_cached = to_raw_response_wrapper(
-            document.document_cached,
+        self.get_cached_v1 = to_raw_response_wrapper(
+            document.get_cached_v1,
         )
-        self.fetch = to_raw_response_wrapper(
-            document.fetch,
+        self.get_realtime_v1 = to_raw_response_wrapper(
+            document.get_realtime_v1,
         )
 
 
@@ -246,11 +246,11 @@ class AsyncDocumentResourceWithRawResponse:
     def __init__(self, document: AsyncDocumentResource) -> None:
         self._document = document
 
-        self.document_cached = async_to_raw_response_wrapper(
-            document.document_cached,
+        self.get_cached_v1 = async_to_raw_response_wrapper(
+            document.get_cached_v1,
         )
-        self.fetch = async_to_raw_response_wrapper(
-            document.fetch,
+        self.get_realtime_v1 = async_to_raw_response_wrapper(
+            document.get_realtime_v1,
         )
 
 
@@ -258,11 +258,11 @@ class DocumentResourceWithStreamingResponse:
     def __init__(self, document: DocumentResource) -> None:
         self._document = document
 
-        self.document_cached = to_streamed_response_wrapper(
-            document.document_cached,
+        self.get_cached_v1 = to_streamed_response_wrapper(
+            document.get_cached_v1,
         )
-        self.fetch = to_streamed_response_wrapper(
-            document.fetch,
+        self.get_realtime_v1 = to_streamed_response_wrapper(
+            document.get_realtime_v1,
         )
 
 
@@ -270,9 +270,9 @@ class AsyncDocumentResourceWithStreamingResponse:
     def __init__(self, document: AsyncDocumentResource) -> None:
         self._document = document
 
-        self.document_cached = async_to_streamed_response_wrapper(
-            document.document_cached,
+        self.get_cached_v1 = async_to_streamed_response_wrapper(
+            document.get_cached_v1,
         )
-        self.fetch = async_to_streamed_response_wrapper(
-            document.fetch,
+        self.get_realtime_v1 = async_to_streamed_response_wrapper(
+            document.get_realtime_v1,
         )

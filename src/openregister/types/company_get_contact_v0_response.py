@@ -4,10 +4,10 @@ from typing import Optional
 
 from .._models import BaseModel
 
-__all__ = ["CompanyRetrieveContactResponse"]
+__all__ = ["CompanyGetContactV0Response"]
 
 
-class CompanyRetrieveContactResponse(BaseModel):
+class CompanyGetContactV0Response(BaseModel):
     source_url: str
     """Where the contact information was found. Example: "https://openregister.de" """
 

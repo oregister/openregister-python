@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from typing_extensions import Literal, Required, TypedDict
 
-__all__ = ["DocumentFetchParams"]
+__all__ = ["DocumentGetRealtimeV1Params"]
 
 
-class DocumentFetchParams(TypedDict, total=False):
+class DocumentGetRealtimeV1Params(TypedDict, total=False):
     company_id: Required[str]
 
     document_category: Required[
