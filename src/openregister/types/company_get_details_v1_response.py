@@ -3,6 +3,8 @@
 from typing import List, Optional
 from typing_extensions import Literal
 
+from pydantic import Field as FieldInfo
+
 from .._models import BaseModel
 from .entity_type import EntityType
 from .company_name import CompanyName
@@ -16,7 +18,8 @@ __all__ = [
     "CompanyGetDetailsV1Response",
     "Document",
     "Indicator",
-    "IndustryCode",
+    "IndustryCodes",
+    "IndustryCodesWz2025",
     "Representation",
     "RepresentationLegalPerson",
     "RepresentationNaturalPerson",
@@ -98,8 +101,12 @@ class Indicator(BaseModel):
     """The taxes of that year (in cents)."""
 
 
-class IndustryCode(BaseModel):
+class IndustryCodesWz2025(BaseModel):
     code: str
+
+
+class IndustryCodes(BaseModel):
+    wz2025: List[IndustryCodesWz2025] = FieldInfo(alias="WZ2025")
 
 
 class RepresentationLegalPerson(BaseModel):
@@ -195,7 +202,7 @@ class CompanyGetDetailsV1Response(BaseModel):
     indicators: List[Indicator]
     """Key company indicators like net income, employee count, revenue, etc.."""
 
-    industry_codes: List[IndustryCode]
+    industry_codes: IndustryCodes
     """Industry codes of the company."""
 
     legal_form: CompanyLegalForm
