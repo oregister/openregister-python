@@ -33,7 +33,7 @@ client = Openregister(
 )
 
 response = client.company.get_details_v1(
-    company_id="company_id",
+    company_id="DE-HRB-F1103-267645",
 )
 print(response.id)
 ```
@@ -59,7 +59,7 @@ client = AsyncOpenregister(
 
 async def main() -> None:
     response = await client.company.get_details_v1(
-        company_id="company_id",
+        company_id="DE-HRB-F1103-267645",
     )
     print(response.id)
 
@@ -94,7 +94,7 @@ async def main() -> None:
         http_client=DefaultAioHttpClient(),
     ) as client:
         response = await client.company.get_details_v1(
-            company_id="company_id",
+            company_id="DE-HRB-F1103-267645",
         )
         print(response.id)
 
@@ -146,7 +146,7 @@ client = Openregister()
 
 try:
     client.company.get_details_v1(
-        company_id="DE-HRB",
+        company_id="DE-HRB-F1103-267645",
     )
 except openregister.APIConnectionError as e:
     print("The server could not be reached")
@@ -191,7 +191,7 @@ client = Openregister(
 
 # Or, configure per-request:
 client.with_options(max_retries=5).company.get_details_v1(
-    company_id="DE-HRB",
+    company_id="DE-HRB-F1103-267645",
 )
 ```
 
@@ -216,7 +216,7 @@ client = Openregister(
 
 # Override per-request:
 client.with_options(timeout=5.0).company.get_details_v1(
-    company_id="DE-HRB",
+    company_id="DE-HRB-F1103-267645",
 )
 ```
 
@@ -259,7 +259,7 @@ from openregister import Openregister
 
 client = Openregister()
 response = client.company.with_raw_response.get_details_v1(
-    company_id="DE-HRB",
+    company_id="DE-HRB-F1103-267645",
 )
 print(response.headers.get('X-My-Header'))
 
@@ -279,7 +279,7 @@ To stream the response body, use `.with_streaming_response` instead, which requi
 
 ```python
 with client.company.with_streaming_response.get_details_v1(
-    company_id="DE-HRB",
+    company_id="DE-HRB-F1103-267645",
 ) as response:
     print(response.headers.get("X-My-Header"))
 
