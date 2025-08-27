@@ -11,7 +11,7 @@ from tests.utils import assert_matches_type
 from openregister import Openregister, AsyncOpenregister
 from openregister.types import (
     CompanySearch,
-    SearchFindPersonResponse,
+    SearchFindPersonV1Response,
     SearchLookupCompanyByURLResponse,
     SearchAutocompleteCompaniesV1Response,
 )
@@ -22,7 +22,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestSearch:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_autocomplete_companies_v1(self, client: Openregister) -> None:
         search = client.search.autocomplete_companies_v1(
@@ -30,7 +30,7 @@ class TestSearch:
         )
         assert_matches_type(SearchAutocompleteCompaniesV1Response, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_autocomplete_companies_v1(self, client: Openregister) -> None:
         response = client.search.with_raw_response.autocomplete_companies_v1(
@@ -42,7 +42,7 @@ class TestSearch:
         search = response.parse()
         assert_matches_type(SearchAutocompleteCompaniesV1Response, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_autocomplete_companies_v1(self, client: Openregister) -> None:
         with client.search.with_streaming_response.autocomplete_companies_v1(
@@ -56,13 +56,13 @@ class TestSearch:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_find_companies_v0(self, client: Openregister) -> None:
         search = client.search.find_companies_v0()
         assert_matches_type(CompanySearch, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_find_companies_v0_with_all_params(self, client: Openregister) -> None:
         search = client.search.find_companies_v0(
@@ -78,7 +78,7 @@ class TestSearch:
         )
         assert_matches_type(CompanySearch, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_find_companies_v0(self, client: Openregister) -> None:
         response = client.search.with_raw_response.find_companies_v0()
@@ -88,7 +88,7 @@ class TestSearch:
         search = response.parse()
         assert_matches_type(CompanySearch, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_find_companies_v0(self, client: Openregister) -> None:
         with client.search.with_streaming_response.find_companies_v0() as response:
@@ -100,13 +100,13 @@ class TestSearch:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_find_companies_v1(self, client: Openregister) -> None:
         search = client.search.find_companies_v1()
         assert_matches_type(CompanySearch, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_find_companies_v1_with_all_params(self, client: Openregister) -> None:
         search = client.search.find_companies_v1(
@@ -133,7 +133,7 @@ class TestSearch:
         )
         assert_matches_type(CompanySearch, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_find_companies_v1(self, client: Openregister) -> None:
         response = client.search.with_raw_response.find_companies_v1()
@@ -143,7 +143,7 @@ class TestSearch:
         search = response.parse()
         assert_matches_type(CompanySearch, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_find_companies_v1(self, client: Openregister) -> None:
         with client.search.with_streaming_response.find_companies_v1() as response:
@@ -155,16 +155,16 @@ class TestSearch:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_find_person(self, client: Openregister) -> None:
-        search = client.search.find_person()
-        assert_matches_type(SearchFindPersonResponse, search, path=["response"])
+    def test_method_find_person_v1(self, client: Openregister) -> None:
+        search = client.search.find_person_v1()
+        assert_matches_type(SearchFindPersonV1Response, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_find_person_with_all_params(self, client: Openregister) -> None:
-        search = client.search.find_person(
+    def test_method_find_person_v1_with_all_params(self, client: Openregister) -> None:
+        search = client.search.find_person_v1(
             filters=[
                 {
                     "field": "date_of_birth",
@@ -181,31 +181,31 @@ class TestSearch:
             },
             query={"value": "value"},
         )
-        assert_matches_type(SearchFindPersonResponse, search, path=["response"])
+        assert_matches_type(SearchFindPersonV1Response, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_find_person(self, client: Openregister) -> None:
-        response = client.search.with_raw_response.find_person()
+    def test_raw_response_find_person_v1(self, client: Openregister) -> None:
+        response = client.search.with_raw_response.find_person_v1()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         search = response.parse()
-        assert_matches_type(SearchFindPersonResponse, search, path=["response"])
+        assert_matches_type(SearchFindPersonV1Response, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_find_person(self, client: Openregister) -> None:
-        with client.search.with_streaming_response.find_person() as response:
+    def test_streaming_response_find_person_v1(self, client: Openregister) -> None:
+        with client.search.with_streaming_response.find_person_v1() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             search = response.parse()
-            assert_matches_type(SearchFindPersonResponse, search, path=["response"])
+            assert_matches_type(SearchFindPersonV1Response, search, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_lookup_company_by_url(self, client: Openregister) -> None:
         search = client.search.lookup_company_by_url(
@@ -213,7 +213,7 @@ class TestSearch:
         )
         assert_matches_type(SearchLookupCompanyByURLResponse, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_lookup_company_by_url(self, client: Openregister) -> None:
         response = client.search.with_raw_response.lookup_company_by_url(
@@ -225,7 +225,7 @@ class TestSearch:
         search = response.parse()
         assert_matches_type(SearchLookupCompanyByURLResponse, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_lookup_company_by_url(self, client: Openregister) -> None:
         with client.search.with_streaming_response.lookup_company_by_url(
@@ -245,7 +245,7 @@ class TestAsyncSearch:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_autocomplete_companies_v1(self, async_client: AsyncOpenregister) -> None:
         search = await async_client.search.autocomplete_companies_v1(
@@ -253,7 +253,7 @@ class TestAsyncSearch:
         )
         assert_matches_type(SearchAutocompleteCompaniesV1Response, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_autocomplete_companies_v1(self, async_client: AsyncOpenregister) -> None:
         response = await async_client.search.with_raw_response.autocomplete_companies_v1(
@@ -265,7 +265,7 @@ class TestAsyncSearch:
         search = await response.parse()
         assert_matches_type(SearchAutocompleteCompaniesV1Response, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_autocomplete_companies_v1(self, async_client: AsyncOpenregister) -> None:
         async with async_client.search.with_streaming_response.autocomplete_companies_v1(
@@ -279,13 +279,13 @@ class TestAsyncSearch:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_find_companies_v0(self, async_client: AsyncOpenregister) -> None:
         search = await async_client.search.find_companies_v0()
         assert_matches_type(CompanySearch, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_find_companies_v0_with_all_params(self, async_client: AsyncOpenregister) -> None:
         search = await async_client.search.find_companies_v0(
@@ -301,7 +301,7 @@ class TestAsyncSearch:
         )
         assert_matches_type(CompanySearch, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_find_companies_v0(self, async_client: AsyncOpenregister) -> None:
         response = await async_client.search.with_raw_response.find_companies_v0()
@@ -311,7 +311,7 @@ class TestAsyncSearch:
         search = await response.parse()
         assert_matches_type(CompanySearch, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_find_companies_v0(self, async_client: AsyncOpenregister) -> None:
         async with async_client.search.with_streaming_response.find_companies_v0() as response:
@@ -323,13 +323,13 @@ class TestAsyncSearch:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_find_companies_v1(self, async_client: AsyncOpenregister) -> None:
         search = await async_client.search.find_companies_v1()
         assert_matches_type(CompanySearch, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_find_companies_v1_with_all_params(self, async_client: AsyncOpenregister) -> None:
         search = await async_client.search.find_companies_v1(
@@ -356,7 +356,7 @@ class TestAsyncSearch:
         )
         assert_matches_type(CompanySearch, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_find_companies_v1(self, async_client: AsyncOpenregister) -> None:
         response = await async_client.search.with_raw_response.find_companies_v1()
@@ -366,7 +366,7 @@ class TestAsyncSearch:
         search = await response.parse()
         assert_matches_type(CompanySearch, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_find_companies_v1(self, async_client: AsyncOpenregister) -> None:
         async with async_client.search.with_streaming_response.find_companies_v1() as response:
@@ -378,16 +378,16 @@ class TestAsyncSearch:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_find_person(self, async_client: AsyncOpenregister) -> None:
-        search = await async_client.search.find_person()
-        assert_matches_type(SearchFindPersonResponse, search, path=["response"])
+    async def test_method_find_person_v1(self, async_client: AsyncOpenregister) -> None:
+        search = await async_client.search.find_person_v1()
+        assert_matches_type(SearchFindPersonV1Response, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_find_person_with_all_params(self, async_client: AsyncOpenregister) -> None:
-        search = await async_client.search.find_person(
+    async def test_method_find_person_v1_with_all_params(self, async_client: AsyncOpenregister) -> None:
+        search = await async_client.search.find_person_v1(
             filters=[
                 {
                     "field": "date_of_birth",
@@ -404,31 +404,31 @@ class TestAsyncSearch:
             },
             query={"value": "value"},
         )
-        assert_matches_type(SearchFindPersonResponse, search, path=["response"])
+        assert_matches_type(SearchFindPersonV1Response, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_find_person(self, async_client: AsyncOpenregister) -> None:
-        response = await async_client.search.with_raw_response.find_person()
+    async def test_raw_response_find_person_v1(self, async_client: AsyncOpenregister) -> None:
+        response = await async_client.search.with_raw_response.find_person_v1()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         search = await response.parse()
-        assert_matches_type(SearchFindPersonResponse, search, path=["response"])
+        assert_matches_type(SearchFindPersonV1Response, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_find_person(self, async_client: AsyncOpenregister) -> None:
-        async with async_client.search.with_streaming_response.find_person() as response:
+    async def test_streaming_response_find_person_v1(self, async_client: AsyncOpenregister) -> None:
+        async with async_client.search.with_streaming_response.find_person_v1() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             search = await response.parse()
-            assert_matches_type(SearchFindPersonResponse, search, path=["response"])
+            assert_matches_type(SearchFindPersonV1Response, search, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_lookup_company_by_url(self, async_client: AsyncOpenregister) -> None:
         search = await async_client.search.lookup_company_by_url(
@@ -436,7 +436,7 @@ class TestAsyncSearch:
         )
         assert_matches_type(SearchLookupCompanyByURLResponse, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_lookup_company_by_url(self, async_client: AsyncOpenregister) -> None:
         response = await async_client.search.with_raw_response.lookup_company_by_url(
@@ -448,7 +448,7 @@ class TestAsyncSearch:
         search = await response.parse()
         assert_matches_type(SearchLookupCompanyByURLResponse, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_lookup_company_by_url(self, async_client: AsyncOpenregister) -> None:
         async with async_client.search.with_streaming_response.lookup_company_by_url(

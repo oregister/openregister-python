@@ -4,12 +4,11 @@ from __future__ import annotations
 
 from typing_extensions import Literal, Required, TypedDict
 
-__all__ = ["DocumentCreateParams"]
+__all__ = ["DocumentGetRealtimeV1Params"]
 
 
-class DocumentCreateParams(TypedDict, total=False):
+class DocumentGetRealtimeV1Params(TypedDict, total=False):
     company_id: Required[str]
-    """Unique company identifier. Example: DE-HRB-F1103-267645"""
 
     document_category: Required[
         Literal[

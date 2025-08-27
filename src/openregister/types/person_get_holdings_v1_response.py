@@ -5,7 +5,7 @@ from typing import List, Optional
 from .._models import BaseModel
 from .company_relation_type import CompanyRelationType
 
-__all__ = ["CompanyGetHoldingsV1Response", "Holding"]
+__all__ = ["PersonGetHoldingsV1Response", "Holding"]
 
 
 class Holding(BaseModel):
@@ -37,8 +37,9 @@ class Holding(BaseModel):
     """
 
 
-class CompanyGetHoldingsV1Response(BaseModel):
-    company_id: str
-    """Unique company identifier. Example: DE-HRB-F1103-267645"""
-
+class PersonGetHoldingsV1Response(BaseModel):
     holdings: List[Holding]
+    """Shareholder and limited partner positions of the person."""
+
+    person_id: str
+    """Unique person identifier. Example: cc78ab54-d958-49b8-bae7-2f6c0c308837"""

@@ -1,5 +1,34 @@
 # Changelog
 
+## 2.0.0 (2025-08-27)
+
+Full Changelog: [v1.9.0...v2.0.0](https://github.com/oregister/openregister-python/compare/v1.9.0...v2.0.0)
+
+### Features
+
+* **api:** update via SDK Studio ([5d401f3](https://github.com/oregister/openregister-python/commit/5d401f3fcfa0f6d6299368c8378c0be0743bb61e))
+* **api:** update via SDK Studio ([261d645](https://github.com/oregister/openregister-python/commit/261d645f86335f36508acdce8496c1a1724c671c))
+* **api:** update via SDK Studio ([9b13649](https://github.com/oregister/openregister-python/commit/9b13649467d2af86d3f1b7d50136c2a1cd7b170a))
+* **api:** update via SDK Studio ([9032270](https://github.com/oregister/openregister-python/commit/903227015014375275d75e39fa7bf26e12df913f))
+* **api:** update via SDK Studio ([ce52903](https://github.com/oregister/openregister-python/commit/ce52903f7e700cce88badb9c10eb0e6bc1af2585))
+* **api:** update via SDK Studio ([c81c348](https://github.com/oregister/openregister-python/commit/c81c3488f8cdc47267c44a537677ea7edf205636))
+* **api:** update via SDK Studio ([dc2b269](https://github.com/oregister/openregister-python/commit/dc2b26910c35f2cd508419253b1edd8faf4cafa9))
+
+
+### Bug Fixes
+
+* avoid newer type syntax ([c915b56](https://github.com/oregister/openregister-python/commit/c915b56b77157bb318251453d99db6aff168567e))
+
+
+### Chores
+
+* **internal:** change ci workflow machines ([db54687](https://github.com/oregister/openregister-python/commit/db54687f32f3c3710ab35b07ab85ce9a9c44cf12))
+* **internal:** codegen related update ([5577d7e](https://github.com/oregister/openregister-python/commit/5577d7e156e5b818bd55d4e7b0ca59b116f345ae))
+* **internal:** update comment in script ([c7fa138](https://github.com/oregister/openregister-python/commit/c7fa138dfa34a9a6269e50095420968041a8bbfc))
+* **internal:** update pyright exclude list ([c1711d8](https://github.com/oregister/openregister-python/commit/c1711d867091a65cd9ee0943f83231aa69ab958b))
+* update @stainless-api/prism-cli to v5.15.0 ([520709f](https://github.com/oregister/openregister-python/commit/520709f322b504f2d9a791df88987c85c1432550))
+* update github action ([ee9e48a](https://github.com/oregister/openregister-python/commit/ee9e48aee56d5e602731a640578be89e8db25575))
+
 ## 1.9.0 (2025-08-06)
 
 Full Changelog: [v1.8.0...v1.9.0](https://github.com/oregister/openregister-python/compare/v1.8.0...v1.9.0)

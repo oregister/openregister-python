@@ -10,6 +10,8 @@ __all__ = ["CompanyGetOwnersV1Response", "Owner", "OwnerLegalPerson", "OwnerNatu
 
 
 class OwnerLegalPerson(BaseModel):
+    city: Optional[str] = None
+
     country: str
     """
     Country where the owner is located, in ISO 3166-1 alpha-2 format. Example: "DE"
@@ -18,13 +20,13 @@ class OwnerLegalPerson(BaseModel):
 
     name: str
 
-    city: Optional[str] = None
-
 
 class OwnerNaturalPerson(BaseModel):
     city: str
 
     country: str
+
+    date_of_birth: Optional[str] = None
 
     first_name: str
 
@@ -32,22 +34,8 @@ class OwnerNaturalPerson(BaseModel):
 
     last_name: str
 
-    date_of_birth: Optional[str] = None
-
 
 class Owner(BaseModel):
-    name: str
-    """The name of the shareholder. E.g. "Max Mustermann" or "Max Mustermann GmbH" """
-
-    nominal_share: float
-    """Nominal value of shares in Euro. Example: 100"""
-
-    relation_type: CompanyRelationType
-    """Type of relationship between the entity and the company."""
-
-    type: EntityType
-    """The type of shareholder."""
-
     id: Optional[str] = None
     """
     Unique identifier for the shareholder. For companies: Format matches company_id
@@ -58,11 +46,20 @@ class Owner(BaseModel):
     legal_person: Optional[OwnerLegalPerson] = None
     """Details about the legal person."""
 
+    name: str
+    """The name of the shareholder. E.g. "Max Mustermann" or "Max Mustermann GmbH" """
+
     natural_person: Optional[OwnerNaturalPerson] = None
     """Details about the natural person."""
 
+    nominal_share: float
+    """Nominal value of shares in Euro. Example: 100"""
+
     percentage_share: Optional[float] = None
     """Percentage of company ownership. Example: 5.36 represents 5.36% ownership"""
+
+    relation_type: CompanyRelationType
+    """Type of relationship between the entity and the company."""
 
     start: Optional[str] = None
     """Date when the relation started.
@@ -70,6 +67,9 @@ class Owner(BaseModel):
     Only available for some types of owners. Format: ISO 8601 (YYYY-MM-DD) Example:
     "2022-01-01"
     """
+
+    type: EntityType
+    """The type of shareholder."""
 
 
 class CompanyGetOwnersV1Response(BaseModel):

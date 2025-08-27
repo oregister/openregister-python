@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import httpx
 
-from ..types import company_retrieve_params
+from ..types import company_get_owners_v1_params, company_get_details_v1_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -16,12 +16,11 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.company_retrieve_response import CompanyRetrieveResponse
 from ..types.company_get_owners_v1_response import CompanyGetOwnersV1Response
+from ..types.company_get_contact_v0_response import CompanyGetContactV0Response
+from ..types.company_get_details_v1_response import CompanyGetDetailsV1Response
 from ..types.company_get_holdings_v1_response import CompanyGetHoldingsV1Response
-from ..types.company_retrieve_contact_response import CompanyRetrieveContactResponse
-from ..types.company_list_shareholders_response import CompanyListShareholdersResponse
-from ..types.company_retrieve_financials_response import CompanyRetrieveFinancialsResponse
+from ..types.company_get_financials_v1_response import CompanyGetFinancialsV1Response
 
 __all__ = ["CompanyResource", "AsyncCompanyResource"]
 
@@ -46,32 +45,59 @@ class CompanyResource(SyncAPIResource):
         """
         return CompanyResourceWithStreamingResponse(self)
 
-    def retrieve(
+    def get_contact_v0(
         self,
         company_id: str,
         *,
-        documents: bool | NotGiven = NOT_GIVEN,
-        financials: bool | NotGiven = NOT_GIVEN,
-        history: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CompanyRetrieveResponse:
+    ) -> CompanyGetContactV0Response:
+        """
+        Get company contact information
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not company_id:
+            raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
+        return self._get(
+            f"/v0/company/{company_id}/contact",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CompanyGetContactV0Response,
+        )
+
+    def get_details_v1(
+        self,
+        company_id: str,
+        *,
+        realtime: bool | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> CompanyGetDetailsV1Response:
         """
         Get detailed company information
 
         Args:
-          documents: Include document metadata when set to true. Lists available official documents
-              related to the company.
-
-          financials: Include financial data when set to true. Provides access to financial reports
-              and key financial indicators.
-
-          history: Include historical company data when set to true. This returns past names,
-              addresses, and other changed information.
+          realtime: Get the most up-to-date company information directly from the Handelsregister.
+              When set to true, we fetch the latest data in real-time from the official German
+              commercial register, ensuring you receive the most current company details.
+              Note: Real-time requests take longer but guarantee the freshest data available.
 
           extra_headers: Send extra headers
 
@@ -84,22 +110,48 @@ class CompanyResource(SyncAPIResource):
         if not company_id:
             raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
         return self._get(
-            f"/v0/company/{company_id}",
+            f"/v1/company/{company_id}",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "documents": documents,
-                        "financials": financials,
-                        "history": history,
-                    },
-                    company_retrieve_params.CompanyRetrieveParams,
-                ),
+                query=maybe_transform({"realtime": realtime}, company_get_details_v1_params.CompanyGetDetailsV1Params),
             ),
-            cast_to=CompanyRetrieveResponse,
+            cast_to=CompanyGetDetailsV1Response,
+        )
+
+    def get_financials_v1(
+        self,
+        company_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> CompanyGetFinancialsV1Response:
+        """
+        Get financial reports
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not company_id:
+            raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
+        return self._get(
+            f"/v1/company/{company_id}/financials",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CompanyGetFinancialsV1Response,
         )
 
     def get_holdings_v1(
@@ -139,6 +191,7 @@ class CompanyResource(SyncAPIResource):
         self,
         company_id: str,
         *,
+        realtime: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -150,6 +203,11 @@ class CompanyResource(SyncAPIResource):
         Get company owners
 
         Args:
+          realtime: Get the most up-to-date company information directly from the Handelsregister.
+              When set to true, we fetch the latest data in real-time from the official German
+              commercial register, ensuring you receive the most current company details.
+              Note: Real-time requests take longer but guarantee the freshest data available.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -163,108 +221,13 @@ class CompanyResource(SyncAPIResource):
         return self._get(
             f"/v1/company/{company_id}/owners",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"realtime": realtime}, company_get_owners_v1_params.CompanyGetOwnersV1Params),
             ),
             cast_to=CompanyGetOwnersV1Response,
-        )
-
-    def list_shareholders(
-        self,
-        company_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CompanyListShareholdersResponse:
-        """
-        Get company shareholders
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not company_id:
-            raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
-        return self._get(
-            f"/v0/company/{company_id}/shareholders",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=CompanyListShareholdersResponse,
-        )
-
-    def retrieve_contact(
-        self,
-        company_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CompanyRetrieveContactResponse:
-        """
-        Get company contact information
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not company_id:
-            raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
-        return self._get(
-            f"/v0/company/{company_id}/contact",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=CompanyRetrieveContactResponse,
-        )
-
-    def retrieve_financials(
-        self,
-        company_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CompanyRetrieveFinancialsResponse:
-        """
-        Get financial reports
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not company_id:
-            raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
-        return self._get(
-            f"/v1/company/{company_id}/financials",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=CompanyRetrieveFinancialsResponse,
         )
 
 
@@ -288,32 +251,59 @@ class AsyncCompanyResource(AsyncAPIResource):
         """
         return AsyncCompanyResourceWithStreamingResponse(self)
 
-    async def retrieve(
+    async def get_contact_v0(
         self,
         company_id: str,
         *,
-        documents: bool | NotGiven = NOT_GIVEN,
-        financials: bool | NotGiven = NOT_GIVEN,
-        history: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CompanyRetrieveResponse:
+    ) -> CompanyGetContactV0Response:
+        """
+        Get company contact information
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not company_id:
+            raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
+        return await self._get(
+            f"/v0/company/{company_id}/contact",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CompanyGetContactV0Response,
+        )
+
+    async def get_details_v1(
+        self,
+        company_id: str,
+        *,
+        realtime: bool | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> CompanyGetDetailsV1Response:
         """
         Get detailed company information
 
         Args:
-          documents: Include document metadata when set to true. Lists available official documents
-              related to the company.
-
-          financials: Include financial data when set to true. Provides access to financial reports
-              and key financial indicators.
-
-          history: Include historical company data when set to true. This returns past names,
-              addresses, and other changed information.
+          realtime: Get the most up-to-date company information directly from the Handelsregister.
+              When set to true, we fetch the latest data in real-time from the official German
+              commercial register, ensuring you receive the most current company details.
+              Note: Real-time requests take longer but guarantee the freshest data available.
 
           extra_headers: Send extra headers
 
@@ -326,22 +316,50 @@ class AsyncCompanyResource(AsyncAPIResource):
         if not company_id:
             raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
         return await self._get(
-            f"/v0/company/{company_id}",
+            f"/v1/company/{company_id}",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {
-                        "documents": documents,
-                        "financials": financials,
-                        "history": history,
-                    },
-                    company_retrieve_params.CompanyRetrieveParams,
+                    {"realtime": realtime}, company_get_details_v1_params.CompanyGetDetailsV1Params
                 ),
             ),
-            cast_to=CompanyRetrieveResponse,
+            cast_to=CompanyGetDetailsV1Response,
+        )
+
+    async def get_financials_v1(
+        self,
+        company_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> CompanyGetFinancialsV1Response:
+        """
+        Get financial reports
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not company_id:
+            raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
+        return await self._get(
+            f"/v1/company/{company_id}/financials",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CompanyGetFinancialsV1Response,
         )
 
     async def get_holdings_v1(
@@ -381,6 +399,7 @@ class AsyncCompanyResource(AsyncAPIResource):
         self,
         company_id: str,
         *,
+        realtime: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -392,6 +411,11 @@ class AsyncCompanyResource(AsyncAPIResource):
         Get company owners
 
         Args:
+          realtime: Get the most up-to-date company information directly from the Handelsregister.
+              When set to true, we fetch the latest data in real-time from the official German
+              commercial register, ensuring you receive the most current company details.
+              Note: Real-time requests take longer but guarantee the freshest data available.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -405,108 +429,15 @@ class AsyncCompanyResource(AsyncAPIResource):
         return await self._get(
             f"/v1/company/{company_id}/owners",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"realtime": realtime}, company_get_owners_v1_params.CompanyGetOwnersV1Params
+                ),
             ),
             cast_to=CompanyGetOwnersV1Response,
-        )
-
-    async def list_shareholders(
-        self,
-        company_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CompanyListShareholdersResponse:
-        """
-        Get company shareholders
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not company_id:
-            raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
-        return await self._get(
-            f"/v0/company/{company_id}/shareholders",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=CompanyListShareholdersResponse,
-        )
-
-    async def retrieve_contact(
-        self,
-        company_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CompanyRetrieveContactResponse:
-        """
-        Get company contact information
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not company_id:
-            raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
-        return await self._get(
-            f"/v0/company/{company_id}/contact",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=CompanyRetrieveContactResponse,
-        )
-
-    async def retrieve_financials(
-        self,
-        company_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CompanyRetrieveFinancialsResponse:
-        """
-        Get financial reports
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not company_id:
-            raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
-        return await self._get(
-            f"/v1/company/{company_id}/financials",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=CompanyRetrieveFinancialsResponse,
         )
 
 
@@ -514,8 +445,14 @@ class CompanyResourceWithRawResponse:
     def __init__(self, company: CompanyResource) -> None:
         self._company = company
 
-        self.retrieve = to_raw_response_wrapper(
-            company.retrieve,
+        self.get_contact_v0 = to_raw_response_wrapper(
+            company.get_contact_v0,
+        )
+        self.get_details_v1 = to_raw_response_wrapper(
+            company.get_details_v1,
+        )
+        self.get_financials_v1 = to_raw_response_wrapper(
+            company.get_financials_v1,
         )
         self.get_holdings_v1 = to_raw_response_wrapper(
             company.get_holdings_v1,
@@ -523,23 +460,20 @@ class CompanyResourceWithRawResponse:
         self.get_owners_v1 = to_raw_response_wrapper(
             company.get_owners_v1,
         )
-        self.list_shareholders = to_raw_response_wrapper(
-            company.list_shareholders,
-        )
-        self.retrieve_contact = to_raw_response_wrapper(
-            company.retrieve_contact,
-        )
-        self.retrieve_financials = to_raw_response_wrapper(
-            company.retrieve_financials,
-        )
 
 
 class AsyncCompanyResourceWithRawResponse:
     def __init__(self, company: AsyncCompanyResource) -> None:
         self._company = company
 
-        self.retrieve = async_to_raw_response_wrapper(
-            company.retrieve,
+        self.get_contact_v0 = async_to_raw_response_wrapper(
+            company.get_contact_v0,
+        )
+        self.get_details_v1 = async_to_raw_response_wrapper(
+            company.get_details_v1,
+        )
+        self.get_financials_v1 = async_to_raw_response_wrapper(
+            company.get_financials_v1,
         )
         self.get_holdings_v1 = async_to_raw_response_wrapper(
             company.get_holdings_v1,
@@ -547,23 +481,20 @@ class AsyncCompanyResourceWithRawResponse:
         self.get_owners_v1 = async_to_raw_response_wrapper(
             company.get_owners_v1,
         )
-        self.list_shareholders = async_to_raw_response_wrapper(
-            company.list_shareholders,
-        )
-        self.retrieve_contact = async_to_raw_response_wrapper(
-            company.retrieve_contact,
-        )
-        self.retrieve_financials = async_to_raw_response_wrapper(
-            company.retrieve_financials,
-        )
 
 
 class CompanyResourceWithStreamingResponse:
     def __init__(self, company: CompanyResource) -> None:
         self._company = company
 
-        self.retrieve = to_streamed_response_wrapper(
-            company.retrieve,
+        self.get_contact_v0 = to_streamed_response_wrapper(
+            company.get_contact_v0,
+        )
+        self.get_details_v1 = to_streamed_response_wrapper(
+            company.get_details_v1,
+        )
+        self.get_financials_v1 = to_streamed_response_wrapper(
+            company.get_financials_v1,
         )
         self.get_holdings_v1 = to_streamed_response_wrapper(
             company.get_holdings_v1,
@@ -571,36 +502,24 @@ class CompanyResourceWithStreamingResponse:
         self.get_owners_v1 = to_streamed_response_wrapper(
             company.get_owners_v1,
         )
-        self.list_shareholders = to_streamed_response_wrapper(
-            company.list_shareholders,
-        )
-        self.retrieve_contact = to_streamed_response_wrapper(
-            company.retrieve_contact,
-        )
-        self.retrieve_financials = to_streamed_response_wrapper(
-            company.retrieve_financials,
-        )
 
 
 class AsyncCompanyResourceWithStreamingResponse:
     def __init__(self, company: AsyncCompanyResource) -> None:
         self._company = company
 
-        self.retrieve = async_to_streamed_response_wrapper(
-            company.retrieve,
+        self.get_contact_v0 = async_to_streamed_response_wrapper(
+            company.get_contact_v0,
+        )
+        self.get_details_v1 = async_to_streamed_response_wrapper(
+            company.get_details_v1,
+        )
+        self.get_financials_v1 = async_to_streamed_response_wrapper(
+            company.get_financials_v1,
         )
         self.get_holdings_v1 = async_to_streamed_response_wrapper(
             company.get_holdings_v1,
         )
         self.get_owners_v1 = async_to_streamed_response_wrapper(
             company.get_owners_v1,
-        )
-        self.list_shareholders = async_to_streamed_response_wrapper(
-            company.list_shareholders,
-        )
-        self.retrieve_contact = async_to_streamed_response_wrapper(
-            company.retrieve_contact,
-        )
-        self.retrieve_financials = async_to_streamed_response_wrapper(
-            company.retrieve_financials,
         )

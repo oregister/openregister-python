@@ -16,6 +16,12 @@ class Result(BaseModel):
     company_id: str
     """Unique company identifier. Example: DE-HRB-F1103-267645"""
 
+    country: Optional[str] = None
+    """
+    Country where the company is registered using ISO 3166-1 alpha-2 code. Example:
+    "DE" for Germany
+    """
+
     legal_form: CompanyLegalForm
     """
     Legal form of the company. Example: "gmbh" for Gesellschaft mit beschränkter
@@ -34,13 +40,7 @@ class Result(BaseModel):
     register_type: CompanyRegisterType
     """Type of company register. Example: "HRB" for Commercial Register B"""
 
-    country: Optional[str] = None
-    """
-    Country where the company is registered using ISO 3166-1 alpha-2 code. Example:
-    "DE" for Germany
-    """
-
 
 class SearchAutocompleteCompaniesV1Response(BaseModel):
-    results: Optional[List[Result]] = None
+    results: List[Result]
     """List of companies matching the search criteria."""
