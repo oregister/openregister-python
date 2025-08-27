@@ -28,6 +28,9 @@ class Result(BaseModel):
     active: bool
     """Person status - true if active, false if inactive."""
 
+    city: Optional[str] = None
+    """City of the person. Example: "Berlin" """
+
     date_of_birth: str
     """
     Date of birth of the person. Format: ISO 8601 (YYYY-MM-DD) Example: "1990-01-01"
@@ -35,9 +38,6 @@ class Result(BaseModel):
 
     name: str
     """Name of the person. Example: "Max Mustermann" """
-
-    city: Optional[str] = None
-    """City of the person. Example: "Berlin" """
 
 
 class SearchFindPersonResponse(BaseModel):

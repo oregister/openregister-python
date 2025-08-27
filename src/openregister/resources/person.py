@@ -2,13 +2,9 @@
 
 from __future__ import annotations
 
-from typing_extensions import Literal
-
 import httpx
 
-from ..types import document_fetch_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -18,35 +14,35 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.document_fetch_response import DocumentFetchResponse
-from ..types.document_document_cached_response import DocumentDocumentCachedResponse
+from ..types.person_retrieve_response import PersonRetrieveResponse
+from ..types.person_list_holdings_v1_response import PersonListHoldingsV1Response
 
-__all__ = ["DocumentResource", "AsyncDocumentResource"]
+__all__ = ["PersonResource", "AsyncPersonResource"]
 
 
-class DocumentResource(SyncAPIResource):
+class PersonResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> DocumentResourceWithRawResponse:
+    def with_raw_response(self) -> PersonResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/oregister/openregister-python#accessing-raw-response-data-eg-headers
         """
-        return DocumentResourceWithRawResponse(self)
+        return PersonResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> DocumentResourceWithStreamingResponse:
+    def with_streaming_response(self) -> PersonResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/oregister/openregister-python#with_streaming_response
         """
-        return DocumentResourceWithStreamingResponse(self)
+        return PersonResourceWithStreamingResponse(self)
 
-    def document_cached(
+    def retrieve(
         self,
-        document_id: str,
+        person_id: str,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -54,9 +50,9 @@ class DocumentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DocumentDocumentCachedResponse:
+    ) -> PersonRetrieveResponse:
         """
-        Get document information
+        Get detailed person information
 
         Args:
           extra_headers: Send extra headers
@@ -67,37 +63,29 @@ class DocumentResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not document_id:
-            raise ValueError(f"Expected a non-empty value for `document_id` but received {document_id!r}")
+        if not person_id:
+            raise ValueError(f"Expected a non-empty value for `person_id` but received {person_id!r}")
         return self._get(
-            f"/v1/document/{document_id}",
+            f"/v1/person/{person_id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DocumentDocumentCachedResponse,
+            cast_to=PersonRetrieveResponse,
         )
 
-    def fetch(
+    def list_holdings_v1(
         self,
+        person_id: str,
         *,
-        company_id: str,
-        document_category: Literal[
-            "current_printout",
-            "chronological_printout",
-            "historical_printout",
-            "structured_information",
-            "shareholder_list",
-            "articles_of_association",
-        ],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DocumentFetchResponse:
+    ) -> PersonListHoldingsV1Response:
         """
-        Fetch a document in realtime.
+        Get person holdings
 
         Args:
           extra_headers: Send extra headers
@@ -108,48 +96,40 @@ class DocumentResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not person_id:
+            raise ValueError(f"Expected a non-empty value for `person_id` but received {person_id!r}")
         return self._get(
-            "/v1/document",
+            f"/v1/person/{person_id}/holdings",
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "company_id": company_id,
-                        "document_category": document_category,
-                    },
-                    document_fetch_params.DocumentFetchParams,
-                ),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DocumentFetchResponse,
+            cast_to=PersonListHoldingsV1Response,
         )
 
 
-class AsyncDocumentResource(AsyncAPIResource):
+class AsyncPersonResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncDocumentResourceWithRawResponse:
+    def with_raw_response(self) -> AsyncPersonResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/oregister/openregister-python#accessing-raw-response-data-eg-headers
         """
-        return AsyncDocumentResourceWithRawResponse(self)
+        return AsyncPersonResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncDocumentResourceWithStreamingResponse:
+    def with_streaming_response(self) -> AsyncPersonResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/oregister/openregister-python#with_streaming_response
         """
-        return AsyncDocumentResourceWithStreamingResponse(self)
+        return AsyncPersonResourceWithStreamingResponse(self)
 
-    async def document_cached(
+    async def retrieve(
         self,
-        document_id: str,
+        person_id: str,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -157,9 +137,9 @@ class AsyncDocumentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DocumentDocumentCachedResponse:
+    ) -> PersonRetrieveResponse:
         """
-        Get document information
+        Get detailed person information
 
         Args:
           extra_headers: Send extra headers
@@ -170,37 +150,29 @@ class AsyncDocumentResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not document_id:
-            raise ValueError(f"Expected a non-empty value for `document_id` but received {document_id!r}")
+        if not person_id:
+            raise ValueError(f"Expected a non-empty value for `person_id` but received {person_id!r}")
         return await self._get(
-            f"/v1/document/{document_id}",
+            f"/v1/person/{person_id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DocumentDocumentCachedResponse,
+            cast_to=PersonRetrieveResponse,
         )
 
-    async def fetch(
+    async def list_holdings_v1(
         self,
+        person_id: str,
         *,
-        company_id: str,
-        document_category: Literal[
-            "current_printout",
-            "chronological_printout",
-            "historical_printout",
-            "structured_information",
-            "shareholder_list",
-            "articles_of_association",
-        ],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DocumentFetchResponse:
+    ) -> PersonListHoldingsV1Response:
         """
-        Fetch a document in realtime.
+        Get person holdings
 
         Args:
           extra_headers: Send extra headers
@@ -211,68 +183,60 @@ class AsyncDocumentResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not person_id:
+            raise ValueError(f"Expected a non-empty value for `person_id` but received {person_id!r}")
         return await self._get(
-            "/v1/document",
+            f"/v1/person/{person_id}/holdings",
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "company_id": company_id,
-                        "document_category": document_category,
-                    },
-                    document_fetch_params.DocumentFetchParams,
-                ),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DocumentFetchResponse,
+            cast_to=PersonListHoldingsV1Response,
         )
 
 
-class DocumentResourceWithRawResponse:
-    def __init__(self, document: DocumentResource) -> None:
-        self._document = document
+class PersonResourceWithRawResponse:
+    def __init__(self, person: PersonResource) -> None:
+        self._person = person
 
-        self.document_cached = to_raw_response_wrapper(
-            document.document_cached,
+        self.retrieve = to_raw_response_wrapper(
+            person.retrieve,
         )
-        self.fetch = to_raw_response_wrapper(
-            document.fetch,
-        )
-
-
-class AsyncDocumentResourceWithRawResponse:
-    def __init__(self, document: AsyncDocumentResource) -> None:
-        self._document = document
-
-        self.document_cached = async_to_raw_response_wrapper(
-            document.document_cached,
-        )
-        self.fetch = async_to_raw_response_wrapper(
-            document.fetch,
+        self.list_holdings_v1 = to_raw_response_wrapper(
+            person.list_holdings_v1,
         )
 
 
-class DocumentResourceWithStreamingResponse:
-    def __init__(self, document: DocumentResource) -> None:
-        self._document = document
+class AsyncPersonResourceWithRawResponse:
+    def __init__(self, person: AsyncPersonResource) -> None:
+        self._person = person
 
-        self.document_cached = to_streamed_response_wrapper(
-            document.document_cached,
+        self.retrieve = async_to_raw_response_wrapper(
+            person.retrieve,
         )
-        self.fetch = to_streamed_response_wrapper(
-            document.fetch,
+        self.list_holdings_v1 = async_to_raw_response_wrapper(
+            person.list_holdings_v1,
         )
 
 
-class AsyncDocumentResourceWithStreamingResponse:
-    def __init__(self, document: AsyncDocumentResource) -> None:
-        self._document = document
+class PersonResourceWithStreamingResponse:
+    def __init__(self, person: PersonResource) -> None:
+        self._person = person
 
-        self.document_cached = async_to_streamed_response_wrapper(
-            document.document_cached,
+        self.retrieve = to_streamed_response_wrapper(
+            person.retrieve,
         )
-        self.fetch = async_to_streamed_response_wrapper(
-            document.fetch,
+        self.list_holdings_v1 = to_streamed_response_wrapper(
+            person.list_holdings_v1,
+        )
+
+
+class AsyncPersonResourceWithStreamingResponse:
+    def __init__(self, person: AsyncPersonResource) -> None:
+        self._person = person
+
+        self.retrieve = async_to_streamed_response_wrapper(
+            person.retrieve,
+        )
+        self.list_holdings_v1 = async_to_streamed_response_wrapper(
+            person.list_holdings_v1,
         )

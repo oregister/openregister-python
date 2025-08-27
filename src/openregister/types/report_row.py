@@ -12,10 +12,10 @@ __all__ = ["ReportRow"]
 class ReportRow(BaseModel):
     children: List["ReportRow"]
 
+    current_value: Optional[int] = None
+
     formatted_name: str
 
     name: str
-
-    current_value: Optional[int] = None
 
     previous_value: Optional[int] = None

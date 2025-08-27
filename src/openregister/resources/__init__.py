@@ -8,6 +8,14 @@ from .jobs import (
     JobsResourceWithStreamingResponse,
     AsyncJobsResourceWithStreamingResponse,
 )
+from .person import (
+    PersonResource,
+    AsyncPersonResource,
+    PersonResourceWithRawResponse,
+    AsyncPersonResourceWithRawResponse,
+    PersonResourceWithStreamingResponse,
+    AsyncPersonResourceWithStreamingResponse,
+)
 from .search import (
     SearchResource,
     AsyncSearchResource,
@@ -58,4 +66,10 @@ __all__ = [
     "AsyncJobsResourceWithRawResponse",
     "JobsResourceWithStreamingResponse",
     "AsyncJobsResourceWithStreamingResponse",
+    "PersonResource",
+    "AsyncPersonResource",
+    "PersonResourceWithRawResponse",
+    "AsyncPersonResourceWithRawResponse",
+    "PersonResourceWithStreamingResponse",
+    "AsyncPersonResourceWithStreamingResponse",
 ]
