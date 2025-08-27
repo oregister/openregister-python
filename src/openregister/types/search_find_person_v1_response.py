@@ -4,7 +4,7 @@ from typing import List, Optional
 
 from .._models import BaseModel
 
-__all__ = ["SearchFindPersonResponse", "Pagination", "Result"]
+__all__ = ["SearchFindPersonV1Response", "Pagination", "Result"]
 
 
 class Pagination(BaseModel):
@@ -40,7 +40,7 @@ class Result(BaseModel):
     """Name of the person. Example: "Max Mustermann" """
 
 
-class SearchFindPersonResponse(BaseModel):
+class SearchFindPersonV1Response(BaseModel):
     pagination: Pagination
 
     results: List[Result]

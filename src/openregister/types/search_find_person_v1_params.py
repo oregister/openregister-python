@@ -5,10 +5,10 @@ from __future__ import annotations
 from typing import List, Iterable
 from typing_extensions import Literal, Required, TypedDict
 
-__all__ = ["SearchFindPersonParams", "Filter", "Pagination", "Query"]
+__all__ = ["SearchFindPersonV1Params", "Filter", "Pagination", "Query"]
 
 
-class SearchFindPersonParams(TypedDict, total=False):
+class SearchFindPersonV1Params(TypedDict, total=False):
     filters: Iterable[Filter]
     """Filters to filter people."""
 
