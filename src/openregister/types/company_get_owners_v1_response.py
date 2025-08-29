@@ -6,7 +6,7 @@ from .._models import BaseModel
 from .entity_type import EntityType
 from .company_relation_type import CompanyRelationType
 
-__all__ = ["CompanyGetOwnersV1Response", "Owner", "OwnerLegalPerson", "OwnerNaturalPerson"]
+__all__ = ["CompanyGetOwnersV1Response", "Owner", "OwnerLegalPerson", "OwnerNaturalPerson", "Source"]
 
 
 class OwnerLegalPerson(BaseModel):
@@ -72,8 +72,19 @@ class Owner(BaseModel):
     """The type of shareholder."""
 
 
+class Source(BaseModel):
+    document_url: str
+    """Url of the source document.
+
+    In the form of a presigned url accessible for 30 minutes.
+    """
+
+
 class CompanyGetOwnersV1Response(BaseModel):
     company_id: str
     """Unique company identifier. Example: DE-HRB-F1103-267645"""
 
     owners: List[Owner]
+
+    sources: List[Source]
+    """Sources of the company owners data."""

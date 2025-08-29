@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from typing import List, Optional
-from datetime import datetime
 
 from .._models import BaseModel
 
@@ -30,7 +29,7 @@ class Report(BaseModel):
 
     passiva: ReportPassiva
 
-    report_end_date: datetime
+    report_end_date: str
 
     report_id: str
     """
@@ -38,7 +37,7 @@ class Report(BaseModel):
     f47ac10b-58cc-4372-a567-0e02b2c3d479
     """
 
-    report_start_date: Optional[datetime] = None
+    report_start_date: Optional[str] = None
 
     guv: Optional[ReportGuv] = None
 
