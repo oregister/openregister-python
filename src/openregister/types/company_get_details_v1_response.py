@@ -23,6 +23,7 @@ __all__ = [
     "Representation",
     "RepresentationLegalPerson",
     "RepresentationNaturalPerson",
+    "Source",
 ]
 
 
@@ -174,6 +175,14 @@ class Representation(BaseModel):
     natural_person: Optional[RepresentationNaturalPerson] = None
 
 
+class Source(BaseModel):
+    document_url: str
+    """Url of the source document.
+
+    In the form of a presigned url accessible for 30 minutes.
+    """
+
+
 class CompanyGetDetailsV1Response(BaseModel):
     id: str
     """Unique company identifier. Example: DE-HRB-F1103-267645"""
@@ -237,6 +246,9 @@ class CompanyGetDetailsV1Response(BaseModel):
     List of individuals or entities authorized to represent the company. Includes
     directors, officers, and authorized signatories.
     """
+
+    sources: List[Source]
+    """Sources of the company data."""
 
     status: Literal["active", "inactive", "liquidation"]
     """Current status of the company:
