@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.3 (2025-08-30)
+
+Full Changelog: [v2.0.2...v2.0.3](https://github.com/oregister/openregister-python/compare/v2.0.2...v2.0.3)
+
+### Chores
+
+* **internal:** add Sequence related utils ([b806f7f](https://github.com/oregister/openregister-python/commit/b806f7fc451e6619b76c45a89a282fd62fa2f979))
+
 ## 2.0.2 (2025-08-29)
 
 Full Changelog: [v2.0.1...v2.0.2](https://github.com/oregister/openregister-python/compare/v2.0.1...v2.0.2)
