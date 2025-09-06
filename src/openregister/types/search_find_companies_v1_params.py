@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable
+from typing import Iterable
 from typing_extensions import Literal, Required, TypedDict
+
+from .._types import SequenceNotStr
 
 __all__ = ["SearchFindCompaniesV1Params", "Filter", "Location", "Pagination", "Query"]
 
@@ -54,7 +56,7 @@ class Filter(TypedDict, total=False):
         ]
     ]
 
-    keywords: List[str]
+    keywords: SequenceNotStr[str]
 
     max: str
 
@@ -62,7 +64,7 @@ class Filter(TypedDict, total=False):
 
     value: str
 
-    values: List[str]
+    values: SequenceNotStr[str]
 
 
 class Location(TypedDict, total=False):
