@@ -44,9 +44,9 @@ from .search_autocomplete_companies_v1_response import (
 # This ensures that, when building the deferred (due to cyclical references) model schema,
 # Pydantic can resolve the necessary references.
 # See: https://github.com/pydantic/pydantic/issues/11250 for more context.
-if _compat.PYDANTIC_V2:
-    report_row.ReportRow.model_rebuild(_parent_namespace_depth=0)
-    company_get_financials_v1_response.CompanyGetFinancialsV1Response.model_rebuild(_parent_namespace_depth=0)
-else:
+if _compat.PYDANTIC_V1:
     report_row.ReportRow.update_forward_refs()  # type: ignore
     company_get_financials_v1_response.CompanyGetFinancialsV1Response.update_forward_refs()  # type: ignore
+else:
+    report_row.ReportRow.model_rebuild(_parent_namespace_depth=0)
+    company_get_financials_v1_response.CompanyGetFinancialsV1Response.model_rebuild(_parent_namespace_depth=0)

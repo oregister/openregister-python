@@ -1,5 +1,21 @@
 # Changelog
 
+## 2.0.3 (2025-09-16)
+
+Full Changelog: [v2.0.2...v2.0.3](https://github.com/oregister/openregister-python/compare/v2.0.2...v2.0.3)
+
+### Features
+
+* improve future compat with pydantic v3 ([f9c8857](https://github.com/oregister/openregister-python/commit/f9c8857b8a7d3ec739c721ec1b86cf3ff7e99327))
+* **types:** replace List[str] with SequenceNotStr in params ([a26f258](https://github.com/oregister/openregister-python/commit/a26f258aaf652f9e261cf1120d29707c4825a5c4))
+
+
+### Chores
+
+* **internal:** add Sequence related utils ([b806f7f](https://github.com/oregister/openregister-python/commit/b806f7fc451e6619b76c45a89a282fd62fa2f979))
+* **internal:** move mypy configurations to `pyproject.toml` file ([58cda42](https://github.com/oregister/openregister-python/commit/58cda426d8992da9ffefee2d699a339fbe3dd244))
+* **tests:** simplify `get_platform` test ([9e03245](https://github.com/oregister/openregister-python/commit/9e0324599f45b2ae3c77d8a960ad595876c99fad))
+
 ## 2.0.2 (2025-08-29)
 
 Full Changelog: [v2.0.1...v2.0.2](https://github.com/oregister/openregister-python/compare/v2.0.1...v2.0.2)

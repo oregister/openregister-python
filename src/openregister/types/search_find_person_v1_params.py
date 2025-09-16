@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable
+from typing import Iterable
 from typing_extensions import Literal, Required, TypedDict
+
+from .._types import SequenceNotStr
 
 __all__ = ["SearchFindPersonV1Params", "Filter", "Pagination", "Query"]
 
@@ -22,7 +24,7 @@ class SearchFindPersonV1Params(TypedDict, total=False):
 class Filter(TypedDict, total=False):
     field: Required[Literal["date_of_birth", "city", "active"]]
 
-    keywords: List[str]
+    keywords: SequenceNotStr[str]
 
     max: str
 
@@ -30,7 +32,7 @@ class Filter(TypedDict, total=False):
 
     value: str
 
-    values: List[str]
+    values: SequenceNotStr[str]
 
 
 class Pagination(TypedDict, total=False):
