@@ -15,7 +15,7 @@ from ..types import (
     search_lookup_company_by_url_params,
     search_autocomplete_companies_v1_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -65,7 +65,7 @@ class SearchResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SearchAutocompleteCompaniesV1Response:
         """
         Autocomplete company search
@@ -99,21 +99,21 @@ class SearchResource(SyncAPIResource):
     def find_companies_v0(
         self,
         *,
-        active: bool | NotGiven = NOT_GIVEN,
-        incorporation_date: str | NotGiven = NOT_GIVEN,
-        legal_form: CompanyLegalForm | NotGiven = NOT_GIVEN,
-        page: int | NotGiven = NOT_GIVEN,
-        per_page: int | NotGiven = NOT_GIVEN,
-        query: str | NotGiven = NOT_GIVEN,
-        register_court: str | NotGiven = NOT_GIVEN,
-        register_number: str | NotGiven = NOT_GIVEN,
-        register_type: CompanyRegisterType | NotGiven = NOT_GIVEN,
+        active: bool | Omit = omit,
+        incorporation_date: str | Omit = omit,
+        legal_form: CompanyLegalForm | Omit = omit,
+        page: int | Omit = omit,
+        per_page: int | Omit = omit,
+        query: str | Omit = omit,
+        register_court: str | Omit = omit,
+        register_number: str | Omit = omit,
+        register_type: CompanyRegisterType | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CompanySearch:
         """Search for companies
 
@@ -179,16 +179,16 @@ class SearchResource(SyncAPIResource):
     def find_companies_v1(
         self,
         *,
-        filters: Iterable[search_find_companies_v1_params.Filter] | NotGiven = NOT_GIVEN,
-        location: search_find_companies_v1_params.Location | NotGiven = NOT_GIVEN,
-        pagination: search_find_companies_v1_params.Pagination | NotGiven = NOT_GIVEN,
-        query: search_find_companies_v1_params.Query | NotGiven = NOT_GIVEN,
+        filters: Iterable[search_find_companies_v1_params.Filter] | Omit = omit,
+        location: search_find_companies_v1_params.Location | Omit = omit,
+        pagination: search_find_companies_v1_params.Pagination | Omit = omit,
+        query: search_find_companies_v1_params.Query | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CompanySearch:
         """
         Search for companies
@@ -230,15 +230,15 @@ class SearchResource(SyncAPIResource):
     def find_person_v1(
         self,
         *,
-        filters: Iterable[search_find_person_v1_params.Filter] | NotGiven = NOT_GIVEN,
-        pagination: search_find_person_v1_params.Pagination | NotGiven = NOT_GIVEN,
-        query: search_find_person_v1_params.Query | NotGiven = NOT_GIVEN,
+        filters: Iterable[search_find_person_v1_params.Filter] | Omit = omit,
+        pagination: search_find_person_v1_params.Pagination | Omit = omit,
+        query: search_find_person_v1_params.Query | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SearchFindPersonV1Response:
         """
         Search for people
@@ -283,7 +283,7 @@ class SearchResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SearchLookupCompanyByURLResponse:
         """Find company by website URL
 
@@ -342,7 +342,7 @@ class AsyncSearchResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SearchAutocompleteCompaniesV1Response:
         """
         Autocomplete company search
@@ -376,21 +376,21 @@ class AsyncSearchResource(AsyncAPIResource):
     async def find_companies_v0(
         self,
         *,
-        active: bool | NotGiven = NOT_GIVEN,
-        incorporation_date: str | NotGiven = NOT_GIVEN,
-        legal_form: CompanyLegalForm | NotGiven = NOT_GIVEN,
-        page: int | NotGiven = NOT_GIVEN,
-        per_page: int | NotGiven = NOT_GIVEN,
-        query: str | NotGiven = NOT_GIVEN,
-        register_court: str | NotGiven = NOT_GIVEN,
-        register_number: str | NotGiven = NOT_GIVEN,
-        register_type: CompanyRegisterType | NotGiven = NOT_GIVEN,
+        active: bool | Omit = omit,
+        incorporation_date: str | Omit = omit,
+        legal_form: CompanyLegalForm | Omit = omit,
+        page: int | Omit = omit,
+        per_page: int | Omit = omit,
+        query: str | Omit = omit,
+        register_court: str | Omit = omit,
+        register_number: str | Omit = omit,
+        register_type: CompanyRegisterType | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CompanySearch:
         """Search for companies
 
@@ -456,16 +456,16 @@ class AsyncSearchResource(AsyncAPIResource):
     async def find_companies_v1(
         self,
         *,
-        filters: Iterable[search_find_companies_v1_params.Filter] | NotGiven = NOT_GIVEN,
-        location: search_find_companies_v1_params.Location | NotGiven = NOT_GIVEN,
-        pagination: search_find_companies_v1_params.Pagination | NotGiven = NOT_GIVEN,
-        query: search_find_companies_v1_params.Query | NotGiven = NOT_GIVEN,
+        filters: Iterable[search_find_companies_v1_params.Filter] | Omit = omit,
+        location: search_find_companies_v1_params.Location | Omit = omit,
+        pagination: search_find_companies_v1_params.Pagination | Omit = omit,
+        query: search_find_companies_v1_params.Query | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CompanySearch:
         """
         Search for companies
@@ -507,15 +507,15 @@ class AsyncSearchResource(AsyncAPIResource):
     async def find_person_v1(
         self,
         *,
-        filters: Iterable[search_find_person_v1_params.Filter] | NotGiven = NOT_GIVEN,
-        pagination: search_find_person_v1_params.Pagination | NotGiven = NOT_GIVEN,
-        query: search_find_person_v1_params.Query | NotGiven = NOT_GIVEN,
+        filters: Iterable[search_find_person_v1_params.Filter] | Omit = omit,
+        pagination: search_find_person_v1_params.Pagination | Omit = omit,
+        query: search_find_person_v1_params.Query | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SearchFindPersonV1Response:
         """
         Search for people
@@ -560,7 +560,7 @@ class AsyncSearchResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SearchLookupCompanyByURLResponse:
         """Find company by website URL
 
