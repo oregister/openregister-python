@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.0.4 (2025-09-20)
+
+Full Changelog: [v2.0.3...v2.0.4](https://github.com/oregister/openregister-python/compare/v2.0.3...v2.0.4)
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([b9f2864](https://github.com/oregister/openregister-python/commit/b9f286485c71c1ff6e373b4680a7b59f8339bff2))
+* **internal:** update pydantic dependency ([843ceae](https://github.com/oregister/openregister-python/commit/843ceae88a724c05047e0f08d92a2541a965c63a))
+* **types:** change optional parameter type from NotGiven to Omit ([bcde93c](https://github.com/oregister/openregister-python/commit/bcde93caa39bcfbe3d894fd747c2cf763e21b1c0))
+
 ## 2.0.3 (2025-09-16)
 
 Full Changelog: [v2.0.2...v2.0.3](https://github.com/oregister/openregister-python/compare/v2.0.2...v2.0.3)
