@@ -8,6 +8,9 @@ __all__ = ["CompanyGetDetailsV1Params"]
 
 
 class CompanyGetDetailsV1Params(TypedDict, total=False):
+    export: bool
+    """Setting this to true will return the company without sources."""
+
     realtime: bool
     """
     Get the most up-to-date company information directly from the Handelsregister.
