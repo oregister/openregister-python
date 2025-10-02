@@ -82,6 +82,7 @@ class CompanyResource(SyncAPIResource):
         self,
         company_id: str,
         *,
+        export: bool | Omit = omit,
         realtime: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -94,6 +95,8 @@ class CompanyResource(SyncAPIResource):
         Get detailed company information
 
         Args:
+          export: Setting this to true will return the company without sources.
+
           realtime: Get the most up-to-date company information directly from the Handelsregister.
               When set to true, we fetch the latest data in real-time from the official German
               commercial register, ensuring you receive the most current company details.
@@ -116,7 +119,13 @@ class CompanyResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"realtime": realtime}, company_get_details_v1_params.CompanyGetDetailsV1Params),
+                query=maybe_transform(
+                    {
+                        "export": export,
+                        "realtime": realtime,
+                    },
+                    company_get_details_v1_params.CompanyGetDetailsV1Params,
+                ),
             ),
             cast_to=CompanyGetDetailsV1Response,
         )
@@ -191,6 +200,7 @@ class CompanyResource(SyncAPIResource):
         self,
         company_id: str,
         *,
+        export: bool | Omit = omit,
         realtime: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -203,6 +213,9 @@ class CompanyResource(SyncAPIResource):
         Get company owners
 
         Args:
+          export: Setting this to true will return the owners of the company if they exist but
+              will skip processing the documents in case they weren't processed yet.
+
           realtime: Get the most up-to-date company information directly from the Handelsregister.
               When set to true, we fetch the latest data in real-time from the official German
               commercial register, ensuring you receive the most current company details.
@@ -225,7 +238,13 @@ class CompanyResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"realtime": realtime}, company_get_owners_v1_params.CompanyGetOwnersV1Params),
+                query=maybe_transform(
+                    {
+                        "export": export,
+                        "realtime": realtime,
+                    },
+                    company_get_owners_v1_params.CompanyGetOwnersV1Params,
+                ),
             ),
             cast_to=CompanyGetOwnersV1Response,
         )
@@ -288,6 +307,7 @@ class AsyncCompanyResource(AsyncAPIResource):
         self,
         company_id: str,
         *,
+        export: bool | Omit = omit,
         realtime: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -300,6 +320,8 @@ class AsyncCompanyResource(AsyncAPIResource):
         Get detailed company information
 
         Args:
+          export: Setting this to true will return the company without sources.
+
           realtime: Get the most up-to-date company information directly from the Handelsregister.
               When set to true, we fetch the latest data in real-time from the official German
               commercial register, ensuring you receive the most current company details.
@@ -323,7 +345,11 @@ class AsyncCompanyResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"realtime": realtime}, company_get_details_v1_params.CompanyGetDetailsV1Params
+                    {
+                        "export": export,
+                        "realtime": realtime,
+                    },
+                    company_get_details_v1_params.CompanyGetDetailsV1Params,
                 ),
             ),
             cast_to=CompanyGetDetailsV1Response,
@@ -399,6 +425,7 @@ class AsyncCompanyResource(AsyncAPIResource):
         self,
         company_id: str,
         *,
+        export: bool | Omit = omit,
         realtime: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -411,6 +438,9 @@ class AsyncCompanyResource(AsyncAPIResource):
         Get company owners
 
         Args:
+          export: Setting this to true will return the owners of the company if they exist but
+              will skip processing the documents in case they weren't processed yet.
+
           realtime: Get the most up-to-date company information directly from the Handelsregister.
               When set to true, we fetch the latest data in real-time from the official German
               commercial register, ensuring you receive the most current company details.
@@ -434,7 +464,11 @@ class AsyncCompanyResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"realtime": realtime}, company_get_owners_v1_params.CompanyGetOwnersV1Params
+                    {
+                        "export": export,
+                        "realtime": realtime,
+                    },
+                    company_get_owners_v1_params.CompanyGetOwnersV1Params,
                 ),
             ),
             cast_to=CompanyGetOwnersV1Response,

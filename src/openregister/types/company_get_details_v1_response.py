@@ -16,6 +16,8 @@ from .company_legal_form import CompanyLegalForm
 
 __all__ = [
     "CompanyGetDetailsV1Response",
+    "Contact",
+    "ContactSocialMedia",
     "Document",
     "Indicator",
     "IndustryCodes",
@@ -25,6 +27,36 @@ __all__ = [
     "RepresentationNaturalPerson",
     "Source",
 ]
+
+
+class ContactSocialMedia(BaseModel):
+    facebook: Optional[str] = None
+
+    github: Optional[str] = None
+
+    instagram: Optional[str] = None
+
+    linkedin: Optional[str] = None
+
+    tiktok: Optional[str] = None
+
+    twitter: Optional[str] = None
+
+    xing: Optional[str] = None
+
+    youtube: Optional[str] = None
+
+
+class Contact(BaseModel):
+    social_media: ContactSocialMedia
+
+    website_url: str
+
+    email: Optional[str] = None
+
+    phone: Optional[str] = None
+
+    vat_id: Optional[str] = None
 
 
 class Document(BaseModel):
@@ -198,6 +230,9 @@ class CompanyGetDetailsV1Response(BaseModel):
 
     capitals: List[Optional[CompanyCapital]]
     """Historical capital changes. Shows how the company capital changed over time."""
+
+    contact: Optional[Contact] = None
+    """Contact information of the company."""
 
     documents: List[Document]
     """Available official documents related to the company."""
