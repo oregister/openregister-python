@@ -2,101 +2,31 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional
+from typing import List, Optional
 
 from .._models import BaseModel
 
-__all__ = [
-    "CompanyGetFinancialsV1Response",
-    "Merged",
-    "MergedAktiva",
-    "MergedAktivaRow",
-    "MergedPassiva",
-    "MergedPassivaRow",
-    "MergedGuv",
-    "MergedGuvRow",
-    "Report",
-    "ReportAktiva",
-    "ReportPassiva",
-    "ReportGuv",
-]
-
-
-class MergedAktivaRow(BaseModel):
-    children: List[object]
-
-    formatted_name: str
-
-    name: str
-
-    values: Dict[str, int]
-    """Report end date to value mapping (ISO date string as key)"""
-
-
-class MergedAktiva(BaseModel):
-    rows: List[MergedAktivaRow]
-
-
-class MergedPassivaRow(BaseModel):
-    children: List[object]
-
-    formatted_name: str
-
-    name: str
-
-    values: Dict[str, int]
-    """Report end date to value mapping (ISO date string as key)"""
-
-
-class MergedPassiva(BaseModel):
-    rows: List[MergedPassivaRow]
-
-
-class MergedGuvRow(BaseModel):
-    children: List[object]
-
-    formatted_name: str
-
-    name: str
-
-    values: Dict[str, int]
-    """Report end date to value mapping (ISO date string as key)"""
-
-
-class MergedGuv(BaseModel):
-    rows: List[MergedGuvRow]
+__all__ = ["CompanyGetFinancialsV1Response", "Merged", "Report"]
 
 
 class Merged(BaseModel):
-    aktiva: MergedAktiva
+    aktiva: "MergedReportTable"
     """Report table with data merged across multiple report periods"""
 
-    passiva: MergedPassiva
+    passiva: "MergedReportTable"
     """Report table with data merged across multiple report periods"""
 
-    guv: Optional[MergedGuv] = None
+    guv: Optional["MergedReportTable"] = None
     """Report table with data merged across multiple report periods"""
-
-
-class ReportAktiva(BaseModel):
-    rows: List["ReportRow"]
-
-
-class ReportPassiva(BaseModel):
-    rows: List["ReportRow"]
-
-
-class ReportGuv(BaseModel):
-    rows: List["ReportRow"]
 
 
 class Report(BaseModel):
-    aktiva: ReportAktiva
+    aktiva: "ReportTable"
 
     consolidated: bool
     """Whether the report is a consolidated report or not."""
 
-    passiva: ReportPassiva
+    passiva: "ReportTable"
 
     report_end_date: str
 
@@ -108,7 +38,7 @@ class Report(BaseModel):
 
     report_start_date: Optional[str] = None
 
-    guv: Optional[ReportGuv] = None
+    guv: Optional["ReportTable"] = None
 
 
 class CompanyGetFinancialsV1Response(BaseModel):
@@ -118,4 +48,5 @@ class CompanyGetFinancialsV1Response(BaseModel):
     reports: List[Report]
 
 
-from .report_row import ReportRow
+from .report_table import ReportTable
+from .merged_report_table import MergedReportTable
