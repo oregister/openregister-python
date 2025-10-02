@@ -8,6 +8,12 @@ __all__ = ["CompanyGetOwnersV1Params"]
 
 
 class CompanyGetOwnersV1Params(TypedDict, total=False):
+    export: bool
+    """
+    Setting this to true will return the owners of the company if they exist but
+    will skip processing the documents in case they weren't processed yet.
+    """
+
     realtime: bool
     """
     Get the most up-to-date company information directly from the Handelsregister.

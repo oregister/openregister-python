@@ -78,6 +78,7 @@ class TestCompany:
     def test_method_get_details_v1_with_all_params(self, client: Openregister) -> None:
         company = client.company.get_details_v1(
             company_id="company_id",
+            export=True,
             realtime=True,
         )
         assert_matches_type(CompanyGetDetailsV1Response, company, path=["response"])
@@ -213,6 +214,7 @@ class TestCompany:
     def test_method_get_owners_v1_with_all_params(self, client: Openregister) -> None:
         company = client.company.get_owners_v1(
             company_id="company_id",
+            export=True,
             realtime=True,
         )
         assert_matches_type(CompanyGetOwnersV1Response, company, path=["response"])
@@ -312,6 +314,7 @@ class TestAsyncCompany:
     async def test_method_get_details_v1_with_all_params(self, async_client: AsyncOpenregister) -> None:
         company = await async_client.company.get_details_v1(
             company_id="company_id",
+            export=True,
             realtime=True,
         )
         assert_matches_type(CompanyGetDetailsV1Response, company, path=["response"])
@@ -447,6 +450,7 @@ class TestAsyncCompany:
     async def test_method_get_owners_v1_with_all_params(self, async_client: AsyncOpenregister) -> None:
         company = await async_client.company.get_owners_v1(
             company_id="company_id",
+            export=True,
             realtime=True,
         )
         assert_matches_type(CompanyGetOwnersV1Response, company, path=["response"])

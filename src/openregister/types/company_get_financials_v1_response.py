@@ -6,28 +6,27 @@ from typing import List, Optional
 
 from .._models import BaseModel
 
-__all__ = ["CompanyGetFinancialsV1Response", "Report", "ReportAktiva", "ReportPassiva", "ReportGuv"]
+__all__ = ["CompanyGetFinancialsV1Response", "Merged", "Report"]
 
 
-class ReportAktiva(BaseModel):
-    rows: List["ReportRow"]
+class Merged(BaseModel):
+    aktiva: "MergedReportTable"
+    """Report table with data merged across multiple report periods"""
 
+    passiva: "MergedReportTable"
+    """Report table with data merged across multiple report periods"""
 
-class ReportPassiva(BaseModel):
-    rows: List["ReportRow"]
-
-
-class ReportGuv(BaseModel):
-    rows: List["ReportRow"]
+    guv: Optional["MergedReportTable"] = None
+    """Report table with data merged across multiple report periods"""
 
 
 class Report(BaseModel):
-    aktiva: ReportAktiva
+    aktiva: "ReportTable"
 
     consolidated: bool
     """Whether the report is a consolidated report or not."""
 
-    passiva: ReportPassiva
+    passiva: "ReportTable"
 
     report_end_date: str
 
@@ -39,11 +38,15 @@ class Report(BaseModel):
 
     report_start_date: Optional[str] = None
 
-    guv: Optional[ReportGuv] = None
+    guv: Optional["ReportTable"] = None
 
 
 class CompanyGetFinancialsV1Response(BaseModel):
+    merged: Optional[Merged] = None
+    """All report periods merged into a single view"""
+
     reports: List[Report]
 
 
-from .report_row import ReportRow
+from .report_table import ReportTable
+from .merged_report_table import MergedReportTable

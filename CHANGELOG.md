@@ -1,5 +1,25 @@
 # Changelog
 
+## 2.1.0 (2025-10-02)
+
+Full Changelog: [v2.0.3...v2.1.0](https://github.com/oregister/openregister-python/compare/v2.0.3...v2.1.0)
+
+### Features
+
+* **api:** add contact information ([e6de0a0](https://github.com/oregister/openregister-python/commit/e6de0a0090adeb46fc81af314c859afcb3fb418e))
+
+
+### Bug Fixes
+
+* **api:** merged reports ([8ea7720](https://github.com/oregister/openregister-python/commit/8ea77203c1b0c077ee93a9ec2177d63ef1c1f980))
+
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([b9f2864](https://github.com/oregister/openregister-python/commit/b9f286485c71c1ff6e373b4680a7b59f8339bff2))
+* **internal:** update pydantic dependency ([843ceae](https://github.com/oregister/openregister-python/commit/843ceae88a724c05047e0f08d92a2541a965c63a))
+* **types:** change optional parameter type from NotGiven to Omit ([bcde93c](https://github.com/oregister/openregister-python/commit/bcde93caa39bcfbe3d894fd747c2cf763e21b1c0))
+
 ## 2.0.3 (2025-09-16)
 
 Full Changelog: [v2.0.2...v2.0.3](https://github.com/oregister/openregister-python/compare/v2.0.2...v2.0.3)

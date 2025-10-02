@@ -2,17 +2,20 @@
 
 from __future__ import annotations
 
-from . import report_row, company_get_financials_v1_response
+from . import report_row, report_table, merged_report_row, merged_report_table, company_get_financials_v1_response
 from .. import _compat
 from .report_row import ReportRow as ReportRow
 from .entity_type import EntityType as EntityType
 from .company_name import CompanyName as CompanyName
+from .report_table import ReportTable as ReportTable
 from .company_search import CompanySearch as CompanySearch
 from .company_address import CompanyAddress as CompanyAddress
 from .company_capital import CompanyCapital as CompanyCapital
 from .company_purpose import CompanyPurpose as CompanyPurpose
 from .company_register import CompanyRegister as CompanyRegister
+from .merged_report_row import MergedReportRow as MergedReportRow
 from .company_legal_form import CompanyLegalForm as CompanyLegalForm
+from .merged_report_table import MergedReportTable as MergedReportTable
 from .company_register_type import CompanyRegisterType as CompanyRegisterType
 from .company_relation_type import CompanyRelationType as CompanyRelationType
 from .company_get_owners_v1_params import CompanyGetOwnersV1Params as CompanyGetOwnersV1Params
@@ -45,8 +48,14 @@ from .search_autocomplete_companies_v1_response import (
 # Pydantic can resolve the necessary references.
 # See: https://github.com/pydantic/pydantic/issues/11250 for more context.
 if _compat.PYDANTIC_V1:
+    merged_report_row.MergedReportRow.update_forward_refs()  # type: ignore
+    merged_report_table.MergedReportTable.update_forward_refs()  # type: ignore
     report_row.ReportRow.update_forward_refs()  # type: ignore
+    report_table.ReportTable.update_forward_refs()  # type: ignore
     company_get_financials_v1_response.CompanyGetFinancialsV1Response.update_forward_refs()  # type: ignore
 else:
+    merged_report_row.MergedReportRow.model_rebuild(_parent_namespace_depth=0)
+    merged_report_table.MergedReportTable.model_rebuild(_parent_namespace_depth=0)
     report_row.ReportRow.model_rebuild(_parent_namespace_depth=0)
+    report_table.ReportTable.model_rebuild(_parent_namespace_depth=0)
     company_get_financials_v1_response.CompanyGetFinancialsV1Response.model_rebuild(_parent_namespace_depth=0)
