@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.1.1 (2025-10-11)
+
+Full Changelog: [v2.1.0...v2.1.1](https://github.com/oregister/openregister-python/compare/v2.1.0...v2.1.1)
+
+### Chores
+
+* **internal:** detect missing future annotations with ruff ([9cf1eae](https://github.com/oregister/openregister-python/commit/9cf1eaef736ab58602791ae341dc9f1a0e31fd8f))
+
 ## 2.1.0 (2025-10-02)
 
 Full Changelog: [v2.0.3...v2.1.0](https://github.com/oregister/openregister-python/compare/v2.0.3...v2.1.0)
