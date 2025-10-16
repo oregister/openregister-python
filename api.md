@@ -42,6 +42,7 @@ from openregister.types import (
     CompanyGetFinancialsV1Response,
     CompanyGetHoldingsV1Response,
     CompanyGetOwnersV1Response,
+    CompanyGetUbosV1Response,
 )
 ```
 
@@ -52,6 +53,7 @@ Methods:
 - <code title="get /v1/company/{company_id}/financials">client.company.<a href="./src/openregister/resources/company.py">get_financials_v1</a>(company_id) -> <a href="./src/openregister/types/company_get_financials_v1_response.py">CompanyGetFinancialsV1Response</a></code>
 - <code title="get /v1/company/{company_id}/holdings">client.company.<a href="./src/openregister/resources/company.py">get_holdings_v1</a>(company_id) -> <a href="./src/openregister/types/company_get_holdings_v1_response.py">CompanyGetHoldingsV1Response</a></code>
 - <code title="get /v1/company/{company_id}/owners">client.company.<a href="./src/openregister/resources/company.py">get_owners_v1</a>(company_id, \*\*<a href="src/openregister/types/company_get_owners_v1_params.py">params</a>) -> <a href="./src/openregister/types/company_get_owners_v1_response.py">CompanyGetOwnersV1Response</a></code>
+- <code title="get /v1/company/{company_id}/ubo">client.company.<a href="./src/openregister/resources/company.py">get_ubos_v1</a>(company_id) -> <a href="./src/openregister/types/company_get_ubos_v1_response.py">CompanyGetUbosV1Response</a></code>
 
 # Document
 
