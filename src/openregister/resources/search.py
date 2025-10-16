@@ -7,10 +7,7 @@ from typing import Iterable
 import httpx
 
 from ..types import (
-    CompanyLegalForm,
-    CompanyRegisterType,
     search_find_person_v1_params,
-    search_find_companies_v0_params,
     search_find_companies_v1_params,
     search_lookup_company_by_url_params,
     search_autocomplete_companies_v1_params,
@@ -27,8 +24,6 @@ from .._response import (
 )
 from .._base_client import make_request_options
 from ..types.company_search import CompanySearch
-from ..types.company_legal_form import CompanyLegalForm
-from ..types.company_register_type import CompanyRegisterType
 from ..types.search_find_person_v1_response import SearchFindPersonV1Response
 from ..types.search_lookup_company_by_url_response import SearchLookupCompanyByURLResponse
 from ..types.search_autocomplete_companies_v1_response import SearchAutocompleteCompaniesV1Response
@@ -94,86 +89,6 @@ class SearchResource(SyncAPIResource):
                 ),
             ),
             cast_to=SearchAutocompleteCompaniesV1Response,
-        )
-
-    def find_companies_v0(
-        self,
-        *,
-        active: bool | Omit = omit,
-        incorporation_date: str | Omit = omit,
-        legal_form: CompanyLegalForm | Omit = omit,
-        page: int | Omit = omit,
-        per_page: int | Omit = omit,
-        query: str | Omit = omit,
-        register_court: str | Omit = omit,
-        register_number: str | Omit = omit,
-        register_type: CompanyRegisterType | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CompanySearch:
-        """Search for companies
-
-        Args:
-          active: Filter for active or inactive companies.
-
-        Set to true for active companies only,
-              false for inactive only.
-
-          incorporation_date:
-              Date of incorporation of the company. Format: ISO 8601 (YYYY-MM-DD) Example:
-              "2022-01-01"
-
-          legal_form: Legal form of the company. Example: "gmbh" for "Gesellschaft mit beschränkter
-              Haftung"
-
-          page: Page number for pagination.
-
-          per_page: Number of results per page (max 50).
-
-          query: Text search query to find companies by name. Example: "Descartes Technologies
-              UG"
-
-          register_court: Court where the company is registered. Example: "Berlin (Charlottenburg)"
-
-          register_number: Company register number for exact matching. Example: "230633"
-
-          register_type: Type of register to filter results. Example: "HRB" (Commercial Register B)
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/v0/search/company",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "active": active,
-                        "incorporation_date": incorporation_date,
-                        "legal_form": legal_form,
-                        "page": page,
-                        "per_page": per_page,
-                        "query": query,
-                        "register_court": register_court,
-                        "register_number": register_number,
-                        "register_type": register_type,
-                    },
-                    search_find_companies_v0_params.SearchFindCompaniesV0Params,
-                ),
-            ),
-            cast_to=CompanySearch,
         )
 
     def find_companies_v1(
@@ -373,86 +288,6 @@ class AsyncSearchResource(AsyncAPIResource):
             cast_to=SearchAutocompleteCompaniesV1Response,
         )
 
-    async def find_companies_v0(
-        self,
-        *,
-        active: bool | Omit = omit,
-        incorporation_date: str | Omit = omit,
-        legal_form: CompanyLegalForm | Omit = omit,
-        page: int | Omit = omit,
-        per_page: int | Omit = omit,
-        query: str | Omit = omit,
-        register_court: str | Omit = omit,
-        register_number: str | Omit = omit,
-        register_type: CompanyRegisterType | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CompanySearch:
-        """Search for companies
-
-        Args:
-          active: Filter for active or inactive companies.
-
-        Set to true for active companies only,
-              false for inactive only.
-
-          incorporation_date:
-              Date of incorporation of the company. Format: ISO 8601 (YYYY-MM-DD) Example:
-              "2022-01-01"
-
-          legal_form: Legal form of the company. Example: "gmbh" for "Gesellschaft mit beschränkter
-              Haftung"
-
-          page: Page number for pagination.
-
-          per_page: Number of results per page (max 50).
-
-          query: Text search query to find companies by name. Example: "Descartes Technologies
-              UG"
-
-          register_court: Court where the company is registered. Example: "Berlin (Charlottenburg)"
-
-          register_number: Company register number for exact matching. Example: "230633"
-
-          register_type: Type of register to filter results. Example: "HRB" (Commercial Register B)
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/v0/search/company",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "active": active,
-                        "incorporation_date": incorporation_date,
-                        "legal_form": legal_form,
-                        "page": page,
-                        "per_page": per_page,
-                        "query": query,
-                        "register_court": register_court,
-                        "register_number": register_number,
-                        "register_type": register_type,
-                    },
-                    search_find_companies_v0_params.SearchFindCompaniesV0Params,
-                ),
-            ),
-            cast_to=CompanySearch,
-        )
-
     async def find_companies_v1(
         self,
         *,
@@ -599,9 +434,6 @@ class SearchResourceWithRawResponse:
         self.autocomplete_companies_v1 = to_raw_response_wrapper(
             search.autocomplete_companies_v1,
         )
-        self.find_companies_v0 = to_raw_response_wrapper(
-            search.find_companies_v0,
-        )
         self.find_companies_v1 = to_raw_response_wrapper(
             search.find_companies_v1,
         )
@@ -619,9 +451,6 @@ class AsyncSearchResourceWithRawResponse:
 
         self.autocomplete_companies_v1 = async_to_raw_response_wrapper(
             search.autocomplete_companies_v1,
-        )
-        self.find_companies_v0 = async_to_raw_response_wrapper(
-            search.find_companies_v0,
         )
         self.find_companies_v1 = async_to_raw_response_wrapper(
             search.find_companies_v1,
@@ -641,9 +470,6 @@ class SearchResourceWithStreamingResponse:
         self.autocomplete_companies_v1 = to_streamed_response_wrapper(
             search.autocomplete_companies_v1,
         )
-        self.find_companies_v0 = to_streamed_response_wrapper(
-            search.find_companies_v0,
-        )
         self.find_companies_v1 = to_streamed_response_wrapper(
             search.find_companies_v1,
         )
@@ -661,9 +487,6 @@ class AsyncSearchResourceWithStreamingResponse:
 
         self.autocomplete_companies_v1 = async_to_streamed_response_wrapper(
             search.autocomplete_companies_v1,
-        )
-        self.find_companies_v0 = async_to_streamed_response_wrapper(
-            search.find_companies_v0,
         )
         self.find_companies_v1 = async_to_streamed_response_wrapper(
             search.find_companies_v1,

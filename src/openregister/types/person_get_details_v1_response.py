@@ -17,16 +17,16 @@ class ManagementPosition(BaseModel):
     role: str
     """Role of the person in the company. Example: "DIRECTOR" """
 
+    start_date: str
+    """
+    Date when the person started the management position. Format: ISO 8601
+    (YYYY-MM-DD) Example: "2022-01-01"
+    """
+
     end_date: Optional[str] = None
     """
     Date when the person ended the management position. Format: ISO 8601
     (YYYY-MM-DD) Example: "2023-01-01"
-    """
-
-    start_date: Optional[str] = None
-    """
-    Date when the person started the management position. Format: ISO 8601
-    (YYYY-MM-DD) Example: "2022-01-01"
     """
 
 
