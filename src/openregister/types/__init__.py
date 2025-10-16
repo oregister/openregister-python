@@ -19,6 +19,7 @@ from .merged_report_table import MergedReportTable as MergedReportTable
 from .company_register_type import CompanyRegisterType as CompanyRegisterType
 from .company_relation_type import CompanyRelationType as CompanyRelationType
 from .company_get_owners_v1_params import CompanyGetOwnersV1Params as CompanyGetOwnersV1Params
+from .company_get_ubos_v1_response import CompanyGetUbosV1Response as CompanyGetUbosV1Response
 from .search_find_person_v1_params import SearchFindPersonV1Params as SearchFindPersonV1Params
 from .company_get_details_v1_params import CompanyGetDetailsV1Params as CompanyGetDetailsV1Params
 from .company_get_owners_v1_response import CompanyGetOwnersV1Response as CompanyGetOwnersV1Response
