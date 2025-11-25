@@ -1,5 +1,31 @@
 # Changelog
 
+## 2.2.0 (2025-11-22)
+
+Full Changelog: [v2.1.0...v2.2.0](https://github.com/oregister/openregister-python/compare/v2.1.0...v2.2.0)
+
+### Features
+
+* **api:** manual updates ([f107d15](https://github.com/oregister/openregister-python/commit/f107d158125427489a971407d273a1708a89aca9))
+* **api:** manual updates ([8384197](https://github.com/oregister/openregister-python/commit/838419707fd3ca4902d60f8d1cdad7512b782bfb))
+
+
+### Bug Fixes
+
+* **client:** close streams without requiring full consumption ([7f40099](https://github.com/oregister/openregister-python/commit/7f40099357b2d03da08a78b59138deac4a1fd1d5))
+* compat with Python 3.14 ([d67c71e](https://github.com/oregister/openregister-python/commit/d67c71ec567dd379440760aa7c4fb2b7ceec73bc))
+* **compat:** update signatures of `model_dump` and `model_dump_json` for Pydantic v1 ([396883e](https://github.com/oregister/openregister-python/commit/396883e7a3f1f369c40d4588780eb7421cbfeac1))
+
+
+### Chores
+
+* add Python 3.14 classifier and testing ([b447b14](https://github.com/oregister/openregister-python/commit/b447b145a261b56b5bd4c58cca96b405d5052261))
+* bump `httpx-aiohttp` version to 0.1.9 ([ae5a654](https://github.com/oregister/openregister-python/commit/ae5a654b9dd074e447d1c2ae2403be9d95b78f93))
+* **internal/tests:** avoid race condition with implicit client cleanup ([6e59ab8](https://github.com/oregister/openregister-python/commit/6e59ab80766a10856eb4daa94a11967332bcaf75))
+* **internal:** detect missing future annotations with ruff ([9cf1eae](https://github.com/oregister/openregister-python/commit/9cf1eaef736ab58602791ae341dc9f1a0e31fd8f))
+* **internal:** grammar fix (it's -&gt; its) ([bf06331](https://github.com/oregister/openregister-python/commit/bf0633157ecd498c2eb5d81087a3a6b10beb2ef6))
+* **package:** drop Python 3.8 support ([32ed4ca](https://github.com/oregister/openregister-python/commit/32ed4ca3462c941c2068c953f72273457146fc7b))
+
 ## 2.1.0 (2025-10-02)
 
 Full Changelog: [v2.0.3...v2.1.0](https://github.com/oregister/openregister-python/compare/v2.0.3...v2.1.0)
