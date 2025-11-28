@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.2.1 (2025-11-28)
+
+Full Changelog: [v2.2.0...v2.2.1](https://github.com/oregister/openregister-python/compare/v2.2.0...v2.2.1)
+
+### Bug Fixes
+
+* ensure streams are always closed ([7f85ea5](https://github.com/oregister/openregister-python/commit/7f85ea5fd98ed4735ea637ecabb216c828d659b8))
+
+
+### Chores
+
+* **deps:** mypy 1.18.1 has a regression, pin to 1.17 ([95f5cfc](https://github.com/oregister/openregister-python/commit/95f5cfc63d1cffaf9f6273bb572e11cc0229ad11))
+
 ## 2.2.0 (2025-11-22)
 
 Full Changelog: [v2.1.0...v2.2.0](https://github.com/oregister/openregister-python/compare/v2.1.0...v2.2.0)
