@@ -83,6 +83,7 @@ pip install openregister-sdk[aiohttp]
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
 
 ```python
+import os
 import asyncio
 from openregister import DefaultAioHttpClient
 from openregister import AsyncOpenregister
@@ -90,7 +91,7 @@ from openregister import AsyncOpenregister
 
 async def main() -> None:
     async with AsyncOpenregister(
-        api_key="My API Key",
+        api_key=os.environ.get("OPENREGISTER_API_KEY"),  # This is the default and can be omitted
         http_client=DefaultAioHttpClient(),
     ) as client:
         response = await client.company.get_details_v1(
