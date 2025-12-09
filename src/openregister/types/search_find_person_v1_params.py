@@ -36,6 +36,8 @@ class Filter(TypedDict, total=False):
 
 
 class Pagination(TypedDict, total=False):
+    """Pagination parameters."""
+
     page: int
     """Page number to return."""
 
@@ -44,5 +46,7 @@ class Pagination(TypedDict, total=False):
 
 
 class Query(TypedDict, total=False):
+    """Search query to filter people."""
+
     value: Required[str]
     """Search query to filter people."""

@@ -10,6 +10,8 @@ __all__ = ["MergedReportTable"]
 
 
 class MergedReportTable(BaseModel):
+    """Report table with data merged across multiple report periods"""
+
     rows: List["MergedReportRow"]
 
 

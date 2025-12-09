@@ -38,6 +38,8 @@ class Holding(BaseModel):
 
 
 class CompanyGetHoldingsV1Response(BaseModel):
+    """Companies this entity owns or has invested in."""
+
     company_id: str
     """Unique company identifier. Example: DE-HRB-F1103-267645"""
 

@@ -68,6 +68,8 @@ class Filter(TypedDict, total=False):
 
 
 class Location(TypedDict, total=False):
+    """Location to filter companies."""
+
     latitude: Required[float]
     """Latitude to filter on."""
 
@@ -79,6 +81,8 @@ class Location(TypedDict, total=False):
 
 
 class Pagination(TypedDict, total=False):
+    """Pagination parameters."""
+
     page: int
     """Page number to return."""
 
@@ -87,5 +91,7 @@ class Pagination(TypedDict, total=False):
 
 
 class Query(TypedDict, total=False):
+    """Search query to filter companies."""
+
     value: Required[str]
     """Search query to filter companies."""

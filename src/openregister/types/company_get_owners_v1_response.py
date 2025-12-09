@@ -10,6 +10,8 @@ __all__ = ["CompanyGetOwnersV1Response", "Owner", "OwnerLegalPerson", "OwnerNatu
 
 
 class OwnerLegalPerson(BaseModel):
+    """Details about the legal person."""
+
     city: Optional[str] = None
 
     country: str
@@ -22,6 +24,8 @@ class OwnerLegalPerson(BaseModel):
 
 
 class OwnerNaturalPerson(BaseModel):
+    """Details about the natural person."""
+
     city: str
 
     country: str
