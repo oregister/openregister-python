@@ -48,6 +48,8 @@ class ContactSocialMedia(BaseModel):
 
 
 class Contact(BaseModel):
+    """Contact information of the company."""
+
     social_media: ContactSocialMedia
 
     website_url: str
@@ -85,6 +87,13 @@ class Document(BaseModel):
 
 
 class Indicator(BaseModel):
+    """
+    The indicators of the company for a given year.
+    Values of the indicator are given in the smallest currency unit (cents).
+    Example: 2099 represents €20.99 for monetary values
+    For non-monetary values (e.g., employees), the actual number.
+    """
+
     balance_sheet_total: Optional[int] = None
     """The balance sheet total of that year (in cents)."""
 
@@ -135,10 +144,14 @@ class Indicator(BaseModel):
 
 
 class IndustryCodesWz2025(BaseModel):
+    """Industry codes from WZ 2025."""
+
     code: str
 
 
 class IndustryCodes(BaseModel):
+    """Industry codes of the company."""
+
     wz2025: List[IndustryCodesWz2025] = FieldInfo(alias="WZ2025")
 
 

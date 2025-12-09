@@ -38,6 +38,8 @@ class Holding(BaseModel):
 
 
 class PersonGetHoldingsV1Response(BaseModel):
+    """Companies this entity owns or has invested in."""
+
     holdings: List[Holding]
     """Shareholder and limited partner positions of the person."""
 

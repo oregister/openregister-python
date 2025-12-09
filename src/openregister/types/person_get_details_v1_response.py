@@ -8,6 +8,8 @@ __all__ = ["PersonGetDetailsV1Response", "ManagementPosition"]
 
 
 class ManagementPosition(BaseModel):
+    """All current and past management positions of the person."""
+
     company_name: str
     """Name of the company. Example: "Descartes Technologies GmbH" """
 
