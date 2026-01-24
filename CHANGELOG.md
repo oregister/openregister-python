@@ -1,5 +1,39 @@
 # Changelog
 
+## 2.3.0 (2026-01-24)
+
+Full Changelog: [v2.2.0...v2.3.0](https://github.com/oregister/openregister-python/compare/v2.2.0...v2.3.0)
+
+### Features
+
+* **client:** add support for binary request streaming ([6183e0b](https://github.com/oregister/openregister-python/commit/6183e0bbaef8e431fc3fb4f53e0d6faf863eec35))
+
+
+### Bug Fixes
+
+* ensure streams are always closed ([7f85ea5](https://github.com/oregister/openregister-python/commit/7f85ea5fd98ed4735ea637ecabb216c828d659b8))
+* **types:** allow pyright to infer TypedDict types within SequenceNotStr ([34ae2ce](https://github.com/oregister/openregister-python/commit/34ae2ceb1f20470ae2c63090ea62a21c8da3ad68))
+* use async_to_httpx_files in patch method ([74330b0](https://github.com/oregister/openregister-python/commit/74330b03407211e4131dbaff1d81339533930247))
+
+
+### Chores
+
+* add missing docstrings ([d245a38](https://github.com/oregister/openregister-python/commit/d245a382f57c6a44141a1e20aac64dbc236ca532))
+* **ci:** upgrade `actions/github-script` ([bace3b7](https://github.com/oregister/openregister-python/commit/bace3b7a63f89951b8d8938507dd54edb973abd7))
+* **deps:** mypy 1.18.1 has a regression, pin to 1.17 ([95f5cfc](https://github.com/oregister/openregister-python/commit/95f5cfc63d1cffaf9f6273bb572e11cc0229ad11))
+* **docs:** use environment variables for authentication in code snippets ([0215d19](https://github.com/oregister/openregister-python/commit/0215d1980cc9ab77d5e34e0250657fc2d71ea1fc))
+* **internal:** add `--fix` argument to lint script ([7b78f42](https://github.com/oregister/openregister-python/commit/7b78f42187777c26ddc5d32435075a0cdfa92d09))
+* **internal:** add missing files argument to base client ([42842cb](https://github.com/oregister/openregister-python/commit/42842cb64f87eadce9b53a3f9c419232a2cb6669))
+* **internal:** codegen related update ([d134c9a](https://github.com/oregister/openregister-python/commit/d134c9a96d0f35891b4d9f167435c17156fd4dbe))
+* **internal:** update `actions/checkout` version ([4bd7c8e](https://github.com/oregister/openregister-python/commit/4bd7c8e1705aa39d70ba2762b3891f8c77855006))
+* speedup initial import ([8123b1f](https://github.com/oregister/openregister-python/commit/8123b1f95a1b68e3253f0ff018d839e70e0975c6))
+* update lockfile ([76d9210](https://github.com/oregister/openregister-python/commit/76d9210837cab647b31632a92a401c8d675c18ae))
+
+
+### Documentation
+
+* prominently feature MCP server setup in root SDK readmes ([dd8660a](https://github.com/oregister/openregister-python/commit/dd8660a576462b8a34d663deab9081475b9788d7))
+
 ## 2.2.0 (2025-11-22)
 
 Full Changelog: [v2.1.0...v2.2.0](https://github.com/oregister/openregister-python/compare/v2.1.0...v2.2.0)
