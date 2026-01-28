@@ -10,6 +10,8 @@ __all__ = ["MergedReportRow"]
 
 
 class MergedReportRow(BaseModel):
+    """Report row with values from multiple report periods"""
+
     children: List["MergedReportRow"]
 
     formatted_name: str

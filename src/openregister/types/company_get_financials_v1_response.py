@@ -10,6 +10,8 @@ __all__ = ["CompanyGetFinancialsV1Response", "Merged", "Report"]
 
 
 class Merged(BaseModel):
+    """All report periods merged into a single view"""
+
     aktiva: "MergedReportTable"
     """Report table with data merged across multiple report periods"""
 

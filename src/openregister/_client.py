@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import os
-from typing import Any, Mapping
+from typing import TYPE_CHECKING, Any, Mapping
 from typing_extensions import Self, override
 
 import httpx
@@ -20,8 +20,8 @@ from ._types import (
     not_given,
 )
 from ._utils import is_given, get_async_library
+from ._compat import cached_property
 from ._version import __version__
-from .resources import person, search, company, document
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import APIStatusError, OpenregisterError
 from ._base_client import (
@@ -29,6 +29,13 @@ from ._base_client import (
     SyncAPIClient,
     AsyncAPIClient,
 )
+
+if TYPE_CHECKING:
+    from .resources import person, search, company, document
+    from .resources.person import PersonResource, AsyncPersonResource
+    from .resources.search import SearchResource, AsyncSearchResource
+    from .resources.company import CompanyResource, AsyncCompanyResource
+    from .resources.document import DocumentResource, AsyncDocumentResource
 
 __all__ = [
     "Timeout",
@@ -43,13 +50,6 @@ __all__ = [
 
 
 class Openregister(SyncAPIClient):
-    search: search.SearchResource
-    company: company.CompanyResource
-    document: document.DocumentResource
-    person: person.PersonResource
-    with_raw_response: OpenregisterWithRawResponse
-    with_streaming_response: OpenregisterWithStreamedResponse
-
     # client options
     api_key: str
 
@@ -104,12 +104,37 @@ class Openregister(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.search = search.SearchResource(self)
-        self.company = company.CompanyResource(self)
-        self.document = document.DocumentResource(self)
-        self.person = person.PersonResource(self)
-        self.with_raw_response = OpenregisterWithRawResponse(self)
-        self.with_streaming_response = OpenregisterWithStreamedResponse(self)
+    @cached_property
+    def search(self) -> SearchResource:
+        from .resources.search import SearchResource
+
+        return SearchResource(self)
+
+    @cached_property
+    def company(self) -> CompanyResource:
+        from .resources.company import CompanyResource
+
+        return CompanyResource(self)
+
+    @cached_property
+    def document(self) -> DocumentResource:
+        from .resources.document import DocumentResource
+
+        return DocumentResource(self)
+
+    @cached_property
+    def person(self) -> PersonResource:
+        from .resources.person import PersonResource
+
+        return PersonResource(self)
+
+    @cached_property
+    def with_raw_response(self) -> OpenregisterWithRawResponse:
+        return OpenregisterWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> OpenregisterWithStreamedResponse:
+        return OpenregisterWithStreamedResponse(self)
 
     @property
     @override
@@ -217,13 +242,6 @@ class Openregister(SyncAPIClient):
 
 
 class AsyncOpenregister(AsyncAPIClient):
-    search: search.AsyncSearchResource
-    company: company.AsyncCompanyResource
-    document: document.AsyncDocumentResource
-    person: person.AsyncPersonResource
-    with_raw_response: AsyncOpenregisterWithRawResponse
-    with_streaming_response: AsyncOpenregisterWithStreamedResponse
-
     # client options
     api_key: str
 
@@ -278,12 +296,37 @@ class AsyncOpenregister(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.search = search.AsyncSearchResource(self)
-        self.company = company.AsyncCompanyResource(self)
-        self.document = document.AsyncDocumentResource(self)
-        self.person = person.AsyncPersonResource(self)
-        self.with_raw_response = AsyncOpenregisterWithRawResponse(self)
-        self.with_streaming_response = AsyncOpenregisterWithStreamedResponse(self)
+    @cached_property
+    def search(self) -> AsyncSearchResource:
+        from .resources.search import AsyncSearchResource
+
+        return AsyncSearchResource(self)
+
+    @cached_property
+    def company(self) -> AsyncCompanyResource:
+        from .resources.company import AsyncCompanyResource
+
+        return AsyncCompanyResource(self)
+
+    @cached_property
+    def document(self) -> AsyncDocumentResource:
+        from .resources.document import AsyncDocumentResource
+
+        return AsyncDocumentResource(self)
+
+    @cached_property
+    def person(self) -> AsyncPersonResource:
+        from .resources.person import AsyncPersonResource
+
+        return AsyncPersonResource(self)
+
+    @cached_property
+    def with_raw_response(self) -> AsyncOpenregisterWithRawResponse:
+        return AsyncOpenregisterWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AsyncOpenregisterWithStreamedResponse:
+        return AsyncOpenregisterWithStreamedResponse(self)
 
     @property
     @override
@@ -391,35 +434,127 @@ class AsyncOpenregister(AsyncAPIClient):
 
 
 class OpenregisterWithRawResponse:
+    _client: Openregister
+
     def __init__(self, client: Openregister) -> None:
-        self.search = search.SearchResourceWithRawResponse(client.search)
-        self.company = company.CompanyResourceWithRawResponse(client.company)
-        self.document = document.DocumentResourceWithRawResponse(client.document)
-        self.person = person.PersonResourceWithRawResponse(client.person)
+        self._client = client
+
+    @cached_property
+    def search(self) -> search.SearchResourceWithRawResponse:
+        from .resources.search import SearchResourceWithRawResponse
+
+        return SearchResourceWithRawResponse(self._client.search)
+
+    @cached_property
+    def company(self) -> company.CompanyResourceWithRawResponse:
+        from .resources.company import CompanyResourceWithRawResponse
+
+        return CompanyResourceWithRawResponse(self._client.company)
+
+    @cached_property
+    def document(self) -> document.DocumentResourceWithRawResponse:
+        from .resources.document import DocumentResourceWithRawResponse
+
+        return DocumentResourceWithRawResponse(self._client.document)
+
+    @cached_property
+    def person(self) -> person.PersonResourceWithRawResponse:
+        from .resources.person import PersonResourceWithRawResponse
+
+        return PersonResourceWithRawResponse(self._client.person)
 
 
 class AsyncOpenregisterWithRawResponse:
+    _client: AsyncOpenregister
+
     def __init__(self, client: AsyncOpenregister) -> None:
-        self.search = search.AsyncSearchResourceWithRawResponse(client.search)
-        self.company = company.AsyncCompanyResourceWithRawResponse(client.company)
-        self.document = document.AsyncDocumentResourceWithRawResponse(client.document)
-        self.person = person.AsyncPersonResourceWithRawResponse(client.person)
+        self._client = client
+
+    @cached_property
+    def search(self) -> search.AsyncSearchResourceWithRawResponse:
+        from .resources.search import AsyncSearchResourceWithRawResponse
+
+        return AsyncSearchResourceWithRawResponse(self._client.search)
+
+    @cached_property
+    def company(self) -> company.AsyncCompanyResourceWithRawResponse:
+        from .resources.company import AsyncCompanyResourceWithRawResponse
+
+        return AsyncCompanyResourceWithRawResponse(self._client.company)
+
+    @cached_property
+    def document(self) -> document.AsyncDocumentResourceWithRawResponse:
+        from .resources.document import AsyncDocumentResourceWithRawResponse
+
+        return AsyncDocumentResourceWithRawResponse(self._client.document)
+
+    @cached_property
+    def person(self) -> person.AsyncPersonResourceWithRawResponse:
+        from .resources.person import AsyncPersonResourceWithRawResponse
+
+        return AsyncPersonResourceWithRawResponse(self._client.person)
 
 
 class OpenregisterWithStreamedResponse:
+    _client: Openregister
+
     def __init__(self, client: Openregister) -> None:
-        self.search = search.SearchResourceWithStreamingResponse(client.search)
-        self.company = company.CompanyResourceWithStreamingResponse(client.company)
-        self.document = document.DocumentResourceWithStreamingResponse(client.document)
-        self.person = person.PersonResourceWithStreamingResponse(client.person)
+        self._client = client
+
+    @cached_property
+    def search(self) -> search.SearchResourceWithStreamingResponse:
+        from .resources.search import SearchResourceWithStreamingResponse
+
+        return SearchResourceWithStreamingResponse(self._client.search)
+
+    @cached_property
+    def company(self) -> company.CompanyResourceWithStreamingResponse:
+        from .resources.company import CompanyResourceWithStreamingResponse
+
+        return CompanyResourceWithStreamingResponse(self._client.company)
+
+    @cached_property
+    def document(self) -> document.DocumentResourceWithStreamingResponse:
+        from .resources.document import DocumentResourceWithStreamingResponse
+
+        return DocumentResourceWithStreamingResponse(self._client.document)
+
+    @cached_property
+    def person(self) -> person.PersonResourceWithStreamingResponse:
+        from .resources.person import PersonResourceWithStreamingResponse
+
+        return PersonResourceWithStreamingResponse(self._client.person)
 
 
 class AsyncOpenregisterWithStreamedResponse:
+    _client: AsyncOpenregister
+
     def __init__(self, client: AsyncOpenregister) -> None:
-        self.search = search.AsyncSearchResourceWithStreamingResponse(client.search)
-        self.company = company.AsyncCompanyResourceWithStreamingResponse(client.company)
-        self.document = document.AsyncDocumentResourceWithStreamingResponse(client.document)
-        self.person = person.AsyncPersonResourceWithStreamingResponse(client.person)
+        self._client = client
+
+    @cached_property
+    def search(self) -> search.AsyncSearchResourceWithStreamingResponse:
+        from .resources.search import AsyncSearchResourceWithStreamingResponse
+
+        return AsyncSearchResourceWithStreamingResponse(self._client.search)
+
+    @cached_property
+    def company(self) -> company.AsyncCompanyResourceWithStreamingResponse:
+        from .resources.company import AsyncCompanyResourceWithStreamingResponse
+
+        return AsyncCompanyResourceWithStreamingResponse(self._client.company)
+
+    @cached_property
+    def document(self) -> document.AsyncDocumentResourceWithStreamingResponse:
+        from .resources.document import AsyncDocumentResourceWithStreamingResponse
+
+        return AsyncDocumentResourceWithStreamingResponse(self._client.document)
+
+    @cached_property
+    def person(self) -> person.AsyncPersonResourceWithStreamingResponse:
+        from .resources.person import AsyncPersonResourceWithStreamingResponse
+
+        return AsyncPersonResourceWithStreamingResponse(self._client.person)
 
 
 Client = Openregister
