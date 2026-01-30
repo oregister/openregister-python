@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.4.0 (2026-01-30)
+
+Full Changelog: [v2.3.0...v2.4.0](https://github.com/oregister/openregister-python/compare/v2.3.0...v2.4.0)
+
+### Features
+
+* **client:** add custom JSON encoder for extended type support ([2079416](https://github.com/oregister/openregister-python/commit/20794167b70ca1c47709afb5695507a48eb583eb))
+
+
+### Bug Fixes
+
+* **docs:** fix mcp installation instructions for remote servers ([aa6fc21](https://github.com/oregister/openregister-python/commit/aa6fc210fe312d012f219916b75c61ca7116180a))
+
 ## 2.3.0 (2026-01-24)
 
 Full Changelog: [v2.2.0...v2.3.0](https://github.com/oregister/openregister-python/compare/v2.2.0...v2.3.0)
