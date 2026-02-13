@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.4.1 (2026-02-13)
+
+Full Changelog: [v2.4.0...v2.4.1](https://github.com/oregister/openregister-python/compare/v2.4.0...v2.4.1)
+
+### Chores
+
+* format all `api.md` files ([3887982](https://github.com/oregister/openregister-python/commit/3887982f272467f9ff4cfc3b48de84c6a87684ca))
+* **internal:** bump dependencies ([4f5b910](https://github.com/oregister/openregister-python/commit/4f5b9108c023b4b0aa51d0304864a8e64286c36d))
+* **internal:** fix lint error on Python 3.14 ([e0b9cb6](https://github.com/oregister/openregister-python/commit/e0b9cb621c5b154540383136b54f773c3ffd2d7b))
+
 ## 2.4.0 (2026-01-30)
 
 Full Changelog: [v2.3.0...v2.4.0](https://github.com/oregister/openregister-python/compare/v2.3.0...v2.4.0)
