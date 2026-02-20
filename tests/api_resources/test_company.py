@@ -24,7 +24,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestCompany:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_get_contact_v0(self, client: Openregister) -> None:
         company = client.company.get_contact_v0(
@@ -32,7 +32,7 @@ class TestCompany:
         )
         assert_matches_type(CompanyGetContactV0Response, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_get_contact_v0(self, client: Openregister) -> None:
         response = client.company.with_raw_response.get_contact_v0(
@@ -44,7 +44,7 @@ class TestCompany:
         company = response.parse()
         assert_matches_type(CompanyGetContactV0Response, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_get_contact_v0(self, client: Openregister) -> None:
         with client.company.with_streaming_response.get_contact_v0(
@@ -58,7 +58,7 @@ class TestCompany:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_get_contact_v0(self, client: Openregister) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `company_id` but received ''"):
@@ -66,7 +66,7 @@ class TestCompany:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_get_details_v1(self, client: Openregister) -> None:
         company = client.company.get_details_v1(
@@ -74,7 +74,7 @@ class TestCompany:
         )
         assert_matches_type(CompanyGetDetailsV1Response, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_get_details_v1_with_all_params(self, client: Openregister) -> None:
         company = client.company.get_details_v1(
@@ -84,7 +84,7 @@ class TestCompany:
         )
         assert_matches_type(CompanyGetDetailsV1Response, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_get_details_v1(self, client: Openregister) -> None:
         response = client.company.with_raw_response.get_details_v1(
@@ -96,7 +96,7 @@ class TestCompany:
         company = response.parse()
         assert_matches_type(CompanyGetDetailsV1Response, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_get_details_v1(self, client: Openregister) -> None:
         with client.company.with_streaming_response.get_details_v1(
@@ -110,7 +110,7 @@ class TestCompany:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_get_details_v1(self, client: Openregister) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `company_id` but received ''"):
@@ -118,7 +118,7 @@ class TestCompany:
                 company_id="",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_get_financials_v1(self, client: Openregister) -> None:
         company = client.company.get_financials_v1(
@@ -126,7 +126,7 @@ class TestCompany:
         )
         assert_matches_type(CompanyGetFinancialsV1Response, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_get_financials_v1(self, client: Openregister) -> None:
         response = client.company.with_raw_response.get_financials_v1(
@@ -138,7 +138,7 @@ class TestCompany:
         company = response.parse()
         assert_matches_type(CompanyGetFinancialsV1Response, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_get_financials_v1(self, client: Openregister) -> None:
         with client.company.with_streaming_response.get_financials_v1(
@@ -152,7 +152,7 @@ class TestCompany:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_get_financials_v1(self, client: Openregister) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `company_id` but received ''"):
@@ -160,7 +160,7 @@ class TestCompany:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_get_holdings_v1(self, client: Openregister) -> None:
         company = client.company.get_holdings_v1(
@@ -168,7 +168,7 @@ class TestCompany:
         )
         assert_matches_type(CompanyGetHoldingsV1Response, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_get_holdings_v1(self, client: Openregister) -> None:
         response = client.company.with_raw_response.get_holdings_v1(
@@ -180,7 +180,7 @@ class TestCompany:
         company = response.parse()
         assert_matches_type(CompanyGetHoldingsV1Response, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_get_holdings_v1(self, client: Openregister) -> None:
         with client.company.with_streaming_response.get_holdings_v1(
@@ -194,7 +194,7 @@ class TestCompany:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_get_holdings_v1(self, client: Openregister) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `company_id` but received ''"):
@@ -202,7 +202,7 @@ class TestCompany:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_get_owners_v1(self, client: Openregister) -> None:
         company = client.company.get_owners_v1(
@@ -210,7 +210,7 @@ class TestCompany:
         )
         assert_matches_type(CompanyGetOwnersV1Response, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_get_owners_v1_with_all_params(self, client: Openregister) -> None:
         company = client.company.get_owners_v1(
@@ -220,7 +220,7 @@ class TestCompany:
         )
         assert_matches_type(CompanyGetOwnersV1Response, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_get_owners_v1(self, client: Openregister) -> None:
         response = client.company.with_raw_response.get_owners_v1(
@@ -232,7 +232,7 @@ class TestCompany:
         company = response.parse()
         assert_matches_type(CompanyGetOwnersV1Response, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_get_owners_v1(self, client: Openregister) -> None:
         with client.company.with_streaming_response.get_owners_v1(
@@ -246,7 +246,7 @@ class TestCompany:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_get_owners_v1(self, client: Openregister) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `company_id` but received ''"):
@@ -254,7 +254,7 @@ class TestCompany:
                 company_id="",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_get_ubos_v1(self, client: Openregister) -> None:
         company = client.company.get_ubos_v1(
@@ -262,7 +262,7 @@ class TestCompany:
         )
         assert_matches_type(CompanyGetUbosV1Response, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_get_ubos_v1(self, client: Openregister) -> None:
         response = client.company.with_raw_response.get_ubos_v1(
@@ -274,7 +274,7 @@ class TestCompany:
         company = response.parse()
         assert_matches_type(CompanyGetUbosV1Response, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_get_ubos_v1(self, client: Openregister) -> None:
         with client.company.with_streaming_response.get_ubos_v1(
@@ -288,7 +288,7 @@ class TestCompany:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_get_ubos_v1(self, client: Openregister) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `company_id` but received ''"):
@@ -302,7 +302,7 @@ class TestAsyncCompany:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_get_contact_v0(self, async_client: AsyncOpenregister) -> None:
         company = await async_client.company.get_contact_v0(
@@ -310,7 +310,7 @@ class TestAsyncCompany:
         )
         assert_matches_type(CompanyGetContactV0Response, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_get_contact_v0(self, async_client: AsyncOpenregister) -> None:
         response = await async_client.company.with_raw_response.get_contact_v0(
@@ -322,7 +322,7 @@ class TestAsyncCompany:
         company = await response.parse()
         assert_matches_type(CompanyGetContactV0Response, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_get_contact_v0(self, async_client: AsyncOpenregister) -> None:
         async with async_client.company.with_streaming_response.get_contact_v0(
@@ -336,7 +336,7 @@ class TestAsyncCompany:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_get_contact_v0(self, async_client: AsyncOpenregister) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `company_id` but received ''"):
@@ -344,7 +344,7 @@ class TestAsyncCompany:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_get_details_v1(self, async_client: AsyncOpenregister) -> None:
         company = await async_client.company.get_details_v1(
@@ -352,7 +352,7 @@ class TestAsyncCompany:
         )
         assert_matches_type(CompanyGetDetailsV1Response, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_get_details_v1_with_all_params(self, async_client: AsyncOpenregister) -> None:
         company = await async_client.company.get_details_v1(
@@ -362,7 +362,7 @@ class TestAsyncCompany:
         )
         assert_matches_type(CompanyGetDetailsV1Response, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_get_details_v1(self, async_client: AsyncOpenregister) -> None:
         response = await async_client.company.with_raw_response.get_details_v1(
@@ -374,7 +374,7 @@ class TestAsyncCompany:
         company = await response.parse()
         assert_matches_type(CompanyGetDetailsV1Response, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_get_details_v1(self, async_client: AsyncOpenregister) -> None:
         async with async_client.company.with_streaming_response.get_details_v1(
@@ -388,7 +388,7 @@ class TestAsyncCompany:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_get_details_v1(self, async_client: AsyncOpenregister) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `company_id` but received ''"):
@@ -396,7 +396,7 @@ class TestAsyncCompany:
                 company_id="",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_get_financials_v1(self, async_client: AsyncOpenregister) -> None:
         company = await async_client.company.get_financials_v1(
@@ -404,7 +404,7 @@ class TestAsyncCompany:
         )
         assert_matches_type(CompanyGetFinancialsV1Response, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_get_financials_v1(self, async_client: AsyncOpenregister) -> None:
         response = await async_client.company.with_raw_response.get_financials_v1(
@@ -416,7 +416,7 @@ class TestAsyncCompany:
         company = await response.parse()
         assert_matches_type(CompanyGetFinancialsV1Response, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_get_financials_v1(self, async_client: AsyncOpenregister) -> None:
         async with async_client.company.with_streaming_response.get_financials_v1(
@@ -430,7 +430,7 @@ class TestAsyncCompany:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_get_financials_v1(self, async_client: AsyncOpenregister) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `company_id` but received ''"):
@@ -438,7 +438,7 @@ class TestAsyncCompany:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_get_holdings_v1(self, async_client: AsyncOpenregister) -> None:
         company = await async_client.company.get_holdings_v1(
@@ -446,7 +446,7 @@ class TestAsyncCompany:
         )
         assert_matches_type(CompanyGetHoldingsV1Response, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_get_holdings_v1(self, async_client: AsyncOpenregister) -> None:
         response = await async_client.company.with_raw_response.get_holdings_v1(
@@ -458,7 +458,7 @@ class TestAsyncCompany:
         company = await response.parse()
         assert_matches_type(CompanyGetHoldingsV1Response, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_get_holdings_v1(self, async_client: AsyncOpenregister) -> None:
         async with async_client.company.with_streaming_response.get_holdings_v1(
@@ -472,7 +472,7 @@ class TestAsyncCompany:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_get_holdings_v1(self, async_client: AsyncOpenregister) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `company_id` but received ''"):
@@ -480,7 +480,7 @@ class TestAsyncCompany:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_get_owners_v1(self, async_client: AsyncOpenregister) -> None:
         company = await async_client.company.get_owners_v1(
@@ -488,7 +488,7 @@ class TestAsyncCompany:
         )
         assert_matches_type(CompanyGetOwnersV1Response, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_get_owners_v1_with_all_params(self, async_client: AsyncOpenregister) -> None:
         company = await async_client.company.get_owners_v1(
@@ -498,7 +498,7 @@ class TestAsyncCompany:
         )
         assert_matches_type(CompanyGetOwnersV1Response, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_get_owners_v1(self, async_client: AsyncOpenregister) -> None:
         response = await async_client.company.with_raw_response.get_owners_v1(
@@ -510,7 +510,7 @@ class TestAsyncCompany:
         company = await response.parse()
         assert_matches_type(CompanyGetOwnersV1Response, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_get_owners_v1(self, async_client: AsyncOpenregister) -> None:
         async with async_client.company.with_streaming_response.get_owners_v1(
@@ -524,7 +524,7 @@ class TestAsyncCompany:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_get_owners_v1(self, async_client: AsyncOpenregister) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `company_id` but received ''"):
@@ -532,7 +532,7 @@ class TestAsyncCompany:
                 company_id="",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_get_ubos_v1(self, async_client: AsyncOpenregister) -> None:
         company = await async_client.company.get_ubos_v1(
@@ -540,7 +540,7 @@ class TestAsyncCompany:
         )
         assert_matches_type(CompanyGetUbosV1Response, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_get_ubos_v1(self, async_client: AsyncOpenregister) -> None:
         response = await async_client.company.with_raw_response.get_ubos_v1(
@@ -552,7 +552,7 @@ class TestAsyncCompany:
         company = await response.parse()
         assert_matches_type(CompanyGetUbosV1Response, company, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_get_ubos_v1(self, async_client: AsyncOpenregister) -> None:
         async with async_client.company.with_streaming_response.get_ubos_v1(
@@ -566,7 +566,7 @@ class TestAsyncCompany:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_get_ubos_v1(self, async_client: AsyncOpenregister) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `company_id` but received ''"):
