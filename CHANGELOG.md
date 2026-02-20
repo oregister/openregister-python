@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.4.2 (2026-02-20)
+
+Full Changelog: [v2.4.1...v2.4.2](https://github.com/oregister/openregister-python/compare/v2.4.1...v2.4.2)
+
+### Chores
+
+* **internal:** remove mock server code ([507c9e2](https://github.com/oregister/openregister-python/commit/507c9e2437fe0bed58c8109ee9622835ddada0de))
+* update mock server docs ([7d619fc](https://github.com/oregister/openregister-python/commit/7d619fce04548efd1304a51d45f6765b2847579f))
+
 ## 2.4.1 (2026-02-13)
 
 Full Changelog: [v2.4.0...v2.4.1](https://github.com/oregister/openregister-python/compare/v2.4.0...v2.4.1)
