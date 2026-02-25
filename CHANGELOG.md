@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.4.2 (2026-02-25)
+
+Full Changelog: [v2.4.1...v2.4.2](https://github.com/oregister/openregister-python/compare/v2.4.1...v2.4.2)
+
+### Chores
+
+* **internal:** add request options to SSE classes ([58bbc1d](https://github.com/oregister/openregister-python/commit/58bbc1d08545824b48d1b70a1bb13f44c32ebc18))
+* **internal:** make `test_proxy_environment_variables` more resilient ([383f20e](https://github.com/oregister/openregister-python/commit/383f20e8ad296383157e87b5f7106e14b0496f80))
+* **internal:** make `test_proxy_environment_variables` more resilient to env ([9ca7a33](https://github.com/oregister/openregister-python/commit/9ca7a339458bbd05380755a5fe0b64a5a0713353))
+* **internal:** remove mock server code ([507c9e2](https://github.com/oregister/openregister-python/commit/507c9e2437fe0bed58c8109ee9622835ddada0de))
+* update mock server docs ([7d619fc](https://github.com/oregister/openregister-python/commit/7d619fce04548efd1304a51d45f6765b2847579f))
+
 ## 2.4.1 (2026-02-13)
 
 Full Changelog: [v2.4.0...v2.4.1](https://github.com/oregister/openregister-python/compare/v2.4.0...v2.4.1)
