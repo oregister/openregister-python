@@ -53,6 +53,12 @@ class Filter(TypedDict, total=False):
             "industry_codes",
             "capital_amount",
             "capital_currency",
+            "number_of_owners",
+            "has_sole_owner",
+            "has_representative_owner",
+            "is_family_owned",
+            "youngest_owner_age",
+            "purpose",
         ]
     ]
 
