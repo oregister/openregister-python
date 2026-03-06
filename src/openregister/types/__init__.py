@@ -18,6 +18,7 @@ from .company_legal_form import CompanyLegalForm as CompanyLegalForm
 from .merged_report_table import MergedReportTable as MergedReportTable
 from .company_register_type import CompanyRegisterType as CompanyRegisterType
 from .company_relation_type import CompanyRelationType as CompanyRelationType
+from .document_retrieve_response import DocumentRetrieveResponse as DocumentRetrieveResponse
 from .company_get_owners_v1_params import CompanyGetOwnersV1Params as CompanyGetOwnersV1Params
 from .company_get_ubos_v1_response import CompanyGetUbosV1Response as CompanyGetUbosV1Response
 from .search_find_person_v1_params import SearchFindPersonV1Params as SearchFindPersonV1Params
@@ -36,6 +37,9 @@ from .document_get_realtime_v1_response import DocumentGetRealtimeV1Response as 
 from .company_get_financials_v1_response import CompanyGetFinancialsV1Response as CompanyGetFinancialsV1Response
 from .search_lookup_company_by_url_params import SearchLookupCompanyByURLParams as SearchLookupCompanyByURLParams
 from .search_lookup_company_by_url_response import SearchLookupCompanyByURLResponse as SearchLookupCompanyByURLResponse
+from .company_retrieve_shareholders_response import (
+    CompanyRetrieveShareholdersResponse as CompanyRetrieveShareholdersResponse,
+)
 from .search_autocomplete_companies_v1_params import (
     SearchAutocompleteCompaniesV1Params as SearchAutocompleteCompaniesV1Params,
 )
