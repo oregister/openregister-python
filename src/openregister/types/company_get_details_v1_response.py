@@ -5,27 +5,28 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
+from .source import Source
 from .._models import BaseModel
 from .entity_type import EntityType
 from .company_name import CompanyName
 from .company_address import CompanyAddress
 from .company_capital import CompanyCapital
 from .company_purpose import CompanyPurpose
+from .company_document import CompanyDocument
 from .company_register import CompanyRegister
 from .company_legal_form import CompanyLegalForm
+from .representation_role import RepresentationRole
 
 __all__ = [
     "CompanyGetDetailsV1Response",
     "Contact",
     "ContactSocialMedia",
-    "Document",
     "Indicator",
     "IndustryCodes",
     "IndustryCodesWz2025",
     "Representation",
     "RepresentationLegalPerson",
     "RepresentationNaturalPerson",
-    "Source",
 ]
 
 
@@ -59,31 +60,6 @@ class Contact(BaseModel):
     phone: Optional[str] = None
 
     vat_id: Optional[str] = None
-
-
-class Document(BaseModel):
-    id: str
-    """
-    Unique identifier for the document. Example:
-    "f47ac10b-58cc-4372-a567-0e02b2c3d479"
-    """
-
-    date: str
-    """
-    Document publication or filing date. Format: ISO 8601 (YYYY-MM-DD) Example:
-    "2022-01-01"
-    """
-
-    latest: bool
-    """Whether this is the latest version of the document_type."""
-
-    type: Literal["articles_of_association", "sample_protocol", "shareholder_list"]
-    """Categorization of the document:
-
-    - articles_of_association: Company statutes/bylaws
-    - sample_protocol: Standard founding protocol
-    - shareholder_list: List of company shareholders
-    """
 
 
 class Indicator(BaseModel):
@@ -201,9 +177,7 @@ class Representation(BaseModel):
     name: str
     """The name of the representative. E.g. "Max Mustermann" or "Max Mustermann GmbH" """
 
-    role: Literal[
-        "DIRECTOR", "PROKURA", "SHAREHOLDER", "OWNER", "PARTNER", "PERSONAL_LIABLE_DIRECTOR", "LIQUIDATOR", "OTHER"
-    ]
+    role: RepresentationRole
     """The role of the representation. E.g. "DIRECTOR" """
 
     start_date: str
@@ -218,14 +192,6 @@ class Representation(BaseModel):
     legal_person: Optional[RepresentationLegalPerson] = None
 
     natural_person: Optional[RepresentationNaturalPerson] = None
-
-
-class Source(BaseModel):
-    document_url: str
-    """Url of the source document.
-
-    In the form of a presigned url accessible for 30 minutes.
-    """
 
 
 class CompanyGetDetailsV1Response(BaseModel):
@@ -247,7 +213,7 @@ class CompanyGetDetailsV1Response(BaseModel):
     contact: Optional[Contact] = None
     """Contact information of the company."""
 
-    documents: List[Document]
+    documents: List[CompanyDocument]
     """Available official documents related to the company."""
 
     incorporated_at: str

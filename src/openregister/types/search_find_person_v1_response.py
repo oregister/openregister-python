@@ -3,22 +3,9 @@
 from typing import List, Optional
 
 from .._models import BaseModel
+from .pagination import Pagination
 
-__all__ = ["SearchFindPersonV1Response", "Pagination", "Result"]
-
-
-class Pagination(BaseModel):
-    page: int
-    """Current page number."""
-
-    per_page: int
-    """Number of results per page."""
-
-    total_pages: int
-    """Total number of pages."""
-
-    total_results: int
-    """Total number of results."""
+__all__ = ["SearchFindPersonV1Response", "Result"]
 
 
 class Result(BaseModel):

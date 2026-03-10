@@ -5,9 +5,10 @@ from __future__ import annotations
 from typing import Iterable
 from typing_extensions import Literal, Required, TypedDict
 
-from .._types import SequenceNotStr
+from .search_filter_base_param import SearchFilterBaseParam
+from .search_request_pagination_param import SearchRequestPaginationParam
 
-__all__ = ["SearchFindCompaniesV1Params", "Filter", "Location", "Pagination", "Query"]
+__all__ = ["SearchFindCompaniesV1Params", "Filter", "Location", "Query"]
 
 
 class SearchFindCompaniesV1Params(TypedDict, total=False):
@@ -17,14 +18,20 @@ class SearchFindCompaniesV1Params(TypedDict, total=False):
     location: Location
     """Location to filter companies."""
 
-    pagination: Pagination
+    pagination: SearchRequestPaginationParam
     """Pagination parameters."""
 
     query: Query
     """Search query to filter companies."""
 
 
-class Filter(TypedDict, total=False):
+class Filter(SearchFilterBaseParam, total=False):
+    """Filter by field.
+
+    The property sets `value`, `values`, `keywords` and `min`/`max`
+    are mutually exclusive. Dates must be YYYY-MM-DD.
+    """
+
     field: Required[
         Literal[
             "status",
@@ -53,18 +60,14 @@ class Filter(TypedDict, total=False):
             "industry_codes",
             "capital_amount",
             "capital_currency",
+            "number_of_owners",
+            "has_sole_owner",
+            "has_representative_owner",
+            "is_family_owned",
+            "youngest_owner_age",
+            "purpose",
         ]
     ]
-
-    keywords: SequenceNotStr[str]
-
-    max: str
-
-    min: str
-
-    value: str
-
-    values: SequenceNotStr[str]
 
 
 class Location(TypedDict, total=False):
@@ -78,16 +81,6 @@ class Location(TypedDict, total=False):
 
     radius: float
     """Radius in kilometers to filter on. Example: 10"""
-
-
-class Pagination(TypedDict, total=False):
-    """Pagination parameters."""
-
-    page: int
-    """Page number to return."""
-
-    per_page: int
-    """Number of results per page."""
 
 
 class Query(TypedDict, total=False):

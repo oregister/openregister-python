@@ -18,7 +18,7 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.document_get_cached_v1_response import DocumentGetCachedV1Response
+from ..types.document import Document
 from ..types.document_get_realtime_v1_response import DocumentGetRealtimeV1Response
 
 __all__ = ["DocumentResource", "AsyncDocumentResource"]
@@ -54,7 +54,7 @@ class DocumentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> DocumentGetCachedV1Response:
+    ) -> Document:
         """
         Get document information
 
@@ -74,7 +74,7 @@ class DocumentResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DocumentGetCachedV1Response,
+            cast_to=Document,
         )
 
     def get_realtime_v1(
@@ -157,7 +157,7 @@ class AsyncDocumentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> DocumentGetCachedV1Response:
+    ) -> Document:
         """
         Get document information
 
@@ -177,7 +177,7 @@ class AsyncDocumentResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DocumentGetCachedV1Response,
+            cast_to=Document,
         )
 
     async def get_realtime_v1(

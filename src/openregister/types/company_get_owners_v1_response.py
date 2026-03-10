@@ -2,41 +2,14 @@
 
 from typing import List, Optional
 
+from .source import Source
 from .._models import BaseModel
 from .entity_type import EntityType
 from .company_relation_type import CompanyRelationType
+from .company_owner_legal_person import CompanyOwnerLegalPerson
+from .company_owner_natural_person import CompanyOwnerNaturalPerson
 
-__all__ = ["CompanyGetOwnersV1Response", "Owner", "OwnerLegalPerson", "OwnerNaturalPerson", "Source"]
-
-
-class OwnerLegalPerson(BaseModel):
-    """Details about the legal person."""
-
-    city: Optional[str] = None
-
-    country: str
-    """
-    Country where the owner is located, in ISO 3166-1 alpha-2 format. Example: "DE"
-    for Germany
-    """
-
-    name: str
-
-
-class OwnerNaturalPerson(BaseModel):
-    """Details about the natural person."""
-
-    city: str
-
-    country: str
-
-    date_of_birth: Optional[str] = None
-
-    first_name: str
-
-    full_name: str
-
-    last_name: str
+__all__ = ["CompanyGetOwnersV1Response", "Owner"]
 
 
 class Owner(BaseModel):
@@ -47,13 +20,13 @@ class Owner(BaseModel):
     for certain shareholders.
     """
 
-    legal_person: Optional[OwnerLegalPerson] = None
+    legal_person: Optional[CompanyOwnerLegalPerson] = None
     """Details about the legal person."""
 
     name: str
     """The name of the shareholder. E.g. "Max Mustermann" or "Max Mustermann GmbH" """
 
-    natural_person: Optional[OwnerNaturalPerson] = None
+    natural_person: Optional[CompanyOwnerNaturalPerson] = None
     """Details about the natural person."""
 
     nominal_share: float
@@ -74,14 +47,6 @@ class Owner(BaseModel):
 
     type: EntityType
     """The type of shareholder."""
-
-
-class Source(BaseModel):
-    document_url: str
-    """Url of the source document.
-
-    In the form of a presigned url accessible for 30 minutes.
-    """
 
 
 class CompanyGetOwnersV1Response(BaseModel):
