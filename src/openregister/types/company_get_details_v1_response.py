@@ -5,6 +5,7 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
+from .source import Source
 from .._models import BaseModel
 from .entity_type import EntityType
 from .company_name import CompanyName
@@ -25,7 +26,6 @@ __all__ = [
     "Representation",
     "RepresentationLegalPerson",
     "RepresentationNaturalPerson",
-    "Source",
 ]
 
 
@@ -218,14 +218,6 @@ class Representation(BaseModel):
     legal_person: Optional[RepresentationLegalPerson] = None
 
     natural_person: Optional[RepresentationNaturalPerson] = None
-
-
-class Source(BaseModel):
-    document_url: str
-    """Url of the source document.
-
-    In the form of a presigned url accessible for 30 minutes.
-    """
 
 
 class CompanyGetDetailsV1Response(BaseModel):

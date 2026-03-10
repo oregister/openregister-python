@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from . import report_row, report_table, merged_report_row, merged_report_table, company_get_financials_v1_response
 from .. import _compat
+from .source import Source as Source
+from .pagination import Pagination as Pagination
 from .report_row import ReportRow as ReportRow
 from .entity_type import EntityType as EntityType
 from .company_name import CompanyName as CompanyName
@@ -18,9 +20,12 @@ from .company_legal_form import CompanyLegalForm as CompanyLegalForm
 from .merged_report_table import MergedReportTable as MergedReportTable
 from .company_register_type import CompanyRegisterType as CompanyRegisterType
 from .company_relation_type import CompanyRelationType as CompanyRelationType
+from .company_owner_legal_person import CompanyOwnerLegalPerson as CompanyOwnerLegalPerson
 from .document_retrieve_response import DocumentRetrieveResponse as DocumentRetrieveResponse
 from .company_get_owners_v1_params import CompanyGetOwnersV1Params as CompanyGetOwnersV1Params
 from .company_get_ubos_v1_response import CompanyGetUbosV1Response as CompanyGetUbosV1Response
+from .company_owner_natural_person import CompanyOwnerNaturalPerson as CompanyOwnerNaturalPerson
+from .company_search_response_item import CompanySearchResponseItem as CompanySearchResponseItem
 from .search_find_person_v1_params import SearchFindPersonV1Params as SearchFindPersonV1Params
 from .company_get_details_v1_params import CompanyGetDetailsV1Params as CompanyGetDetailsV1Params
 from .company_get_owners_v1_response import CompanyGetOwnersV1Response as CompanyGetOwnersV1Response
