@@ -246,10 +246,10 @@ class CompanyGetDetailsV1Response(BaseModel):
     purposes: List[Optional[CompanyPurpose]]
     """Historical business purposes. Shows how the company purpose changed over time."""
 
-    register: CompanyRegister
+    company_register: CompanyRegister = FieldInfo(alias="register")
     """Current registration information of the company."""
 
-    registers: List[CompanyRegister]
+    company_registers: List[CompanyRegister] = FieldInfo(alias="registers")
     """
     Historical registration changes. Shows how registration details changed over
     time.
