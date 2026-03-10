@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.1 (2026-03-10)
+
+Full Changelog: [v3.0.0...v3.0.1](https://github.com/oregister/openregister-python/compare/v3.0.0...v3.0.1)
+
 ## 3.0.0 (2026-03-10)
 
 Full Changelog: [v2.4.2...v3.0.0](https://github.com/oregister/openregister-python/compare/v2.4.2...v3.0.0)
