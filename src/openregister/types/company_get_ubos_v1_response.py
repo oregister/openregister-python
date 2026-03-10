@@ -3,34 +3,10 @@
 from typing import List, Optional
 
 from .._models import BaseModel
+from .company_owner_legal_person import CompanyOwnerLegalPerson
+from .company_owner_natural_person import CompanyOwnerNaturalPerson
 
-__all__ = ["CompanyGetUbosV1Response", "Ubo", "UboLegalPerson", "UboNaturalPerson"]
-
-
-class UboLegalPerson(BaseModel):
-    city: Optional[str] = None
-
-    country: str
-    """
-    Country where the owner is located, in ISO 3166-1 alpha-2 format. Example: "DE"
-    for Germany
-    """
-
-    name: str
-
-
-class UboNaturalPerson(BaseModel):
-    city: str
-
-    country: str
-
-    date_of_birth: Optional[str] = None
-
-    first_name: str
-
-    full_name: str
-
-    last_name: str
+__all__ = ["CompanyGetUbosV1Response", "Ubo"]
 
 
 class Ubo(BaseModel):
@@ -41,7 +17,7 @@ class Ubo(BaseModel):
     null for certain shareholders.
     """
 
-    legal_person: Optional[UboLegalPerson] = None
+    legal_person: Optional[CompanyOwnerLegalPerson] = None
 
     max_percentage_share: Optional[float] = None
     """
@@ -56,7 +32,7 @@ class Ubo(BaseModel):
     name: str
     """The name of the shareholder. E.g. "Max Mustermann" """
 
-    natural_person: Optional[UboNaturalPerson] = None
+    natural_person: Optional[CompanyOwnerNaturalPerson] = None
 
     percentage_share: Optional[float] = None
     """
