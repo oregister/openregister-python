@@ -16,10 +16,10 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
+from ..types.company_v1 import CompanyV1
 from ..types.company_get_ubos_v1_response import CompanyGetUbosV1Response
 from ..types.company_get_owners_v1_response import CompanyGetOwnersV1Response
 from ..types.company_get_contact_v0_response import CompanyGetContactV0Response
-from ..types.company_get_details_v1_response import CompanyGetDetailsV1Response
 from ..types.company_get_holdings_v1_response import CompanyGetHoldingsV1Response
 from ..types.company_get_financials_v1_response import CompanyGetFinancialsV1Response
 from ..types.company_get_historical_owners_v0_response import CompanyGetHistoricalOwnersV0Response
@@ -92,7 +92,7 @@ class CompanyResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CompanyGetDetailsV1Response:
+    ) -> CompanyV1:
         """
         Get detailed company information
 
@@ -129,7 +129,7 @@ class CompanyResource(SyncAPIResource):
                     company_get_details_v1_params.CompanyGetDetailsV1Params,
                 ),
             ),
-            cast_to=CompanyGetDetailsV1Response,
+            cast_to=CompanyV1,
         )
 
     def get_financials_v1(
@@ -383,7 +383,7 @@ class AsyncCompanyResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CompanyGetDetailsV1Response:
+    ) -> CompanyV1:
         """
         Get detailed company information
 
@@ -420,7 +420,7 @@ class AsyncCompanyResource(AsyncAPIResource):
                     company_get_details_v1_params.CompanyGetDetailsV1Params,
                 ),
             ),
-            cast_to=CompanyGetDetailsV1Response,
+            cast_to=CompanyV1,
         )
 
     async def get_financials_v1(

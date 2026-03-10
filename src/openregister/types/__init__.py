@@ -5,6 +5,8 @@ from __future__ import annotations
 from . import report_row, report_table, merged_report_row, merged_report_table, company_get_financials_v1_response
 from .. import _compat
 from .source import Source as Source
+from .document import Document as Document
+from .company_v1 import CompanyV1 as CompanyV1
 from .pagination import Pagination as Pagination
 from .report_row import ReportRow as ReportRow
 from .entity_type import EntityType as EntityType
@@ -14,12 +16,15 @@ from .company_search import CompanySearch as CompanySearch
 from .company_address import CompanyAddress as CompanyAddress
 from .company_capital import CompanyCapital as CompanyCapital
 from .company_purpose import CompanyPurpose as CompanyPurpose
+from .company_document import CompanyDocument as CompanyDocument
 from .company_register import CompanyRegister as CompanyRegister
 from .merged_report_row import MergedReportRow as MergedReportRow
 from .company_legal_form import CompanyLegalForm as CompanyLegalForm
 from .merged_report_table import MergedReportTable as MergedReportTable
+from .representation_role import RepresentationRole as RepresentationRole
 from .company_register_type import CompanyRegisterType as CompanyRegisterType
 from .company_relation_type import CompanyRelationType as CompanyRelationType
+from .search_filter_base_param import SearchFilterBaseParam as SearchFilterBaseParam
 from .company_owner_legal_person import CompanyOwnerLegalPerson as CompanyOwnerLegalPerson
 from .company_get_owners_v1_params import CompanyGetOwnersV1Params as CompanyGetOwnersV1Params
 from .company_get_ubos_v1_response import CompanyGetUbosV1Response as CompanyGetUbosV1Response
@@ -31,11 +36,10 @@ from .company_get_owners_v1_response import CompanyGetOwnersV1Response as Compan
 from .person_get_details_v1_response import PersonGetDetailsV1Response as PersonGetDetailsV1Response
 from .search_find_person_v1_response import SearchFindPersonV1Response as SearchFindPersonV1Response
 from .company_get_contact_v0_response import CompanyGetContactV0Response as CompanyGetContactV0Response
-from .company_get_details_v1_response import CompanyGetDetailsV1Response as CompanyGetDetailsV1Response
-from .document_get_cached_v1_response import DocumentGetCachedV1Response as DocumentGetCachedV1Response
 from .document_get_realtime_v1_params import DocumentGetRealtimeV1Params as DocumentGetRealtimeV1Params
 from .person_get_holdings_v1_response import PersonGetHoldingsV1Response as PersonGetHoldingsV1Response
 from .search_find_companies_v1_params import SearchFindCompaniesV1Params as SearchFindCompaniesV1Params
+from .search_request_pagination_param import SearchRequestPaginationParam as SearchRequestPaginationParam
 from .company_get_holdings_v1_response import CompanyGetHoldingsV1Response as CompanyGetHoldingsV1Response
 from .document_get_realtime_v1_response import DocumentGetRealtimeV1Response as DocumentGetRealtimeV1Response
 from .company_get_financials_v1_response import CompanyGetFinancialsV1Response as CompanyGetFinancialsV1Response

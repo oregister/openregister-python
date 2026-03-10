@@ -5,44 +5,31 @@ from __future__ import annotations
 from typing import Iterable
 from typing_extensions import Literal, Required, TypedDict
 
-from .._types import SequenceNotStr
+from .search_filter_base_param import SearchFilterBaseParam
+from .search_request_pagination_param import SearchRequestPaginationParam
 
-__all__ = ["SearchFindPersonV1Params", "Filter", "Pagination", "Query"]
+__all__ = ["SearchFindPersonV1Params", "Filter", "Query"]
 
 
 class SearchFindPersonV1Params(TypedDict, total=False):
     filters: Iterable[Filter]
     """Filters to filter people."""
 
-    pagination: Pagination
+    pagination: SearchRequestPaginationParam
     """Pagination parameters."""
 
     query: Query
     """Search query to filter people."""
 
 
-class Filter(TypedDict, total=False):
+class Filter(SearchFilterBaseParam, total=False):
+    """Filter by field.
+
+    The property sets `value`, `values`, `keywords` and `min`/`max`
+    are mutually exclusive. Dates must be YYYY-MM-DD.
+    """
+
     field: Required[Literal["date_of_birth", "city", "active"]]
-
-    keywords: SequenceNotStr[str]
-
-    max: str
-
-    min: str
-
-    value: str
-
-    values: SequenceNotStr[str]
-
-
-class Pagination(TypedDict, total=False):
-    """Pagination parameters."""
-
-    page: int
-    """Page number to return."""
-
-    per_page: int
-    """Number of results per page."""
 
 
 class Query(TypedDict, total=False):

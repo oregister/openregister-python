@@ -25,6 +25,7 @@ from .._response import (
 from .._base_client import make_request_options
 from ..types.company_search import CompanySearch
 from ..types.search_find_person_v1_response import SearchFindPersonV1Response
+from ..types.search_request_pagination_param import SearchRequestPaginationParam
 from ..types.search_lookup_company_by_url_response import SearchLookupCompanyByURLResponse
 from ..types.search_autocomplete_companies_v1_response import SearchAutocompleteCompaniesV1Response
 
@@ -96,7 +97,7 @@ class SearchResource(SyncAPIResource):
         *,
         filters: Iterable[search_find_companies_v1_params.Filter] | Omit = omit,
         location: search_find_companies_v1_params.Location | Omit = omit,
-        pagination: search_find_companies_v1_params.Pagination | Omit = omit,
+        pagination: SearchRequestPaginationParam | Omit = omit,
         query: search_find_companies_v1_params.Query | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -146,7 +147,7 @@ class SearchResource(SyncAPIResource):
         self,
         *,
         filters: Iterable[search_find_person_v1_params.Filter] | Omit = omit,
-        pagination: search_find_person_v1_params.Pagination | Omit = omit,
+        pagination: SearchRequestPaginationParam | Omit = omit,
         query: search_find_person_v1_params.Query | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -293,7 +294,7 @@ class AsyncSearchResource(AsyncAPIResource):
         *,
         filters: Iterable[search_find_companies_v1_params.Filter] | Omit = omit,
         location: search_find_companies_v1_params.Location | Omit = omit,
-        pagination: search_find_companies_v1_params.Pagination | Omit = omit,
+        pagination: SearchRequestPaginationParam | Omit = omit,
         query: search_find_companies_v1_params.Query | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -343,7 +344,7 @@ class AsyncSearchResource(AsyncAPIResource):
         self,
         *,
         filters: Iterable[search_find_person_v1_params.Filter] | Omit = omit,
-        pagination: search_find_person_v1_params.Pagination | Omit = omit,
+        pagination: SearchRequestPaginationParam | Omit = omit,
         query: search_find_person_v1_params.Query | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
