@@ -37,9 +37,6 @@ from .document_get_realtime_v1_response import DocumentGetRealtimeV1Response as 
 from .company_get_financials_v1_response import CompanyGetFinancialsV1Response as CompanyGetFinancialsV1Response
 from .search_lookup_company_by_url_params import SearchLookupCompanyByURLParams as SearchLookupCompanyByURLParams
 from .search_lookup_company_by_url_response import SearchLookupCompanyByURLResponse as SearchLookupCompanyByURLResponse
-from .company_retrieve_shareholders_response import (
-    CompanyRetrieveShareholdersResponse as CompanyRetrieveShareholdersResponse,
-)
 from .search_autocomplete_companies_v1_params import (
     SearchAutocompleteCompaniesV1Params as SearchAutocompleteCompaniesV1Params,
 )

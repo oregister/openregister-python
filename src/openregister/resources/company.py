@@ -22,7 +22,6 @@ from ..types.company_get_contact_v0_response import CompanyGetContactV0Response
 from ..types.company_get_details_v1_response import CompanyGetDetailsV1Response
 from ..types.company_get_holdings_v1_response import CompanyGetHoldingsV1Response
 from ..types.company_get_financials_v1_response import CompanyGetFinancialsV1Response
-from ..types.company_retrieve_shareholders_response import CompanyRetrieveShareholdersResponse
 
 __all__ = ["CompanyResource", "AsyncCompanyResource"]
 
@@ -284,39 +283,6 @@ class CompanyResource(SyncAPIResource):
             cast_to=CompanyGetUbosV1Response,
         )
 
-    def retrieve_shareholders(
-        self,
-        company_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CompanyRetrieveShareholdersResponse:
-        """
-        Get company shareholders
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not company_id:
-            raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
-        return self._get(
-            f"/v0/company/{company_id}/shareholders",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=CompanyRetrieveShareholdersResponse,
-        )
-
 
 class AsyncCompanyResource(AsyncAPIResource):
     @cached_property
@@ -575,39 +541,6 @@ class AsyncCompanyResource(AsyncAPIResource):
             cast_to=CompanyGetUbosV1Response,
         )
 
-    async def retrieve_shareholders(
-        self,
-        company_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CompanyRetrieveShareholdersResponse:
-        """
-        Get company shareholders
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not company_id:
-            raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
-        return await self._get(
-            f"/v0/company/{company_id}/shareholders",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=CompanyRetrieveShareholdersResponse,
-        )
-
 
 class CompanyResourceWithRawResponse:
     def __init__(self, company: CompanyResource) -> None:
@@ -630,9 +563,6 @@ class CompanyResourceWithRawResponse:
         )
         self.get_ubos_v1 = to_raw_response_wrapper(
             company.get_ubos_v1,
-        )
-        self.retrieve_shareholders = to_raw_response_wrapper(
-            company.retrieve_shareholders,
         )
 
 
@@ -658,9 +588,6 @@ class AsyncCompanyResourceWithRawResponse:
         self.get_ubos_v1 = async_to_raw_response_wrapper(
             company.get_ubos_v1,
         )
-        self.retrieve_shareholders = async_to_raw_response_wrapper(
-            company.retrieve_shareholders,
-        )
 
 
 class CompanyResourceWithStreamingResponse:
@@ -685,9 +612,6 @@ class CompanyResourceWithStreamingResponse:
         self.get_ubos_v1 = to_streamed_response_wrapper(
             company.get_ubos_v1,
         )
-        self.retrieve_shareholders = to_streamed_response_wrapper(
-            company.retrieve_shareholders,
-        )
 
 
 class AsyncCompanyResourceWithStreamingResponse:
@@ -711,7 +635,4 @@ class AsyncCompanyResourceWithStreamingResponse:
         )
         self.get_ubos_v1 = async_to_streamed_response_wrapper(
             company.get_ubos_v1,
-        )
-        self.retrieve_shareholders = async_to_streamed_response_wrapper(
-            company.retrieve_shareholders,
         )

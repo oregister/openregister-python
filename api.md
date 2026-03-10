@@ -43,7 +43,6 @@ from openregister.types import (
     CompanyGetHoldingsV1Response,
     CompanyGetOwnersV1Response,
     CompanyGetUbosV1Response,
-    CompanyRetrieveShareholdersResponse,
 )
 ```
 
@@ -55,7 +54,6 @@ Methods:
 - <code title="get /v1/company/{company_id}/holdings">client.company.<a href="./src/openregister/resources/company.py">get_holdings_v1</a>(company_id) -> <a href="./src/openregister/types/company_get_holdings_v1_response.py">CompanyGetHoldingsV1Response</a></code>
 - <code title="get /v1/company/{company_id}/owners">client.company.<a href="./src/openregister/resources/company.py">get_owners_v1</a>(company_id, \*\*<a href="src/openregister/types/company_get_owners_v1_params.py">params</a>) -> <a href="./src/openregister/types/company_get_owners_v1_response.py">CompanyGetOwnersV1Response</a></code>
 - <code title="get /v1/company/{company_id}/ubo">client.company.<a href="./src/openregister/resources/company.py">get_ubos_v1</a>(company_id) -> <a href="./src/openregister/types/company_get_ubos_v1_response.py">CompanyGetUbosV1Response</a></code>
-- <code title="get /v0/company/{company_id}/shareholders">client.company.<a href="./src/openregister/resources/company.py">retrieve_shareholders</a>(company_id) -> <a href="./src/openregister/types/company_retrieve_shareholders_response.py">CompanyRetrieveShareholdersResponse</a></code>
 
 # Document
 
@@ -88,18 +86,3 @@ Methods:
 
 - <code title="get /v1/person/{person_id}">client.person.<a href="./src/openregister/resources/person.py">get_details_v1</a>(person_id) -> <a href="./src/openregister/types/person_get_details_v1_response.py">PersonGetDetailsV1Response</a></code>
 - <code title="get /v1/person/{person_id}/holdings">client.person.<a href="./src/openregister/resources/person.py">get_holdings_v1</a>(person_id) -> <a href="./src/openregister/types/person_get_holdings_v1_response.py">PersonGetHoldingsV1Response</a></code>
-
-# Jobs
-
-## Document
-
-Types:
-
-```python
-from openregister.types.jobs import DocumentCreateResponse, DocumentRetrieveResponse
-```
-
-Methods:
-
-- <code title="post /v0/jobs/document">client.jobs.document.<a href="./src/openregister/resources/jobs/document.py">create</a>(\*\*<a href="src/openregister/types/jobs/document_create_params.py">params</a>) -> <a href="./src/openregister/types/jobs/document_create_response.py">DocumentCreateResponse</a></code>
-- <code title="get /v0/jobs/document/{id}">client.jobs.document.<a href="./src/openregister/resources/jobs/document.py">retrieve</a>(id) -> <a href="./src/openregister/types/jobs/document_retrieve_response.py">DocumentRetrieveResponse</a></code>

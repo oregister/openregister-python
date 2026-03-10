@@ -31,12 +31,11 @@ from ._base_client import (
 )
 
 if TYPE_CHECKING:
-    from .resources import jobs, person, search, company, document
+    from .resources import person, search, company, document
     from .resources.person import PersonResource, AsyncPersonResource
     from .resources.search import SearchResource, AsyncSearchResource
     from .resources.company import CompanyResource, AsyncCompanyResource
     from .resources.document import DocumentResource, AsyncDocumentResource
-    from .resources.jobs.jobs import JobsResource, AsyncJobsResource
 
 __all__ = [
     "Timeout",
@@ -128,12 +127,6 @@ class Openregister(SyncAPIClient):
         from .resources.person import PersonResource
 
         return PersonResource(self)
-
-    @cached_property
-    def jobs(self) -> JobsResource:
-        from .resources.jobs import JobsResource
-
-        return JobsResource(self)
 
     @cached_property
     def with_raw_response(self) -> OpenregisterWithRawResponse:
@@ -328,12 +321,6 @@ class AsyncOpenregister(AsyncAPIClient):
         return AsyncPersonResource(self)
 
     @cached_property
-    def jobs(self) -> AsyncJobsResource:
-        from .resources.jobs import AsyncJobsResource
-
-        return AsyncJobsResource(self)
-
-    @cached_property
     def with_raw_response(self) -> AsyncOpenregisterWithRawResponse:
         return AsyncOpenregisterWithRawResponse(self)
 
@@ -476,12 +463,6 @@ class OpenregisterWithRawResponse:
 
         return PersonResourceWithRawResponse(self._client.person)
 
-    @cached_property
-    def jobs(self) -> jobs.JobsResourceWithRawResponse:
-        from .resources.jobs import JobsResourceWithRawResponse
-
-        return JobsResourceWithRawResponse(self._client.jobs)
-
 
 class AsyncOpenregisterWithRawResponse:
     _client: AsyncOpenregister
@@ -512,12 +493,6 @@ class AsyncOpenregisterWithRawResponse:
         from .resources.person import AsyncPersonResourceWithRawResponse
 
         return AsyncPersonResourceWithRawResponse(self._client.person)
-
-    @cached_property
-    def jobs(self) -> jobs.AsyncJobsResourceWithRawResponse:
-        from .resources.jobs import AsyncJobsResourceWithRawResponse
-
-        return AsyncJobsResourceWithRawResponse(self._client.jobs)
 
 
 class OpenregisterWithStreamedResponse:
@@ -550,12 +525,6 @@ class OpenregisterWithStreamedResponse:
 
         return PersonResourceWithStreamingResponse(self._client.person)
 
-    @cached_property
-    def jobs(self) -> jobs.JobsResourceWithStreamingResponse:
-        from .resources.jobs import JobsResourceWithStreamingResponse
-
-        return JobsResourceWithStreamingResponse(self._client.jobs)
-
 
 class AsyncOpenregisterWithStreamedResponse:
     _client: AsyncOpenregister
@@ -586,12 +555,6 @@ class AsyncOpenregisterWithStreamedResponse:
         from .resources.person import AsyncPersonResourceWithStreamingResponse
 
         return AsyncPersonResourceWithStreamingResponse(self._client.person)
-
-    @cached_property
-    def jobs(self) -> jobs.AsyncJobsResourceWithStreamingResponse:
-        from .resources.jobs import AsyncJobsResourceWithStreamingResponse
-
-        return AsyncJobsResourceWithStreamingResponse(self._client.jobs)
 
 
 Client = Openregister
