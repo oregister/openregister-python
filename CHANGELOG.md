@@ -1,5 +1,28 @@
 # Changelog
 
+## 3.0.0 (2026-03-10)
+
+Full Changelog: [v2.4.2...v3.0.0](https://github.com/oregister/openregister-python/compare/v2.4.2...v3.0.0)
+
+### ⚠ BREAKING CHANGES
+
+* deprecate v0 document & shareholder endpoint
+
+### Features
+
+* **api:** additional static models ([369c641](https://github.com/oregister/openregister-python/commit/369c6410cc451a418f1fb9eaa5f9aff397053409))
+* **company:** enable filtering by business purpose ([f3769ac](https://github.com/oregister/openregister-python/commit/f3769acdd1b227d8d050611c910ddf4911a36e64))
+* deprecate v0 document & shareholder endpoint ([a50df4a](https://github.com/oregister/openregister-python/commit/a50df4a5a9e458a1d49c2a0388b92f071fca50ae))
+* **v0:** add historical owners endpoint ([ecfa4d7](https://github.com/oregister/openregister-python/commit/ecfa4d7d8181e36df9fede04455bc4c2be07fe8e))
+* **v0:** remove cached document endpoints ([ddeba62](https://github.com/oregister/openregister-python/commit/ddeba625c0712cf220c83fbfe16951d750a46b13))
+
+
+### Chores
+
+* **ci:** skip uploading artifacts on stainless-internal branches ([ea86a06](https://github.com/oregister/openregister-python/commit/ea86a06072e7edafbd48d55d00fc346f99b329a1))
+* **python:** shadowing pydantic property ([6a22730](https://github.com/oregister/openregister-python/commit/6a22730042b6d6d4c4d6db77ec33f77202d0cd7f))
+* remove breaking company model ([77fb61b](https://github.com/oregister/openregister-python/commit/77fb61b1dbfac8deff1fb2ddcca437a27807a950))
+
 ## 2.4.2 (2026-02-25)
 
 Full Changelog: [v2.4.1...v2.4.2](https://github.com/oregister/openregister-python/compare/v2.4.1...v2.4.2)
