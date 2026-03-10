@@ -12,21 +12,12 @@ from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
-    BinaryAPIResponse,
-    AsyncBinaryAPIResponse,
-    StreamedBinaryAPIResponse,
-    AsyncStreamedBinaryAPIResponse,
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
-    to_custom_raw_response_wrapper,
     async_to_streamed_response_wrapper,
-    to_custom_streamed_response_wrapper,
-    async_to_custom_raw_response_wrapper,
-    async_to_custom_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.document_retrieve_response import DocumentRetrieveResponse
 from ..types.document_get_cached_v1_response import DocumentGetCachedV1Response
 from ..types.document_get_realtime_v1_response import DocumentGetRealtimeV1Response
 
@@ -52,73 +43,6 @@ class DocumentResource(SyncAPIResource):
         For more information, see https://www.github.com/oregister/openregister-python#with_streaming_response
         """
         return DocumentResourceWithStreamingResponse(self)
-
-    def retrieve(
-        self,
-        document_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> DocumentRetrieveResponse:
-        """
-        Get document information
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not document_id:
-            raise ValueError(f"Expected a non-empty value for `document_id` but received {document_id!r}")
-        return self._get(
-            f"/v0/document/{document_id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=DocumentRetrieveResponse,
-        )
-
-    def download(
-        self,
-        document_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BinaryAPIResponse:
-        """
-        Download document
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not document_id:
-            raise ValueError(f"Expected a non-empty value for `document_id` but received {document_id!r}")
-        extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
-        return self._get(
-            f"/v0/document/{document_id}/download",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=BinaryAPIResponse,
-        )
 
     def get_cached_v1(
         self,
@@ -223,73 +147,6 @@ class AsyncDocumentResource(AsyncAPIResource):
         """
         return AsyncDocumentResourceWithStreamingResponse(self)
 
-    async def retrieve(
-        self,
-        document_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> DocumentRetrieveResponse:
-        """
-        Get document information
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not document_id:
-            raise ValueError(f"Expected a non-empty value for `document_id` but received {document_id!r}")
-        return await self._get(
-            f"/v0/document/{document_id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=DocumentRetrieveResponse,
-        )
-
-    async def download(
-        self,
-        document_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncBinaryAPIResponse:
-        """
-        Download document
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not document_id:
-            raise ValueError(f"Expected a non-empty value for `document_id` but received {document_id!r}")
-        extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
-        return await self._get(
-            f"/v0/document/{document_id}/download",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=AsyncBinaryAPIResponse,
-        )
-
     async def get_cached_v1(
         self,
         document_id: str,
@@ -377,13 +234,6 @@ class DocumentResourceWithRawResponse:
     def __init__(self, document: DocumentResource) -> None:
         self._document = document
 
-        self.retrieve = to_raw_response_wrapper(
-            document.retrieve,
-        )
-        self.download = to_custom_raw_response_wrapper(
-            document.download,
-            BinaryAPIResponse,
-        )
         self.get_cached_v1 = to_raw_response_wrapper(
             document.get_cached_v1,
         )
@@ -396,13 +246,6 @@ class AsyncDocumentResourceWithRawResponse:
     def __init__(self, document: AsyncDocumentResource) -> None:
         self._document = document
 
-        self.retrieve = async_to_raw_response_wrapper(
-            document.retrieve,
-        )
-        self.download = async_to_custom_raw_response_wrapper(
-            document.download,
-            AsyncBinaryAPIResponse,
-        )
         self.get_cached_v1 = async_to_raw_response_wrapper(
             document.get_cached_v1,
         )
@@ -415,13 +258,6 @@ class DocumentResourceWithStreamingResponse:
     def __init__(self, document: DocumentResource) -> None:
         self._document = document
 
-        self.retrieve = to_streamed_response_wrapper(
-            document.retrieve,
-        )
-        self.download = to_custom_streamed_response_wrapper(
-            document.download,
-            StreamedBinaryAPIResponse,
-        )
         self.get_cached_v1 = to_streamed_response_wrapper(
             document.get_cached_v1,
         )
@@ -434,13 +270,6 @@ class AsyncDocumentResourceWithStreamingResponse:
     def __init__(self, document: AsyncDocumentResource) -> None:
         self._document = document
 
-        self.retrieve = async_to_streamed_response_wrapper(
-            document.retrieve,
-        )
-        self.download = async_to_custom_streamed_response_wrapper(
-            document.download,
-            AsyncStreamedBinaryAPIResponse,
-        )
         self.get_cached_v1 = async_to_streamed_response_wrapper(
             document.get_cached_v1,
         )
