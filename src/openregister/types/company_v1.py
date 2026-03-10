@@ -12,14 +12,15 @@ from .company_name import CompanyName
 from .company_address import CompanyAddress
 from .company_capital import CompanyCapital
 from .company_purpose import CompanyPurpose
+from .company_document import CompanyDocument
 from .company_register import CompanyRegister
 from .company_legal_form import CompanyLegalForm
+from .representation_role import RepresentationRole
 
 __all__ = [
-    "CompanyGetDetailsV1Response",
+    "CompanyV1",
     "Contact",
     "ContactSocialMedia",
-    "Document",
     "Indicator",
     "IndustryCodes",
     "IndustryCodesWz2025",
@@ -59,31 +60,6 @@ class Contact(BaseModel):
     phone: Optional[str] = None
 
     vat_id: Optional[str] = None
-
-
-class Document(BaseModel):
-    id: str
-    """
-    Unique identifier for the document. Example:
-    "f47ac10b-58cc-4372-a567-0e02b2c3d479"
-    """
-
-    date: str
-    """
-    Document publication or filing date. Format: ISO 8601 (YYYY-MM-DD) Example:
-    "2022-01-01"
-    """
-
-    latest: bool
-    """Whether this is the latest version of the document_type."""
-
-    type: Literal["articles_of_association", "sample_protocol", "shareholder_list"]
-    """Categorization of the document:
-
-    - articles_of_association: Company statutes/bylaws
-    - sample_protocol: Standard founding protocol
-    - shareholder_list: List of company shareholders
-    """
 
 
 class Indicator(BaseModel):
@@ -201,9 +177,7 @@ class Representation(BaseModel):
     name: str
     """The name of the representative. E.g. "Max Mustermann" or "Max Mustermann GmbH" """
 
-    role: Literal[
-        "DIRECTOR", "PROKURA", "SHAREHOLDER", "OWNER", "PARTNER", "PERSONAL_LIABLE_DIRECTOR", "LIQUIDATOR", "OTHER"
-    ]
+    role: RepresentationRole
     """The role of the representation. E.g. "DIRECTOR" """
 
     start_date: str
@@ -220,7 +194,7 @@ class Representation(BaseModel):
     natural_person: Optional[RepresentationNaturalPerson] = None
 
 
-class CompanyGetDetailsV1Response(BaseModel):
+class CompanyV1(BaseModel):
     id: str
     """Unique company identifier. Example: DE-HRB-F1103-267645"""
 
@@ -239,7 +213,7 @@ class CompanyGetDetailsV1Response(BaseModel):
     contact: Optional[Contact] = None
     """Contact information of the company."""
 
-    documents: List[Document]
+    documents: List[CompanyDocument]
     """Available official documents related to the company."""
 
     incorporated_at: str

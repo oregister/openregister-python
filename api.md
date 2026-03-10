@@ -9,6 +9,8 @@ from openregister.types import (
     CompanySearch,
     CompanySearchResponseItem,
     Pagination,
+    SearchFilterBase,
+    SearchRequestPagination,
     SearchAutocompleteCompaniesV1Response,
     SearchFindPersonV1Response,
     SearchLookupCompanyByURLResponse,
@@ -30,20 +32,22 @@ Types:
 from openregister.types import (
     CompanyAddress,
     CompanyCapital,
+    CompanyDocument,
     CompanyName,
     CompanyOwnerLegalPerson,
     CompanyOwnerNaturalPerson,
     CompanyPurpose,
     CompanyRegister,
     CompanyRelationType,
+    CompanyV1,
     EntityType,
     MergedReportRow,
     MergedReportTable,
     ReportRow,
     ReportTable,
+    RepresentationRole,
     Source,
     CompanyGetContactV0Response,
-    CompanyGetDetailsV1Response,
     CompanyGetFinancialsV1Response,
     CompanyGetHistoricalOwnersV0Response,
     CompanyGetHoldingsV1Response,
@@ -55,7 +59,7 @@ from openregister.types import (
 Methods:
 
 - <code title="get /v0/company/{company_id}/contact">client.company.<a href="./src/openregister/resources/company.py">get_contact_v0</a>(company_id) -> <a href="./src/openregister/types/company_get_contact_v0_response.py">CompanyGetContactV0Response</a></code>
-- <code title="get /v1/company/{company_id}">client.company.<a href="./src/openregister/resources/company.py">get_details_v1</a>(company_id, \*\*<a href="src/openregister/types/company_get_details_v1_params.py">params</a>) -> <a href="./src/openregister/types/company_get_details_v1_response.py">CompanyGetDetailsV1Response</a></code>
+- <code title="get /v1/company/{company_id}">client.company.<a href="./src/openregister/resources/company.py">get_details_v1</a>(company_id, \*\*<a href="src/openregister/types/company_get_details_v1_params.py">params</a>) -> <a href="./src/openregister/types/company_v1.py">CompanyV1</a></code>
 - <code title="get /v1/company/{company_id}/financials">client.company.<a href="./src/openregister/resources/company.py">get_financials_v1</a>(company_id) -> <a href="./src/openregister/types/company_get_financials_v1_response.py">CompanyGetFinancialsV1Response</a></code>
 - <code title="get /v0/company/{company_id}/owners/historical">client.company.<a href="./src/openregister/resources/company.py">get_historical_owners_v0</a>(company_id) -> <a href="./src/openregister/types/company_get_historical_owners_v0_response.py">CompanyGetHistoricalOwnersV0Response</a></code>
 - <code title="get /v1/company/{company_id}/holdings">client.company.<a href="./src/openregister/resources/company.py">get_holdings_v1</a>(company_id) -> <a href="./src/openregister/types/company_get_holdings_v1_response.py">CompanyGetHoldingsV1Response</a></code>
@@ -67,12 +71,12 @@ Methods:
 Types:
 
 ```python
-from openregister.types import DocumentGetCachedV1Response, DocumentGetRealtimeV1Response
+from openregister.types import Document, DocumentGetRealtimeV1Response
 ```
 
 Methods:
 
-- <code title="get /v1/document/{document_id}">client.document.<a href="./src/openregister/resources/document.py">get_cached_v1</a>(document_id) -> <a href="./src/openregister/types/document_get_cached_v1_response.py">DocumentGetCachedV1Response</a></code>
+- <code title="get /v1/document/{document_id}">client.document.<a href="./src/openregister/resources/document.py">get_cached_v1</a>(document_id) -> <a href="./src/openregister/types/document.py">Document</a></code>
 - <code title="get /v1/document">client.document.<a href="./src/openregister/resources/document.py">get_realtime_v1</a>(\*\*<a href="src/openregister/types/document_get_realtime_v1_params.py">params</a>) -> <a href="./src/openregister/types/document_get_realtime_v1_response.py">DocumentGetRealtimeV1Response</a></code>
 
 # Person

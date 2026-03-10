@@ -4,10 +4,10 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["DocumentGetCachedV1Response"]
+__all__ = ["Document"]
 
 
-class DocumentGetCachedV1Response(BaseModel):
+class Document(BaseModel):
     id: str
     """The unique identifier for the document.
 

@@ -68,12 +68,12 @@ class TestSearch:
         search = client.search.find_companies_v1(
             filters=[
                 {
-                    "field": "status",
                     "keywords": ["string"],
                     "max": "max",
                     "min": "min",
                     "value": "value",
                     "values": ["string"],
+                    "field": "status",
                 }
             ],
             location={
@@ -123,12 +123,12 @@ class TestSearch:
         search = client.search.find_person_v1(
             filters=[
                 {
-                    "field": "date_of_birth",
                     "keywords": ["string"],
                     "max": "max",
                     "min": "min",
                     "value": "value",
                     "values": ["string"],
+                    "field": "date_of_birth",
                 }
             ],
             pagination={
@@ -247,12 +247,12 @@ class TestAsyncSearch:
         search = await async_client.search.find_companies_v1(
             filters=[
                 {
-                    "field": "status",
                     "keywords": ["string"],
                     "max": "max",
                     "min": "min",
                     "value": "value",
                     "values": ["string"],
+                    "field": "status",
                 }
             ],
             location={
@@ -302,12 +302,12 @@ class TestAsyncSearch:
         search = await async_client.search.find_person_v1(
             filters=[
                 {
-                    "field": "date_of_birth",
                     "keywords": ["string"],
                     "max": "max",
                     "min": "min",
                     "value": "value",
                     "values": ["string"],
+                    "field": "date_of_birth",
                 }
             ],
             pagination={
