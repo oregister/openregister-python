@@ -21,7 +21,6 @@ from .merged_report_table import MergedReportTable as MergedReportTable
 from .company_register_type import CompanyRegisterType as CompanyRegisterType
 from .company_relation_type import CompanyRelationType as CompanyRelationType
 from .company_owner_legal_person import CompanyOwnerLegalPerson as CompanyOwnerLegalPerson
-from .document_retrieve_response import DocumentRetrieveResponse as DocumentRetrieveResponse
 from .company_get_owners_v1_params import CompanyGetOwnersV1Params as CompanyGetOwnersV1Params
 from .company_get_ubos_v1_response import CompanyGetUbosV1Response as CompanyGetUbosV1Response
 from .company_owner_natural_person import CompanyOwnerNaturalPerson as CompanyOwnerNaturalPerson
