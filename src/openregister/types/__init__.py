@@ -6,7 +6,6 @@ from . import report_row, report_table, merged_report_row, merged_report_table, 
 from .. import _compat
 from .source import Source as Source
 from .document import Document as Document
-from .company_v1 import CompanyV1 as CompanyV1
 from .pagination import Pagination as Pagination
 from .report_row import ReportRow as ReportRow
 from .entity_type import EntityType as EntityType
@@ -36,6 +35,7 @@ from .company_get_owners_v1_response import CompanyGetOwnersV1Response as Compan
 from .person_get_details_v1_response import PersonGetDetailsV1Response as PersonGetDetailsV1Response
 from .search_find_person_v1_response import SearchFindPersonV1Response as SearchFindPersonV1Response
 from .company_get_contact_v0_response import CompanyGetContactV0Response as CompanyGetContactV0Response
+from .company_get_details_v1_response import CompanyGetDetailsV1Response as CompanyGetDetailsV1Response
 from .document_get_realtime_v1_params import DocumentGetRealtimeV1Params as DocumentGetRealtimeV1Params
 from .person_get_holdings_v1_response import PersonGetHoldingsV1Response as PersonGetHoldingsV1Response
 from .search_find_companies_v1_params import SearchFindCompaniesV1Params as SearchFindCompaniesV1Params

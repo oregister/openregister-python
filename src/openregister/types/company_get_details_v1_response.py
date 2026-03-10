@@ -18,7 +18,7 @@ from .company_legal_form import CompanyLegalForm
 from .representation_role import RepresentationRole
 
 __all__ = [
-    "CompanyV1",
+    "CompanyGetDetailsV1Response",
     "Contact",
     "ContactSocialMedia",
     "Indicator",
@@ -194,7 +194,7 @@ class Representation(BaseModel):
     natural_person: Optional[RepresentationNaturalPerson] = None
 
 
-class CompanyV1(BaseModel):
+class CompanyGetDetailsV1Response(BaseModel):
     id: str
     """Unique company identifier. Example: DE-HRB-F1103-267645"""
 
