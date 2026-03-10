@@ -39,7 +39,6 @@ from openregister.types import (
     CompanyPurpose,
     CompanyRegister,
     CompanyRelationType,
-    CompanyV1,
     EntityType,
     MergedReportRow,
     MergedReportTable,
@@ -48,6 +47,7 @@ from openregister.types import (
     RepresentationRole,
     Source,
     CompanyGetContactV0Response,
+    CompanyGetDetailsV1Response,
     CompanyGetFinancialsV1Response,
     CompanyGetHistoricalOwnersV0Response,
     CompanyGetHoldingsV1Response,
@@ -59,7 +59,7 @@ from openregister.types import (
 Methods:
 
 - <code title="get /v0/company/{company_id}/contact">client.company.<a href="./src/openregister/resources/company.py">get_contact_v0</a>(company_id) -> <a href="./src/openregister/types/company_get_contact_v0_response.py">CompanyGetContactV0Response</a></code>
-- <code title="get /v1/company/{company_id}">client.company.<a href="./src/openregister/resources/company.py">get_details_v1</a>(company_id, \*\*<a href="src/openregister/types/company_get_details_v1_params.py">params</a>) -> <a href="./src/openregister/types/company_v1.py">CompanyV1</a></code>
+- <code title="get /v1/company/{company_id}">client.company.<a href="./src/openregister/resources/company.py">get_details_v1</a>(company_id, \*\*<a href="src/openregister/types/company_get_details_v1_params.py">params</a>) -> <a href="./src/openregister/types/company_get_details_v1_response.py">CompanyGetDetailsV1Response</a></code>
 - <code title="get /v1/company/{company_id}/financials">client.company.<a href="./src/openregister/resources/company.py">get_financials_v1</a>(company_id) -> <a href="./src/openregister/types/company_get_financials_v1_response.py">CompanyGetFinancialsV1Response</a></code>
 - <code title="get /v0/company/{company_id}/owners/historical">client.company.<a href="./src/openregister/resources/company.py">get_historical_owners_v0</a>(company_id) -> <a href="./src/openregister/types/company_get_historical_owners_v0_response.py">CompanyGetHistoricalOwnersV0Response</a></code>
 - <code title="get /v1/company/{company_id}/holdings">client.company.<a href="./src/openregister/resources/company.py">get_holdings_v1</a>(company_id) -> <a href="./src/openregister/types/company_get_holdings_v1_response.py">CompanyGetHoldingsV1Response</a></code>
