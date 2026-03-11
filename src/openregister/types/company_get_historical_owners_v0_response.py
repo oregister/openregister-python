@@ -25,7 +25,13 @@ class OwnerOwnershipHistory(BaseModel):
 
 class Owner(BaseModel):
     id: str
-    """Unique identifier for the owner (generated key)"""
+    """Unique identifier for the owner.
+
+    For companies, this is the company register ID (e.g. DE-HRB-F1103-267645) which
+    can be used to look up the company. For natural persons, this is the entity
+    UUID. For other entity types (foreign companies, foundations, etc.), this is
+    empty.
+    """
 
     entity_type: Literal[
         "natural_person",
@@ -54,9 +60,6 @@ class Owner(BaseModel):
 
     last_appearance: Optional[datetime] = None
     """Date when this owner last appeared (null if still active)"""
-
-    link: Optional[str] = None
-    """Link to the owner"""
 
 
 class CompanyGetHistoricalOwnersV0Response(BaseModel):
