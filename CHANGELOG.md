@@ -1,5 +1,13 @@
 # Changelog
 
+## 3.0.2 (2026-03-11)
+
+Full Changelog: [v3.0.1...v3.0.2](https://github.com/oregister/openregister-python/compare/v3.0.1...v3.0.2)
+
+### Bug Fixes
+
+* **api:** adjust historical owner ids ([182f808](https://github.com/oregister/openregister-python/commit/182f808f18e0237984f95869bd3f12c30cdbbdf3))
+
 ## 3.0.1 (2026-03-10)
 
 Full Changelog: [v3.0.0...v3.0.1](https://github.com/oregister/openregister-python/compare/v3.0.0...v3.0.1)
