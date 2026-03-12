@@ -1,5 +1,14 @@
 # Changelog
 
+## 3.0.3 (2026-03-12)
+
+Full Changelog: [v3.0.2...v3.0.3](https://github.com/oregister/openregister-python/compare/v3.0.2...v3.0.3)
+
+### Bug Fixes
+
+* **api:** historical owners v1 ([fd459a8](https://github.com/oregister/openregister-python/commit/fd459a804464fe932843b277822b2cae1a729e97))
+* **api:** owner historical v1 ([cf06b44](https://github.com/oregister/openregister-python/commit/cf06b44b5a70cf5a496fd88de4f30ac66a4a052c))
+
 ## 3.0.2 (2026-03-11)
 
 Full Changelog: [v3.0.1...v3.0.2](https://github.com/oregister/openregister-python/compare/v3.0.1...v3.0.2)
