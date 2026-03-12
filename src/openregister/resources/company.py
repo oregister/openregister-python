@@ -22,7 +22,7 @@ from ..types.company_get_contact_v0_response import CompanyGetContactV0Response
 from ..types.company_get_details_v1_response import CompanyGetDetailsV1Response
 from ..types.company_get_holdings_v1_response import CompanyGetHoldingsV1Response
 from ..types.company_get_financials_v1_response import CompanyGetFinancialsV1Response
-from ..types.company_get_historical_owners_v0_response import CompanyGetHistoricalOwnersV0Response
+from ..types.company_get_historical_owners_v1_response import CompanyGetHistoricalOwnersV1Response
 
 __all__ = ["CompanyResource", "AsyncCompanyResource"]
 
@@ -165,7 +165,7 @@ class CompanyResource(SyncAPIResource):
             cast_to=CompanyGetFinancialsV1Response,
         )
 
-    def get_historical_owners_v0(
+    def get_historical_owners_v1(
         self,
         company_id: str,
         *,
@@ -175,7 +175,7 @@ class CompanyResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CompanyGetHistoricalOwnersV0Response:
+    ) -> CompanyGetHistoricalOwnersV1Response:
         """
         Get historical owner changes
 
@@ -191,11 +191,11 @@ class CompanyResource(SyncAPIResource):
         if not company_id:
             raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
         return self._get(
-            f"/v0/company/{company_id}/owners/historical",
+            f"/v1/company/{company_id}/owners/historical",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CompanyGetHistoricalOwnersV0Response,
+            cast_to=CompanyGetHistoricalOwnersV1Response,
         )
 
     def get_holdings_v1(
@@ -456,7 +456,7 @@ class AsyncCompanyResource(AsyncAPIResource):
             cast_to=CompanyGetFinancialsV1Response,
         )
 
-    async def get_historical_owners_v0(
+    async def get_historical_owners_v1(
         self,
         company_id: str,
         *,
@@ -466,7 +466,7 @@ class AsyncCompanyResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CompanyGetHistoricalOwnersV0Response:
+    ) -> CompanyGetHistoricalOwnersV1Response:
         """
         Get historical owner changes
 
@@ -482,11 +482,11 @@ class AsyncCompanyResource(AsyncAPIResource):
         if not company_id:
             raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
         return await self._get(
-            f"/v0/company/{company_id}/owners/historical",
+            f"/v1/company/{company_id}/owners/historical",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CompanyGetHistoricalOwnersV0Response,
+            cast_to=CompanyGetHistoricalOwnersV1Response,
         )
 
     async def get_holdings_v1(
@@ -622,8 +622,8 @@ class CompanyResourceWithRawResponse:
         self.get_financials_v1 = to_raw_response_wrapper(
             company.get_financials_v1,
         )
-        self.get_historical_owners_v0 = to_raw_response_wrapper(
-            company.get_historical_owners_v0,
+        self.get_historical_owners_v1 = to_raw_response_wrapper(
+            company.get_historical_owners_v1,
         )
         self.get_holdings_v1 = to_raw_response_wrapper(
             company.get_holdings_v1,
@@ -649,8 +649,8 @@ class AsyncCompanyResourceWithRawResponse:
         self.get_financials_v1 = async_to_raw_response_wrapper(
             company.get_financials_v1,
         )
-        self.get_historical_owners_v0 = async_to_raw_response_wrapper(
-            company.get_historical_owners_v0,
+        self.get_historical_owners_v1 = async_to_raw_response_wrapper(
+            company.get_historical_owners_v1,
         )
         self.get_holdings_v1 = async_to_raw_response_wrapper(
             company.get_holdings_v1,
@@ -676,8 +676,8 @@ class CompanyResourceWithStreamingResponse:
         self.get_financials_v1 = to_streamed_response_wrapper(
             company.get_financials_v1,
         )
-        self.get_historical_owners_v0 = to_streamed_response_wrapper(
-            company.get_historical_owners_v0,
+        self.get_historical_owners_v1 = to_streamed_response_wrapper(
+            company.get_historical_owners_v1,
         )
         self.get_holdings_v1 = to_streamed_response_wrapper(
             company.get_holdings_v1,
@@ -703,8 +703,8 @@ class AsyncCompanyResourceWithStreamingResponse:
         self.get_financials_v1 = async_to_streamed_response_wrapper(
             company.get_financials_v1,
         )
-        self.get_historical_owners_v0 = async_to_streamed_response_wrapper(
-            company.get_historical_owners_v0,
+        self.get_historical_owners_v1 = async_to_streamed_response_wrapper(
+            company.get_historical_owners_v1,
         )
         self.get_holdings_v1 = async_to_streamed_response_wrapper(
             company.get_holdings_v1,

@@ -48,8 +48,8 @@ from .search_lookup_company_by_url_response import SearchLookupCompanyByURLRespo
 from .search_autocomplete_companies_v1_params import (
     SearchAutocompleteCompaniesV1Params as SearchAutocompleteCompaniesV1Params,
 )
-from .company_get_historical_owners_v0_response import (
-    CompanyGetHistoricalOwnersV0Response as CompanyGetHistoricalOwnersV0Response,
+from .company_get_historical_owners_v1_response import (
+    CompanyGetHistoricalOwnersV1Response as CompanyGetHistoricalOwnersV1Response,
 )
 from .search_autocomplete_companies_v1_response import (
     SearchAutocompleteCompaniesV1Response as SearchAutocompleteCompaniesV1Response,

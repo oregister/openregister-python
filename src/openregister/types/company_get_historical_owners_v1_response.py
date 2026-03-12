@@ -6,7 +6,7 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["CompanyGetHistoricalOwnersV0Response", "Owner", "OwnerOwnershipHistory"]
+__all__ = ["CompanyGetHistoricalOwnersV1Response", "Owner", "OwnerOwnershipHistory"]
 
 
 class OwnerOwnershipHistory(BaseModel):
@@ -62,5 +62,5 @@ class Owner(BaseModel):
     """Date when this owner last appeared (null if still active)"""
 
 
-class CompanyGetHistoricalOwnersV0Response(BaseModel):
+class CompanyGetHistoricalOwnersV1Response(BaseModel):
     owners: List[Owner]
