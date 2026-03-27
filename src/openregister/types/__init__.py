@@ -23,6 +23,9 @@ from .merged_report_table import MergedReportTable as MergedReportTable
 from .representation_role import RepresentationRole as RepresentationRole
 from .company_register_type import CompanyRegisterType as CompanyRegisterType
 from .company_relation_type import CompanyRelationType as CompanyRelationType
+from .monitor_create_params import MonitorCreateParams as MonitorCreateParams
+from .monitor_list_response import MonitorListResponse as MonitorListResponse
+from .monitor_create_response import MonitorCreateResponse as MonitorCreateResponse
 from .search_filter_base_param import SearchFilterBaseParam as SearchFilterBaseParam
 from .company_owner_legal_person import CompanyOwnerLegalPerson as CompanyOwnerLegalPerson
 from .company_get_owners_v1_params import CompanyGetOwnersV1Params as CompanyGetOwnersV1Params
