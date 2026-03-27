@@ -1,5 +1,28 @@
 # Changelog
 
+## 3.1.0 (2026-03-27)
+
+Full Changelog: [v3.0.3...v3.1.0](https://github.com/oregister/openregister-python/compare/v3.0.3...v3.1.0)
+
+### Features
+
+* **api:** monitoring endpoints ([2051511](https://github.com/oregister/openregister-python/commit/205151139e0f27c8d731890a0341276bedcddb8d))
+* **internal:** implement indices array format for query and form serialization ([87468c0](https://github.com/oregister/openregister-python/commit/87468c0ba7e8be29d701bf25fa6c1d3606d85446))
+
+
+### Bug Fixes
+
+* **deps:** bump minimum typing-extensions version ([2f29556](https://github.com/oregister/openregister-python/commit/2f29556e998619b9a3118e8ed73a648a93a12860))
+* **pydantic:** do not pass `by_alias` unless set ([3027dda](https://github.com/oregister/openregister-python/commit/3027dda1781ce25e428551cb4cbdd4f9b6efddc8))
+* sanitize endpoint path params ([924be9b](https://github.com/oregister/openregister-python/commit/924be9b09c0ee804aa934b3615db0c6089d2e224))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([f053a64](https://github.com/oregister/openregister-python/commit/f053a64334e4de4eea8ed8d7977b679b8c8fe019))
+* **internal:** tweak CI branches ([4b0ff82](https://github.com/oregister/openregister-python/commit/4b0ff8267fd4ba3b0c6990d87fdd87b7fc1c3fa4))
+* **internal:** update gitignore ([26e53e0](https://github.com/oregister/openregister-python/commit/26e53e088b1e334b1adfc6baa54a997831f9ba84))
+
 ## 3.0.3 (2026-03-12)
 
 Full Changelog: [v3.0.2...v3.0.3](https://github.com/oregister/openregister-python/compare/v3.0.2...v3.0.3)
