@@ -31,10 +31,11 @@ from ._base_client import (
 )
 
 if TYPE_CHECKING:
-    from .resources import person, search, company, document
+    from .resources import person, search, company, monitor, document
     from .resources.person import PersonResource, AsyncPersonResource
     from .resources.search import SearchResource, AsyncSearchResource
     from .resources.company import CompanyResource, AsyncCompanyResource
+    from .resources.monitor import MonitorResource, AsyncMonitorResource
     from .resources.document import DocumentResource, AsyncDocumentResource
 
 __all__ = [
@@ -127,6 +128,12 @@ class Openregister(SyncAPIClient):
         from .resources.person import PersonResource
 
         return PersonResource(self)
+
+    @cached_property
+    def monitor(self) -> MonitorResource:
+        from .resources.monitor import MonitorResource
+
+        return MonitorResource(self)
 
     @cached_property
     def with_raw_response(self) -> OpenregisterWithRawResponse:
@@ -321,6 +328,12 @@ class AsyncOpenregister(AsyncAPIClient):
         return AsyncPersonResource(self)
 
     @cached_property
+    def monitor(self) -> AsyncMonitorResource:
+        from .resources.monitor import AsyncMonitorResource
+
+        return AsyncMonitorResource(self)
+
+    @cached_property
     def with_raw_response(self) -> AsyncOpenregisterWithRawResponse:
         return AsyncOpenregisterWithRawResponse(self)
 
@@ -463,6 +476,12 @@ class OpenregisterWithRawResponse:
 
         return PersonResourceWithRawResponse(self._client.person)
 
+    @cached_property
+    def monitor(self) -> monitor.MonitorResourceWithRawResponse:
+        from .resources.monitor import MonitorResourceWithRawResponse
+
+        return MonitorResourceWithRawResponse(self._client.monitor)
+
 
 class AsyncOpenregisterWithRawResponse:
     _client: AsyncOpenregister
@@ -493,6 +512,12 @@ class AsyncOpenregisterWithRawResponse:
         from .resources.person import AsyncPersonResourceWithRawResponse
 
         return AsyncPersonResourceWithRawResponse(self._client.person)
+
+    @cached_property
+    def monitor(self) -> monitor.AsyncMonitorResourceWithRawResponse:
+        from .resources.monitor import AsyncMonitorResourceWithRawResponse
+
+        return AsyncMonitorResourceWithRawResponse(self._client.monitor)
 
 
 class OpenregisterWithStreamedResponse:
@@ -525,6 +550,12 @@ class OpenregisterWithStreamedResponse:
 
         return PersonResourceWithStreamingResponse(self._client.person)
 
+    @cached_property
+    def monitor(self) -> monitor.MonitorResourceWithStreamingResponse:
+        from .resources.monitor import MonitorResourceWithStreamingResponse
+
+        return MonitorResourceWithStreamingResponse(self._client.monitor)
+
 
 class AsyncOpenregisterWithStreamedResponse:
     _client: AsyncOpenregister
@@ -555,6 +586,12 @@ class AsyncOpenregisterWithStreamedResponse:
         from .resources.person import AsyncPersonResourceWithStreamingResponse
 
         return AsyncPersonResourceWithStreamingResponse(self._client.person)
+
+    @cached_property
+    def monitor(self) -> monitor.AsyncMonitorResourceWithStreamingResponse:
+        from .resources.monitor import AsyncMonitorResourceWithStreamingResponse
+
+        return AsyncMonitorResourceWithStreamingResponse(self._client.monitor)
 
 
 Client = Openregister
