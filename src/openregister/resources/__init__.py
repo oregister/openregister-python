@@ -24,6 +24,14 @@ from .company import (
     CompanyResourceWithStreamingResponse,
     AsyncCompanyResourceWithStreamingResponse,
 )
+from .monitor import (
+    MonitorResource,
+    AsyncMonitorResource,
+    MonitorResourceWithRawResponse,
+    AsyncMonitorResourceWithRawResponse,
+    MonitorResourceWithStreamingResponse,
+    AsyncMonitorResourceWithStreamingResponse,
+)
 from .document import (
     DocumentResource,
     AsyncDocumentResource,
@@ -58,4 +66,10 @@ __all__ = [
     "AsyncPersonResourceWithRawResponse",
     "PersonResourceWithStreamingResponse",
     "AsyncPersonResourceWithStreamingResponse",
+    "MonitorResource",
+    "AsyncMonitorResource",
+    "MonitorResourceWithRawResponse",
+    "AsyncMonitorResourceWithRawResponse",
+    "MonitorResourceWithStreamingResponse",
+    "AsyncMonitorResourceWithStreamingResponse",
 ]

@@ -91,3 +91,17 @@ Methods:
 
 - <code title="get /v1/person/{person_id}">client.person.<a href="./src/openregister/resources/person.py">get_details_v1</a>(person_id) -> <a href="./src/openregister/types/person_get_details_v1_response.py">PersonGetDetailsV1Response</a></code>
 - <code title="get /v1/person/{person_id}/holdings">client.person.<a href="./src/openregister/resources/person.py">get_holdings_v1</a>(person_id) -> <a href="./src/openregister/types/person_get_holdings_v1_response.py">PersonGetHoldingsV1Response</a></code>
+
+# Monitor
+
+Types:
+
+```python
+from openregister.types import MonitorCreateResponse, MonitorListResponse
+```
+
+Methods:
+
+- <code title="post /v1/monitor">client.monitor.<a href="./src/openregister/resources/monitor.py">create</a>(\*\*<a href="src/openregister/types/monitor_create_params.py">params</a>) -> <a href="./src/openregister/types/monitor_create_response.py">MonitorCreateResponse</a></code>
+- <code title="get /v1/monitor">client.monitor.<a href="./src/openregister/resources/monitor.py">list</a>() -> <a href="./src/openregister/types/monitor_list_response.py">MonitorListResponse</a></code>
+- <code title="delete /v1/monitor/{entity_id}">client.monitor.<a href="./src/openregister/resources/monitor.py">delete</a>(entity_id) -> None</code>

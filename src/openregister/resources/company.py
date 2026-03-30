@@ -6,7 +6,7 @@ import httpx
 
 from ..types import company_get_owners_v1_params, company_get_details_v1_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -73,7 +73,7 @@ class CompanyResource(SyncAPIResource):
         if not company_id:
             raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
         return self._get(
-            f"/v0/company/{company_id}/contact",
+            path_template("/v0/company/{company_id}/contact", company_id=company_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -115,7 +115,7 @@ class CompanyResource(SyncAPIResource):
         if not company_id:
             raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
         return self._get(
-            f"/v1/company/{company_id}",
+            path_template("/v1/company/{company_id}", company_id=company_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -158,7 +158,7 @@ class CompanyResource(SyncAPIResource):
         if not company_id:
             raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
         return self._get(
-            f"/v1/company/{company_id}/financials",
+            path_template("/v1/company/{company_id}/financials", company_id=company_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -191,7 +191,7 @@ class CompanyResource(SyncAPIResource):
         if not company_id:
             raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
         return self._get(
-            f"/v1/company/{company_id}/owners/historical",
+            path_template("/v1/company/{company_id}/owners/historical", company_id=company_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -224,7 +224,7 @@ class CompanyResource(SyncAPIResource):
         if not company_id:
             raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
         return self._get(
-            f"/v1/company/{company_id}/holdings",
+            path_template("/v1/company/{company_id}/holdings", company_id=company_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -267,7 +267,7 @@ class CompanyResource(SyncAPIResource):
         if not company_id:
             raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
         return self._get(
-            f"/v1/company/{company_id}/owners",
+            path_template("/v1/company/{company_id}/owners", company_id=company_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -310,7 +310,7 @@ class CompanyResource(SyncAPIResource):
         if not company_id:
             raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
         return self._get(
-            f"/v1/company/{company_id}/ubo",
+            path_template("/v1/company/{company_id}/ubo", company_id=company_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -364,7 +364,7 @@ class AsyncCompanyResource(AsyncAPIResource):
         if not company_id:
             raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
         return await self._get(
-            f"/v0/company/{company_id}/contact",
+            path_template("/v0/company/{company_id}/contact", company_id=company_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -406,7 +406,7 @@ class AsyncCompanyResource(AsyncAPIResource):
         if not company_id:
             raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
         return await self._get(
-            f"/v1/company/{company_id}",
+            path_template("/v1/company/{company_id}", company_id=company_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -449,7 +449,7 @@ class AsyncCompanyResource(AsyncAPIResource):
         if not company_id:
             raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
         return await self._get(
-            f"/v1/company/{company_id}/financials",
+            path_template("/v1/company/{company_id}/financials", company_id=company_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -482,7 +482,7 @@ class AsyncCompanyResource(AsyncAPIResource):
         if not company_id:
             raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
         return await self._get(
-            f"/v1/company/{company_id}/owners/historical",
+            path_template("/v1/company/{company_id}/owners/historical", company_id=company_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -515,7 +515,7 @@ class AsyncCompanyResource(AsyncAPIResource):
         if not company_id:
             raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
         return await self._get(
-            f"/v1/company/{company_id}/holdings",
+            path_template("/v1/company/{company_id}/holdings", company_id=company_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -558,7 +558,7 @@ class AsyncCompanyResource(AsyncAPIResource):
         if not company_id:
             raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
         return await self._get(
-            f"/v1/company/{company_id}/owners",
+            path_template("/v1/company/{company_id}/owners", company_id=company_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -601,7 +601,7 @@ class AsyncCompanyResource(AsyncAPIResource):
         if not company_id:
             raise ValueError(f"Expected a non-empty value for `company_id` but received {company_id!r}")
         return await self._get(
-            f"/v1/company/{company_id}/ubo",
+            path_template("/v1/company/{company_id}/ubo", company_id=company_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
