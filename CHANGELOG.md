@@ -1,5 +1,18 @@
 # Changelog
 
+## 3.1.1 (2026-04-08)
+
+Full Changelog: [v3.1.0...v3.1.1](https://github.com/oregister/openregister-python/compare/v3.1.0...v3.1.1)
+
+### Bug Fixes
+
+* **client:** preserve hardcoded query params when merging with user params ([fa40ea6](https://github.com/oregister/openregister-python/commit/fa40ea6bd6af4dfe19c55e67a2dbb0c51098bc6e))
+
+
+### Chores
+
+* **client:** increase timeouts ([61f64e6](https://github.com/oregister/openregister-python/commit/61f64e689752e125cf887e8c5c0bd11ccc9c3843))
+
 ## 3.1.0 (2026-03-27)
 
 Full Changelog: [v3.0.3...v3.1.0](https://github.com/oregister/openregister-python/compare/v3.0.3...v3.1.0)
