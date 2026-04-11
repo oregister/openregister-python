@@ -1,5 +1,18 @@
 # Changelog
 
+## 3.2.0 (2026-04-11)
+
+Full Changelog: [v3.1.1...v3.2.0](https://github.com/oregister/openregister-python/compare/v3.1.1...v3.2.0)
+
+### Features
+
+* **api:** add lei ([1f29206](https://github.com/oregister/openregister-python/commit/1f29206f95c4bd3ce66025fa1978ee407c0c30e5))
+
+
+### Bug Fixes
+
+* ensure file data are only sent as 1 parameter ([a3a8259](https://github.com/oregister/openregister-python/commit/a3a82590fc8393190ffd5157b518c999c1559520))
+
 ## 3.1.1 (2026-04-08)
 
 Full Changelog: [v3.1.0...v3.1.1](https://github.com/oregister/openregister-python/compare/v3.1.0...v3.1.1)
