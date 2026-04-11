@@ -277,3 +277,6 @@ class CompanyGetDetailsV1Response(BaseModel):
     Date when the company was officially terminated (if applicable). Format: ISO
     8601 (YYYY-MM-DD) Example: "2022-01-01"
     """
+
+    lei: Optional[str] = None
+    """Legal Entity Identifier (LEI), if available."""
