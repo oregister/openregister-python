@@ -66,6 +66,8 @@ class Filter(SearchFilterBaseParam, total=False):
             "is_family_owned",
             "youngest_owner_age",
             "purpose",
+            "has_lei",
+            "lei",
         ]
     ]
 
