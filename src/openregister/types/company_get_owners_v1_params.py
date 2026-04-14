@@ -8,6 +8,15 @@ __all__ = ["CompanyGetOwnersV1Params"]
 
 
 class CompanyGetOwnersV1Params(TypedDict, total=False):
+    best_available: bool
+    """
+    When set to true, returns the best available owner data for AG and SE companies.
+    This data is extracted from Handelsregister documents and may not reflect the
+    most current ownership state, as these document types are not filed on every
+    ownership change. Requests for AG/SE companies without this flag return 404.
+    Note: realtime and best_available cannot be used together at the moment.
+    """
+
     export: bool
     """
     Setting this to true will return the owners of the company if they exist but
