@@ -50,6 +50,14 @@ class Owner(BaseModel):
 
 
 class CompanyGetOwnersV1Response(BaseModel):
+    best_available: bool
+    """
+    When true, the returned owner data is the best available but may not reflect the
+    most current ownership state. This applies to AG and SE companies where
+    ownership data is sourced from Handelsregister decision and articles of
+    association documents, which are not filed on every ownership change.
+    """
+
     company_id: str
     """Unique company identifier. Example: DE-HRB-F1103-267645"""
 

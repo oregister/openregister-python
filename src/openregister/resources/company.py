@@ -235,6 +235,7 @@ class CompanyResource(SyncAPIResource):
         self,
         company_id: str,
         *,
+        best_available: bool | Omit = omit,
         export: bool | Omit = omit,
         realtime: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -248,6 +249,12 @@ class CompanyResource(SyncAPIResource):
         Get company owners
 
         Args:
+          best_available: When set to true, returns the best available owner data for AG and SE companies.
+              This data is extracted from Handelsregister documents and may not reflect the
+              most current ownership state, as these document types are not filed on every
+              ownership change. Requests for AG/SE companies without this flag return 404.
+              Note: realtime and best_available cannot be used together at the moment.
+
           export: Setting this to true will return the owners of the company if they exist but
               will skip processing the documents in case they weren't processed yet.
 
@@ -275,6 +282,7 @@ class CompanyResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "best_available": best_available,
                         "export": export,
                         "realtime": realtime,
                     },
@@ -526,6 +534,7 @@ class AsyncCompanyResource(AsyncAPIResource):
         self,
         company_id: str,
         *,
+        best_available: bool | Omit = omit,
         export: bool | Omit = omit,
         realtime: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -539,6 +548,12 @@ class AsyncCompanyResource(AsyncAPIResource):
         Get company owners
 
         Args:
+          best_available: When set to true, returns the best available owner data for AG and SE companies.
+              This data is extracted from Handelsregister documents and may not reflect the
+              most current ownership state, as these document types are not filed on every
+              ownership change. Requests for AG/SE companies without this flag return 404.
+              Note: realtime and best_available cannot be used together at the moment.
+
           export: Setting this to true will return the owners of the company if they exist but
               will skip processing the documents in case they weren't processed yet.
 
@@ -566,6 +581,7 @@ class AsyncCompanyResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
+                        "best_available": best_available,
                         "export": export,
                         "realtime": realtime,
                     },

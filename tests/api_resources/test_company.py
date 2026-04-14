@@ -258,6 +258,7 @@ class TestCompany:
     def test_method_get_owners_v1_with_all_params(self, client: Openregister) -> None:
         company = client.company.get_owners_v1(
             company_id="company_id",
+            best_available=True,
             export=True,
             realtime=True,
         )
@@ -578,6 +579,7 @@ class TestAsyncCompany:
     async def test_method_get_owners_v1_with_all_params(self, async_client: AsyncOpenregister) -> None:
         company = await async_client.company.get_owners_v1(
             company_id="company_id",
+            best_available=True,
             export=True,
             realtime=True,
         )

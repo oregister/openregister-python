@@ -240,6 +240,12 @@ class CompanyGetDetailsV1Response(BaseModel):
     names: List[CompanyName]
     """Historical company names. Shows how the company name changed over time."""
 
+    notarized_at: Optional[str] = None
+    """
+    Date of the notarized company agreement (Gesellschaftsvertrag or Satzung).
+    Format: ISO 8601 (YYYY-MM-DD) Example: "2021-12-21"
+    """
+
     purpose: Optional[CompanyPurpose] = None
     """Current official business purpose of the company."""
 
@@ -275,7 +281,7 @@ class CompanyGetDetailsV1Response(BaseModel):
     terminated_at: Optional[str] = None
     """
     Date when the company was officially terminated (if applicable). Format: ISO
-    8601 (YYYY-MM-DD) Example: "2022-01-01"
+    8601 (YYYY-MM-DD) Example: "2024-01-01"
     """
 
     lei: Optional[str] = None
