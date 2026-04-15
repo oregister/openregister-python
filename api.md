@@ -105,3 +105,22 @@ Methods:
 - <code title="post /v1/monitor">client.monitor.<a href="./src/openregister/resources/monitor.py">create</a>(\*\*<a href="src/openregister/types/monitor_create_params.py">params</a>) -> <a href="./src/openregister/types/monitor_create_response.py">MonitorCreateResponse</a></code>
 - <code title="get /v1/monitor">client.monitor.<a href="./src/openregister/resources/monitor.py">list</a>() -> <a href="./src/openregister/types/monitor_list_response.py">MonitorListResponse</a></code>
 - <code title="delete /v1/monitor/{entity_id}">client.monitor.<a href="./src/openregister/resources/monitor.py">delete</a>(entity_id) -> None</code>
+
+# Transparenzregister
+
+Methods:
+
+- <code title="post /v1/transparenzregister/credentials">client.transparenzregister.<a href="./src/openregister/resources/transparenzregister/transparenzregister.py">set_credentials_v1</a>(\*\*<a href="src/openregister/types/transparenzregister_set_credentials_v1_params.py">params</a>) -> None</code>
+
+## Request
+
+Types:
+
+```python
+from openregister.types.transparenzregister import RequestCreateV1Response, RequestGetV1Response
+```
+
+Methods:
+
+- <code title="post /v1/transparenzregister/request">client.transparenzregister.request.<a href="./src/openregister/resources/transparenzregister/request.py">create_v1</a>(\*\*<a href="src/openregister/types/transparenzregister/request_create_v1_params.py">params</a>) -> <a href="./src/openregister/types/transparenzregister/request_create_v1_response.py">RequestCreateV1Response</a></code>
+- <code title="get /v1/transparenzregister/request/{request_id}">client.transparenzregister.request.<a href="./src/openregister/resources/transparenzregister/request.py">get_v1</a>(request_id) -> <a href="./src/openregister/types/transparenzregister/request_get_v1_response.py">RequestGetV1Response</a></code>

@@ -31,12 +31,16 @@ from ._base_client import (
 )
 
 if TYPE_CHECKING:
-    from .resources import person, search, company, monitor, document
+    from .resources import person, search, company, monitor, document, transparenzregister
     from .resources.person import PersonResource, AsyncPersonResource
     from .resources.search import SearchResource, AsyncSearchResource
     from .resources.company import CompanyResource, AsyncCompanyResource
     from .resources.monitor import MonitorResource, AsyncMonitorResource
     from .resources.document import DocumentResource, AsyncDocumentResource
+    from .resources.transparenzregister.transparenzregister import (
+        TransparenzregisterResource,
+        AsyncTransparenzregisterResource,
+    )
 
 __all__ = [
     "Timeout",
@@ -134,6 +138,12 @@ class Openregister(SyncAPIClient):
         from .resources.monitor import MonitorResource
 
         return MonitorResource(self)
+
+    @cached_property
+    def transparenzregister(self) -> TransparenzregisterResource:
+        from .resources.transparenzregister import TransparenzregisterResource
+
+        return TransparenzregisterResource(self)
 
     @cached_property
     def with_raw_response(self) -> OpenregisterWithRawResponse:
@@ -334,6 +344,12 @@ class AsyncOpenregister(AsyncAPIClient):
         return AsyncMonitorResource(self)
 
     @cached_property
+    def transparenzregister(self) -> AsyncTransparenzregisterResource:
+        from .resources.transparenzregister import AsyncTransparenzregisterResource
+
+        return AsyncTransparenzregisterResource(self)
+
+    @cached_property
     def with_raw_response(self) -> AsyncOpenregisterWithRawResponse:
         return AsyncOpenregisterWithRawResponse(self)
 
@@ -482,6 +498,12 @@ class OpenregisterWithRawResponse:
 
         return MonitorResourceWithRawResponse(self._client.monitor)
 
+    @cached_property
+    def transparenzregister(self) -> transparenzregister.TransparenzregisterResourceWithRawResponse:
+        from .resources.transparenzregister import TransparenzregisterResourceWithRawResponse
+
+        return TransparenzregisterResourceWithRawResponse(self._client.transparenzregister)
+
 
 class AsyncOpenregisterWithRawResponse:
     _client: AsyncOpenregister
@@ -518,6 +540,12 @@ class AsyncOpenregisterWithRawResponse:
         from .resources.monitor import AsyncMonitorResourceWithRawResponse
 
         return AsyncMonitorResourceWithRawResponse(self._client.monitor)
+
+    @cached_property
+    def transparenzregister(self) -> transparenzregister.AsyncTransparenzregisterResourceWithRawResponse:
+        from .resources.transparenzregister import AsyncTransparenzregisterResourceWithRawResponse
+
+        return AsyncTransparenzregisterResourceWithRawResponse(self._client.transparenzregister)
 
 
 class OpenregisterWithStreamedResponse:
@@ -556,6 +584,12 @@ class OpenregisterWithStreamedResponse:
 
         return MonitorResourceWithStreamingResponse(self._client.monitor)
 
+    @cached_property
+    def transparenzregister(self) -> transparenzregister.TransparenzregisterResourceWithStreamingResponse:
+        from .resources.transparenzregister import TransparenzregisterResourceWithStreamingResponse
+
+        return TransparenzregisterResourceWithStreamingResponse(self._client.transparenzregister)
+
 
 class AsyncOpenregisterWithStreamedResponse:
     _client: AsyncOpenregister
@@ -592,6 +626,12 @@ class AsyncOpenregisterWithStreamedResponse:
         from .resources.monitor import AsyncMonitorResourceWithStreamingResponse
 
         return AsyncMonitorResourceWithStreamingResponse(self._client.monitor)
+
+    @cached_property
+    def transparenzregister(self) -> transparenzregister.AsyncTransparenzregisterResourceWithStreamingResponse:
+        from .resources.transparenzregister import AsyncTransparenzregisterResourceWithStreamingResponse
+
+        return AsyncTransparenzregisterResourceWithStreamingResponse(self._client.transparenzregister)
 
 
 Client = Openregister

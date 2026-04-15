@@ -57,6 +57,9 @@ from .company_get_historical_owners_v1_response import (
 from .search_autocomplete_companies_v1_response import (
     SearchAutocompleteCompaniesV1Response as SearchAutocompleteCompaniesV1Response,
 )
+from .transparenzregister_set_credentials_v1_params import (
+    TransparenzregisterSetCredentialsV1Params as TransparenzregisterSetCredentialsV1Params,
+)
 
 # Rebuild cyclical models only after all modules are imported.
 # This ensures that, when building the deferred (due to cyclical references) model schema,
