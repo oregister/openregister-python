@@ -40,6 +40,14 @@ from .document import (
     DocumentResourceWithStreamingResponse,
     AsyncDocumentResourceWithStreamingResponse,
 )
+from .transparenzregister import (
+    TransparenzregisterResource,
+    AsyncTransparenzregisterResource,
+    TransparenzregisterResourceWithRawResponse,
+    AsyncTransparenzregisterResourceWithRawResponse,
+    TransparenzregisterResourceWithStreamingResponse,
+    AsyncTransparenzregisterResourceWithStreamingResponse,
+)
 
 __all__ = [
     "SearchResource",
@@ -72,4 +80,10 @@ __all__ = [
     "AsyncMonitorResourceWithRawResponse",
     "MonitorResourceWithStreamingResponse",
     "AsyncMonitorResourceWithStreamingResponse",
+    "TransparenzregisterResource",
+    "AsyncTransparenzregisterResource",
+    "TransparenzregisterResourceWithRawResponse",
+    "AsyncTransparenzregisterResourceWithRawResponse",
+    "TransparenzregisterResourceWithStreamingResponse",
+    "AsyncTransparenzregisterResourceWithStreamingResponse",
 ]
