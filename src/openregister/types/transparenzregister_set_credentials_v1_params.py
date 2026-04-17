@@ -12,15 +12,13 @@ class TransparenzregisterSetCredentialsV1Params(TypedDict, total=False):
     """Password for Transparenzregister API access."""
 
     username: Required[str]
-    """
-    Username for Transparenzregister API access. Example:
-    "testnutzer-eis@transparenzregister.de"
-    """
+    """Username for Transparenzregister API access. Example: "compliance@example.com" """
 
-    credential_label: str
-    """Label to identify this set of credentials.
+    name: str
+    """Name to identify this set of credentials.
 
     Allows storing multiple Transparenzregister credentials per user (e.g., for
-    different accounts or clients). Defaults to 'default' if not provided. Example:
+    different accounts or clients). Defaults to 'default' if not provided. Cannot be
+    `sandbox` because that name is reserved for test-mode extracts. Example:
     "client_a"
     """

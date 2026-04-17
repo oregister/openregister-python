@@ -30,7 +30,7 @@ class TestTransparenzregister:
         transparenzregister = client.transparenzregister.set_credentials_v1(
             password="password",
             username="username",
-            credential_label="credential_label",
+            name="name",
         )
         assert transparenzregister is None
 
@@ -83,7 +83,7 @@ class TestAsyncTransparenzregister:
         transparenzregister = await async_client.transparenzregister.set_credentials_v1(
             password="password",
             username="username",
-            credential_label="credential_label",
+            name="name",
         )
         assert transparenzregister is None
 
