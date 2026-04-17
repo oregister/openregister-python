@@ -4,23 +4,35 @@ from __future__ import annotations
 
 import httpx
 
-from ..types import transparenzregister_set_credentials_v1_params
-from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
-from .._compat import cached_property
-from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import (
+from ...types import transparenzregister_set_credentials_v1_params
+from .extract import (
+    ExtractResource,
+    AsyncExtractResource,
+    ExtractResourceWithRawResponse,
+    AsyncExtractResourceWithRawResponse,
+    ExtractResourceWithStreamingResponse,
+    AsyncExtractResourceWithStreamingResponse,
+)
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
+from ..._utils import maybe_transform, async_maybe_transform
+from ..._compat import cached_property
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import (
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..._base_client import make_request_options
 
 __all__ = ["TransparenzregisterResource", "AsyncTransparenzregisterResource"]
 
 
 class TransparenzregisterResource(SyncAPIResource):
+    @cached_property
+    def extract(self) -> ExtractResource:
+        return ExtractResource(self._client)
+
     @cached_property
     def with_raw_response(self) -> TransparenzregisterResourceWithRawResponse:
         """
@@ -97,6 +109,10 @@ class TransparenzregisterResource(SyncAPIResource):
 
 
 class AsyncTransparenzregisterResource(AsyncAPIResource):
+    @cached_property
+    def extract(self) -> AsyncExtractResource:
+        return AsyncExtractResource(self._client)
+
     @cached_property
     def with_raw_response(self) -> AsyncTransparenzregisterResourceWithRawResponse:
         """
@@ -180,6 +196,10 @@ class TransparenzregisterResourceWithRawResponse:
             transparenzregister.set_credentials_v1,
         )
 
+    @cached_property
+    def extract(self) -> ExtractResourceWithRawResponse:
+        return ExtractResourceWithRawResponse(self._transparenzregister.extract)
+
 
 class AsyncTransparenzregisterResourceWithRawResponse:
     def __init__(self, transparenzregister: AsyncTransparenzregisterResource) -> None:
@@ -188,6 +208,10 @@ class AsyncTransparenzregisterResourceWithRawResponse:
         self.set_credentials_v1 = async_to_raw_response_wrapper(
             transparenzregister.set_credentials_v1,
         )
+
+    @cached_property
+    def extract(self) -> AsyncExtractResourceWithRawResponse:
+        return AsyncExtractResourceWithRawResponse(self._transparenzregister.extract)
 
 
 class TransparenzregisterResourceWithStreamingResponse:
@@ -198,6 +222,10 @@ class TransparenzregisterResourceWithStreamingResponse:
             transparenzregister.set_credentials_v1,
         )
 
+    @cached_property
+    def extract(self) -> ExtractResourceWithStreamingResponse:
+        return ExtractResourceWithStreamingResponse(self._transparenzregister.extract)
+
 
 class AsyncTransparenzregisterResourceWithStreamingResponse:
     def __init__(self, transparenzregister: AsyncTransparenzregisterResource) -> None:
@@ -206,3 +234,7 @@ class AsyncTransparenzregisterResourceWithStreamingResponse:
         self.set_credentials_v1 = async_to_streamed_response_wrapper(
             transparenzregister.set_credentials_v1,
         )
+
+    @cached_property
+    def extract(self) -> AsyncExtractResourceWithStreamingResponse:
+        return AsyncExtractResourceWithStreamingResponse(self._transparenzregister.extract)
