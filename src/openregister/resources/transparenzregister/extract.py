@@ -16,8 +16,7 @@ from ..._response import (
 )
 from ..._base_client import make_request_options
 from ...types.transparenzregister import extract_create_v1_params
-from ...types.transparenzregister.extract_get_v1_response import ExtractGetV1Response
-from ...types.transparenzregister.extract_create_v1_response import ExtractCreateV1Response
+from ...types.transparenzregister.transparenzregister_extract import TransparenzregisterExtract
 
 __all__ = ["ExtractResource", "AsyncExtractResource"]
 
@@ -53,7 +52,7 @@ class ExtractResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ExtractCreateV1Response:
+    ) -> TransparenzregisterExtract:
         """
         Submit a Transparenzregister extract request and return an extract resource with
         processing status.
@@ -93,7 +92,7 @@ class ExtractResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ExtractCreateV1Response,
+            cast_to=TransparenzregisterExtract,
         )
 
     def get_v1(
@@ -106,7 +105,7 @@ class ExtractResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ExtractGetV1Response:
+    ) -> TransparenzregisterExtract:
         """Get the results of a Transparenzregister extract request.
 
         This endpoint handles
@@ -133,7 +132,7 @@ class ExtractResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ExtractGetV1Response,
+            cast_to=TransparenzregisterExtract,
         )
 
 
@@ -168,7 +167,7 @@ class AsyncExtractResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ExtractCreateV1Response:
+    ) -> TransparenzregisterExtract:
         """
         Submit a Transparenzregister extract request and return an extract resource with
         processing status.
@@ -210,7 +209,7 @@ class AsyncExtractResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ExtractCreateV1Response,
+            cast_to=TransparenzregisterExtract,
         )
 
     async def get_v1(
@@ -223,7 +222,7 @@ class AsyncExtractResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ExtractGetV1Response:
+    ) -> TransparenzregisterExtract:
         """Get the results of a Transparenzregister extract request.
 
         This endpoint handles
@@ -250,7 +249,7 @@ class AsyncExtractResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ExtractGetV1Response,
+            cast_to=TransparenzregisterExtract,
         )
 
 
