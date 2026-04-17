@@ -117,10 +117,21 @@ Methods:
 Types:
 
 ```python
-from openregister.types.transparenzregister import ExtractCreateV1Response, ExtractGetV1Response
+from openregister.types.transparenzregister import (
+    TransparenzregisterDocument,
+    TransparenzregisterExtract,
+    TransparenzregisterGroup,
+    TransparenzregisterReport,
+    TransparenzregisterStatusFlags,
+    TransparenzregisterUbo,
+    TransparenzregisterUboInterest,
+    TransparenzregisterUboNaturalPerson,
+    TransparenzregisterValidity,
+    TransparenzregisterValidityPoint,
+)
 ```
 
 Methods:
 
-- <code title="post /v1/transparenzregister/extracts">client.transparenzregister.extract.<a href="./src/openregister/resources/transparenzregister/extract.py">create_v1</a>(\*\*<a href="src/openregister/types/transparenzregister/extract_create_v1_params.py">params</a>) -> <a href="./src/openregister/types/transparenzregister/extract_create_v1_response.py">ExtractCreateV1Response</a></code>
-- <code title="get /v1/transparenzregister/extracts/{extract_id}">client.transparenzregister.extract.<a href="./src/openregister/resources/transparenzregister/extract.py">get_v1</a>(extract_id) -> <a href="./src/openregister/types/transparenzregister/extract_get_v1_response.py">ExtractGetV1Response</a></code>
+- <code title="post /v1/transparenzregister/extracts">client.transparenzregister.extract.<a href="./src/openregister/resources/transparenzregister/extract.py">create_v1</a>(\*\*<a href="src/openregister/types/transparenzregister/extract_create_v1_params.py">params</a>) -> <a href="./src/openregister/types/transparenzregister/transparenzregister_extract.py">TransparenzregisterExtract</a></code>
+- <code title="get /v1/transparenzregister/extracts/{extract_id}">client.transparenzregister.extract.<a href="./src/openregister/resources/transparenzregister/extract.py">get_v1</a>(extract_id) -> <a href="./src/openregister/types/transparenzregister/transparenzregister_extract.py">TransparenzregisterExtract</a></code>
