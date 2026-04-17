@@ -4,35 +4,23 @@ from __future__ import annotations
 
 import httpx
 
-from ...types import transparenzregister_set_credentials_v1_params
-from .request import (
-    RequestResource,
-    AsyncRequestResource,
-    RequestResourceWithRawResponse,
-    AsyncRequestResourceWithRawResponse,
-    RequestResourceWithStreamingResponse,
-    AsyncRequestResourceWithStreamingResponse,
-)
-from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
-from ..._compat import cached_property
-from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import (
+from ..types import transparenzregister_set_credentials_v1_params
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
+from .._utils import maybe_transform, async_maybe_transform
+from .._compat import cached_property
+from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import (
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from .._base_client import make_request_options
 
 __all__ = ["TransparenzregisterResource", "AsyncTransparenzregisterResource"]
 
 
 class TransparenzregisterResource(SyncAPIResource):
-    @cached_property
-    def request(self) -> RequestResource:
-        return RequestResource(self._client)
-
     @cached_property
     def with_raw_response(self) -> TransparenzregisterResourceWithRawResponse:
         """
@@ -57,7 +45,7 @@ class TransparenzregisterResource(SyncAPIResource):
         *,
         password: str,
         username: str,
-        credential_label: str | Omit = omit,
+        name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -68,18 +56,19 @@ class TransparenzregisterResource(SyncAPIResource):
         """
         Store username and password credentials for accessing the Transparenzregister
         API. These credentials will be used for subsequent requests to retrieve company
-        documents.
+        documents. Credential names are user-scoped; the reserved name `sandbox` cannot
+        be used. Credentials are validated against Transparenzregister before they are
+        persisted.
 
         Args:
           password: Password for Transparenzregister API access.
 
-          username:
-              Username for Transparenzregister API access. Example:
-              "testnutzer-eis@transparenzregister.de"
+          username: Username for Transparenzregister API access. Example: "compliance@example.com"
 
-          credential_label: Label to identify this set of credentials. Allows storing multiple
+          name: Name to identify this set of credentials. Allows storing multiple
               Transparenzregister credentials per user (e.g., for different accounts or
-              clients). Defaults to 'default' if not provided. Example: "client_a"
+              clients). Defaults to 'default' if not provided. Cannot be `sandbox` because
+              that name is reserved for test-mode extracts. Example: "client_a"
 
           extra_headers: Send extra headers
 
@@ -96,7 +85,7 @@ class TransparenzregisterResource(SyncAPIResource):
                 {
                     "password": password,
                     "username": username,
-                    "credential_label": credential_label,
+                    "name": name,
                 },
                 transparenzregister_set_credentials_v1_params.TransparenzregisterSetCredentialsV1Params,
             ),
@@ -108,10 +97,6 @@ class TransparenzregisterResource(SyncAPIResource):
 
 
 class AsyncTransparenzregisterResource(AsyncAPIResource):
-    @cached_property
-    def request(self) -> AsyncRequestResource:
-        return AsyncRequestResource(self._client)
-
     @cached_property
     def with_raw_response(self) -> AsyncTransparenzregisterResourceWithRawResponse:
         """
@@ -136,7 +121,7 @@ class AsyncTransparenzregisterResource(AsyncAPIResource):
         *,
         password: str,
         username: str,
-        credential_label: str | Omit = omit,
+        name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -147,18 +132,19 @@ class AsyncTransparenzregisterResource(AsyncAPIResource):
         """
         Store username and password credentials for accessing the Transparenzregister
         API. These credentials will be used for subsequent requests to retrieve company
-        documents.
+        documents. Credential names are user-scoped; the reserved name `sandbox` cannot
+        be used. Credentials are validated against Transparenzregister before they are
+        persisted.
 
         Args:
           password: Password for Transparenzregister API access.
 
-          username:
-              Username for Transparenzregister API access. Example:
-              "testnutzer-eis@transparenzregister.de"
+          username: Username for Transparenzregister API access. Example: "compliance@example.com"
 
-          credential_label: Label to identify this set of credentials. Allows storing multiple
+          name: Name to identify this set of credentials. Allows storing multiple
               Transparenzregister credentials per user (e.g., for different accounts or
-              clients). Defaults to 'default' if not provided. Example: "client_a"
+              clients). Defaults to 'default' if not provided. Cannot be `sandbox` because
+              that name is reserved for test-mode extracts. Example: "client_a"
 
           extra_headers: Send extra headers
 
@@ -175,7 +161,7 @@ class AsyncTransparenzregisterResource(AsyncAPIResource):
                 {
                     "password": password,
                     "username": username,
-                    "credential_label": credential_label,
+                    "name": name,
                 },
                 transparenzregister_set_credentials_v1_params.TransparenzregisterSetCredentialsV1Params,
             ),
@@ -194,10 +180,6 @@ class TransparenzregisterResourceWithRawResponse:
             transparenzregister.set_credentials_v1,
         )
 
-    @cached_property
-    def request(self) -> RequestResourceWithRawResponse:
-        return RequestResourceWithRawResponse(self._transparenzregister.request)
-
 
 class AsyncTransparenzregisterResourceWithRawResponse:
     def __init__(self, transparenzregister: AsyncTransparenzregisterResource) -> None:
@@ -206,10 +188,6 @@ class AsyncTransparenzregisterResourceWithRawResponse:
         self.set_credentials_v1 = async_to_raw_response_wrapper(
             transparenzregister.set_credentials_v1,
         )
-
-    @cached_property
-    def request(self) -> AsyncRequestResourceWithRawResponse:
-        return AsyncRequestResourceWithRawResponse(self._transparenzregister.request)
 
 
 class TransparenzregisterResourceWithStreamingResponse:
@@ -220,10 +198,6 @@ class TransparenzregisterResourceWithStreamingResponse:
             transparenzregister.set_credentials_v1,
         )
 
-    @cached_property
-    def request(self) -> RequestResourceWithStreamingResponse:
-        return RequestResourceWithStreamingResponse(self._transparenzregister.request)
-
 
 class AsyncTransparenzregisterResourceWithStreamingResponse:
     def __init__(self, transparenzregister: AsyncTransparenzregisterResource) -> None:
@@ -232,7 +206,3 @@ class AsyncTransparenzregisterResourceWithStreamingResponse:
         self.set_credentials_v1 = async_to_streamed_response_wrapper(
             transparenzregister.set_credentials_v1,
         )
-
-    @cached_property
-    def request(self) -> AsyncRequestResourceWithStreamingResponse:
-        return AsyncRequestResourceWithStreamingResponse(self._transparenzregister.request)
