@@ -37,7 +37,10 @@ if TYPE_CHECKING:
     from .resources.company import CompanyResource, AsyncCompanyResource
     from .resources.monitor import MonitorResource, AsyncMonitorResource
     from .resources.document import DocumentResource, AsyncDocumentResource
-    from .resources.transparenzregister import TransparenzregisterResource, AsyncTransparenzregisterResource
+    from .resources.transparenzregister.transparenzregister import (
+        TransparenzregisterResource,
+        AsyncTransparenzregisterResource,
+    )
 
 __all__ = [
     "Timeout",
