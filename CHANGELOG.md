@@ -1,5 +1,22 @@
 # Changelog
 
+## 3.4.0 (2026-04-21)
+
+Full Changelog: [v3.3.0...v3.4.0](https://github.com/oregister/openregister-python/compare/v3.3.0...v3.4.0)
+
+### Features
+
+* **api:** manual updates ([d3b2682](https://github.com/oregister/openregister-python/commit/d3b2682b3a1f0c02dbb0ffc5bf4bedfbe04f09fa))
+* **api:** transparenzregister ([016e2d3](https://github.com/oregister/openregister-python/commit/016e2d316b55825c9eb8257bb96c0463c0b5bc66))
+* **api:** transparenzregister ([1564bbc](https://github.com/oregister/openregister-python/commit/1564bbc59fcb88662f14dbf6fa92d06fdd8a6616))
+* **api:** transparenzregister ([cc3039c](https://github.com/oregister/openregister-python/commit/cc3039cfe06010b597aeb5a227ae3f440f47e44b))
+* **api:** transparenzregister endpoints ([264ef57](https://github.com/oregister/openregister-python/commit/264ef57eab2f1eba138decaeb5dc5547d93e677d))
+
+
+### Performance Improvements
+
+* **client:** optimize file structure copying in multipart requests ([ea85886](https://github.com/oregister/openregister-python/commit/ea8588683342b7c2d19a0ff18ed0d77b6f5dc55d))
+
 ## 3.3.0 (2026-04-14)
 
 Full Changelog: [v3.2.0...v3.3.0](https://github.com/oregister/openregister-python/compare/v3.2.0...v3.3.0)

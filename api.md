@@ -105,3 +105,34 @@ Methods:
 - <code title="post /v1/monitor">client.monitor.<a href="./src/openregister/resources/monitor.py">create</a>(\*\*<a href="src/openregister/types/monitor_create_params.py">params</a>) -> <a href="./src/openregister/types/monitor_create_response.py">MonitorCreateResponse</a></code>
 - <code title="get /v1/monitor">client.monitor.<a href="./src/openregister/resources/monitor.py">list</a>() -> <a href="./src/openregister/types/monitor_list_response.py">MonitorListResponse</a></code>
 - <code title="delete /v1/monitor/{entity_id}">client.monitor.<a href="./src/openregister/resources/monitor.py">delete</a>(entity_id) -> None</code>
+
+# Transparenzregister
+
+Methods:
+
+- <code title="post /v1/transparenzregister/credentials">client.transparenzregister.<a href="./src/openregister/resources/transparenzregister/transparenzregister.py">set_credentials_v1</a>(\*\*<a href="src/openregister/types/transparenzregister_set_credentials_v1_params.py">params</a>) -> None</code>
+
+## Extract
+
+Types:
+
+```python
+from openregister.types.transparenzregister import (
+    TransparenzregisterDocument,
+    TransparenzregisterExtract,
+    TransparenzregisterGroup,
+    TransparenzregisterReport,
+    TransparenzregisterStatusFlags,
+    TransparenzregisterUbo,
+    TransparenzregisterUboInterest,
+    TransparenzregisterUboNaturalPerson,
+    TransparenzregisterValidity,
+    TransparenzregisterValidityPoint,
+    ExtractCreateV1Response,
+)
+```
+
+Methods:
+
+- <code title="post /v1/transparenzregister/extracts">client.transparenzregister.extract.<a href="./src/openregister/resources/transparenzregister/extract.py">create_v1</a>(\*\*<a href="src/openregister/types/transparenzregister/extract_create_v1_params.py">params</a>) -> <a href="./src/openregister/types/transparenzregister/extract_create_v1_response.py">ExtractCreateV1Response</a></code>
+- <code title="get /v1/transparenzregister/extracts/{extract_id}">client.transparenzregister.extract.<a href="./src/openregister/resources/transparenzregister/extract.py">get_v1</a>(extract_id) -> <a href="./src/openregister/types/transparenzregister/transparenzregister_extract.py">TransparenzregisterExtract</a></code>
