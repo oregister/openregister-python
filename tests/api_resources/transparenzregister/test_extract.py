@@ -9,7 +9,10 @@ import pytest
 
 from tests.utils import assert_matches_type
 from openregister import Openregister, AsyncOpenregister
-from openregister.types.transparenzregister import TransparenzregisterExtract
+from openregister.types.transparenzregister import (
+    ExtractCreateV1Response,
+    TransparenzregisterExtract,
+)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -21,7 +24,7 @@ class TestExtract:
     @parametrize
     def test_method_create_v1(self, client: Openregister) -> None:
         extract = client.transparenzregister.extract.create_v1()
-        assert_matches_type(TransparenzregisterExtract, extract, path=["response"])
+        assert_matches_type(ExtractCreateV1Response, extract, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -30,7 +33,7 @@ class TestExtract:
             company_id="company_id",
             x_credential_name="X-Credential-Name",
         )
-        assert_matches_type(TransparenzregisterExtract, extract, path=["response"])
+        assert_matches_type(ExtractCreateV1Response, extract, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -40,7 +43,7 @@ class TestExtract:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         extract = response.parse()
-        assert_matches_type(TransparenzregisterExtract, extract, path=["response"])
+        assert_matches_type(ExtractCreateV1Response, extract, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -50,7 +53,7 @@ class TestExtract:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             extract = response.parse()
-            assert_matches_type(TransparenzregisterExtract, extract, path=["response"])
+            assert_matches_type(ExtractCreateV1Response, extract, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -106,7 +109,7 @@ class TestAsyncExtract:
     @parametrize
     async def test_method_create_v1(self, async_client: AsyncOpenregister) -> None:
         extract = await async_client.transparenzregister.extract.create_v1()
-        assert_matches_type(TransparenzregisterExtract, extract, path=["response"])
+        assert_matches_type(ExtractCreateV1Response, extract, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -115,7 +118,7 @@ class TestAsyncExtract:
             company_id="company_id",
             x_credential_name="X-Credential-Name",
         )
-        assert_matches_type(TransparenzregisterExtract, extract, path=["response"])
+        assert_matches_type(ExtractCreateV1Response, extract, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -125,7 +128,7 @@ class TestAsyncExtract:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         extract = await response.parse()
-        assert_matches_type(TransparenzregisterExtract, extract, path=["response"])
+        assert_matches_type(ExtractCreateV1Response, extract, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -135,7 +138,7 @@ class TestAsyncExtract:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             extract = await response.parse()
-            assert_matches_type(TransparenzregisterExtract, extract, path=["response"])
+            assert_matches_type(ExtractCreateV1Response, extract, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
