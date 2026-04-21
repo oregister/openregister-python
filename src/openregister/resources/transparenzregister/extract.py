@@ -16,6 +16,7 @@ from ..._response import (
 )
 from ..._base_client import make_request_options
 from ...types.transparenzregister import extract_create_v1_params
+from ...types.transparenzregister.extract_create_v1_response import ExtractCreateV1Response
 from ...types.transparenzregister.transparenzregister_extract import TransparenzregisterExtract
 
 __all__ = ["ExtractResource", "AsyncExtractResource"]
@@ -52,7 +53,7 @@ class ExtractResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> TransparenzregisterExtract:
+    ) -> ExtractCreateV1Response:
         """
         Submit a Transparenzregister extract request and return an extract resource with
         processing status.
@@ -68,7 +69,7 @@ class ExtractResource(SyncAPIResource):
 
         Production usage:
 
-        - Omit `X-Credential-Name` or use `default` / another stored credential name.
+        - Always set `X-Credential-Name` to `default` or another stored credential name.
         - `company_id` is required and must resolve to exactly one Transparenzregister
           legal entity.
 
@@ -92,7 +93,7 @@ class ExtractResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=TransparenzregisterExtract,
+            cast_to=ExtractCreateV1Response,
         )
 
     def get_v1(
@@ -167,7 +168,7 @@ class AsyncExtractResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> TransparenzregisterExtract:
+    ) -> ExtractCreateV1Response:
         """
         Submit a Transparenzregister extract request and return an extract resource with
         processing status.
@@ -183,7 +184,7 @@ class AsyncExtractResource(AsyncAPIResource):
 
         Production usage:
 
-        - Omit `X-Credential-Name` or use `default` / another stored credential name.
+        - Always set `X-Credential-Name` to `default` or another stored credential name.
         - `company_id` is required and must resolve to exactly one Transparenzregister
           legal entity.
 
@@ -209,7 +210,7 @@ class AsyncExtractResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=TransparenzregisterExtract,
+            cast_to=ExtractCreateV1Response,
         )
 
     async def get_v1(

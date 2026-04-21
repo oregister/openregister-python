@@ -5,6 +5,7 @@ from __future__ import annotations
 from .transparenzregister_ubo import TransparenzregisterUbo as TransparenzregisterUbo
 from .extract_create_v1_params import ExtractCreateV1Params as ExtractCreateV1Params
 from .transparenzregister_group import TransparenzregisterGroup as TransparenzregisterGroup
+from .extract_create_v1_response import ExtractCreateV1Response as ExtractCreateV1Response
 from .transparenzregister_report import TransparenzregisterReport as TransparenzregisterReport
 from .transparenzregister_extract import TransparenzregisterExtract as TransparenzregisterExtract
 from .transparenzregister_document import TransparenzregisterDocument as TransparenzregisterDocument
