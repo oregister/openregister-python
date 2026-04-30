@@ -1,5 +1,13 @@
 # Changelog
 
+## 3.5.1 (2026-04-30)
+
+Full Changelog: [v3.5.0...v3.5.1](https://github.com/oregister/openregister-python/compare/v3.5.0...v3.5.1)
+
+### Chores
+
+* **internal:** reformat pyproject.toml ([04ecfa8](https://github.com/oregister/openregister-python/commit/04ecfa8f7831435467d500a71abaa2a726627cae))
+
 ## 3.5.0 (2026-04-30)
 
 Full Changelog: [v3.4.0...v3.5.0](https://github.com/oregister/openregister-python/compare/v3.4.0...v3.5.0)
