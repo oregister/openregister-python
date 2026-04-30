@@ -1,5 +1,23 @@
 # Changelog
 
+## 3.5.0 (2026-04-30)
+
+Full Changelog: [v3.4.0...v3.5.0](https://github.com/oregister/openregister-python/compare/v3.4.0...v3.5.0)
+
+### Features
+
+* support setting headers via env ([1b4b340](https://github.com/oregister/openregister-python/commit/1b4b340100d85c2528efa736f0ac507f7abaecb7))
+
+
+### Bug Fixes
+
+* use correct field name format for multipart file arrays ([63f477b](https://github.com/oregister/openregister-python/commit/63f477bf70b8a8f85211ceda3eb169b435a148fb))
+
+
+### Chores
+
+* **internal:** more robust bootstrap script ([f46ef0f](https://github.com/oregister/openregister-python/commit/f46ef0fea739be7a4b6d6810b05a430ac19a31a2))
+
 ## 3.4.0 (2026-04-21)
 
 Full Changelog: [v3.3.0...v3.4.0](https://github.com/oregister/openregister-python/compare/v3.3.0...v3.4.0)
