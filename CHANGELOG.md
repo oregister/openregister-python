@@ -1,5 +1,23 @@
 # Changelog
 
+## 3.5.1 (2026-05-13)
+
+Full Changelog: [v3.5.0...v3.5.1](https://github.com/oregister/openregister-python/compare/v3.5.0...v3.5.1)
+
+### Features
+
+* **internal/types:** support eagerly validating pydantic iterators ([a48d7f1](https://github.com/oregister/openregister-python/commit/a48d7f187d282a8743436eeabd53cad814d33a0d))
+
+
+### Bug Fixes
+
+* **client:** add missing f-string prefix in file type error message ([0cd7a9e](https://github.com/oregister/openregister-python/commit/0cd7a9ec1a003ab245552624ed767169a14ccb00))
+
+
+### Chores
+
+* **internal:** reformat pyproject.toml ([04ecfa8](https://github.com/oregister/openregister-python/commit/04ecfa8f7831435467d500a71abaa2a726627cae))
+
 ## 3.5.0 (2026-04-30)
 
 Full Changelog: [v3.4.0...v3.5.0](https://github.com/oregister/openregister-python/compare/v3.4.0...v3.5.0)
