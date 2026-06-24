@@ -1,5 +1,13 @@
 # Changelog
 
+## 3.6.0 (2026-06-24)
+
+Full Changelog: [v3.5.1...v3.6.0](https://github.com/oregister/openregister-python/compare/v3.5.1...v3.6.0)
+
+### Features
+
+* **api:** update schema ([c18dbca](https://github.com/oregister/openregister-python/commit/c18dbca310c0db45e5a2f1255b8504db52b54045))
+
 ## 3.5.1 (2026-05-13)
 
 Full Changelog: [v3.5.0...v3.5.1](https://github.com/oregister/openregister-python/compare/v3.5.0...v3.5.1)

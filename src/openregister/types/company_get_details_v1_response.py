@@ -64,9 +64,9 @@ class Contact(BaseModel):
 
 class Indicator(BaseModel):
     """
-    The indicators of the company for a given year.
+    A focused subset of the key company indicators for a given year.
     Values of the indicator are given in the smallest currency unit (cents).
-    Example: 2099 represents €20.99 for monetary values
+    Example: 2099 represents €20.99 for monetary values.
     For non-monetary values (e.g., employees), the actual number.
     """
 
@@ -207,7 +207,7 @@ class CompanyGetDetailsV1Response(BaseModel):
     capital: Optional[CompanyCapital] = None
     """Current registered capital of the company."""
 
-    capitals: List[Optional[CompanyCapital]]
+    capitals: List[CompanyCapital]
     """Historical capital changes. Shows how the company capital changed over time."""
 
     contact: Optional[Contact] = None
@@ -249,7 +249,7 @@ class CompanyGetDetailsV1Response(BaseModel):
     purpose: Optional[CompanyPurpose] = None
     """Current official business purpose of the company."""
 
-    purposes: List[Optional[CompanyPurpose]]
+    purposes: List[CompanyPurpose]
     """Historical business purposes. Shows how the company purpose changed over time."""
 
     company_register: CompanyRegister = FieldInfo(alias="register")
