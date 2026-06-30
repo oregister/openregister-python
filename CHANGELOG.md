@@ -1,5 +1,15 @@
 # Changelog
 
+## 3.7.0 (2026-06-30)
+
+Full Changelog: [v3.6.0...v3.7.0](https://github.com/oregister/openregister-python/compare/v3.6.0...v3.7.0)
+
+### Features
+
+* **api:** add represenation_rule & individual authority ([7b4c163](https://github.com/oregister/openregister-python/commit/7b4c163177314cd659f40e3670ef13a2af290935))
+* **api:** date typed ([e545080](https://github.com/oregister/openregister-python/commit/e5450807f5ddb8371254f0f76baffa72f59abf88))
+* **api:** date typed ([666c55e](https://github.com/oregister/openregister-python/commit/666c55efc6f8282ba877d856146f639ca2e48657))
+
 ## 3.6.0 (2026-06-24)
 
 Full Changelog: [v3.5.1...v3.6.0](https://github.com/oregister/openregister-python/compare/v3.5.1...v3.6.0)
