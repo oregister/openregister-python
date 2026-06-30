@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from typing import List, Optional
+from datetime import datetime
 
 from .._models import BaseModel
 
@@ -206,7 +207,7 @@ class Report(BaseModel):
 
     passiva: "ReportTable"
 
-    report_end_date: str
+    report_end_date: datetime
 
     report_id: str
     """
@@ -214,7 +215,7 @@ class Report(BaseModel):
     f47ac10b-58cc-4372-a567-0e02b2c3d479
     """
 
-    report_start_date: Optional[str] = None
+    report_start_date: Optional[datetime] = None
 
     sources: List[ReportSource]
     """Sources of the report data. Presigned URLs accessible for 30 minutes."""
