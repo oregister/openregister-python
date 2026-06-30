@@ -168,6 +168,14 @@ class Representation(BaseModel):
     May be null for certain representatives.
     """
 
+    authority: Optional[str] = None
+    """
+    The representative's current individual representation authority (individuelle
+    Vertretungsbefugnis), as published in the register. Null if no special authority
+    is recorded. Example: "einzelvertretungsberechtigt mit der Befugnis, im Namen
+    der Gesellschaft mit sich im eigenen Namen Rechtsgeschäfte abzuschließen"
+    """
+
     end_date: Optional[str] = None
     """
     Date when this representative role ended (if applicable). Format: ISO 8601
@@ -265,6 +273,15 @@ class CompanyGetDetailsV1Response(BaseModel):
     """
     List of individuals or entities authorized to represent the company. Includes
     directors, officers, and authorized signatories.
+    """
+
+    representation_rule: Optional[str] = None
+    """
+    The company's current general representation rule (allgemeine
+    Vertretungsregelung), as published in the register. Example: "Ist nur ein
+    Geschäftsführer bestellt, so vertritt er die Gesellschaft allein. Sind mehrere
+    Geschäftsführer bestellt, so wird die Gesellschaft durch zwei Geschäftsführer
+    oder durch einen Geschäftsführer gemeinsam mit einem Prokuristen vertreten."
     """
 
     sources: List[Source]
