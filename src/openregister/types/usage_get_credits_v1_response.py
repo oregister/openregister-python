@@ -5,7 +5,7 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["UsageGetUsageV1Response", "Period"]
+__all__ = ["UsageGetCreditsV1Response", "Period"]
 
 
 class Period(BaseModel):
@@ -18,7 +18,7 @@ class Period(BaseModel):
     """
 
 
-class UsageGetUsageV1Response(BaseModel):
+class UsageGetCreditsV1Response(BaseModel):
     included_credits: int
 
     overage_credits: int
