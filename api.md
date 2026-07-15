@@ -144,12 +144,12 @@ Methods:
 Types:
 
 ```python
-from openregister.types import UsageGetUsageV1Response
+from openregister.types import UsageGetCreditsV1Response
 ```
 
 Methods:
 
-- <code title="get /v1/credits">client.usage.<a href="./src/openregister/resources/usage.py">get_usage_v1</a>() -> <a href="./src/openregister/types/usage_get_usage_v1_response.py">UsageGetUsageV1Response</a></code>
+- <code title="get /v1/credits">client.usage.<a href="./src/openregister/resources/usage.py">get_credits_v1</a>() -> <a href="./src/openregister/types/usage_get_credits_v1_response.py">UsageGetCreditsV1Response</a></code>
 
 # Insolvency
 

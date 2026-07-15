@@ -14,7 +14,7 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.usage_get_usage_v1_response import UsageGetUsageV1Response
+from ..types.usage_get_credits_v1_response import UsageGetCreditsV1Response
 
 __all__ = ["UsageResource", "AsyncUsageResource"]
 
@@ -39,7 +39,7 @@ class UsageResource(SyncAPIResource):
         """
         return UsageResourceWithStreamingResponse(self)
 
-    def get_usage_v1(
+    def get_credits_v1(
         self,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -48,14 +48,14 @@ class UsageResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> UsageGetUsageV1Response:
+    ) -> UsageGetCreditsV1Response:
         """Retrieve public API credit usage"""
         return self._get(
             "/v1/credits",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=UsageGetUsageV1Response,
+            cast_to=UsageGetCreditsV1Response,
         )
 
 
@@ -79,7 +79,7 @@ class AsyncUsageResource(AsyncAPIResource):
         """
         return AsyncUsageResourceWithStreamingResponse(self)
 
-    async def get_usage_v1(
+    async def get_credits_v1(
         self,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -88,14 +88,14 @@ class AsyncUsageResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> UsageGetUsageV1Response:
+    ) -> UsageGetCreditsV1Response:
         """Retrieve public API credit usage"""
         return await self._get(
             "/v1/credits",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=UsageGetUsageV1Response,
+            cast_to=UsageGetCreditsV1Response,
         )
 
 
@@ -103,8 +103,8 @@ class UsageResourceWithRawResponse:
     def __init__(self, usage: UsageResource) -> None:
         self._usage = usage
 
-        self.get_usage_v1 = to_raw_response_wrapper(
-            usage.get_usage_v1,
+        self.get_credits_v1 = to_raw_response_wrapper(
+            usage.get_credits_v1,
         )
 
 
@@ -112,8 +112,8 @@ class AsyncUsageResourceWithRawResponse:
     def __init__(self, usage: AsyncUsageResource) -> None:
         self._usage = usage
 
-        self.get_usage_v1 = async_to_raw_response_wrapper(
-            usage.get_usage_v1,
+        self.get_credits_v1 = async_to_raw_response_wrapper(
+            usage.get_credits_v1,
         )
 
 
@@ -121,8 +121,8 @@ class UsageResourceWithStreamingResponse:
     def __init__(self, usage: UsageResource) -> None:
         self._usage = usage
 
-        self.get_usage_v1 = to_streamed_response_wrapper(
-            usage.get_usage_v1,
+        self.get_credits_v1 = to_streamed_response_wrapper(
+            usage.get_credits_v1,
         )
 
 
@@ -130,6 +130,6 @@ class AsyncUsageResourceWithStreamingResponse:
     def __init__(self, usage: AsyncUsageResource) -> None:
         self._usage = usage
 
-        self.get_usage_v1 = async_to_streamed_response_wrapper(
-            usage.get_usage_v1,
+        self.get_credits_v1 = async_to_streamed_response_wrapper(
+            usage.get_credits_v1,
         )
