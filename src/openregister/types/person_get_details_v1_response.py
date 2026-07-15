@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Optional
+from datetime import date
 
 from .._models import BaseModel
 
@@ -19,13 +20,13 @@ class ManagementPosition(BaseModel):
     role: str
     """Role of the person in the company. Example: "DIRECTOR" """
 
-    start_date: str
+    start_date: date
     """
     Date when the person started the management position. Format: ISO 8601
     (YYYY-MM-DD) Example: "2022-01-01"
     """
 
-    end_date: Optional[str] = None
+    end_date: Optional[date] = None
     """
     Date when the person ended the management position. Format: ISO 8601
     (YYYY-MM-DD) Example: "2023-01-01"
@@ -42,7 +43,7 @@ class PersonGetDetailsV1Response(BaseModel):
     city: str
     """City of the person."""
 
-    date_of_birth: Optional[str] = None
+    date_of_birth: Optional[date] = None
     """
     Date of birth of the person. Format: ISO 8601 (YYYY-MM-DD) Example: "1990-01-01"
     """
