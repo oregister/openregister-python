@@ -139,17 +139,17 @@ Methods:
 - <code title="post /v1/transparenzregister/extracts">client.transparenzregister.extract.<a href="./src/openregister/resources/transparenzregister/extract.py">create_v1</a>(\*\*<a href="src/openregister/types/transparenzregister/extract_create_v1_params.py">params</a>) -> <a href="./src/openregister/types/transparenzregister/extract_create_v1_response.py">ExtractCreateV1Response</a></code>
 - <code title="get /v1/transparenzregister/extracts/{extract_id}">client.transparenzregister.extract.<a href="./src/openregister/resources/transparenzregister/extract.py">get_v1</a>(extract_id) -> <a href="./src/openregister/types/transparenzregister/transparenzregister_extract.py">TransparenzregisterExtract</a></code>
 
-# Credits
+# Usage
 
 Types:
 
 ```python
-from openregister.types import CreditGetResponse
+from openregister.types import UsageGetUsageV1Response
 ```
 
 Methods:
 
-- <code title="get /v1/credits">client.credits.<a href="./src/openregister/resources/credits.py">get</a>() -> <a href="./src/openregister/types/credit_get_response.py">CreditGetResponse</a></code>
+- <code title="get /v1/credits">client.usage.<a href="./src/openregister/resources/usage.py">get_usage_v1</a>() -> <a href="./src/openregister/types/usage_get_usage_v1_response.py">UsageGetUsageV1Response</a></code>
 
 # Insolvency
 
@@ -161,10 +161,10 @@ from openregister.types import (
     InsolvencyDebtorKind,
     InsolvencyProceedingKind,
     InsolvencyStatus,
-    InsolvencyRetrieveResponse,
+    InsolvencyGetDetailsV1Response,
 )
 ```
 
 Methods:
 
-- <code title="get /v1/insolvency/{insolvency_id}">client.insolvency.<a href="./src/openregister/resources/insolvency.py">retrieve</a>(insolvency_id) -> <a href="./src/openregister/types/insolvency_retrieve_response.py">InsolvencyRetrieveResponse</a></code>
+- <code title="get /v1/insolvency/{insolvency_id}">client.insolvency.<a href="./src/openregister/resources/insolvency.py">get_details_v1</a>(insolvency_id) -> <a href="./src/openregister/types/insolvency_get_details_v1_response.py">InsolvencyGetDetailsV1Response</a></code>

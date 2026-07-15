@@ -14,32 +14,32 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.credit_get_response import CreditGetResponse
+from ..types.usage_get_usage_v1_response import UsageGetUsageV1Response
 
-__all__ = ["CreditsResource", "AsyncCreditsResource"]
+__all__ = ["UsageResource", "AsyncUsageResource"]
 
 
-class CreditsResource(SyncAPIResource):
+class UsageResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> CreditsResourceWithRawResponse:
+    def with_raw_response(self) -> UsageResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/oregister/openregister-python#accessing-raw-response-data-eg-headers
         """
-        return CreditsResourceWithRawResponse(self)
+        return UsageResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> CreditsResourceWithStreamingResponse:
+    def with_streaming_response(self) -> UsageResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/oregister/openregister-python#with_streaming_response
         """
-        return CreditsResourceWithStreamingResponse(self)
+        return UsageResourceWithStreamingResponse(self)
 
-    def get(
+    def get_usage_v1(
         self,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -48,38 +48,38 @@ class CreditsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CreditGetResponse:
+    ) -> UsageGetUsageV1Response:
         """Retrieve public API credit usage"""
         return self._get(
             "/v1/credits",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CreditGetResponse,
+            cast_to=UsageGetUsageV1Response,
         )
 
 
-class AsyncCreditsResource(AsyncAPIResource):
+class AsyncUsageResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncCreditsResourceWithRawResponse:
+    def with_raw_response(self) -> AsyncUsageResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/oregister/openregister-python#accessing-raw-response-data-eg-headers
         """
-        return AsyncCreditsResourceWithRawResponse(self)
+        return AsyncUsageResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncCreditsResourceWithStreamingResponse:
+    def with_streaming_response(self) -> AsyncUsageResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/oregister/openregister-python#with_streaming_response
         """
-        return AsyncCreditsResourceWithStreamingResponse(self)
+        return AsyncUsageResourceWithStreamingResponse(self)
 
-    async def get(
+    async def get_usage_v1(
         self,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -88,48 +88,48 @@ class AsyncCreditsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CreditGetResponse:
+    ) -> UsageGetUsageV1Response:
         """Retrieve public API credit usage"""
         return await self._get(
             "/v1/credits",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CreditGetResponse,
+            cast_to=UsageGetUsageV1Response,
         )
 
 
-class CreditsResourceWithRawResponse:
-    def __init__(self, credits: CreditsResource) -> None:
-        self._credits = credits
+class UsageResourceWithRawResponse:
+    def __init__(self, usage: UsageResource) -> None:
+        self._usage = usage
 
-        self.get = to_raw_response_wrapper(
-            credits.get,
+        self.get_usage_v1 = to_raw_response_wrapper(
+            usage.get_usage_v1,
         )
 
 
-class AsyncCreditsResourceWithRawResponse:
-    def __init__(self, credits: AsyncCreditsResource) -> None:
-        self._credits = credits
+class AsyncUsageResourceWithRawResponse:
+    def __init__(self, usage: AsyncUsageResource) -> None:
+        self._usage = usage
 
-        self.get = async_to_raw_response_wrapper(
-            credits.get,
+        self.get_usage_v1 = async_to_raw_response_wrapper(
+            usage.get_usage_v1,
         )
 
 
-class CreditsResourceWithStreamingResponse:
-    def __init__(self, credits: CreditsResource) -> None:
-        self._credits = credits
+class UsageResourceWithStreamingResponse:
+    def __init__(self, usage: UsageResource) -> None:
+        self._usage = usage
 
-        self.get = to_streamed_response_wrapper(
-            credits.get,
+        self.get_usage_v1 = to_streamed_response_wrapper(
+            usage.get_usage_v1,
         )
 
 
-class AsyncCreditsResourceWithStreamingResponse:
-    def __init__(self, credits: AsyncCreditsResource) -> None:
-        self._credits = credits
+class AsyncUsageResourceWithStreamingResponse:
+    def __init__(self, usage: AsyncUsageResource) -> None:
+        self._usage = usage
 
-        self.get = async_to_streamed_response_wrapper(
-            credits.get,
+        self.get_usage_v1 = async_to_streamed_response_wrapper(
+            usage.get_usage_v1,
         )

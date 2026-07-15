@@ -10,7 +10,7 @@ from .insolvency_debtor_kind import InsolvencyDebtorKind
 from .insolvency_proceeding_kind import InsolvencyProceedingKind
 from .insolvency_administration_kind import InsolvencyAdministrationKind
 
-__all__ = ["InsolvencyRetrieveResponse", "Event", "EventDetails", "EventDetailsMeeting"]
+__all__ = ["InsolvencyGetDetailsV1Response", "Event", "EventDetails", "EventDetailsMeeting"]
 
 
 class EventDetailsMeeting(BaseModel):
@@ -109,7 +109,7 @@ class Event(BaseModel):
     """Date the decision takes effect, if published."""
 
 
-class InsolvencyRetrieveResponse(BaseModel):
+class InsolvencyGetDetailsV1Response(BaseModel):
     """An insolvency proceeding with all of its published events."""
 
     id: str

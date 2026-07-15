@@ -9,72 +9,72 @@ import pytest
 
 from tests.utils import assert_matches_type
 from openregister import Openregister, AsyncOpenregister
-from openregister.types import CreditGetResponse
+from openregister.types import UsageGetUsageV1Response
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
 
-class TestCredits:
+class TestUsage:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get(self, client: Openregister) -> None:
-        credit = client.credits.get()
-        assert_matches_type(CreditGetResponse, credit, path=["response"])
+    def test_method_get_usage_v1(self, client: Openregister) -> None:
+        usage = client.usage.get_usage_v1()
+        assert_matches_type(UsageGetUsageV1Response, usage, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_raw_response_get(self, client: Openregister) -> None:
-        response = client.credits.with_raw_response.get()
+    def test_raw_response_get_usage_v1(self, client: Openregister) -> None:
+        response = client.usage.with_raw_response.get_usage_v1()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        credit = response.parse()
-        assert_matches_type(CreditGetResponse, credit, path=["response"])
+        usage = response.parse()
+        assert_matches_type(UsageGetUsageV1Response, usage, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_streaming_response_get(self, client: Openregister) -> None:
-        with client.credits.with_streaming_response.get() as response:
+    def test_streaming_response_get_usage_v1(self, client: Openregister) -> None:
+        with client.usage.with_streaming_response.get_usage_v1() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            credit = response.parse()
-            assert_matches_type(CreditGetResponse, credit, path=["response"])
+            usage = response.parse()
+            assert_matches_type(UsageGetUsageV1Response, usage, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
 
-class TestAsyncCredits:
+class TestAsyncUsage:
     parametrize = pytest.mark.parametrize(
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get(self, async_client: AsyncOpenregister) -> None:
-        credit = await async_client.credits.get()
-        assert_matches_type(CreditGetResponse, credit, path=["response"])
+    async def test_method_get_usage_v1(self, async_client: AsyncOpenregister) -> None:
+        usage = await async_client.usage.get_usage_v1()
+        assert_matches_type(UsageGetUsageV1Response, usage, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_raw_response_get(self, async_client: AsyncOpenregister) -> None:
-        response = await async_client.credits.with_raw_response.get()
+    async def test_raw_response_get_usage_v1(self, async_client: AsyncOpenregister) -> None:
+        response = await async_client.usage.with_raw_response.get_usage_v1()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        credit = await response.parse()
-        assert_matches_type(CreditGetResponse, credit, path=["response"])
+        usage = await response.parse()
+        assert_matches_type(UsageGetUsageV1Response, usage, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_streaming_response_get(self, async_client: AsyncOpenregister) -> None:
-        async with async_client.credits.with_streaming_response.get() as response:
+    async def test_streaming_response_get_usage_v1(self, async_client: AsyncOpenregister) -> None:
+        async with async_client.usage.with_streaming_response.get_usage_v1() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            credit = await response.parse()
-            assert_matches_type(CreditGetResponse, credit, path=["response"])
+            usage = await response.parse()
+            assert_matches_type(UsageGetUsageV1Response, usage, path=["response"])
 
         assert cast(Any, response.is_closed) is True
