@@ -35,12 +35,14 @@ from ._base_client import (
 )
 
 if TYPE_CHECKING:
-    from .resources import person, search, company, monitor, document, transparenzregister
+    from .resources import person, search, company, credits, monitor, document, insolvency, transparenzregister
     from .resources.person import PersonResource, AsyncPersonResource
     from .resources.search import SearchResource, AsyncSearchResource
     from .resources.company import CompanyResource, AsyncCompanyResource
+    from .resources.credits import CreditsResource, AsyncCreditsResource
     from .resources.monitor import MonitorResource, AsyncMonitorResource
     from .resources.document import DocumentResource, AsyncDocumentResource
+    from .resources.insolvency import InsolvencyResource, AsyncInsolvencyResource
     from .resources.transparenzregister.transparenzregister import (
         TransparenzregisterResource,
         AsyncTransparenzregisterResource,
@@ -157,6 +159,18 @@ class Openregister(SyncAPIClient):
         from .resources.transparenzregister import TransparenzregisterResource
 
         return TransparenzregisterResource(self)
+
+    @cached_property
+    def credits(self) -> CreditsResource:
+        from .resources.credits import CreditsResource
+
+        return CreditsResource(self)
+
+    @cached_property
+    def insolvency(self) -> InsolvencyResource:
+        from .resources.insolvency import InsolvencyResource
+
+        return InsolvencyResource(self)
 
     @cached_property
     def with_raw_response(self) -> OpenregisterWithRawResponse:
@@ -372,6 +386,18 @@ class AsyncOpenregister(AsyncAPIClient):
         return AsyncTransparenzregisterResource(self)
 
     @cached_property
+    def credits(self) -> AsyncCreditsResource:
+        from .resources.credits import AsyncCreditsResource
+
+        return AsyncCreditsResource(self)
+
+    @cached_property
+    def insolvency(self) -> AsyncInsolvencyResource:
+        from .resources.insolvency import AsyncInsolvencyResource
+
+        return AsyncInsolvencyResource(self)
+
+    @cached_property
     def with_raw_response(self) -> AsyncOpenregisterWithRawResponse:
         return AsyncOpenregisterWithRawResponse(self)
 
@@ -526,6 +552,18 @@ class OpenregisterWithRawResponse:
 
         return TransparenzregisterResourceWithRawResponse(self._client.transparenzregister)
 
+    @cached_property
+    def credits(self) -> credits.CreditsResourceWithRawResponse:
+        from .resources.credits import CreditsResourceWithRawResponse
+
+        return CreditsResourceWithRawResponse(self._client.credits)
+
+    @cached_property
+    def insolvency(self) -> insolvency.InsolvencyResourceWithRawResponse:
+        from .resources.insolvency import InsolvencyResourceWithRawResponse
+
+        return InsolvencyResourceWithRawResponse(self._client.insolvency)
+
 
 class AsyncOpenregisterWithRawResponse:
     _client: AsyncOpenregister
@@ -568,6 +606,18 @@ class AsyncOpenregisterWithRawResponse:
         from .resources.transparenzregister import AsyncTransparenzregisterResourceWithRawResponse
 
         return AsyncTransparenzregisterResourceWithRawResponse(self._client.transparenzregister)
+
+    @cached_property
+    def credits(self) -> credits.AsyncCreditsResourceWithRawResponse:
+        from .resources.credits import AsyncCreditsResourceWithRawResponse
+
+        return AsyncCreditsResourceWithRawResponse(self._client.credits)
+
+    @cached_property
+    def insolvency(self) -> insolvency.AsyncInsolvencyResourceWithRawResponse:
+        from .resources.insolvency import AsyncInsolvencyResourceWithRawResponse
+
+        return AsyncInsolvencyResourceWithRawResponse(self._client.insolvency)
 
 
 class OpenregisterWithStreamedResponse:
@@ -612,6 +662,18 @@ class OpenregisterWithStreamedResponse:
 
         return TransparenzregisterResourceWithStreamingResponse(self._client.transparenzregister)
 
+    @cached_property
+    def credits(self) -> credits.CreditsResourceWithStreamingResponse:
+        from .resources.credits import CreditsResourceWithStreamingResponse
+
+        return CreditsResourceWithStreamingResponse(self._client.credits)
+
+    @cached_property
+    def insolvency(self) -> insolvency.InsolvencyResourceWithStreamingResponse:
+        from .resources.insolvency import InsolvencyResourceWithStreamingResponse
+
+        return InsolvencyResourceWithStreamingResponse(self._client.insolvency)
+
 
 class AsyncOpenregisterWithStreamedResponse:
     _client: AsyncOpenregister
@@ -654,6 +716,18 @@ class AsyncOpenregisterWithStreamedResponse:
         from .resources.transparenzregister import AsyncTransparenzregisterResourceWithStreamingResponse
 
         return AsyncTransparenzregisterResourceWithStreamingResponse(self._client.transparenzregister)
+
+    @cached_property
+    def credits(self) -> credits.AsyncCreditsResourceWithStreamingResponse:
+        from .resources.credits import AsyncCreditsResourceWithStreamingResponse
+
+        return AsyncCreditsResourceWithStreamingResponse(self._client.credits)
+
+    @cached_property
+    def insolvency(self) -> insolvency.AsyncInsolvencyResourceWithStreamingResponse:
+        from .resources.insolvency import AsyncInsolvencyResourceWithStreamingResponse
+
+        return AsyncInsolvencyResourceWithStreamingResponse(self._client.insolvency)
 
 
 Client = Openregister

@@ -22,7 +22,16 @@ class Item(BaseModel):
     """Type of the entity to monitor."""
 
     preferences: List[
-        Literal["basic", "representation", "financials", "documents", "ownership", "holdings", "management_positions"]
+        Literal[
+            "basic",
+            "representation",
+            "financials",
+            "documents",
+            "ownership",
+            "holdings",
+            "management_positions",
+            "insolvencies",
+        ]
     ]
     """
     Preferences for the entity to monitor. Use `WebhookMonitorCompanyPreference`
