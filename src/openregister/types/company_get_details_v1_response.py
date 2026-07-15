@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Optional
+from datetime import datetime
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
@@ -14,20 +15,41 @@ from .company_capital import CompanyCapital
 from .company_purpose import CompanyPurpose
 from .company_document import CompanyDocument
 from .company_register import CompanyRegister
+from .insolvency_status import InsolvencyStatus
 from .company_legal_form import CompanyLegalForm
 from .representation_role import RepresentationRole
+from .insolvency_proceeding_kind import InsolvencyProceedingKind
+from .insolvency_administration_kind import InsolvencyAdministrationKind
 
 __all__ = [
     "CompanyGetDetailsV1Response",
+    "Acquisition",
     "Contact",
     "ContactSocialMedia",
     "Indicator",
     "IndustryCodes",
     "IndustryCodesWz2025",
+    "MergedInto",
+    "ProfitTransferAgreement",
     "Representation",
     "RepresentationLegalPerson",
     "RepresentationNaturalPerson",
+    "Insolvency",
 ]
+
+
+class Acquisition(BaseModel):
+    company_id: str
+    """
+    Unique company identifier of the company that was merged into this company.
+    Example: DE-HRB-F1103-267645
+    """
+
+    date: str
+    """Date the merger was registered. Format: ISO 8601 (YYYY-MM-DD)"""
+
+    name: str
+    """Current name of the company that was merged into this company."""
 
 
 class ContactSocialMedia(BaseModel):
@@ -131,6 +153,46 @@ class IndustryCodes(BaseModel):
     wz2025: List[IndustryCodesWz2025] = FieldInfo(alias="WZ2025")
 
 
+class MergedInto(BaseModel):
+    """
+    If the company ceased to exist through a merger (Verschmelzung),
+    the company it was merged into.
+    """
+
+    company_id: str
+    """
+    Unique company identifier of the company this company was merged into. Example:
+    DE-HRB-F1103-267645
+    """
+
+    date: str
+    """Date the merger was registered. Format: ISO 8601 (YYYY-MM-DD)"""
+
+    name: str
+    """Current name of the company this company was merged into."""
+
+
+class ProfitTransferAgreement(BaseModel):
+    """
+    The company's current profit and loss transfer agreement
+    (Gewinnabführungsvertrag), if one exists. The referenced company
+    is the parent receiving this company's profit (Organträger).
+    Null if the company has no active agreement.
+    """
+
+    company_id: str
+    """
+    Unique company identifier of the parent company receiving this company's profit
+    (Organträger). Example: DE-HRB-F1103-267645
+    """
+
+    date: str
+    """Date the agreement was registered. Format: ISO 8601 (YYYY-MM-DD)"""
+
+    name: str
+    """Current name of the parent company."""
+
+
 class RepresentationLegalPerson(BaseModel):
     city: Optional[str] = None
 
@@ -202,9 +264,46 @@ class Representation(BaseModel):
     natural_person: Optional[RepresentationNaturalPerson] = None
 
 
+class Insolvency(BaseModel):
+    """
+    Basic information about an insolvency proceeding of the company.
+    Use the insolvency endpoint to retrieve all events of the proceeding.
+    """
+
+    id: str
+    """Unique identifier of the insolvency proceeding."""
+
+    case_number: str
+    """Case number of the proceeding at the court. Example: "36d IN 3382/25" """
+
+    court: str
+    """Insolvency court handling the proceeding."""
+
+    current_status: InsolvencyStatus
+    """Current status of the insolvency proceeding."""
+
+    administration_kind: Optional[InsolvencyAdministrationKind] = None
+    """Kind of administration ordered for the proceeding."""
+
+    closed_at: Optional[datetime] = None
+    """Date the proceeding was closed."""
+
+    opened_at: Optional[datetime] = None
+    """Date the proceeding was opened."""
+
+    proceeding_kind: Optional[InsolvencyProceedingKind] = None
+    """Kind of insolvency proceeding."""
+
+
 class CompanyGetDetailsV1Response(BaseModel):
     id: str
     """Unique company identifier. Example: DE-HRB-F1103-267645"""
+
+    acquisitions: List[Acquisition]
+    """
+    Companies that were merged into this company (Verschmelzung durch Aufnahme, as
+    the acquiring entity).
+    """
 
     address: CompanyAddress
     """Current registered address of the company."""
@@ -242,6 +341,12 @@ class CompanyGetDetailsV1Response(BaseModel):
     Haftung
     """
 
+    merged_into: Optional[MergedInto] = None
+    """
+    If the company ceased to exist through a merger (Verschmelzung), the company it
+    was merged into.
+    """
+
     name: CompanyName
     """Current official name of the company."""
 
@@ -252,6 +357,14 @@ class CompanyGetDetailsV1Response(BaseModel):
     """
     Date of the notarized company agreement (Gesellschaftsvertrag or Satzung).
     Format: ISO 8601 (YYYY-MM-DD) Example: "2021-12-21"
+    """
+
+    profit_transfer_agreement: Optional[ProfitTransferAgreement] = None
+    """
+    The company's current profit and loss transfer agreement
+    (Gewinnabführungsvertrag), if one exists. The referenced company is the parent
+    receiving this company's profit (Organträger). Null if the company has no active
+    agreement.
     """
 
     purpose: Optional[CompanyPurpose] = None
@@ -299,6 +412,12 @@ class CompanyGetDetailsV1Response(BaseModel):
     """
     Date when the company was officially terminated (if applicable). Format: ISO
     8601 (YYYY-MM-DD) Example: "2024-01-01"
+    """
+
+    insolvencies: Optional[List[Insolvency]] = None
+    """
+    Insolvency proceedings of the company, if any. Contains basic information per
+    proceeding; use the insolvency endpoint to retrieve all events of a proceeding.
     """
 
     lei: Optional[str] = None

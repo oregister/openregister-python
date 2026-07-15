@@ -52,7 +52,14 @@ class MonitorResource(SyncAPIResource):
         entity_type: Literal["company", "person"],
         preferences: List[
             Literal[
-                "basic", "representation", "financials", "documents", "ownership", "holdings", "management_positions"
+                "basic",
+                "representation",
+                "financials",
+                "documents",
+                "ownership",
+                "holdings",
+                "management_positions",
+                "insolvencies",
             ]
         ],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -180,7 +187,14 @@ class AsyncMonitorResource(AsyncAPIResource):
         entity_type: Literal["company", "person"],
         preferences: List[
             Literal[
-                "basic", "representation", "financials", "documents", "ownership", "holdings", "management_positions"
+                "basic",
+                "representation",
+                "financials",
+                "documents",
+                "ownership",
+                "holdings",
+                "management_positions",
+                "insolvencies",
             ]
         ],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.

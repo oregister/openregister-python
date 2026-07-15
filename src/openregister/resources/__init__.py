@@ -24,6 +24,14 @@ from .company import (
     CompanyResourceWithStreamingResponse,
     AsyncCompanyResourceWithStreamingResponse,
 )
+from .credits import (
+    CreditsResource,
+    AsyncCreditsResource,
+    CreditsResourceWithRawResponse,
+    AsyncCreditsResourceWithRawResponse,
+    CreditsResourceWithStreamingResponse,
+    AsyncCreditsResourceWithStreamingResponse,
+)
 from .monitor import (
     MonitorResource,
     AsyncMonitorResource,
@@ -39,6 +47,14 @@ from .document import (
     AsyncDocumentResourceWithRawResponse,
     DocumentResourceWithStreamingResponse,
     AsyncDocumentResourceWithStreamingResponse,
+)
+from .insolvency import (
+    InsolvencyResource,
+    AsyncInsolvencyResource,
+    InsolvencyResourceWithRawResponse,
+    AsyncInsolvencyResourceWithRawResponse,
+    InsolvencyResourceWithStreamingResponse,
+    AsyncInsolvencyResourceWithStreamingResponse,
 )
 from .transparenzregister import (
     TransparenzregisterResource,
@@ -86,4 +102,16 @@ __all__ = [
     "AsyncTransparenzregisterResourceWithRawResponse",
     "TransparenzregisterResourceWithStreamingResponse",
     "AsyncTransparenzregisterResourceWithStreamingResponse",
+    "CreditsResource",
+    "AsyncCreditsResource",
+    "CreditsResourceWithRawResponse",
+    "AsyncCreditsResourceWithRawResponse",
+    "CreditsResourceWithStreamingResponse",
+    "AsyncCreditsResourceWithStreamingResponse",
+    "InsolvencyResource",
+    "AsyncInsolvencyResource",
+    "InsolvencyResourceWithRawResponse",
+    "AsyncInsolvencyResourceWithRawResponse",
+    "InsolvencyResourceWithStreamingResponse",
+    "AsyncInsolvencyResourceWithStreamingResponse",
 ]

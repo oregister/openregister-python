@@ -21,7 +21,14 @@ class MonitorCreateParams(TypedDict, total=False):
     preferences: Required[
         List[
             Literal[
-                "basic", "representation", "financials", "documents", "ownership", "holdings", "management_positions"
+                "basic",
+                "representation",
+                "financials",
+                "documents",
+                "ownership",
+                "holdings",
+                "management_positions",
+                "insolvencies",
             ]
         ]
     ]

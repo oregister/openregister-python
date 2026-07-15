@@ -12,6 +12,7 @@ from openregister import Openregister, AsyncOpenregister
 from openregister.types import (
     CompanySearch,
     SearchFindPersonV1Response,
+    SearchFindInsolvenciesV1Response,
     SearchLookupCompanyByURLResponse,
     SearchAutocompleteCompaniesV1Response,
 )
@@ -108,6 +109,56 @@ class TestSearch:
 
             search = response.parse()
             assert_matches_type(CompanySearch, search, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_find_insolvencies_v1(self, client: Openregister) -> None:
+        search = client.search.find_insolvencies_v1()
+        assert_matches_type(SearchFindInsolvenciesV1Response, search, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_find_insolvencies_v1_with_all_params(self, client: Openregister) -> None:
+        search = client.search.find_insolvencies_v1(
+            filters=[
+                {
+                    "keywords": ["string"],
+                    "max": "max",
+                    "min": "min",
+                    "value": "value",
+                    "values": ["string"],
+                    "field": "debtor_kind",
+                }
+            ],
+            pagination={
+                "page": 0,
+                "per_page": 0,
+            },
+            query={"value": "value"},
+        )
+        assert_matches_type(SearchFindInsolvenciesV1Response, search, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_find_insolvencies_v1(self, client: Openregister) -> None:
+        response = client.search.with_raw_response.find_insolvencies_v1()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        search = response.parse()
+        assert_matches_type(SearchFindInsolvenciesV1Response, search, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_find_insolvencies_v1(self, client: Openregister) -> None:
+        with client.search.with_streaming_response.find_insolvencies_v1() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            search = response.parse()
+            assert_matches_type(SearchFindInsolvenciesV1Response, search, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -287,6 +338,56 @@ class TestAsyncSearch:
 
             search = await response.parse()
             assert_matches_type(CompanySearch, search, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_find_insolvencies_v1(self, async_client: AsyncOpenregister) -> None:
+        search = await async_client.search.find_insolvencies_v1()
+        assert_matches_type(SearchFindInsolvenciesV1Response, search, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_find_insolvencies_v1_with_all_params(self, async_client: AsyncOpenregister) -> None:
+        search = await async_client.search.find_insolvencies_v1(
+            filters=[
+                {
+                    "keywords": ["string"],
+                    "max": "max",
+                    "min": "min",
+                    "value": "value",
+                    "values": ["string"],
+                    "field": "debtor_kind",
+                }
+            ],
+            pagination={
+                "page": 0,
+                "per_page": 0,
+            },
+            query={"value": "value"},
+        )
+        assert_matches_type(SearchFindInsolvenciesV1Response, search, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_find_insolvencies_v1(self, async_client: AsyncOpenregister) -> None:
+        response = await async_client.search.with_raw_response.find_insolvencies_v1()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        search = await response.parse()
+        assert_matches_type(SearchFindInsolvenciesV1Response, search, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_find_insolvencies_v1(self, async_client: AsyncOpenregister) -> None:
+        async with async_client.search.with_streaming_response.find_insolvencies_v1() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            search = await response.parse()
+            assert_matches_type(SearchFindInsolvenciesV1Response, search, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
