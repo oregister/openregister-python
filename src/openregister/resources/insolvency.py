@@ -15,7 +15,7 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.insolvency_retrieve_response import InsolvencyRetrieveResponse
+from ..types.insolvency_get_details_v1_response import InsolvencyGetDetailsV1Response
 
 __all__ = ["InsolvencyResource", "AsyncInsolvencyResource"]
 
@@ -40,7 +40,7 @@ class InsolvencyResource(SyncAPIResource):
         """
         return InsolvencyResourceWithStreamingResponse(self)
 
-    def retrieve(
+    def get_details_v1(
         self,
         insolvency_id: str,
         *,
@@ -50,7 +50,7 @@ class InsolvencyResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> InsolvencyRetrieveResponse:
+    ) -> InsolvencyGetDetailsV1Response:
         """
         Get detailed insolvency proceeding information
 
@@ -70,7 +70,7 @@ class InsolvencyResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=InsolvencyRetrieveResponse,
+            cast_to=InsolvencyGetDetailsV1Response,
         )
 
 
@@ -94,7 +94,7 @@ class AsyncInsolvencyResource(AsyncAPIResource):
         """
         return AsyncInsolvencyResourceWithStreamingResponse(self)
 
-    async def retrieve(
+    async def get_details_v1(
         self,
         insolvency_id: str,
         *,
@@ -104,7 +104,7 @@ class AsyncInsolvencyResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> InsolvencyRetrieveResponse:
+    ) -> InsolvencyGetDetailsV1Response:
         """
         Get detailed insolvency proceeding information
 
@@ -124,7 +124,7 @@ class AsyncInsolvencyResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=InsolvencyRetrieveResponse,
+            cast_to=InsolvencyGetDetailsV1Response,
         )
 
 
@@ -132,8 +132,8 @@ class InsolvencyResourceWithRawResponse:
     def __init__(self, insolvency: InsolvencyResource) -> None:
         self._insolvency = insolvency
 
-        self.retrieve = to_raw_response_wrapper(
-            insolvency.retrieve,
+        self.get_details_v1 = to_raw_response_wrapper(
+            insolvency.get_details_v1,
         )
 
 
@@ -141,8 +141,8 @@ class AsyncInsolvencyResourceWithRawResponse:
     def __init__(self, insolvency: AsyncInsolvencyResource) -> None:
         self._insolvency = insolvency
 
-        self.retrieve = async_to_raw_response_wrapper(
-            insolvency.retrieve,
+        self.get_details_v1 = async_to_raw_response_wrapper(
+            insolvency.get_details_v1,
         )
 
 
@@ -150,8 +150,8 @@ class InsolvencyResourceWithStreamingResponse:
     def __init__(self, insolvency: InsolvencyResource) -> None:
         self._insolvency = insolvency
 
-        self.retrieve = to_streamed_response_wrapper(
-            insolvency.retrieve,
+        self.get_details_v1 = to_streamed_response_wrapper(
+            insolvency.get_details_v1,
         )
 
 
@@ -159,6 +159,6 @@ class AsyncInsolvencyResourceWithStreamingResponse:
     def __init__(self, insolvency: AsyncInsolvencyResource) -> None:
         self._insolvency = insolvency
 
-        self.retrieve = async_to_streamed_response_wrapper(
-            insolvency.retrieve,
+        self.get_details_v1 = async_to_streamed_response_wrapper(
+            insolvency.get_details_v1,
         )

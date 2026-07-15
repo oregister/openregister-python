@@ -1,5 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from .usage import (
+    UsageResource,
+    AsyncUsageResource,
+    UsageResourceWithRawResponse,
+    AsyncUsageResourceWithRawResponse,
+    UsageResourceWithStreamingResponse,
+    AsyncUsageResourceWithStreamingResponse,
+)
 from .person import (
     PersonResource,
     AsyncPersonResource,
@@ -23,14 +31,6 @@ from .company import (
     AsyncCompanyResourceWithRawResponse,
     CompanyResourceWithStreamingResponse,
     AsyncCompanyResourceWithStreamingResponse,
-)
-from .credits import (
-    CreditsResource,
-    AsyncCreditsResource,
-    CreditsResourceWithRawResponse,
-    AsyncCreditsResourceWithRawResponse,
-    CreditsResourceWithStreamingResponse,
-    AsyncCreditsResourceWithStreamingResponse,
 )
 from .monitor import (
     MonitorResource,
@@ -102,12 +102,12 @@ __all__ = [
     "AsyncTransparenzregisterResourceWithRawResponse",
     "TransparenzregisterResourceWithStreamingResponse",
     "AsyncTransparenzregisterResourceWithStreamingResponse",
-    "CreditsResource",
-    "AsyncCreditsResource",
-    "CreditsResourceWithRawResponse",
-    "AsyncCreditsResourceWithRawResponse",
-    "CreditsResourceWithStreamingResponse",
-    "AsyncCreditsResourceWithStreamingResponse",
+    "UsageResource",
+    "AsyncUsageResource",
+    "UsageResourceWithRawResponse",
+    "AsyncUsageResourceWithRawResponse",
+    "UsageResourceWithStreamingResponse",
+    "AsyncUsageResourceWithStreamingResponse",
     "InsolvencyResource",
     "AsyncInsolvencyResource",
     "InsolvencyResourceWithRawResponse",
