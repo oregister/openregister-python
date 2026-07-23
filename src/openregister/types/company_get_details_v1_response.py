@@ -24,6 +24,7 @@ from .insolvency_administration_kind import InsolvencyAdministrationKind
 __all__ = [
     "CompanyGetDetailsV1Response",
     "Acquisition",
+    "AssetSpinOff",
     "Contact",
     "ContactSocialMedia",
     "Indicator",
@@ -39,17 +40,47 @@ __all__ = [
 
 
 class Acquisition(BaseModel):
+    agreement_date: Optional[str] = None
+    """
+    Date the underlying contract (Verschmelzungsvertrag) was concluded, as cited in
+    the register entry. Null when the register text does not cite a contract date.
+    Entries sharing an agreement_date belong to the same transaction. Format: ISO
+    8601 (YYYY-MM-DD)
+    """
+
     company_id: str
     """
     Unique company identifier of the company that was merged into this company.
     Example: DE-HRB-F1103-267645
     """
 
-    date: str
-    """Date the merger was registered. Format: ISO 8601 (YYYY-MM-DD)"""
-
     name: str
     """Current name of the company that was merged into this company."""
+
+    registration_date: str
+    """Date the merger was registered. Format: ISO 8601 (YYYY-MM-DD)"""
+
+
+class AssetSpinOff(BaseModel):
+    agreement_date: Optional[str] = None
+    """
+    Date the underlying contract (Ausgliederungsvertrag) was concluded, as cited in
+    the register entry. Null when the register text does not cite a contract date.
+    Entries sharing an agreement_date belong to the same transaction. Format: ISO
+    8601 (YYYY-MM-DD)
+    """
+
+    company_id: str
+    """
+    Unique company identifier of the company that received the assets. Example:
+    DE-HRB-F1103-267645
+    """
+
+    name: str
+    """Current name of the company that received the assets."""
+
+    registration_date: str
+    """Date the spin-off was registered. Format: ISO 8601 (YYYY-MM-DD)"""
 
 
 class ContactSocialMedia(BaseModel):
@@ -159,17 +190,25 @@ class MergedInto(BaseModel):
     the company it was merged into.
     """
 
+    agreement_date: Optional[str] = None
+    """
+    Date the underlying contract (Verschmelzungsvertrag) was concluded, as cited in
+    the register entry. Null when the register text does not cite a contract date.
+    Entries sharing an agreement_date belong to the same transaction. Format: ISO
+    8601 (YYYY-MM-DD)
+    """
+
     company_id: str
     """
     Unique company identifier of the company this company was merged into. Example:
     DE-HRB-F1103-267645
     """
 
-    date: str
-    """Date the merger was registered. Format: ISO 8601 (YYYY-MM-DD)"""
-
     name: str
     """Current name of the company this company was merged into."""
+
+    registration_date: str
+    """Date the merger was registered. Format: ISO 8601 (YYYY-MM-DD)"""
 
 
 class ProfitTransferAgreement(BaseModel):
@@ -180,17 +219,25 @@ class ProfitTransferAgreement(BaseModel):
     Null if the company has no active agreement.
     """
 
+    agreement_date: Optional[str] = None
+    """
+    Date the underlying contract (Gewinnabführungsvertrag) was concluded, as cited
+    in the register entry. Null when the register text does not cite a contract
+    date. Entries sharing an agreement_date belong to the same transaction. Format:
+    ISO 8601 (YYYY-MM-DD)
+    """
+
     company_id: str
     """
     Unique company identifier of the parent company receiving this company's profit
     (Organträger). Example: DE-HRB-F1103-267645
     """
 
-    date: str
-    """Date the agreement was registered. Format: ISO 8601 (YYYY-MM-DD)"""
-
     name: str
     """Current name of the parent company."""
+
+    registration_date: str
+    """Date the agreement was registered. Format: ISO 8601 (YYYY-MM-DD)"""
 
 
 class RepresentationLegalPerson(BaseModel):
@@ -310,6 +357,13 @@ class CompanyGetDetailsV1Response(BaseModel):
 
     addresses: List[CompanyAddress]
     """Historical addresses. Shows how the company address changed over time."""
+
+    asset_spin_offs: List[AssetSpinOff]
+    """Spin-offs (Ausgliederung, § 123 Abs.
+
+    3 UmwG) in which this company transferred assets to another company as the
+    transferring entity.
+    """
 
     capital: Optional[CompanyCapital] = None
     """Current registered capital of the company."""

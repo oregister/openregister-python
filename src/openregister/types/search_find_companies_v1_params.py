@@ -102,6 +102,10 @@ class Filter(SearchFilterBaseParam, total=False):
             "purpose",
             "has_lei",
             "lei",
+            "had_insolvency",
+            "has_open_insolvency",
+            "insolvency_stage",
+            "insolvency_opened_at",
         ]
     ]
 
