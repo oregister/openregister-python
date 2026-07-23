@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Optional
+from datetime import date
 
 from .._models import BaseModel
 from .pagination import Pagination
@@ -18,7 +19,7 @@ class Result(BaseModel):
     city: Optional[str] = None
     """City of the person. Example: "Berlin" """
 
-    date_of_birth: str
+    date_of_birth: date
     """
     Date of birth of the person. Format: ISO 8601 (YYYY-MM-DD) Example: "1990-01-01"
     """

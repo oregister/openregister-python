@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import Optional
+from datetime import date
 
 from .._models import BaseModel
 
@@ -20,7 +21,7 @@ class CompanyAddress(BaseModel):
     Berlin, Germany"
     """
 
-    start_date: str
+    start_date: date
     """
     Date when this address became effective. Format: ISO 8601 (YYYY-MM-DD) Example:
     "2022-01-01"

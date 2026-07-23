@@ -1,7 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Optional
-from datetime import datetime
+from datetime import date, datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -83,8 +83,8 @@ class Event(BaseModel):
     ]
     """Lifecycle event type of the insolvency proceeding."""
 
-    published_at: datetime
-    """Date the event was published by the court."""
+    published_at: date
+    """Date the event was published by the court. Format: ISO 8601 (YYYY-MM-DD)"""
 
     report_type: Literal[
         "security_measures",
@@ -102,8 +102,8 @@ class Event(BaseModel):
     summary: str
     """Short summary of the publication."""
 
-    decision_date: Optional[datetime] = None
-    """Date of the court decision, if published."""
+    decision_date: Optional[date] = None
+    """Date of the court decision, if published. Format: ISO 8601 (YYYY-MM-DD)"""
 
     effective_at: Optional[datetime] = None
     """Date the decision takes effect, if published."""
@@ -148,11 +148,11 @@ class InsolvencyGetDetailsV1Response(BaseModel):
     administrator_name: Optional[str] = None
     """Name of the insolvency administrator."""
 
-    claims_filing_deadline: Optional[datetime] = None
-    """Deadline for creditors to file their claims."""
+    claims_filing_deadline: Optional[date] = None
+    """Deadline for creditors to file their claims. Format: ISO 8601 (YYYY-MM-DD)"""
 
-    closed_at: Optional[datetime] = None
-    """Date the proceeding was closed."""
+    closed_at: Optional[date] = None
+    """Date the proceeding was closed. Format: ISO 8601 (YYYY-MM-DD)"""
 
     debtor_kind: Optional[InsolvencyDebtorKind] = None
     """Kind of debtor the proceeding concerns.
@@ -170,14 +170,20 @@ class InsolvencyGetDetailsV1Response(BaseModel):
     distribution_claims_total: Optional[float] = None
     """Total registered claims in the distribution, in euros."""
 
-    first_event_at: Optional[datetime] = None
-    """Publication date of the first known event of the proceeding."""
+    first_event_at: Optional[date] = None
+    """
+    Publication date of the first known event of the proceeding. Format: ISO 8601
+    (YYYY-MM-DD)
+    """
 
-    last_event_at: Optional[datetime] = None
-    """Publication date of the most recent known event of the proceeding."""
+    last_event_at: Optional[date] = None
+    """
+    Publication date of the most recent known event of the proceeding. Format: ISO
+    8601 (YYYY-MM-DD)
+    """
 
-    opened_at: Optional[datetime] = None
-    """Date the proceeding was opened."""
+    opened_at: Optional[date] = None
+    """Date the proceeding was opened. Format: ISO 8601 (YYYY-MM-DD)"""
 
     proceeding_kind: Optional[InsolvencyProceedingKind] = None
     """Kind of insolvency proceeding."""

@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Optional
+from datetime import date
 
 from .._models import BaseModel
 from .pagination import Pagination
@@ -30,7 +31,7 @@ class Result(BaseModel):
     city: Optional[str] = None
     """City of the debtor. Example: "Berlin" """
 
-    closed_at: Optional[str] = None
+    closed_at: Optional[date] = None
     """Date the proceeding was closed. Format: ISO 8601 (YYYY-MM-DD)"""
 
     company_id: Optional[str] = None
@@ -64,10 +65,10 @@ class Result(BaseModel):
     insolvency_grounds: Optional[List[str]] = None
     """Grounds for the insolvency, e.g. "illiquidity", "over_indebtedness"."""
 
-    last_event_at: Optional[str] = None
+    last_event_at: Optional[date] = None
     """Date of the most recent event in the proceeding. Format: ISO 8601 (YYYY-MM-DD)"""
 
-    opened_at: Optional[str] = None
+    opened_at: Optional[date] = None
     """Date the proceeding was opened. Format: ISO 8601 (YYYY-MM-DD)"""
 
     person_id: Optional[str] = None

@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Optional
+from datetime import date
 
 from .source import Source
 from .._models import BaseModel
@@ -38,7 +39,7 @@ class Owner(BaseModel):
     relation_type: CompanyRelationType
     """Type of relationship between the entity and the company."""
 
-    start: Optional[str] = None
+    start: Optional[date] = None
     """Date when the relation started.
 
     Only available for some types of owners. Format: ISO 8601 (YYYY-MM-DD) Example:

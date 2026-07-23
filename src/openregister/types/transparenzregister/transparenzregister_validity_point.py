@@ -10,5 +10,6 @@ __all__ = ["TransparenzregisterValidityPoint"]
 
 class TransparenzregisterValidityPoint(BaseModel):
     date: Optional[datetime.date] = None
+    """Format: ISO 8601 (YYYY-MM-DD)"""
 
     note: Optional[str] = None

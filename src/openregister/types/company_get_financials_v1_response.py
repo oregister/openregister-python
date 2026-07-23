@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
+import datetime
 from typing import List, Optional
-from datetime import date
 
 from .._models import BaseModel
 
@@ -45,7 +45,7 @@ class Indicator(BaseModel):
     current_assets: Optional[int] = None
     """The current assets of that year (in cents)."""
 
-    date: str
+    date: datetime.date
     """
     Date to which this financial indicators apply. Format: ISO 8601 (YYYY-MM-DD)
     Example: "2022-01-01"
@@ -207,7 +207,8 @@ class Report(BaseModel):
 
     passiva: "ReportTable"
 
-    report_end_date: date
+    report_end_date: datetime.date
+    """Format: ISO 8601 (YYYY-MM-DD)"""
 
     report_id: str
     """
@@ -215,7 +216,8 @@ class Report(BaseModel):
     f47ac10b-58cc-4372-a567-0e02b2c3d479
     """
 
-    report_start_date: Optional[date] = None
+    report_start_date: Optional[datetime.date] = None
+    """Format: ISO 8601 (YYYY-MM-DD)"""
 
     sources: List[ReportSource]
     """Sources of the report data. Presigned URLs accessible for 30 minutes."""
