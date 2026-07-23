@@ -16,7 +16,7 @@ class TransparenzregisterReport(BaseModel):
     """Parsed Transparenzregister extract report limited to UBO-relevant fields."""
 
     created_at: Optional[date] = None
-    """Extract creation date."""
+    """Extract creation date. Format: ISO 8601 (YYYY-MM-DD)"""
 
     fictional_ubo_reason: Optional[str] = None
     """Reason indicating no natural person UBO could be determined."""

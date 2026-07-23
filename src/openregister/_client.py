@@ -35,12 +35,14 @@ from ._base_client import (
 )
 
 if TYPE_CHECKING:
-    from .resources import person, search, company, monitor, document, transparenzregister
+    from .resources import usage, person, search, company, monitor, document, insolvency, transparenzregister
+    from .resources.usage import UsageResource, AsyncUsageResource
     from .resources.person import PersonResource, AsyncPersonResource
     from .resources.search import SearchResource, AsyncSearchResource
     from .resources.company import CompanyResource, AsyncCompanyResource
     from .resources.monitor import MonitorResource, AsyncMonitorResource
     from .resources.document import DocumentResource, AsyncDocumentResource
+    from .resources.insolvency import InsolvencyResource, AsyncInsolvencyResource
     from .resources.transparenzregister.transparenzregister import (
         TransparenzregisterResource,
         AsyncTransparenzregisterResource,
@@ -157,6 +159,18 @@ class Openregister(SyncAPIClient):
         from .resources.transparenzregister import TransparenzregisterResource
 
         return TransparenzregisterResource(self)
+
+    @cached_property
+    def usage(self) -> UsageResource:
+        from .resources.usage import UsageResource
+
+        return UsageResource(self)
+
+    @cached_property
+    def insolvency(self) -> InsolvencyResource:
+        from .resources.insolvency import InsolvencyResource
+
+        return InsolvencyResource(self)
 
     @cached_property
     def with_raw_response(self) -> OpenregisterWithRawResponse:
@@ -372,6 +386,18 @@ class AsyncOpenregister(AsyncAPIClient):
         return AsyncTransparenzregisterResource(self)
 
     @cached_property
+    def usage(self) -> AsyncUsageResource:
+        from .resources.usage import AsyncUsageResource
+
+        return AsyncUsageResource(self)
+
+    @cached_property
+    def insolvency(self) -> AsyncInsolvencyResource:
+        from .resources.insolvency import AsyncInsolvencyResource
+
+        return AsyncInsolvencyResource(self)
+
+    @cached_property
     def with_raw_response(self) -> AsyncOpenregisterWithRawResponse:
         return AsyncOpenregisterWithRawResponse(self)
 
@@ -526,6 +552,18 @@ class OpenregisterWithRawResponse:
 
         return TransparenzregisterResourceWithRawResponse(self._client.transparenzregister)
 
+    @cached_property
+    def usage(self) -> usage.UsageResourceWithRawResponse:
+        from .resources.usage import UsageResourceWithRawResponse
+
+        return UsageResourceWithRawResponse(self._client.usage)
+
+    @cached_property
+    def insolvency(self) -> insolvency.InsolvencyResourceWithRawResponse:
+        from .resources.insolvency import InsolvencyResourceWithRawResponse
+
+        return InsolvencyResourceWithRawResponse(self._client.insolvency)
+
 
 class AsyncOpenregisterWithRawResponse:
     _client: AsyncOpenregister
@@ -568,6 +606,18 @@ class AsyncOpenregisterWithRawResponse:
         from .resources.transparenzregister import AsyncTransparenzregisterResourceWithRawResponse
 
         return AsyncTransparenzregisterResourceWithRawResponse(self._client.transparenzregister)
+
+    @cached_property
+    def usage(self) -> usage.AsyncUsageResourceWithRawResponse:
+        from .resources.usage import AsyncUsageResourceWithRawResponse
+
+        return AsyncUsageResourceWithRawResponse(self._client.usage)
+
+    @cached_property
+    def insolvency(self) -> insolvency.AsyncInsolvencyResourceWithRawResponse:
+        from .resources.insolvency import AsyncInsolvencyResourceWithRawResponse
+
+        return AsyncInsolvencyResourceWithRawResponse(self._client.insolvency)
 
 
 class OpenregisterWithStreamedResponse:
@@ -612,6 +662,18 @@ class OpenregisterWithStreamedResponse:
 
         return TransparenzregisterResourceWithStreamingResponse(self._client.transparenzregister)
 
+    @cached_property
+    def usage(self) -> usage.UsageResourceWithStreamingResponse:
+        from .resources.usage import UsageResourceWithStreamingResponse
+
+        return UsageResourceWithStreamingResponse(self._client.usage)
+
+    @cached_property
+    def insolvency(self) -> insolvency.InsolvencyResourceWithStreamingResponse:
+        from .resources.insolvency import InsolvencyResourceWithStreamingResponse
+
+        return InsolvencyResourceWithStreamingResponse(self._client.insolvency)
+
 
 class AsyncOpenregisterWithStreamedResponse:
     _client: AsyncOpenregister
@@ -654,6 +716,18 @@ class AsyncOpenregisterWithStreamedResponse:
         from .resources.transparenzregister import AsyncTransparenzregisterResourceWithStreamingResponse
 
         return AsyncTransparenzregisterResourceWithStreamingResponse(self._client.transparenzregister)
+
+    @cached_property
+    def usage(self) -> usage.AsyncUsageResourceWithStreamingResponse:
+        from .resources.usage import AsyncUsageResourceWithStreamingResponse
+
+        return AsyncUsageResourceWithStreamingResponse(self._client.usage)
+
+    @cached_property
+    def insolvency(self) -> insolvency.AsyncInsolvencyResourceWithStreamingResponse:
+        from .resources.insolvency import AsyncInsolvencyResourceWithStreamingResponse
+
+        return AsyncInsolvencyResourceWithStreamingResponse(self._client.insolvency)
 
 
 Client = Openregister

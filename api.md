@@ -12,6 +12,7 @@ from openregister.types import (
     SearchFilterBase,
     SearchRequestPagination,
     SearchAutocompleteCompaniesV1Response,
+    SearchFindInsolvenciesV1Response,
     SearchFindPersonV1Response,
     SearchLookupCompanyByURLResponse,
 )
@@ -21,6 +22,7 @@ Methods:
 
 - <code title="get /v1/autocomplete/company">client.search.<a href="./src/openregister/resources/search.py">autocomplete_companies_v1</a>(\*\*<a href="src/openregister/types/search_autocomplete_companies_v1_params.py">params</a>) -> <a href="./src/openregister/types/search_autocomplete_companies_v1_response.py">SearchAutocompleteCompaniesV1Response</a></code>
 - <code title="post /v1/search/company">client.search.<a href="./src/openregister/resources/search.py">find_companies_v1</a>(\*\*<a href="src/openregister/types/search_find_companies_v1_params.py">params</a>) -> <a href="./src/openregister/types/company_search.py">CompanySearch</a></code>
+- <code title="post /v1/search/insolvency">client.search.<a href="./src/openregister/resources/search.py">find_insolvencies_v1</a>(\*\*<a href="src/openregister/types/search_find_insolvencies_v1_params.py">params</a>) -> <a href="./src/openregister/types/search_find_insolvencies_v1_response.py">SearchFindInsolvenciesV1Response</a></code>
 - <code title="post /v1/search/person">client.search.<a href="./src/openregister/resources/search.py">find_person_v1</a>(\*\*<a href="src/openregister/types/search_find_person_v1_params.py">params</a>) -> <a href="./src/openregister/types/search_find_person_v1_response.py">SearchFindPersonV1Response</a></code>
 - <code title="get /v0/search/lookup">client.search.<a href="./src/openregister/resources/search.py">lookup_company_by_url</a>(\*\*<a href="src/openregister/types/search_lookup_company_by_url_params.py">params</a>) -> <a href="./src/openregister/types/search_lookup_company_by_url_response.py">SearchLookupCompanyByURLResponse</a></code>
 
@@ -136,3 +138,33 @@ Methods:
 
 - <code title="post /v1/transparenzregister/extracts">client.transparenzregister.extract.<a href="./src/openregister/resources/transparenzregister/extract.py">create_v1</a>(\*\*<a href="src/openregister/types/transparenzregister/extract_create_v1_params.py">params</a>) -> <a href="./src/openregister/types/transparenzregister/extract_create_v1_response.py">ExtractCreateV1Response</a></code>
 - <code title="get /v1/transparenzregister/extracts/{extract_id}">client.transparenzregister.extract.<a href="./src/openregister/resources/transparenzregister/extract.py">get_v1</a>(extract_id) -> <a href="./src/openregister/types/transparenzregister/transparenzregister_extract.py">TransparenzregisterExtract</a></code>
+
+# Usage
+
+Types:
+
+```python
+from openregister.types import UsageGetCreditsV1Response
+```
+
+Methods:
+
+- <code title="get /v1/credits">client.usage.<a href="./src/openregister/resources/usage.py">get_credits_v1</a>() -> <a href="./src/openregister/types/usage_get_credits_v1_response.py">UsageGetCreditsV1Response</a></code>
+
+# Insolvency
+
+Types:
+
+```python
+from openregister.types import (
+    InsolvencyAdministrationKind,
+    InsolvencyDebtorKind,
+    InsolvencyProceedingKind,
+    InsolvencyStatus,
+    InsolvencyGetDetailsV1Response,
+)
+```
+
+Methods:
+
+- <code title="get /v1/insolvency/{insolvency_id}">client.insolvency.<a href="./src/openregister/resources/insolvency.py">get_details_v1</a>(insolvency_id) -> <a href="./src/openregister/types/insolvency_get_details_v1_response.py">InsolvencyGetDetailsV1Response</a></code>

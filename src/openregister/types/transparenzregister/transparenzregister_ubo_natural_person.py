@@ -14,6 +14,7 @@ class TransparenzregisterUboNaturalPerson(BaseModel):
     country: Optional[str] = None
 
     date_of_birth: Optional[date] = None
+    """Format: ISO 8601 (YYYY-MM-DD)"""
 
     first_name: Optional[str] = None
 

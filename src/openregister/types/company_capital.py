@@ -1,5 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from datetime import date
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -17,7 +18,7 @@ class CompanyCapital(BaseModel):
     currency: Literal["EUR", "DEM", "USD"]
     """Currency code for the capital amount. Example: "EUR" for Euro"""
 
-    start_date: str
+    start_date: date
     """
     Date when this capital amount became effective. Format: ISO 8601 (YYYY-MM-DD)
     Example: "2023-01-01"
