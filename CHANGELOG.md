@@ -1,5 +1,20 @@
 # Changelog
 
+## 3.8.0 (2026-07-23)
+
+Full Changelog: [v3.7.0...v3.8.0](https://github.com/oregister/openregister-python/compare/v3.7.0...v3.8.0)
+
+### Features
+
+* **api:** insolvencies & m&a ([1f55abc](https://github.com/oregister/openregister-python/commit/1f55abc8d9ba38db51c125c16c8dde94ceb8ffda))
+* **api:** manual updates ([53703ad](https://github.com/oregister/openregister-python/commit/53703adf0fd16faba01abb4277e4133108f602ea))
+* **api:** manual updates ([a293e61](https://github.com/oregister/openregister-python/commit/a293e6105c974b39c4cde0ea33d581d6728c9c04))
+* **api:** manual updates ([ae6a845](https://github.com/oregister/openregister-python/commit/ae6a8451a0ab874eee7f2471b0f0005f110b49fa))
+* **api:** manual updates ([382bb4c](https://github.com/oregister/openregister-python/commit/382bb4c7cb9ea8e573f8ab5144601af766606c29))
+* **api:** manual updates ([8c84e9b](https://github.com/oregister/openregister-python/commit/8c84e9b508b6843e072928314984b501d509db97))
+* **api:** typed dates ([bf84084](https://github.com/oregister/openregister-python/commit/bf84084c7a3f1d6d435370e508c89bfea83a5e16))
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([4b1db50](https://github.com/oregister/openregister-python/commit/4b1db502260b9cf0465151e84dee5de68a5d4dcc))
+
 ## 3.7.0 (2026-06-30)
 
 Full Changelog: [v3.6.0...v3.7.0](https://github.com/oregister/openregister-python/compare/v3.6.0...v3.7.0)
