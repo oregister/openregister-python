@@ -1,5 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from datetime import date
+
 from .._models import BaseModel
 from .company_legal_form import CompanyLegalForm
 
@@ -19,7 +21,7 @@ class CompanyName(BaseModel):
     Technologies UG (haftungsbeschränkt)"
     """
 
-    start_date: str
+    start_date: date
     """
     Date when this name became effective. Format: ISO 8601 (YYYY-MM-DD) Example:
     "2022-01-01"

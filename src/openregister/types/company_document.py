@@ -1,5 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -14,7 +15,7 @@ class CompanyDocument(BaseModel):
     "f47ac10b-58cc-4372-a567-0e02b2c3d479"
     """
 
-    date: str
+    date: datetime.date
     """
     Document publication or filing date. Format: ISO 8601 (YYYY-MM-DD) Example:
     "2022-01-01"

@@ -1,7 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+import datetime
 from typing import List, Optional
-from datetime import datetime
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
@@ -40,7 +40,7 @@ __all__ = [
 
 
 class Acquisition(BaseModel):
-    agreement_date: Optional[str] = None
+    agreement_date: Optional[datetime.date] = None
     """
     Date the underlying contract (Verschmelzungsvertrag) was concluded, as cited in
     the register entry. Null when the register text does not cite a contract date.
@@ -57,12 +57,12 @@ class Acquisition(BaseModel):
     name: str
     """Current name of the company that was merged into this company."""
 
-    registration_date: str
+    registration_date: datetime.date
     """Date the merger was registered. Format: ISO 8601 (YYYY-MM-DD)"""
 
 
 class AssetSpinOff(BaseModel):
-    agreement_date: Optional[str] = None
+    agreement_date: Optional[datetime.date] = None
     """
     Date the underlying contract (Ausgliederungsvertrag) was concluded, as cited in
     the register entry. Null when the register text does not cite a contract date.
@@ -79,7 +79,7 @@ class AssetSpinOff(BaseModel):
     name: str
     """Current name of the company that received the assets."""
 
-    registration_date: str
+    registration_date: datetime.date
     """Date the spin-off was registered. Format: ISO 8601 (YYYY-MM-DD)"""
 
 
@@ -132,7 +132,7 @@ class Indicator(BaseModel):
     cash: Optional[int] = None
     """The cash of that year (in cents)."""
 
-    date: str
+    date: datetime.date
     """
     Date to which this financial indicators apply. Format: ISO 8601 (YYYY-MM-DD)
     Example: "2022-01-01"
@@ -190,7 +190,7 @@ class MergedInto(BaseModel):
     the company it was merged into.
     """
 
-    agreement_date: Optional[str] = None
+    agreement_date: Optional[datetime.date] = None
     """
     Date the underlying contract (Verschmelzungsvertrag) was concluded, as cited in
     the register entry. Null when the register text does not cite a contract date.
@@ -207,7 +207,7 @@ class MergedInto(BaseModel):
     name: str
     """Current name of the company this company was merged into."""
 
-    registration_date: str
+    registration_date: datetime.date
     """Date the merger was registered. Format: ISO 8601 (YYYY-MM-DD)"""
 
 
@@ -219,7 +219,7 @@ class ProfitTransferAgreement(BaseModel):
     Null if the company has no active agreement.
     """
 
-    agreement_date: Optional[str] = None
+    agreement_date: Optional[datetime.date] = None
     """
     Date the underlying contract (Gewinnabführungsvertrag) was concluded, as cited
     in the register entry. Null when the register text does not cite a contract
@@ -236,7 +236,7 @@ class ProfitTransferAgreement(BaseModel):
     name: str
     """Current name of the parent company."""
 
-    registration_date: str
+    registration_date: datetime.date
     """Date the agreement was registered. Format: ISO 8601 (YYYY-MM-DD)"""
 
 
@@ -256,7 +256,7 @@ class RepresentationNaturalPerson(BaseModel):
     city: Optional[str] = None
     """City where the representative is located. Example: "Berlin" """
 
-    date_of_birth: Optional[str] = None
+    date_of_birth: Optional[datetime.date] = None
     """
     Date of birth of the representative. May still be null for natural persons if it
     is not available. Format: ISO 8601 (YYYY-MM-DD) Example: "1990-01-01"
@@ -285,7 +285,7 @@ class Representation(BaseModel):
     der Gesellschaft mit sich im eigenen Namen Rechtsgeschäfte abzuschließen"
     """
 
-    end_date: Optional[str] = None
+    end_date: Optional[datetime.date] = None
     """
     Date when this representative role ended (if applicable). Format: ISO 8601
     (YYYY-MM-DD) Example: "2022-01-01"
@@ -297,7 +297,7 @@ class Representation(BaseModel):
     role: RepresentationRole
     """The role of the representation. E.g. "DIRECTOR" """
 
-    start_date: str
+    start_date: datetime.date
     """
     Date when this representative role became effective. Format: ISO 8601
     (YYYY-MM-DD) Example: "2022-01-01"
@@ -332,11 +332,11 @@ class Insolvency(BaseModel):
     administration_kind: Optional[InsolvencyAdministrationKind] = None
     """Kind of administration ordered for the proceeding."""
 
-    closed_at: Optional[datetime] = None
-    """Date the proceeding was closed."""
+    closed_at: Optional[datetime.date] = None
+    """Date the proceeding was closed. Format: ISO 8601 (YYYY-MM-DD)"""
 
-    opened_at: Optional[datetime] = None
-    """Date the proceeding was opened."""
+    opened_at: Optional[datetime.date] = None
+    """Date the proceeding was opened. Format: ISO 8601 (YYYY-MM-DD)"""
 
     proceeding_kind: Optional[InsolvencyProceedingKind] = None
     """Kind of insolvency proceeding."""
@@ -377,7 +377,7 @@ class CompanyGetDetailsV1Response(BaseModel):
     documents: List[CompanyDocument]
     """Available official documents related to the company."""
 
-    incorporated_at: str
+    incorporated_at: datetime.date
     """
     Date when the company was officially registered. Format: ISO 8601 (YYYY-MM-DD)
     Example: "2022-01-01"
@@ -407,7 +407,7 @@ class CompanyGetDetailsV1Response(BaseModel):
     names: List[CompanyName]
     """Historical company names. Shows how the company name changed over time."""
 
-    notarized_at: Optional[str] = None
+    notarized_at: Optional[datetime.date] = None
     """
     Date of the notarized company agreement (Gesellschaftsvertrag or Satzung).
     Format: ISO 8601 (YYYY-MM-DD) Example: "2021-12-21"
@@ -462,7 +462,7 @@ class CompanyGetDetailsV1Response(BaseModel):
     - liquidation: In the process of being dissolved
     """
 
-    terminated_at: Optional[str] = None
+    terminated_at: Optional[datetime.date] = None
     """
     Date when the company was officially terminated (if applicable). Format: ISO
     8601 (YYYY-MM-DD) Example: "2024-01-01"

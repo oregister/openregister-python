@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import Optional
+from datetime import date
 
 from .._models import BaseModel
 from .company_register_type import CompanyRegisterType
@@ -24,7 +25,7 @@ class CompanyRegister(BaseModel):
     company_id: Optional[str] = None
     """Unique company identifier. Example: DE-HRB-F1103-267645"""
 
-    start_date: Optional[str] = None
+    start_date: Optional[date] = None
     """
     Date when this registration information became effective. Format: ISO 8601
     (YYYY-MM-DD) Example: "2022-01-01"

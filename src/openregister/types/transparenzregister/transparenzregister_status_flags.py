@@ -16,5 +16,6 @@ class TransparenzregisterStatusFlags(BaseModel):
     deleted: Optional[bool] = None
 
     deletion_date: Optional[date] = None
+    """Format: ISO 8601 (YYYY-MM-DD)"""
 
     discrepancy_note: Optional[str] = None
