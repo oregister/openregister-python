@@ -39,6 +39,12 @@ class Item(BaseModel):
     values when `entity_type` is `person`.
     """
 
+    update_frequency: Literal["daily", "weekly"]
+    """
+    How often the monitored company is checked for register updates. Always `weekly`
+    for `person` monitors.
+    """
+
 
 class MonitorListResponse(BaseModel):
     items: List[Item]

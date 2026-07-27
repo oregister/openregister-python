@@ -8,7 +8,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import monitor_create_params
-from .._types import Body, Query, Headers, NoneType, NotGiven, not_given
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -62,6 +62,7 @@ class MonitorResource(SyncAPIResource):
                 "insolvencies",
             ]
         ],
+        update_frequency: Literal["daily", "weekly"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -82,6 +83,15 @@ class MonitorResource(SyncAPIResource):
               values when `entity_type` is `company`, and `WebhookMonitorPersonPreference`
               values when `entity_type` is `person`.
 
+          update_frequency: How often the monitored company is checked for register updates. Defaults to
+              `weekly` if not provided.
+
+              Only supported when `entity_type` is `company`. Requests for `person` monitors
+              that include this field are rejected with a validation error.
+
+              Daily monitors are billed at a premium: 50 credits at creation and 50 credits
+              per month while active, instead of the standard 25.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -97,6 +107,7 @@ class MonitorResource(SyncAPIResource):
                     "entity_id": entity_id,
                     "entity_type": entity_type,
                     "preferences": preferences,
+                    "update_frequency": update_frequency,
                 },
                 monitor_create_params.MonitorCreateParams,
             ),
@@ -197,6 +208,7 @@ class AsyncMonitorResource(AsyncAPIResource):
                 "insolvencies",
             ]
         ],
+        update_frequency: Literal["daily", "weekly"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -217,6 +229,15 @@ class AsyncMonitorResource(AsyncAPIResource):
               values when `entity_type` is `company`, and `WebhookMonitorPersonPreference`
               values when `entity_type` is `person`.
 
+          update_frequency: How often the monitored company is checked for register updates. Defaults to
+              `weekly` if not provided.
+
+              Only supported when `entity_type` is `company`. Requests for `person` monitors
+              that include this field are rejected with a validation error.
+
+              Daily monitors are billed at a premium: 50 credits at creation and 50 credits
+              per month while active, instead of the standard 25.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -232,6 +253,7 @@ class AsyncMonitorResource(AsyncAPIResource):
                     "entity_id": entity_id,
                     "entity_type": entity_type,
                     "preferences": preferences,
+                    "update_frequency": update_frequency,
                 },
                 monitor_create_params.MonitorCreateParams,
             ),
