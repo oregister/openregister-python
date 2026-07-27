@@ -29,6 +29,17 @@ class TestMonitor:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
+    def test_method_create_with_all_params(self, client: Openregister) -> None:
+        monitor = client.monitor.create(
+            entity_id="entity_id",
+            entity_type="company",
+            preferences=["basic"],
+            update_frequency="daily",
+        )
+        assert_matches_type(MonitorCreateResponse, monitor, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
     def test_raw_response_create(self, client: Openregister) -> None:
         response = client.monitor.with_raw_response.create(
             entity_id="entity_id",
@@ -140,6 +151,17 @@ class TestAsyncMonitor:
             entity_id="entity_id",
             entity_type="company",
             preferences=["basic"],
+        )
+        assert_matches_type(MonitorCreateResponse, monitor, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_create_with_all_params(self, async_client: AsyncOpenregister) -> None:
+        monitor = await async_client.monitor.create(
+            entity_id="entity_id",
+            entity_type="company",
+            preferences=["basic"],
+            update_frequency="daily",
         )
         assert_matches_type(MonitorCreateResponse, monitor, path=["response"])
 
