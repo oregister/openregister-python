@@ -1,5 +1,13 @@
 # Changelog
 
+## 3.9.0 (2026-07-27)
+
+Full Changelog: [v3.8.0...v3.9.0](https://github.com/oregister/openregister-python/compare/v3.8.0...v3.9.0)
+
+### Features
+
+* **api:** daily monitor updates for companies ([76d79be](https://github.com/oregister/openregister-python/commit/76d79becc9c2d3335431eb92833c96648e6df667))
+
 ## 3.8.0 (2026-07-23)
 
 Full Changelog: [v3.7.0...v3.8.0](https://github.com/oregister/openregister-python/compare/v3.7.0...v3.8.0)
