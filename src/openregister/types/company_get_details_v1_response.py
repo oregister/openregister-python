@@ -27,12 +27,19 @@ __all__ = [
     "AssetSpinOff",
     "Contact",
     "ContactSocialMedia",
+    "Estimates",
+    "EstimatesEbitda",
+    "EstimatesEmployees",
+    "EstimatesRevenue",
     "Indicator",
     "IndustryCodes",
     "IndustryCodesWz2025",
+    "IndustryCodesWz2025Subclass",
     "MergedInto",
     "ProfitTransferAgreement",
     "Representation",
+    "RepresentationAuthorityDetail",
+    "RepresentationRoleDetail",
     "RepresentationLegalPerson",
     "RepresentationNaturalPerson",
     "Insolvency",
@@ -115,6 +122,128 @@ class Contact(BaseModel):
     vat_id: Optional[str] = None
 
 
+class EstimatesEbitda(BaseModel):
+    """A modelled value for one fiscal year.
+
+    min and max are not hard
+    limits: the true value lies between them with 80% probability.
+    """
+
+    confidence: Literal["high", "medium", "low"]
+    """
+    How narrow the 80% range is, the same tiers the search filters
+    estimated\\__\\**\\__confidence use. Revenue and employees are judged by the ratio of
+    max to min, EBITDA by the range relative to the latest reported balance sheet
+    total (low when there is none).
+    """
+
+    date: datetime.date
+    """
+    End of the fiscal year the estimate applies to, matching the company's reporting
+    year end. Format: ISO 8601 (YYYY-MM-DD) Example: "2024-12-31"
+    """
+
+    max: int
+    """Upper end of the 80% range."""
+
+    min: int
+    """Lower end of the 80% range."""
+
+    value: int
+    """The estimated figure, the middle of the modelled range."""
+
+
+class EstimatesEmployees(BaseModel):
+    """A modelled value for one fiscal year.
+
+    min and max are not hard
+    limits: the true value lies between them with 80% probability.
+    """
+
+    confidence: Literal["high", "medium", "low"]
+    """
+    How narrow the 80% range is, the same tiers the search filters
+    estimated\\__\\**\\__confidence use. Revenue and employees are judged by the ratio of
+    max to min, EBITDA by the range relative to the latest reported balance sheet
+    total (low when there is none).
+    """
+
+    date: datetime.date
+    """
+    End of the fiscal year the estimate applies to, matching the company's reporting
+    year end. Format: ISO 8601 (YYYY-MM-DD) Example: "2024-12-31"
+    """
+
+    max: int
+    """Upper end of the 80% range."""
+
+    min: int
+    """Lower end of the 80% range."""
+
+    value: int
+    """The estimated figure, the middle of the modelled range."""
+
+
+class EstimatesRevenue(BaseModel):
+    """A modelled value for one fiscal year.
+
+    min and max are not hard
+    limits: the true value lies between them with 80% probability.
+    """
+
+    confidence: Literal["high", "medium", "low"]
+    """
+    How narrow the 80% range is, the same tiers the search filters
+    estimated\\__\\**\\__confidence use. Revenue and employees are judged by the ratio of
+    max to min, EBITDA by the range relative to the latest reported balance sheet
+    total (low when there is none).
+    """
+
+    date: datetime.date
+    """
+    End of the fiscal year the estimate applies to, matching the company's reporting
+    year end. Format: ISO 8601 (YYYY-MM-DD) Example: "2024-12-31"
+    """
+
+    max: int
+    """Upper end of the 80% range."""
+
+    min: int
+    """Lower end of the 80% range."""
+
+    value: int
+    """The estimated figure, the middle of the modelled range."""
+
+
+class Estimates(BaseModel):
+    """Modelled revenue, EBITDA and employees for companies that do not
+    report them.
+
+    One estimate per metric, for the latest fiscal year.
+    """
+
+    ebitda: Optional[EstimatesEbitda] = None
+    """A modelled value for one fiscal year.
+
+    min and max are not hard limits: the true value lies between them with 80%
+    probability.
+    """
+
+    employees: Optional[EstimatesEmployees] = None
+    """A modelled value for one fiscal year.
+
+    min and max are not hard limits: the true value lies between them with 80%
+    probability.
+    """
+
+    revenue: Optional[EstimatesRevenue] = None
+    """A modelled value for one fiscal year.
+
+    min and max are not hard limits: the true value lies between them with 80%
+    probability.
+    """
+
+
 class Indicator(BaseModel):
     """
     A focused subset of the key company indicators for a given year.
@@ -168,18 +297,66 @@ class Indicator(BaseModel):
     salaries: Optional[int] = None
     """The salaries of that year (in cents)."""
 
+    short_year: bool
+    """A short fiscal year (Rumpfgeschäftsjahr), shorter than twelve months"""
+
     taxes: Optional[int] = None
     """The taxes of that year (in cents)."""
 
 
-class IndustryCodesWz2025(BaseModel):
-    """Industry codes from WZ 2025."""
+class IndustryCodesWz2025Subclass(BaseModel):
+    """A WZ 2025 subclass (Unterklasse)."""
 
     code: str
+    """WZ 2025 subclass. Example: "64.19.1" """
+
+    label_de: str
+    """
+    Official German title of the subclass. Example: "Kreditbanken einschließlich
+    Zweigstellen ausländischer Banken"
+    """
+
+    primary: bool
+    """Whether this is the company's main activity.
+
+    True for at most one subclass. The main activity is classified from the purpose,
+    not recorded in the register.
+    """
+
+
+class IndustryCodesWz2025(BaseModel):
+    """
+    A WZ 2025 class (Klasse) the company is active in, with the
+    subclasses (Unterklassen) behind it. The class of the company's main
+    activity comes first.
+    """
+
+    code: str
+    """WZ 2025 class. Example: "64.19" """
+
+    label_de: str
+    """
+    Official German title of the class. Example: "Kreditinstitute, ohne
+    Spezialkreditinstitute"
+    """
+
+    primary: bool
+    """Whether the company's main activity falls in this class.
+
+    True for at most one class. The main activity is classified from the purpose,
+    not recorded in the register.
+    """
+
+    subclasses: List[IndustryCodesWz2025Subclass]
+    """The WZ 2025 subclasses within this class, the main activity first."""
 
 
 class IndustryCodes(BaseModel):
-    """Industry codes of the company."""
+    """
+    Industry codes of the company, classified from its current
+    purpose (Unternehmensgegenstand). Empty when the purpose has not
+    been classified or describes no codable activity.
+    """
 
     wz2025: List[IndustryCodesWz2025] = FieldInfo(alias="WZ2025")
 
@@ -240,6 +417,87 @@ class ProfitTransferAgreement(BaseModel):
     """Date the agreement was registered. Format: ISO 8601 (YYYY-MM-DD)"""
 
 
+class RepresentationAuthorityDetail(BaseModel):
+    """Structured facts read from `authority`. Null when none are stated."""
+
+    self_dealing_allowed: Optional[bool] = None
+    """
+    Fully exempt from self-dealing restrictions (in Germany § 181 BGB). Null when
+    not stated or only partly exempt.
+    """
+
+    type: Optional[Literal["SOLE", "JOINT", "NONE", "GENERAL"]] = None
+    """
+    SOLE may represent alone, JOINT only together with others, NONE is excluded from
+    representation, GENERAL follows the general representation rule.
+    """
+
+
+class RepresentationRoleDetail(BaseModel):
+    """The precise role as recorded in the register, plus ready-to-display
+    titles.
+
+    A Vorstand and a Geschäftsführer both have role "DIRECTOR"
+    but differ here.
+    """
+
+    code: Literal[
+        "DIRECTOR",
+        "EMERGENCY_DIRECTOR",
+        "EXECUTIVE",
+        "CHAIRMAN",
+        "DEPUTY_CHAIRMAN",
+        "BOARD",
+        "PRESIDENT_BOARD",
+        "VICE_PRESIDENT_BOARD",
+        "PRESIDENT",
+        "MEMBER",
+        "NON_EXECUTIVE_DIRECTOR",
+        "BOARD_SECRETARY",
+        "BOARD_TREASURER",
+        "BOARD_SPORTS",
+        "BOARD_OTHER",
+        "REPRESENTATIVE",
+        "SECONDARY_REPRESENTATIVE",
+        "COURT_ORDERED_REPRESENTATIVE",
+        "PROKURA",
+        "PROKURA_SINGLE",
+        "PROKURA_JOINT",
+        "LIQUIDATOR",
+        "INSOLVENCY_DIRECTOR",
+        "PRELIMINARY_INSOLVENCY_DIRECTOR",
+        "OWNER",
+        "SHAREHOLDER",
+        "PARTNER",
+        "PERSONAL_LIABLE_DIRECTOR",
+        "LIMITED_PARTNER",
+        "OTHER",
+    ]
+    """
+    The precise role as recorded in the register. Example: "EXECUTIVE" for a
+    Vorstand, "DIRECTOR" for a Geschäftsführer — both have role "DIRECTOR".
+    """
+
+    label_de: str
+    """German title, gender-neutral, as shown on openregister.de. Example: "Vorstand" """
+
+    label_de_short: str
+    """Abbreviated German title, for dense layouts such as tables. Example: "Vst." """
+
+    label_en: str
+    """English title.
+
+    A translation for display, not a legal term — the German title is the one the
+    register uses. Example: "Executive Board Member"
+    """
+
+    label_en_short: str
+    """Abbreviated English title, for dense layouts such as tables. Example: "Exec.
+
+    Board"
+    """
+
+
 class RepresentationLegalPerson(BaseModel):
     city: Optional[str] = None
 
@@ -268,6 +526,9 @@ class RepresentationNaturalPerson(BaseModel):
     last_name: Optional[str] = None
     """Last name of the representative. Example: "Mustermann" """
 
+    title: Optional[str] = None
+    """Academic or professional title of the representative. Example: "Dr." """
+
 
 class Representation(BaseModel):
     id: Optional[str] = None
@@ -285,6 +546,9 @@ class Representation(BaseModel):
     der Gesellschaft mit sich im eigenen Namen Rechtsgeschäfte abzuschließen"
     """
 
+    authority_detail: Optional[RepresentationAuthorityDetail] = None
+    """Structured facts read from `authority`. Null when none are stated."""
+
     end_date: Optional[datetime.date] = None
     """
     Date when this representative role ended (if applicable). Format: ISO 8601
@@ -295,7 +559,17 @@ class Representation(BaseModel):
     """The name of the representative. E.g. "Max Mustermann" or "Max Mustermann GmbH" """
 
     role: RepresentationRole
-    """The role of the representation. E.g. "DIRECTOR" """
+    """Coarse role bucket.
+
+    Stable set of values, safe to switch on exhaustively. Use `role_detail` for the
+    precise register role. E.g. "DIRECTOR"
+    """
+
+    role_detail: RepresentationRoleDetail
+    """The precise role as recorded in the register, plus ready-to-display titles.
+
+    A Vorstand and a Geschäftsführer both have role "DIRECTOR" but differ here.
+    """
 
     start_date: datetime.date
     """
@@ -377,6 +651,12 @@ class CompanyGetDetailsV1Response(BaseModel):
     documents: List[CompanyDocument]
     """Available official documents related to the company."""
 
+    estimates: Estimates
+    """Modelled revenue, EBITDA and employees for companies that do not report them.
+
+    One estimate per metric, for the latest fiscal year.
+    """
+
     incorporated_at: datetime.date
     """
     Date when the company was officially registered. Format: ISO 8601 (YYYY-MM-DD)
@@ -387,7 +667,11 @@ class CompanyGetDetailsV1Response(BaseModel):
     """Key company indicators like net income, employee count, revenue, etc.."""
 
     industry_codes: IndustryCodes
-    """Industry codes of the company."""
+    """
+    Industry codes of the company, classified from its current purpose
+    (Unternehmensgegenstand). Empty when the purpose has not been classified or
+    describes no codable activity.
+    """
 
     legal_form: CompanyLegalForm
     """

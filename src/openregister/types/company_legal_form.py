@@ -11,6 +11,7 @@ CompanyLegalForm: TypeAlias = Literal[
     "ev",
     "ewiv",
     "foreign",
+    "foundation",
     "gbr",
     "ggmbh",
     "gmbh",

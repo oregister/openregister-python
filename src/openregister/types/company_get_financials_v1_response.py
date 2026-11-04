@@ -4,10 +4,145 @@ from __future__ import annotations
 
 import datetime
 from typing import List, Optional
+from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["CompanyGetFinancialsV1Response", "Indicator", "Merged", "Report", "ReportSource"]
+__all__ = [
+    "CompanyGetFinancialsV1Response",
+    "Estimates",
+    "EstimatesEbitda",
+    "EstimatesEmployees",
+    "EstimatesRevenue",
+    "Indicator",
+    "Merged",
+    "Report",
+    "ReportAuditor",
+    "ReportSource",
+    "ReportActivityStatement",
+]
+
+
+class EstimatesEbitda(BaseModel):
+    """A modelled value for one fiscal year.
+
+    min and max are not hard
+    limits: the true value lies between them with 80% probability.
+    """
+
+    confidence: Literal["high", "medium", "low"]
+    """
+    How narrow the 80% range is, the same tiers the search filters
+    estimated\\__\\**\\__confidence use. Revenue and employees are judged by the ratio of
+    max to min, EBITDA by the range relative to the latest reported balance sheet
+    total (low when there is none).
+    """
+
+    date: datetime.date
+    """
+    End of the fiscal year the estimate applies to, matching the company's reporting
+    year end. Format: ISO 8601 (YYYY-MM-DD) Example: "2024-12-31"
+    """
+
+    max: int
+    """Upper end of the 80% range."""
+
+    min: int
+    """Lower end of the 80% range."""
+
+    value: int
+    """The estimated figure, the middle of the modelled range."""
+
+
+class EstimatesEmployees(BaseModel):
+    """A modelled value for one fiscal year.
+
+    min and max are not hard
+    limits: the true value lies between them with 80% probability.
+    """
+
+    confidence: Literal["high", "medium", "low"]
+    """
+    How narrow the 80% range is, the same tiers the search filters
+    estimated\\__\\**\\__confidence use. Revenue and employees are judged by the ratio of
+    max to min, EBITDA by the range relative to the latest reported balance sheet
+    total (low when there is none).
+    """
+
+    date: datetime.date
+    """
+    End of the fiscal year the estimate applies to, matching the company's reporting
+    year end. Format: ISO 8601 (YYYY-MM-DD) Example: "2024-12-31"
+    """
+
+    max: int
+    """Upper end of the 80% range."""
+
+    min: int
+    """Lower end of the 80% range."""
+
+    value: int
+    """The estimated figure, the middle of the modelled range."""
+
+
+class EstimatesRevenue(BaseModel):
+    """A modelled value for one fiscal year.
+
+    min and max are not hard
+    limits: the true value lies between them with 80% probability.
+    """
+
+    confidence: Literal["high", "medium", "low"]
+    """
+    How narrow the 80% range is, the same tiers the search filters
+    estimated\\__\\**\\__confidence use. Revenue and employees are judged by the ratio of
+    max to min, EBITDA by the range relative to the latest reported balance sheet
+    total (low when there is none).
+    """
+
+    date: datetime.date
+    """
+    End of the fiscal year the estimate applies to, matching the company's reporting
+    year end. Format: ISO 8601 (YYYY-MM-DD) Example: "2024-12-31"
+    """
+
+    max: int
+    """Upper end of the 80% range."""
+
+    min: int
+    """Lower end of the 80% range."""
+
+    value: int
+    """The estimated figure, the middle of the modelled range."""
+
+
+class Estimates(BaseModel):
+    """Modelled revenue, EBITDA and employees for companies that do not
+    report them.
+
+    One estimate per metric, for the latest fiscal year.
+    """
+
+    ebitda: Optional[EstimatesEbitda] = None
+    """A modelled value for one fiscal year.
+
+    min and max are not hard limits: the true value lies between them with 80%
+    probability.
+    """
+
+    employees: Optional[EstimatesEmployees] = None
+    """A modelled value for one fiscal year.
+
+    min and max are not hard limits: the true value lies between them with 80%
+    probability.
+    """
+
+    revenue: Optional[EstimatesRevenue] = None
+    """A modelled value for one fiscal year.
+
+    min and max are not hard limits: the true value lies between them with 80%
+    probability.
+    """
 
 
 class Indicator(BaseModel):
@@ -23,6 +158,12 @@ class Indicator(BaseModel):
 
     affiliated_liabilities: Optional[int] = None
     """The affiliated liabilities of that year (in cents)."""
+
+    apprentices: Optional[int] = None
+    """
+    The number of apprentices (Auszubildende) of that year, where the report states
+    it.
+    """
 
     balance_sheet_total: Optional[int] = None
     """The balance sheet total of that year (in cents)."""
@@ -162,8 +303,14 @@ class Indicator(BaseModel):
     salaries: Optional[int] = None
     """The salaries of that year (in cents)."""
 
+    securities: Optional[int] = None
+    """The securities of that year (in cents)."""
+
     shareholder_liabilities: Optional[int] = None
     """The shareholder liabilities of that year (in cents)."""
+
+    short_year: bool
+    """A short fiscal year (Rumpfgeschäftsjahr), shorter than twelve months"""
 
     tangible_assets: Optional[int] = None
     """The tangible assets of that year (in cents)."""
@@ -191,6 +338,32 @@ class Merged(BaseModel):
     """Report table with data merged across multiple report periods"""
 
 
+class ReportAuditor(BaseModel):
+    """The auditor who signed the audit opinion.
+
+    Null for unaudited
+    reports and reports whose auditor could not be read.
+    """
+
+    name: str
+    """
+    Name of the audit firm or sole auditor as the report prints it. Example: "KPMG
+    AG Wirtschaftsprüfungsgesellschaft"
+    """
+
+    signatories: List[str]
+    """Names of the auditors who signed the opinion."""
+
+    city: Optional[str] = None
+    """City the audit opinion was signed in. Example: "München" """
+
+    company_id: Optional[str] = None
+    """
+    Unique company identifier of the audit firm, if it matches exactly one
+    registered company. Example: DE-HRB-F1103-267645
+    """
+
+
 class ReportSource(BaseModel):
     html_url: str
     """Url of the rendered HTML report.
@@ -199,13 +372,52 @@ class ReportSource(BaseModel):
     """
 
 
+class ReportActivityStatement(BaseModel):
+    activity: Literal[
+        "electricity_transmission",
+        "electricity_distribution",
+        "gas_transmission",
+        "gas_distribution",
+        "gas_storage",
+        "lng_facility",
+        "meter_operation",
+        "other",
+    ]
+    """The unbundled activity.
+
+    `meter_operation` is the metering business § 3 Abs. 4 MsbG separates; `other` is
+    any further activity the company reports separately, named in `label`.
+    """
+
+    aktiva: "ReportTable"
+
+    label: str
+    """The activity's name as the report prints it. Example: "Stromnetz" """
+
+    passiva: "ReportTable"
+
+    guv: Optional["ReportTable"] = None
+
+
 class Report(BaseModel):
     aktiva: "ReportTable"
+
+    auditor: Optional[ReportAuditor] = None
+    """The auditor who signed the audit opinion.
+
+    Null for unaudited reports and reports whose auditor could not be read.
+    """
 
     consolidated: bool
     """Whether the report is a consolidated report or not."""
 
     passiva: "ReportTable"
+
+    published_at: datetime.date
+    """
+    Date the report was published. A complement or correction is a separate report
+    with the same period and a later date. Format: ISO 8601 (YYYY-MM-DD)
+    """
 
     report_end_date: datetime.date
     """Format: ISO 8601 (YYYY-MM-DD)"""
@@ -222,10 +434,24 @@ class Report(BaseModel):
     sources: List[ReportSource]
     """Sources of the report data. Presigned URLs accessible for 30 minutes."""
 
+    activity_statements: Optional[List[ReportActivityStatement]] = None
+    """
+    Activity statements (Tätigkeitsabschlüsse) of an energy network operator: a
+    separate balance sheet and income statement for each activity § 6b Abs. 3 EnWG
+    unbundles, such as electricity distribution. Empty for reports that publish
+    none.
+    """
+
     guv: Optional["ReportTable"] = None
 
 
 class CompanyGetFinancialsV1Response(BaseModel):
+    estimates: Estimates
+    """Modelled revenue, EBITDA and employees for companies that do not report them.
+
+    One estimate per metric, for the latest fiscal year.
+    """
+
     indicators: List[Indicator]
     """Key financial indicators per fiscal year, sorted by date (latest first)."""
 

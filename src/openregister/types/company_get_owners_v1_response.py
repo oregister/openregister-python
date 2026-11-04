@@ -2,6 +2,7 @@
 
 from typing import List, Optional
 from datetime import date
+from typing_extensions import Literal
 
 from .source import Source
 from .._models import BaseModel
@@ -10,7 +11,73 @@ from .company_relation_type import CompanyRelationType
 from .company_owner_legal_person import CompanyOwnerLegalPerson
 from .company_owner_natural_person import CompanyOwnerNaturalPerson
 
-__all__ = ["CompanyGetOwnersV1Response", "Owner"]
+__all__ = ["CompanyGetOwnersV1Response", "Owner", "OwnerRoleDetail"]
+
+
+class OwnerRoleDetail(BaseModel):
+    """The precise role as recorded in the register, plus ready-to-display
+    titles.
+
+    A Kommanditist and a Gesellschafter both appear here with
+    their register-level role, while `relation_type` only carries the
+    coarse bucket.
+    """
+
+    code: Literal[
+        "DIRECTOR",
+        "EMERGENCY_DIRECTOR",
+        "EXECUTIVE",
+        "CHAIRMAN",
+        "DEPUTY_CHAIRMAN",
+        "BOARD",
+        "PRESIDENT_BOARD",
+        "VICE_PRESIDENT_BOARD",
+        "PRESIDENT",
+        "MEMBER",
+        "NON_EXECUTIVE_DIRECTOR",
+        "BOARD_SECRETARY",
+        "BOARD_TREASURER",
+        "BOARD_SPORTS",
+        "BOARD_OTHER",
+        "REPRESENTATIVE",
+        "SECONDARY_REPRESENTATIVE",
+        "COURT_ORDERED_REPRESENTATIVE",
+        "PROKURA",
+        "PROKURA_SINGLE",
+        "PROKURA_JOINT",
+        "LIQUIDATOR",
+        "INSOLVENCY_DIRECTOR",
+        "PRELIMINARY_INSOLVENCY_DIRECTOR",
+        "OWNER",
+        "SHAREHOLDER",
+        "PARTNER",
+        "PERSONAL_LIABLE_DIRECTOR",
+        "LIMITED_PARTNER",
+        "OTHER",
+    ]
+    """
+    The precise role as recorded in the register. Example: "EXECUTIVE" for a
+    Vorstand, "DIRECTOR" for a Geschäftsführer — both have role "DIRECTOR".
+    """
+
+    label_de: str
+    """German title, gender-neutral, as shown on openregister.de. Example: "Vorstand" """
+
+    label_de_short: str
+    """Abbreviated German title, for dense layouts such as tables. Example: "Vst." """
+
+    label_en: str
+    """English title.
+
+    A translation for display, not a legal term — the German title is the one the
+    register uses. Example: "Executive Board Member"
+    """
+
+    label_en_short: str
+    """Abbreviated English title, for dense layouts such as tables. Example: "Exec.
+
+    Board"
+    """
 
 
 class Owner(BaseModel):
@@ -37,7 +104,17 @@ class Owner(BaseModel):
     """Percentage of company ownership. Example: 5.36 represents 5.36% ownership"""
 
     relation_type: CompanyRelationType
-    """Type of relationship between the entity and the company."""
+    """
+    Type of relationship between the entity and the company. Use `role_detail` for
+    the precise register role.
+    """
+
+    role_detail: OwnerRoleDetail
+    """The precise role as recorded in the register, plus ready-to-display titles.
+
+    A Kommanditist and a Gesellschafter both appear here with their register-level
+    role, while `relation_type` only carries the coarse bucket.
+    """
 
     start: Optional[date] = None
     """Date when the relation started.
