@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.10.0](https://github.com/oregister/openregister-python/compare/v3.9.0...v3.10.0) (2026-11-04)
+
+
+### Features
+
+* regenerate SDK ([#37](https://github.com/oregister/openregister-python/issues/37)) ([98f986c](https://github.com/oregister/openregister-python/commit/98f986c6ce0d4b81e70179e72bb1e74061d81ed5))
+
 ## 3.9.0 (2026-07-27)
 
 Full Changelog: [v3.8.0...v3.9.0](https://github.com/oregister/openregister-python/compare/v3.8.0...v3.9.0)
