@@ -4,8 +4,10 @@ from __future__ import annotations
 
 from . import report_row, report_table, merged_report_row, merged_report_table, company_get_financials_v1_response
 from .. import _compat
+from .job import Job as Job
 from .source import Source as Source
 from .document import Document as Document
+from .job_type import JobType as JobType
 from .pagination import Pagination as Pagination
 from .report_row import ReportRow as ReportRow
 from .entity_type import EntityType as EntityType
@@ -22,8 +24,10 @@ from .merged_report_row import MergedReportRow as MergedReportRow
 from .company_legal_form import CompanyLegalForm as CompanyLegalForm
 from .merged_report_table import MergedReportTable as MergedReportTable
 from .representation_role import RepresentationRole as RepresentationRole
+from .job_create_v1_params import JobCreateV1Params as JobCreateV1Params
 from .company_register_type import CompanyRegisterType as CompanyRegisterType
 from .company_relation_type import CompanyRelationType as CompanyRelationType
+from .job_document_category import JobDocumentCategory as JobDocumentCategory
 from .monitor_create_params import MonitorCreateParams as MonitorCreateParams
 from .monitor_list_response import MonitorListResponse as MonitorListResponse
 from .insolvency_debtor_kind import InsolvencyDebtorKind as InsolvencyDebtorKind

@@ -168,3 +168,16 @@ from openregister.types import (
 Methods:
 
 - <code title="get /v1/insolvency/{insolvency_id}">client.insolvency.<a href="./src/openregister/resources/insolvency.py">get_details_v1</a>(insolvency_id) -> <a href="./src/openregister/types/insolvency_get_details_v1_response.py">InsolvencyGetDetailsV1Response</a></code>
+
+# Job
+
+Types:
+
+```python
+from openregister.types import Job, JobDocumentCategory, JobType
+```
+
+Methods:
+
+- <code title="post /v1/jobs">client.job.<a href="./src/openregister/resources/job.py">create_v1</a>(\*\*<a href="src/openregister/types/job_create_v1_params.py">params</a>) -> <a href="./src/openregister/types/job.py">Job</a></code>
+- <code title="get /v1/jobs/{job_id}">client.job.<a href="./src/openregister/resources/job.py">get_v1</a>(job_id) -> <a href="./src/openregister/types/job.py">Job</a></code>

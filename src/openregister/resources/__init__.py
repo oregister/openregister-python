@@ -1,5 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from .job import (
+    JobResource,
+    AsyncJobResource,
+    JobResourceWithRawResponse,
+    AsyncJobResourceWithRawResponse,
+    JobResourceWithStreamingResponse,
+    AsyncJobResourceWithStreamingResponse,
+)
 from .usage import (
     UsageResource,
     AsyncUsageResource,
@@ -114,4 +122,10 @@ __all__ = [
     "AsyncInsolvencyResourceWithRawResponse",
     "InsolvencyResourceWithStreamingResponse",
     "AsyncInsolvencyResourceWithStreamingResponse",
+    "JobResource",
+    "AsyncJobResource",
+    "JobResourceWithRawResponse",
+    "AsyncJobResourceWithRawResponse",
+    "JobResourceWithStreamingResponse",
+    "AsyncJobResourceWithStreamingResponse",
 ]
