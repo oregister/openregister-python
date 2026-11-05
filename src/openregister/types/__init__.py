@@ -8,11 +8,13 @@ from .job import Job as Job
 from .source import Source as Source
 from .document import Document as Document
 from .job_type import JobType as JobType
+from .company_v1 import CompanyV1 as CompanyV1
 from .pagination import Pagination as Pagination
 from .report_row import ReportRow as ReportRow
 from .entity_type import EntityType as EntityType
 from .company_name import CompanyName as CompanyName
 from .report_table import ReportTable as ReportTable
+from .company_owners import CompanyOwners as CompanyOwners
 from .company_search import CompanySearch as CompanySearch
 from .company_address import CompanyAddress as CompanyAddress
 from .company_capital import CompanyCapital as CompanyCapital
