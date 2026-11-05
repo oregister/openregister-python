@@ -32,10 +32,10 @@ client = Openregister(
     api_key=os.environ.get("OPENREGISTER_API_KEY"),  # This is the default and can be omitted
 )
 
-company_get_details_v1_response = client.company.get_details_v1(
+response = client.company.get_details_v1(
     company_id="DE-HRB-F1103-267645",
 )
-print(company_get_details_v1_response.id)
+print(response.id)
 ```
 
 While you can provide an `api_key` keyword argument,
@@ -58,10 +58,10 @@ client = AsyncOpenregister(
 
 
 async def main() -> None:
-    company_get_details_v1_response = await client.company.get_details_v1(
+    response = await client.company.get_details_v1(
         company_id="DE-HRB-F1103-267645",
     )
-    print(company_get_details_v1_response.id)
+    print(response.id)
 
 
 asyncio.run(main())
@@ -94,10 +94,10 @@ async def main() -> None:
         api_key=os.environ.get("OPENREGISTER_API_KEY"),  # This is the default and can be omitted
         http_client=DefaultAioHttpClient(),
     ) as client:
-        company_get_details_v1_response = await client.company.get_details_v1(
+        response = await client.company.get_details_v1(
             company_id="DE-HRB-F1103-267645",
         )
-        print(company_get_details_v1_response.id)
+        print(response.id)
 
 
 asyncio.run(main())
