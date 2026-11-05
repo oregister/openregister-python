@@ -6,9 +6,9 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 from .job_type import JobType
-from .company_v1 import CompanyV1
-from .company_owners import CompanyOwners
 from .job_document_category import JobDocumentCategory
+from .company_get_owners_v1_response import CompanyGetOwnersV1Response
+from .company_get_details_v1_response import CompanyGetDetailsV1Response
 
 __all__ = ["Job", "Results", "ResultsDocument"]
 
@@ -27,13 +27,13 @@ class ResultsDocument(BaseModel):
 class Results(BaseModel):
     """The result of a completed job. Only the field of the job's type is set."""
 
-    company: Optional[CompanyV1] = None
+    company: Optional[CompanyGetDetailsV1Response] = None
     """The refreshed company of a `company` job."""
 
     document: Optional[ResultsDocument] = None
     """The fetched document of a `document` job."""
 
-    owners: Optional[CompanyOwners] = None
+    owners: Optional[CompanyGetOwnersV1Response] = None
     """The refreshed owners of an `owners` job."""
 
 

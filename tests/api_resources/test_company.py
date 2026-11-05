@@ -10,10 +10,10 @@ import pytest
 from tests.utils import assert_matches_type
 from openregister import Openregister, AsyncOpenregister
 from openregister.types import (
-    CompanyV1,
-    CompanyOwners,
     CompanyGetUbosV1Response,
+    CompanyGetOwnersV1Response,
     CompanyGetContactV0Response,
+    CompanyGetDetailsV1Response,
     CompanyGetHoldingsV1Response,
     CompanyGetFinancialsV1Response,
     CompanyGetHistoricalOwnersV1Response,
@@ -73,7 +73,7 @@ class TestCompany:
         company = client.company.get_details_v1(
             company_id="company_id",
         )
-        assert_matches_type(CompanyV1, company, path=["response"])
+        assert_matches_type(CompanyGetDetailsV1Response, company, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -83,7 +83,7 @@ class TestCompany:
             export=True,
             realtime=True,
         )
-        assert_matches_type(CompanyV1, company, path=["response"])
+        assert_matches_type(CompanyGetDetailsV1Response, company, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -95,7 +95,7 @@ class TestCompany:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         company = response.parse()
-        assert_matches_type(CompanyV1, company, path=["response"])
+        assert_matches_type(CompanyGetDetailsV1Response, company, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -107,7 +107,7 @@ class TestCompany:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             company = response.parse()
-            assert_matches_type(CompanyV1, company, path=["response"])
+            assert_matches_type(CompanyGetDetailsV1Response, company, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -251,7 +251,7 @@ class TestCompany:
         company = client.company.get_owners_v1(
             company_id="company_id",
         )
-        assert_matches_type(CompanyOwners, company, path=["response"])
+        assert_matches_type(CompanyGetOwnersV1Response, company, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -262,7 +262,7 @@ class TestCompany:
             export=True,
             realtime=True,
         )
-        assert_matches_type(CompanyOwners, company, path=["response"])
+        assert_matches_type(CompanyGetOwnersV1Response, company, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -274,7 +274,7 @@ class TestCompany:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         company = response.parse()
-        assert_matches_type(CompanyOwners, company, path=["response"])
+        assert_matches_type(CompanyGetOwnersV1Response, company, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -286,7 +286,7 @@ class TestCompany:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             company = response.parse()
-            assert_matches_type(CompanyOwners, company, path=["response"])
+            assert_matches_type(CompanyGetOwnersV1Response, company, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -394,7 +394,7 @@ class TestAsyncCompany:
         company = await async_client.company.get_details_v1(
             company_id="company_id",
         )
-        assert_matches_type(CompanyV1, company, path=["response"])
+        assert_matches_type(CompanyGetDetailsV1Response, company, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -404,7 +404,7 @@ class TestAsyncCompany:
             export=True,
             realtime=True,
         )
-        assert_matches_type(CompanyV1, company, path=["response"])
+        assert_matches_type(CompanyGetDetailsV1Response, company, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -416,7 +416,7 @@ class TestAsyncCompany:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         company = await response.parse()
-        assert_matches_type(CompanyV1, company, path=["response"])
+        assert_matches_type(CompanyGetDetailsV1Response, company, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -428,7 +428,7 @@ class TestAsyncCompany:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             company = await response.parse()
-            assert_matches_type(CompanyV1, company, path=["response"])
+            assert_matches_type(CompanyGetDetailsV1Response, company, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -572,7 +572,7 @@ class TestAsyncCompany:
         company = await async_client.company.get_owners_v1(
             company_id="company_id",
         )
-        assert_matches_type(CompanyOwners, company, path=["response"])
+        assert_matches_type(CompanyGetOwnersV1Response, company, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -583,7 +583,7 @@ class TestAsyncCompany:
             export=True,
             realtime=True,
         )
-        assert_matches_type(CompanyOwners, company, path=["response"])
+        assert_matches_type(CompanyGetOwnersV1Response, company, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -595,7 +595,7 @@ class TestAsyncCompany:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         company = await response.parse()
-        assert_matches_type(CompanyOwners, company, path=["response"])
+        assert_matches_type(CompanyGetOwnersV1Response, company, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -607,7 +607,7 @@ class TestAsyncCompany:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             company = await response.parse()
-            assert_matches_type(CompanyOwners, company, path=["response"])
+            assert_matches_type(CompanyGetOwnersV1Response, company, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
