@@ -36,7 +36,8 @@ from ._base_client import (
 )
 
 if TYPE_CHECKING:
-    from .resources import usage, person, search, company, monitor, document, insolvency, transparenzregister
+    from .resources import job, usage, person, search, company, monitor, document, insolvency, transparenzregister
+    from .resources.job import JobResource, AsyncJobResource
     from .resources.usage import UsageResource, AsyncUsageResource
     from .resources.person import PersonResource, AsyncPersonResource
     from .resources.search import SearchResource, AsyncSearchResource
@@ -172,6 +173,12 @@ class Openregister(SyncAPIClient):
         from .resources.insolvency import InsolvencyResource
 
         return InsolvencyResource(self)
+
+    @cached_property
+    def job(self) -> JobResource:
+        from .resources.job import JobResource
+
+        return JobResource(self)
 
     @cached_property
     def with_raw_response(self) -> OpenregisterWithRawResponse:
@@ -406,6 +413,12 @@ class AsyncOpenregister(AsyncAPIClient):
         return AsyncInsolvencyResource(self)
 
     @cached_property
+    def job(self) -> AsyncJobResource:
+        from .resources.job import AsyncJobResource
+
+        return AsyncJobResource(self)
+
+    @cached_property
     def with_raw_response(self) -> AsyncOpenregisterWithRawResponse:
         return AsyncOpenregisterWithRawResponse(self)
 
@@ -579,6 +592,12 @@ class OpenregisterWithRawResponse:
 
         return InsolvencyResourceWithRawResponse(self._client.insolvency)
 
+    @cached_property
+    def job(self) -> job.JobResourceWithRawResponse:
+        from .resources.job import JobResourceWithRawResponse
+
+        return JobResourceWithRawResponse(self._client.job)
+
 
 class AsyncOpenregisterWithRawResponse:
     _client: AsyncOpenregister
@@ -633,6 +652,12 @@ class AsyncOpenregisterWithRawResponse:
         from .resources.insolvency import AsyncInsolvencyResourceWithRawResponse
 
         return AsyncInsolvencyResourceWithRawResponse(self._client.insolvency)
+
+    @cached_property
+    def job(self) -> job.AsyncJobResourceWithRawResponse:
+        from .resources.job import AsyncJobResourceWithRawResponse
+
+        return AsyncJobResourceWithRawResponse(self._client.job)
 
 
 class OpenregisterWithStreamedResponse:
@@ -689,6 +714,12 @@ class OpenregisterWithStreamedResponse:
 
         return InsolvencyResourceWithStreamingResponse(self._client.insolvency)
 
+    @cached_property
+    def job(self) -> job.JobResourceWithStreamingResponse:
+        from .resources.job import JobResourceWithStreamingResponse
+
+        return JobResourceWithStreamingResponse(self._client.job)
+
 
 class AsyncOpenregisterWithStreamedResponse:
     _client: AsyncOpenregister
@@ -743,6 +774,12 @@ class AsyncOpenregisterWithStreamedResponse:
         from .resources.insolvency import AsyncInsolvencyResourceWithStreamingResponse
 
         return AsyncInsolvencyResourceWithStreamingResponse(self._client.insolvency)
+
+    @cached_property
+    def job(self) -> job.AsyncJobResourceWithStreamingResponse:
+        from .resources.job import AsyncJobResourceWithStreamingResponse
+
+        return AsyncJobResourceWithStreamingResponse(self._client.job)
 
 
 Client = Openregister
