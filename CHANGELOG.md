@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.11.0](https://github.com/oregister/openregister-python/compare/v3.10.0...v3.11.0) (2026-11-05)
+
+
+### Features
+
+* add jobs ([#39](https://github.com/oregister/openregister-python/issues/39)) ([b7d5aeb](https://github.com/oregister/openregister-python/commit/b7d5aeb1236c347491ab5fab2105be9a1b2308a6))
+
 ## [3.10.0](https://github.com/oregister/openregister-python/compare/v3.9.0...v3.10.0) (2026-11-04)
 
 
